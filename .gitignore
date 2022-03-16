@@ -1,0 +1,9 @@
+*.o
+test*
+*test*
+*test
+*.d
+a.out
+*a.out
+*a.out*
+a.out*
