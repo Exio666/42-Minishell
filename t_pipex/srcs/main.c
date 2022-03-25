@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:37:47 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/03/25 10:39:36 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/03/25 11:06:01 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@
 #define READ_END 0
 #define WRITE_END 1
 
-void	first_pipe(int pipe_stock[2], char *file)
+void	first_pipe(int pipe_stock[2], char *file, char *commande)
 {
 	int fd_file;
 	char buffer[100];
 	ssize_t nbytes;
 
+	(void)commande;
 	fd_file = open(file, O_RDONLY);
 	dup2(fd_file, STDIN_FILENO);
 	close(fd_file);
@@ -80,11 +81,11 @@ int pipex(int ac, char **av, char **envp)
 	int pid;
 	(void)envp;
 
-	i = 2;
+	i = 3;
 	pipe(pipe_stock);
 	pid = fork();
 	if (pid == 0)
-		first_pipe(pipe_stock, av[1]);
+		first_pipe(pipe_stock, av[1], av[2]);
 	while (i < ac - 1)
 	{
 		pipe(new_pipe);
@@ -105,7 +106,7 @@ int pipex(int ac, char **av, char **envp)
 		last_pipe(new_pipe, av[i], av[i + 1]);
 	close(new_pipe[0]);
 	close(new_pipe[1]);
-	while (waitpid(-1, NULL, 0) > 0)
+	while (waitpid(-1, NULL, 0) > 0) //Permet au programe principale d'attendre tout les enfants
 			;
 	return (0);
 }
