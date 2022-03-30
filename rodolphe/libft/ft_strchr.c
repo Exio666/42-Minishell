@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 13:19:21 by rpottier          #+#    #+#             */
-/*   Updated: 2022/03/23 13:28:44 by bsavinel         ###   ########.fr       */
+/*   Created: 2021/11/23 13:54:37 by rpottier          #+#    #+#             */
+/*   Updated: 2021/11/30 10:23:15 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char *argv[])
+#include <stdlib.h>
+
+char	*ft_strchr(const char *s, int c)
 {
-	int	fd[2];
-	if (pipe(fd) == -1)
+	int		i;
+
+	i = 0;
+	while (s[i])
 	{
-		printf("error opening pire\n");
-		return (1);
+		if (s[i] == (char) c)
+			return ((char *)&s[i]);
+		i++;
 	}
-	int id = fork();
-	if (id == 0)
-	{
-		
-	}
-	return (0);
+	if (s[i] == (char) c)
+		return ((char *) &s[i]);
+	return (NULL);
 }

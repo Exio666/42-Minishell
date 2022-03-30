@@ -1,0 +1,12 @@
+total 64
+-rw-rw-r-- 1 goldenboby goldenboby   823 Mar 28 16:52 Makefile
+-rwxrwxr-x 1 goldenboby goldenboby 17536 Mar 28 12:35 a.out
+-rw-rw-r-- 1 goldenboby goldenboby     0 Mar 29 14:19 file2.txt
+drwxrwxr-x 2 goldenboby goldenboby  4096 Mar 28 16:42 includes
+drwxrwxr-x 3 goldenboby goldenboby  4096 Mar 20 18:30 libft
+-rwxrwxr-x 1 goldenboby goldenboby     0 Mar 25 17:40 ls
+drwxrwxr-x 2 goldenboby goldenboby  4096 Mar 29 14:19 objs
+-rwxrwxr-x 1 goldenboby goldenboby 18184 Mar 29 14:19 pipex
+drwxrwxr-x 2 goldenboby goldenboby  4096 Mar 28 14:20 srcs
+-rw-rw-r-- 1 goldenboby goldenboby     8 Mar 25 17:27 test.txt
+I WAS WAITING...
