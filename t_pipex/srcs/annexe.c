@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   annexe.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 13:37:47 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/03/30 11:15:53 by rpottier         ###   ########.fr       */
+/*   Created: 2022/03/30 11:22:34 by rpottier          #+#    #+#             */
+/*   Updated: 2022/03/30 11:24:10 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipex.h"
+ #include "../includes/pipex.h"
 
 char **parse_arg(char *arg)
 {
@@ -109,55 +109,3 @@ int	open_output_file(char *output_file_name)
 		exit(EXIT_FAILURE);
 	return (output_file_fd);
 } 
-
-int main(int ac, char **av, char **envp)
-{
-	char 	**exe_argv_1;
-	char 	**exe_argv_2;
-	char	**all_path;
-	int		fd_pipe[2];
-	int		pid;
-	int		input_file_fd;
-	int		output_file_fd;
-
-	all_path = split_path_env_variable_and_add_slash(get_path_env_variable(envp));
-
-	if (ac < 2)
-		return (0);
-	
-	pid = fork();
-	
-	wait(NULL);
-	if (pid == 0)
-	{	
-		input_file_fd = open_input_file(av[1]);
-		output_file_fd = open_output_file(av[4]);
-		exe_argv_1 = parse_arg(av[2]);
-		exe_argv_2 = parse_arg(av[3]);
-		pipe(fd_pipe);
-		pid = fork();
-		if (pid == 0)
-		{
-			dup2(input_file_fd, STDIN_FILENO);
-			dup2(fd_pipe[WRITE_END], STDOUT_FILENO);
-			close(input_file_fd);
-			close(fd_pipe[READ_END]);
-			execute_command(exe_argv_1, all_path, envp);
-		}
-		else
-		{	
-			dup2(output_file_fd, STDOUT_FILENO);
-			dup2(fd_pipe[READ_END], STDIN_FILENO);
-			
-			close(input_file_fd);
-			close(output_file_fd);
-			close(fd_pipe[WRITE_END]);
-			
-			execute_command(exe_argv_2, all_path, envp);
-			wait(NULL);
-		}
-	}
-	return (0);	
-}
-
-ls | (cat && cat)

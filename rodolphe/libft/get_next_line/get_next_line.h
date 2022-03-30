@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 14:24:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/03/15 11:44:54 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/03/01 09:04:33 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	ft_restruct_storage(char *fd_storage);
 ** get_next_line_utils.c
 */
 
-void	ft_gnl_bzero(void *s, size_t n);
-char	*ft_gnl_realloc(char *str, int size);
-size_t	ft_gnl_strlcpy(char *dst, const char *src, size_t size);
-int		ft_gnl_strcat(char *dest, char *src);
+void	ft_bzero(void *s, size_t n);
+char	*ft_realloc(char *str, int size);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+int		ft_strcat(char *dest, char *src);
 int		ft_len(const char *str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 14:24:19 by rpottier          #+#    #+#             */
-/*   Updated: 2022/03/15 11:45:17 by rpottier         ###   ########.fr       */
+/*   Updated: 2021/12/06 10:22:53 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,21 @@ int	ft_len(const char *str)
 	return (length);
 }
 
-char	*ft_gnl_realloc(char *str, int size)
+char	*ft_realloc(char *str, int size)
 {
 	char	*new_str;
 
 	new_str = malloc(sizeof(*new_str) * size + 1);
-	ft_gnl_bzero(new_str, size);
+	ft_bzero(new_str, size);
 	if (str)
 	{
-		ft_gnl_strlcpy(new_str, str, size);
+		ft_strlcpy(new_str, str, size);
 		free(str);
 	}
 	return (new_str);
 }
 
-size_t	ft_gnl_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	src_length;
@@ -60,7 +60,7 @@ size_t	ft_gnl_strlcpy(char *dst, const char *src, size_t size)
 }
 
 /* Retourne le point d'arret de src*/
-int	ft_gnl_strcat(char *dest, char *src)
+int	ft_strcat(char *dest, char *src)
 {
 	int	i;
 	int	j;
@@ -82,7 +82,7 @@ int	ft_gnl_strcat(char *dest, char *src)
 	return (j);
 }
 
-void	ft_gnl_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	size_t			i;
 	unsigned char	*p;

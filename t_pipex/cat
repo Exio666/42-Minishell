@@ -1,10 +1,10 @@
-a.out
-file1.txt
-file2.txt
+cat
+file1
+file2
 includes
 libft
 Makefile
 objs
 pipex
 srcs
-test.txt
+truc

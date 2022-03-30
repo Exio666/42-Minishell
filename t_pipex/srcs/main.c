@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:37:47 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/03/25 14:44:45 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/03/30 12:09:15 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,60 +17,46 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <stdlib.h>
+#include "pipex.h"
 
-#define READ_END 0
-#define WRITE_END 1
-
-void	first_pipe(int pipe_stock[2], char *file, char *commande)
+void	first_pipe(int pipe_stock[2], char *file, char *commande, char **all_path, char **envp)
 {
 	int fd_file;
-	char buffer[100];
-	ssize_t nbytes;
 
-	(void)commande;
 	fd_file = open(file, O_RDONLY);
 	dup2(fd_file, STDIN_FILENO);
 	close(fd_file);
 	close(pipe_stock[0]);
 	dup2(pipe_stock[1], STDOUT_FILENO);
 	close(pipe_stock[1]);
-	while ((nbytes = read(STDIN_FILENO, buffer, sizeof(buffer))) > 0)
-			write(STDOUT_FILENO, buffer, nbytes);
+	execute_command(parse_arg(commande), all_path, envp);
 	exit(1);
 }
 
-void	pipe_to_pipe(int new_pipe[2], int old_pipe[2], char *commande)
+void	pipe_to_pipe(int new_pipe[2], int old_pipe[2], char *commande, char **all_path, char **envp)
 {
-	char buffer[100];
-	size_t nbytes;
-
-	(void)commande;
 	close(old_pipe[1]);
 	dup2(old_pipe[0], STDIN_FILENO);
 	close(old_pipe[0]);
 	close(new_pipe[0]);
 	dup2(new_pipe[1], STDOUT_FILENO);
 	close(new_pipe[1]);
-	while ((nbytes = read(STDIN_FILENO, buffer, sizeof(buffer))) > 0)
-			write(STDOUT_FILENO, buffer, nbytes);
+	execute_command(parse_arg(commande), all_path, envp);
 	exit(1);
 }
 
-void	last_pipe(int pipe[2], char *file, char *commande)
+void	last_pipe(int pipe[2], char *file, char *commande, char **all_path, char **envp)
 {
 	int fd_file;
-	char buffer[100];
-	ssize_t nbytes;
 
-	(void)commande;
-	fd_file = open(file ,O_WRONLY | O_CREAT , 00777);
+	fd_file = open(file, O_WRONLY | O_CREAT, 00777);
 	close(pipe[1]);
 	dup2(pipe[0], STDIN_FILENO);
 	close(pipe[0]);
 	dup2(fd_file, STDOUT_FILENO);
 	close(fd_file);
-	while ((nbytes = read(STDIN_FILENO, buffer, sizeof(buffer))) > 0)
-			write(STDOUT_FILENO, buffer, nbytes);
+	execute_command(parse_arg(commande), all_path, envp);
+	exit(1);
 }
 
 int pipex(int ac, char **av, char **envp)
@@ -79,33 +65,36 @@ int pipex(int ac, char **av, char **envp)
 	int new_pipe[2];
 	int	i;
 	int pid;
-	(void)envp;
+	char **all_path;
 
 	i = 3;
+	all_path = split_path_env_variable_and_add_slash(get_path_env_variable(envp));
 	pipe(pipe_stock);
 	pid = fork();
 	if (pid == 0)
-		first_pipe(pipe_stock, av[1], av[2]);
-	while (i < ac - 1)
+		first_pipe(pipe_stock, av[1], av[2], all_path, envp);
+	while (i < ac - 2)
 	{
 		pipe(new_pipe);
 		pid = fork();
 		if (pid == 0)
-			pipe_to_pipe(new_pipe, pipe_stock, av[i]);
+			pipe_to_pipe(new_pipe, pipe_stock, av[i], all_path, envp);
 		close(pipe_stock[0]);
 		close(pipe_stock[1]);
-		if (i < ac - 2)
-		{
-			pipe_stock[0] = new_pipe[0];
-			pipe_stock[1] = new_pipe[1];
+		pipe_stock[0] = new_pipe[0];
+		pipe_stock[1] = new_pipe[1];
+		if (i < ac - 3)
 			pipe(new_pipe);
-		}
 		i++;
 	}
 	if (pid != 0)
-		last_pipe(new_pipe, av[i], av[i + 1]);
-	close(new_pipe[0]);
-	close(new_pipe[1]);
+	{
+		pid = fork();
+		if (pid == 0)
+			last_pipe(pipe_stock, av[i], av[i + 1], all_path, envp);
+		close(pipe_stock[0]);
+		close(pipe_stock[1]);
+	}
 	while (waitpid(-1, NULL, 0) > 0) //Permet au programe principale d'attendre tout les enfants
 			;
 	return (0);
@@ -232,3 +221,11 @@ int main(void)
     }
     return(0);
 }*/
+
+/*
+ensemble d'execution
+expesion
+e$a
+cmd1 arg1 arg2 ... posible redirection
+arg1 "  q  sdv"
+*/

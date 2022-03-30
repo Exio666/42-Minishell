@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 14:24:08 by rpottier          #+#    #+#             */
-/*   Updated: 2022/03/15 11:43:15 by rpottier         ###   ########.fr       */
+/*   Updated: 2021/12/06 12:16:21 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	extract_str(char *fd_storage, char *line, char *buffer)
 	i = -1;
 	if (fd_storage[0] != '\0')
 	{
-		ft_gnl_strcat(line, fd_storage);
+		ft_strcat(line, fd_storage);
 		ft_restruct_storage(fd_storage);
 	}
 	start = ft_len(line);
@@ -110,13 +110,13 @@ char	*read_line(char *fd_storage, int fd)
 	line = NULL;
 	while (read_ret > 0 && !end_of_line)
 	{
-		ft_gnl_bzero(buffer, BUFFER_SIZE + 1);
+		ft_bzero(buffer, BUFFER_SIZE + 1);
 		if (need_to_read(fd_storage))
 			read_ret = read(fd, buffer, BUFFER_SIZE);
 		line_size = ft_len(fd_storage) + ft_len(buffer) + (ft_len(line) + 1);
 		if (line_size == 1)
 			return (NULL);
-		line = ft_gnl_realloc(line, sizeof(*line) * line_size);
+		line = ft_realloc(line, sizeof(*line) * line_size);
 		if (!line)
 			return (NULL);
 		end_of_line = extract_str(fd_storage, line, buffer);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
+#    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/03/23 15:34:20 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/03/30 11:47:20 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ OBJS_PATH =	objs/
 
 SRCS_PATH =	srcs/
 
-SRCS =	main.c
+SRCS =	main.c \
+		annexe.c
 
 OBJS =	$(addprefix $(OBJS_PATH), $(SRCS:.c=.o))
 
@@ -30,10 +31,12 @@ INCS = -I includes
 
 NAME = pipex
 
+ALLLIB = libft/libft.a
+
 all: $(NAME)
 
-$(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(INCS)
+$(NAME) : $(OBJS) $(ALLLIB)
+	$(CC) $(CFLAGS) $(OBJS) $(ALLLIB) -o $(NAME) $(INCS)
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	@mkdir -p $(dir $@)
@@ -41,9 +44,14 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 
 clean :
 	$(RM) $(OBJS) $(DEPS)
+	$(MAKE) -C libft clean
 
 fclean : clean
 	$(RM) $(NAME)
+	$(RM) libft/libft.a
+
+libft/libft.a :
+	$(MAKE) -C libft all
 
 bonus: all
 
