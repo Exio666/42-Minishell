@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:37:47 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/03/30 12:09:15 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/03/31 16:18:39 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 void	first_pipe(int pipe_stock[2], char *file, char *commande, char **all_path, char **envp)
 {
-	int fd_file;
+	int	fd_file;
 
 	fd_file = open(file, O_RDONLY);
 	dup2(fd_file, STDIN_FILENO);
@@ -45,9 +45,9 @@ void	pipe_to_pipe(int new_pipe[2], int old_pipe[2], char *commande, char **all_p
 	exit(1);
 }
 
-void	last_pipe(int pipe[2], char *file, char *commande, char **all_path, char **envp)
+void	last_pipe(int pipe[2], char *commande, char *file, char **all_path, char **envp)
 {
-	int fd_file;
+	int	fd_file;
 
 	fd_file = open(file, O_WRONLY | O_CREAT, 00777);
 	close(pipe[1]);
@@ -59,13 +59,13 @@ void	last_pipe(int pipe[2], char *file, char *commande, char **all_path, char **
 	exit(1);
 }
 
-int pipex(int ac, char **av, char **envp)
+int	pipex(int ac, char **av, char **envp)
 {
-	int pipe_stock[2];
-	int new_pipe[2];
-	int	i;
-	int pid;
-	char **all_path;
+	int		pipe_stock[2];
+	int		new_pipe[2];
+	int		i;
+	int		pid;
+	char	**all_path;
 
 	i = 3;
 	all_path = split_path_env_variable_and_add_slash(get_path_env_variable(envp));
@@ -100,7 +100,7 @@ int pipex(int ac, char **av, char **envp)
 	return (0);
 }
 
-int main(int ac, char **av, char **envp)
+int	main(int ac, char **av, char **envp)
 {
 	(void)envp;
 	if (ac < 5)
@@ -108,7 +108,7 @@ int main(int ac, char **av, char **envp)
 		printf("Bad number of argument\n");
 		return (1);
 	}
-	return (pipex(ac, av, envp));	
+	return (pipex(ac, av, envp));
 }
 //todo : define READ_END && WRITE_END
 
