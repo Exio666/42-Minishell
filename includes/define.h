@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btree_apply_infix.c                                :+:      :+:    :+:   */
+/*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/21 11:22:23 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/01 17:18:48 by rpottier         ###   ########.fr       */
+/*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/04/01 16:38:12 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_btree.h"
+#ifndef STRUCT_H
+# define STRUCT_H
 
-void btree_apply_infix(t_btree *root, void (*applyf)(void *))
-{
-	if (!root)
-		return ;
-	btree_apply_prefix(root->left, &applyf);
-	btree_apply_prefix(root->right, &applyf);
-	applyf(root->item);
-}
+# include "minishell.h"
+
+# ifndef DEBUG
+#  define DEBUG 1
+# endif
+
+# define FALSE 0
+# define TRUE 1
+
+
+#endif
