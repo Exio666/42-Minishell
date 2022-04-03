@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   struct_enum.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/01 16:35:41 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/03 12:26:46 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@
 
 typedef enum e_type_token
 {
-	OPEN_PARENTHESIS,
-	CLOSE_PARENTHESIS,
-	PIPE_SEQUENCE,
-	OR,
-	AND
+	OPEN_PARENTHESIS,	// 0
+	CLOSE_PARENTHESIS,	// 1
+	PIPE_SEQUENCE,		// 2
+	OR, 				// 3
+	AND					// 4
 }	t_type_token;
 
 typedef enum e_type_command
