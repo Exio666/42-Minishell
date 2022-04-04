@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/04 10:29:33 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/04/04 10:32:21 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,11 +107,11 @@ $(NAME_TEST):
 
 clean : header
 	$(RM) $(OBJS) $(DEPS)
-	$(MAKE) -C Libft clean
+	$(MAKE) -C libft clean
 
 fclean : header clean
 	$(RM) $(NAME)
-	$(RM) Libft/libft.a
+	$(RM) libft/libft.a
 
 re : fclean all
 
