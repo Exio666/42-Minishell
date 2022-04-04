@@ -1,53 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 10:40:00 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/01 12:33:30 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/04/03 13:44:31 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/04/03 14:17:10 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	arg_is_flag_echo(char *arg)
+int	good_arg_for_exit(char *arg)
 {
 	int	i;
 
-	if (!str)
-		return (0);
-	if (str[0] != '-')
-		return (0);
-	i = 1;
-	while (str[i])
-	{
-		if (str[i] != 'n')
-			return (0);
+	i = 0;
+	if (arg[0] == '-')
 		i++;
-	}
+	while (ft_isdigit(arg[i]))
+		i++;
+	if (arg[i])
+		return (0);
 	return (1);
 }
 
-int	echo(int ac, char **argv)
+void	exit(int ac, char **av)
 {
-	int	i;
-	int	flag_n;
-
-	i = 1;
-	flag_n = 0;
-	while(i < ac && arg_is_flag_echo(argv[1]))
+	if (!(good_arg_for_exit(av[1]) && ac > 2))
 	{
-		flag_n = 1;
-		i++;
+		__malloc(-1);
+		if (ac == 1)
+			exit(1);
+		if (!good_arg_for_exit(av[1]))
+			exit(2);
+		else
+			exit(ft_atoi(av[1]));
 	}
-	while(i < ac)
-	{
-		ft_putstr_fd(argv[i], 1);
-		i++;
-	}
-	if (flag_n == 0)
-		write(1, "\n", 1);
-	return (1);
 }
