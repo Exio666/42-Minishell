@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 10:02:21 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/04 17:05:54 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/05 16:34:47 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	give_next_character(char *str, int start, char c)
 			return (start);
 		start++;
 	}
+	if (!str[start])
+		return (-1);
 	return (start);
 }
 
@@ -32,7 +34,7 @@ int	check_error(t_checker *check, char *str)
 
 void	init_struct_checker(t_checker *check)
 {
-	check->error = FALSE;
+	check->error = TRUE;
 	check->index = 0;
 	check->str = NULL;
 	check->par_lvl = 0;
@@ -42,7 +44,6 @@ int	primary_checker(char *commande)
 {
 	t_checker	check;
 
-	i = 0;
 	init_struct_checker(&check);
 	if (quote_parenthise_checker(commande, &check))
 	{
@@ -53,15 +54,3 @@ int	primary_checker(char *commande)
 		printf("%s\n", check.str);
 	return (check.error);
 }
-
-/*
-int main()
-{
-	char *commande;
-
-	commande = "";
-	if(primary_checker() == TRUE)
-		printf("The checker say 'commande is good'");
-	else
-		printf("The checker say 'commande is bad'");
-}*/

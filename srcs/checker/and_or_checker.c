@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:05:36 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/04 18:12:24 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/05 15:36:20 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	and_checker(char *commande, t_checker *check)
 	int	counter;
 
 	counter = 0;
-	while (str[check->index] == '&')
+	while (commande[check->index] == '&')
 	{
 		counter++;
 		check->index++;
@@ -25,7 +25,7 @@ void	and_checker(char *commande, t_checker *check)
 	if (counter != 2)
 	{
 		check->error = FALSE;
-		check->str = "Syntax error : near unexpected token \'&&\'";
+		check->str = S_ERROR_UNEX_TOK_AND;
 	}
 }
 
@@ -34,7 +34,7 @@ void	or_checker(char *commande, t_checker *check)
 	int	counter;
 
 	counter = 0;
-	while (str[check->index] == '&')
+	while (commande[check->index] == '&')
 	{
 		counter++;
 		check->index++;
@@ -42,7 +42,7 @@ void	or_checker(char *commande, t_checker *check)
 	if (counter > 2)
 	{
 		check->error = FALSE;
-		check->str = "Syntax error : near unexpected token \'||\'";
+		check->str = S_ERROR_UNEX_TOK_OR;
 	}
 }
 

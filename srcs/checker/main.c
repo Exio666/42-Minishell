@@ -1,40 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   jump_caracters.c                                   :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 15:20:50 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/05 15:26:19 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/04/05 15:23:18 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/04/05 16:46:42 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int jump_caracters(char *str, char *caracters, int index, int step)
+int main()
 {
-	while (str[index] && index >= 0 && step != 0)
-	{
-		if (strchr(caracters, str[index]))
-			return (index);
-		index += step;
-	}
-	return (-1);
-}
+	char *commande;
 
-int is_double_quote(char c)
-{
-	if (c == '\"')
-		return (TRUE);
+	commande = "\'(test ())";
+	if(primary_checker(commande) == TRUE)
+		printf("The checker say 'commande is good'");
 	else
-		return (FALSE);
-}
-
-int is_quote(char c)
-{
-	if (c == '\'')
-		return (TRUE);
-	else
-		return (FALSE);
+		printf("The checker say 'commande is bad'");
 }

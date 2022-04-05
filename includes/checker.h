@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:06:39 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/04 17:10:48 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/05 15:21:00 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		and_or_pipe_checker(char *commande, t_checker *check);
  *	quote_checker.c
  */
 
-int		quote_checker(char *commande, t_checker *check);
+int		quote_parenthise_checker(char *commande, t_checker *check);
 int		quote_jump(char *commande, t_checker *check);
 
 #endif 

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:04:44 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/04 18:12:16 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/05 16:45:50 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	quote_jump(char *commande, t_checker *check)
 {
 	if (commande[check->index] == '\'')
 	{
-		check->index = jump_caracters(commande, "\'", i, 1);
+		check->index = jump_caracters(commande, "\'", check->index + 1, 1);
 		if (check->index != -1)
 			check->index++;
 		else
@@ -24,7 +24,7 @@ int	quote_jump(char *commande, t_checker *check)
 	}
 	else if (commande[check->index] == '\"')
 	{
-		check->index = give_next_character(commande, i + 1, '\"');
+		check->index = give_next_character(commande, check->index + 1, '\"');
 		if (check->index != -1)
 			check->index++;
 		else
@@ -33,11 +33,11 @@ int	quote_jump(char *commande, t_checker *check)
 	return (1);
 }
 
-int	quote_checker(char *commande, t_checker *check)
+int	quote_parenthise_checker(char *commande, t_checker *check)
 {
 	char	tmp;
 
-	while (commande[check->index])
+	while (commande[check->index] && check->index != -1)
 	{
 		if (commande[check->index] == '(')
 			check->par_lvl++;
@@ -48,14 +48,14 @@ int	quote_checker(char *commande, t_checker *check)
 			check->par_lvl--;
 		}
 		tmp = commande[check->index];
-		check->index = jump_caracters(commande, "\"\'()", check->index, 1);
 		if (check->index == -1 || quote_jump(commande, check) == 0)
 		{
 			if (tmp == '\'')
 				return (check_error(check, S_ERROR_M_QUOTE));
-			else
+			else if (tmp == '\"')
 				return (check_error(check, S_ERROR_M_DQUOTE));
 		}
+		check->index = jump_caracters(commande, "\"\'()", check->index + 1, 1);
 	}
 	if (check->par_lvl != 0)
 		return (check_error(check, S_ERROR_M_OPEN_PAR));

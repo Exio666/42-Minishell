@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/04 18:12:51 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/05 15:18:48 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@
 ***  Utils  ***
 ***************/
 
-int jump_caracters(char *str, char *caracters, int index, int step)
+int jump_caracters(char *str, char *caracters, int index, int step);
 
 #endif

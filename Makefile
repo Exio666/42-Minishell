@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/05 12:20:22 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/04/05 16:28:22 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ NAME_TEST = minishell_test
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 ARGUMENT_RUN = 
 ARGUMENT_RUN_TEST =
@@ -36,7 +36,9 @@ SRCS =
 
 SRCS_TEST =	checker/and_or_checker.c	\
 			checker/primary_check.c		\
-			checker/quote_checker.c
+			checker/quote_checker.c		\
+			checker/main.c				\
+			parser/jump_caracters.c
 
 ################################################################################
 ########							Libraries							########
@@ -92,8 +94,7 @@ $(NAME) : header $(OBJS) $(LIBS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME) $(INCS)
 	echo "$(BLUE)$(NAME): $(GREEN)Success $(NO_COLOR)"
 
-$(OBJS_PATH)%.o: srcs/%.c
-	echo a
+$(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -MMD -c $< -o $@ $(INCS)
 
@@ -137,3 +138,5 @@ libft/libft.a :
 -include $(DEPS)
 
 .PHONY: all clean fclean re bonus val_run_test run_test val_run run push test
+
+.SILENT :
