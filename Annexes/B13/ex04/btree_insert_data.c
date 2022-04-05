@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btree_insert_data.c                                :+:      :+:    :+:   */
+/*   btree_insert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "ft_btree.h"
 
-void btree_insert_data(t_btree **root, void *item, int (*cmpf)(void *, void *))
+void btree_insert(t_btree **root, void *item, int (*cmpf)(void *, void *))
 {
 	int cmp;
 
@@ -22,13 +22,13 @@ void btree_insert_data(t_btree **root, void *item, int (*cmpf)(void *, void *))
 		if (!root->left)
 			root->left = btree_create_node(item);
 		else
-			btree_insert_data(root->left, item, &cmpf);
+			btree_insert(root->left, item, &cmpf);
 	}
 	else
 	{
 		if (!root->right)
 			root->right = btree_create_node(item);
 		else
-			btree_insert_data(root->right, item, &cmpf);
+			btree_insert(root->right, item, &cmpf);
 	}
 }

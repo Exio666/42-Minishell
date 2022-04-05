@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   jump_caracters.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:20:50 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/04 11:05:07 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/05 16:21:34 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
 #include "minishell"
 
 int jump_caracters(char *str, char *caracters, int index, int step)
@@ -38,3 +39,4 @@ int is_quote(char c)
 	else
 		return (FALSE);
 }
+*/
