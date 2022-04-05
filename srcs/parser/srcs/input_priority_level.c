@@ -13,10 +13,11 @@
 #include "../includes/parser.h"
 
 /*
-** input example: ./a.out "a && b && (c || (d && e) || f) || (g && h)"
+** input example:
+** ./a.out "a && b && (c || (d && e) || f) || (g && h)"
 ** output:
-** a   & &   b   & &   ( c   | |   ( d   & &   e )   | |   f )   | |   ( g   & &   h ) 
-** 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 2 2 2 2 2 2 2 1 1 1 1 1 1 0 0 0 0 0 1 1 1 1 1 1 1 
+** a && b && (c || (d && e) || f) || (g && h) 
+** 000000000001111112222222111111000001111111 
 */
 
 /*
@@ -45,7 +46,7 @@ t_input_level	*attribute_level(char *user_input)
 		else if (is_close_parenthesis(input_level->input[i]))
 			decrease_level(&level);
 		i++;
-	} 
+	}
 	return (input_level);
 }
 
