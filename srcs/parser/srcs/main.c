@@ -6,15 +6,15 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:56:03 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 17:20:45 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/05 20:07:46 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../includes/parser.h"
 
 int	main(int argc, char **argv)
 {
-	t_logic_op			**logical_op;
+	t_logic_op		**logical_op;
 	t_input_level	*input_level;
 
 	input_level = attribute_level(argv[1]);

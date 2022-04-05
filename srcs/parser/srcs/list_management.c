@@ -6,11 +6,11 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:35:48 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 16:59:11 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:59:50 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../includes/parser.h"
 
 t_list	*lstlast(t_list *lst)
 {

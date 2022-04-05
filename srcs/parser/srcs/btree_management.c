@@ -6,11 +6,16 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:49:04 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 17:22:31 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/05 21:42:04 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../includes/parser.h"
+
+void	*set_to_null(void)
+{
+	return (NULL);
+}
 
 void	insert_logic_op(t_btree	**bt, int curr_op_index, t_logic_op **logic_op)
 {

@@ -6,11 +6,11 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:46:16 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 16:56:01 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:59:44 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../includes/parser.h"
 
 int	is_logical_op_char(char c)
 {

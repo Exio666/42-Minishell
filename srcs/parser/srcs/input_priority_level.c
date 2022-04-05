@@ -10,7 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../includes/parser.h"
+
+/*
+** input example: ./a.out "a && b && (c || (d && e) || f) || (g && h)"
+** output:
+** a   & &   b   & &   ( c   | |   ( d   & &   e )   | |   f )   | |   ( g   & &   h ) 
+** 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 2 2 2 2 2 2 2 1 1 1 1 1 1 0 0 0 0 0 1 1 1 1 1 1 1 
+*/
+
+/*
+** DEBUG	
+** inserer cette fonction au dessus de - return (input_level);-
+** printab_input_level(input_level, len);
+*/
 
 t_input_level	*attribute_level(char *user_input)
 {
@@ -28,19 +41,13 @@ t_input_level	*attribute_level(char *user_input)
 	{
 		input_level->level[i] = level;
 		if (is_open_parenthesis(input_level->input[i]))
-		{
-			level++;
-		}
+			increase_level(&level);
 		else if (is_close_parenthesis(input_level->input[i]))
-		{
-			level--;
-		}
+			decrease_level(&level);
 		i++;
-	}
+	} 
 	return (input_level);
 }
-/*	inserer cette fonction au dessus de - return (input_level);- 
-** -> printab_input_level(input_level, len); // DEBUG */
 
 t_input_level	*malloc_input_level(char *user_input)
 {
