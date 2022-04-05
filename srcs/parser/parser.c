@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:41:57 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 14:44:41 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/05 15:07:41 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -394,7 +394,7 @@ t_input_priority_level	*attribute_level(char *user_input)
 		}
 		i++;
 	}
-	printab_input_level(input_level, len); // DEBUG
+//	printab_input_level(input_level, len); // DEBUG
 	return (input_level);
 }
 
