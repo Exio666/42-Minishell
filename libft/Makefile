@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/23 11:34:09 by bsavinel          #+#    #+#              #
-#    Updated: 2022/03/23 13:50:35 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/04/05 10:33:28 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,7 +102,7 @@ $(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJS)
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
-	@mkdir -p $(dir $@)
+	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -MMD -MF $(@:.o=.d) -c $< -o $@ $(INCS)
 	
 clean:
@@ -116,3 +116,5 @@ re: fclean all
 -include $(DEPS)
 
 .PHONY: all clean fclean re
+
+.SILENT :

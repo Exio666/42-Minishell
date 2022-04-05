@@ -6,27 +6,15 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 10:02:21 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/03/31 17:26:27 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/04 17:05:54 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# define FALSE 0
-# define TRUE 1
-
-int	give_next_character_not_in_quote(char *str, int start, char c)
-{
-	while(str[start])
-	{
-		if (str[start] == c)
-			return (start);
-		start++;
-	}
-	return (start);
-}
+#include "minishell.h"
 
 int	give_next_character(char *str, int start, char c)
 {
-	while(str[start])
+	while (str[start])
 	{
 		if (str[start] == c)
 			return (start);
@@ -35,47 +23,38 @@ int	give_next_character(char *str, int start, char c)
 	return (start);
 }
 
-int quote_checker(char *commande)
+int	check_error(t_checker *check, char *str)
 {
-	int i;
-	DEBUG || printf()
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\'')
-		{
-			give_next_character(commande, i + 1, '\'');
-			if (str[i])
-				i++;
-			else
-				return ((int)'\'');
-		}
-		if (str[i] == '\"')
-		{
-			give_next_character(commande, i + 1, '\"');
-			if (str[i])
-				i++;
-			else
-				return ((int)'\"');
-		}
-		i++;
-	}
-	return (0)
+	check->error = FALSE;
+	check->str = str;
+	return (0);
+}
+
+void	init_struct_checker(t_checker *check)
+{
+	check->error = FALSE;
+	check->index = 0;
+	check->str = NULL;
+	check->par_lvl = 0;
 }
 
 int	primary_checker(char *commande)
 {
-	int i;
-	int	check;
+	t_checker	check;
 
 	i = 0;
-	check = quote_checker(commande) != 0;
-	if (check != 0)
-		printf("syntax error: missing %c\n", check);
-	
-	i++;
+	init_struct_checker(&check);
+	if (quote_parenthise_checker(commande, &check))
+	{
+		check.index = 0;
+		and_or_pipe_checker(commande, &check);
+	}
+	if (check.error == FALSE)
+		printf("%s\n", check.str);
+	return (check.error);
 }
 
+/*
 int main()
 {
 	char *commande;
@@ -85,4 +64,4 @@ int main()
 		printf("The checker say 'commande is good'");
 	else
 		printf("The checker say 'commande is bad'");
-}
+}*/

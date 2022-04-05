@@ -3,40 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   struct_enum.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/03 12:26:46 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/04 16:28:56 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#ifndef STRUCT_ENUM_H
+# define STRUCT_ENUM_H
 
 # include "minishell.h"
-
-/*
- *	Define
- */
-
-# define FALSE 0
-# define TRUE 1
-
-# ifndef DEBUG
-#  define DEBUG 1
-# endif
 
 /*
  *	Enumeration
  */
 
+typedef enum e_bool
+{
+	FALSE = 0,
+	TRUE = 1,
+}	t_bool;
+
 typedef enum e_type_token
 {
-	OPEN_PARENTHESIS,	// 0
-	CLOSE_PARENTHESIS,	// 1
-	PIPE_SEQUENCE,		// 2
-	OR, 				// 3
-	AND					// 4
+	OPEN_PARENTHESIS,
+	CLOSE_PARENTHESIS,
+	PIPE_SEQUENCE,
+	OR,
+	AND
 }	t_type_token;
 
 typedef enum e_type_command
@@ -71,5 +66,13 @@ typedef struct s_token
 	struct s_token	*next;
 	t_command		**content;
 }	t_token;
+
+typedef struct s_checker
+{
+	int		index;
+	t_bool	error;
+	char	*str;
+	int		par_lvl;
+}	t_checker;
 
 #endif

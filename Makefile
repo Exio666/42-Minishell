@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/04 10:32:21 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/04/05 12:20:22 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,23 +28,18 @@ ARGUMENT_RUN_TEST =
 ########							Sources 							########
 ################################################################################
 
-SRCS_PATH 		=	srcs/
-SRCS_PATH_TEST	=	srcs/
-
-SRCS =	$(addprefix $(SRCS_PATH),	\
-		)
-
-SRCS_TEST =	$(addprefix $(SRCS_TEST_PATH),	\
-			)
-
-################################################################################
-########							Includes							########
-################################################################################
+SRCS_PATH 	=	srcs/
 
 INCS = -I includes -I libft/includes
 
+SRCS =	
+
+SRCS_TEST =	checker/and_or_checker.c	\
+			checker/primary_check.c		\
+			checker/quote_checker.c
+
 ################################################################################
-########							Library								########
+########							Libraries							########
 ################################################################################
 
 LIBS = libft/libft.a
@@ -80,8 +75,8 @@ NO_COLOR	=	\033[m
 ################################################################################
 
 all: header $(NAME)
-test: $(NAME_TEST)
-bonus: all
+test: header $(NAME_TEST)
+bonus: header all
 
 header:
 		@echo "${BLUE}"
@@ -93,17 +88,18 @@ header:
 		@echo "                 by rpottier and bsavinel"
 		@echo "${NO_COLOR}"
 
-$(NAME) : header $(OBJS) $(ALLLIB)
-	@$(CC) $(CFLAGS) $(OBJS) $(ALLLIB) -o $(NAME) $(INCS)
-	@echo "$(BLUE)$(NAME): $(GREEN)Success $(NO_COLOR)"
+$(NAME) : header $(OBJS) $(LIBS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME) $(INCS)
+	echo "$(BLUE)$(NAME): $(GREEN)Success $(NO_COLOR)"
 
-$(OBJS_PATH)%.o: $(SRCS_PATH)%.c
-	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -MMD -c $< -o $@ $(INCS)
+$(OBJS_PATH)%.o: srcs/%.c
+	echo a
+	mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -MMD -c $< -o $@ $(INCS)
 
-$(NAME_TEST):
-	@$(CC) $(CFLAGS) $(OBJS) $(ALLLIB) -o $(NAME)_test $(INCS)
-	@echo "$(BLUE)$(NAME_TEST)t: $(GREEN)Success $(NO_COLOR)"
+$(NAME_TEST): header $(LIBS) $(OBJS_TEST)
+	$(CC) $(CFLAGS) $(OBJS_TEST) $(LIBS) -o $(NAME)_test $(INCS)
+	echo "$(BLUE)$(NAME_TEST): $(GREEN)Success $(NO_COLOR)"
 
 clean : header
 	$(RM) $(OBJS) $(DEPS)
@@ -113,32 +109,31 @@ fclean : header clean
 	$(RM) $(NAME)
 	$(RM) libft/libft.a
 
-re : fclean all
+re : header fclean all
 
-run: all
+run: header all
 	$(NAME) $(ARGUMENT_RUN)
 
-val_run: all
+val_run: header all
 	valgrind $(NAME) $(ARGUMENT_RUN)
 
-run_test: test
+run_test: header test
 	$(NAME_TEST) $(ARGUMENT_RUN_TEST)
 
-val_run_test: test
+val_run_test: header test
 	valgrind $(NAME_TEST) $(ARGUMENT_RUN_TEST)
 
 push: header
-		@make fclean
-		@git add . && git commit -m "Makefile push" && git push && echo "$(BLUE)Push: $(GREEN)Success $(NO_COLOR)" || echo "$(BLUE)Push: $(RED)Fail $(NO_COLOR)"
+		make fclean
+		git add . && git commit -m "Makefile push" && git push && echo "$(BLUE)Push: $(GREEN)Success $(NO_COLOR)" || echo "$(BLUE)Push: $(RED)Fail $(NO_COLOR)"
 
 ################################################################################
 #######							Rules for libs							########
 ################################################################################
 
 libft/libft.a :
-	@$(MAKE) -C libft all && echo "$(BLUE)Compiation of libft: $(GREEN)Success $(NO_COLOR)" || echo "$(BLUE)Compiation of libft: $(RED)Fail $(NO_COLOR)"
+	$(MAKE) -C libft all && echo "$(BLUE)Compiation of libft: $(GREEN)Success $(NO_COLOR)" || echo "$(BLUE)Compiation of libft: $(RED)Fail $(NO_COLOR)"
 
 -include $(DEPS)
 
 .PHONY: all clean fclean re bonus val_run_test run_test val_run run push test
-
