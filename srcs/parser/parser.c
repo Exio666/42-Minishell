@@ -5,28 +5,212 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 17:24:05 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/01 15:17:333 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/05 14:41:57 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/05 14:44:41 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_logical_op	**logical_op;
-	
-	attribute_level(argv[1]);
+	t_logical_op			**logical_op;
+	t_input_priority_level	*input_level;
+	int						max_level;
+
+	input_level = attribute_level(argv[1]);
+	max_level = get_max_level(input_level);
 	logical_op = create_logical_op_array(argv[1]);
-	return 0;
+	logical_op_parser(logical_op, input_level, max_level);
+	return (0);
+}
+
+int	get_max_level(t_input_priority_level	*input_level)
+{
+	int	i;
+	int	max_level;
+	int	input_len;
+
+	input_len = strlen(input_level->input);
+	i = 0;
+	max_level = 0;
+	while (i < input_len)
+	{
+		if (input_level->level[i] > max_level)
+			max_level = input_level->level[i];
+		i++;
+	}
+	return (max_level);
+}
+
+t_list	*lstlast(t_list *lst)
+{
+	if (lst)
+		while (lst->next != NULL)
+			lst = lst->next;
+	return (lst);
+}
+
+t_list	*lstnew(t_btree *elem)
+{
+	t_list	*new_elem;
+
+	new_elem = malloc(sizeof(*new_elem));
+	if (new_elem == NULL)
+		return (NULL);
+	new_elem->elem = elem;
+	new_elem->next = NULL;
+	return (new_elem);
+}
+
+void	lstadd_back(t_list **alst, t_list *new)
+{
+	t_list	*tmp;
+
+	if (*alst == NULL)
+		*alst = new;
+	else
+	{
+		tmp = lstlast(*alst);
+		tmp->next = new;
+	}
+}
+void	ft_lstdelone(t_list **lst)
+{
+	t_list	*tmp;
+
+	if (*lst == NULL)
+		return ;
+	tmp = *lst;
+	*lst = tmp->next;
+	free(tmp);
+}
+
+void	btree_insert_data(t_btree **root, t_logical_op *logical_op, int (*cmpf)(unsigned int ,unsigned int ))
+{
+	if (*root == NULL)
+		*root = btree_create_node(logical_op);
+	else if ((*cmpf)(logical_op->begin_position, (*root)->logical_op->begin_position) < 0)
+		btree_insert_data(&(*root)->left, logical_op, cmpf);
+	else
+		btree_insert_data(&(*root)->right, logical_op, cmpf);
+}
+
+t_btree	*btree_create_node(void *item)
+{
+	t_btree	*new;
+	
+	new = malloc(sizeof(t_btree));
+	if (!new)
+		return (NULL);
+	new->logical_op = item;
+	new->left = NULL;
+	new->right = NULL;
+	return (new);
+}
+
+int	priority_levels_remaining(int actual_level, int level_max)
+{
+	if (actual_level <= level_max)
+		return (1);
+	else
+		return (0);
+}
+
+int	actual_level_not_fully_checked(int i)
+{
+	if (i >= 0)
+		return (1);
+	else
+		return (0);
+}
+
+int	is_part_of_actual_level(int char_level, int actual_level)
+{
+	if (char_level == actual_level)
+		return (1);
+	else
+		return (0);
+}
+int	logical_op_type_is_found(int logical_op_type)
+{
+	if (logical_op_type == OPERATOR_NOT_FOUND)
+		return(0);
+	return (1);
+}
+
+void	insert_logic_op_in_tree(t_btree	**btree, int actual_op_begin_position, t_logical_op **logical_op)
+{
+	t_logical_op *current_log_op;
+
+	current_log_op = get_current_log_op(actual_op_begin_position, logical_op);
+	btree_insert_data(btree, current_log_op, cmp_index_logical_op);
+}
+
+void	init_level(t_priority_level *level, t_input_priority_level *input_level)
+{
+	level->max = get_max_level(input_level);
+	level->current = 0;
 }
 
 
 
+
+void	logical_op_parser(t_logical_op **logical_op, t_input_priority_level *input_level, int level_max)
+{
+	t_btree				*btree;
+	t_priority_level	level;
+	t_logical_op		cur_op;
+	int					i;
+
+	init_level(&level, input_level);
+	btree = NULL;
+	while (priority_levels_remaining(level.current, level_max))
+	{
+		i = strlen(input_level->input) - 1;
+		while (actual_level_not_fully_checked(i))
+		{
+			if (is_part_of_actual_level(input_level->level[i], level.current)
+				&& is_logical_operator_char(input_level->input[i]))
+			{
+				cur_op.type = get_logical_op_from_end(input_level->input, i);
+				if (logical_op_type_is_found(cur_op.type))
+					insert_logic_op_in_tree(&btree, i - 1, logical_op);
+				i--;
+			}
+			i--;
+		}
+		level.current++;
+	}
+//	print2D(btree);
+}
+
+int	cmp_index_logical_op(unsigned int actual_op_begin_position, unsigned int begin_position_node)
+{
+	if (actual_op_begin_position < begin_position_node)
+		return (-1);
+	else
+		return (1);
+}
+
+t_logical_op	*get_current_log_op(int actual_op_begin_position, t_logical_op **logical_op)
+{
+	int	i;
+
+	i = 0;
+	while (logical_op[i])
+	{
+		if (actual_op_begin_position == logical_op[i]->begin_position)
+			return (logical_op[i]);
+		i++;
+	}
+	return (NULL);
+}
+
 t_logical_op	**malloc_logical_op_reference(char *user_input)
 {
 	t_logical_op	**logical_op;
-	int					size;
+	int				size;
 	int				i;
 
 	i = 0;
@@ -115,32 +299,6 @@ int	count_logical_op(char *user_input)
 	return (logical_op_count);
 }
 
-void parser(char *user_input)
-{
-	t_logical_op	**logical_op;
-	int len;
-	int i;
-	
-	len = strlen(user_input);
-	i = len - 1;
-	while (i >= 0)
-	{
-		if ((i - 1 >= 0) && (is_logical_operator_char(user_input[i]) == TRUE))
-		{
-			if (get_logical_op_from_end(user_input, i) != OPERATOR_NOT_FOUND)
-			{
-				printf("Logical operator found\n");
-			}
-			i--;
-		}
-		i--;
-	}
-}
-
-/*
-On parcout la chaine depuis le début pour creer un tableau de struct contenant les && et les ||
-*/
-
 int	is_logical_operator_char(char c)
 {
 	if (c == '&' || c == '|')
@@ -184,16 +342,13 @@ int	get_logical_op_from_begin(char *user_input, int i)
 		return (OPERATOR_NOT_FOUND);
 }
 
-//un tableau à deux dimensions avec l''user input et pour chaque caractère un niveau d'execution
-// en suite on parcourt tous ces niveaux d'executiion en partant de la fin
-
-t_input_level *malloc_input_level(char *user_input)
+t_input_priority_level	*malloc_input_level(char *user_input)
 {
-	int	len;
-	t_input_level *input_level;
+	int						len;
+	t_input_priority_level	*input_level;
 
 	len = strlen(user_input);
-	input_level = calloc(1, sizeof(t_input_level));
+	input_level = calloc(1, sizeof(t_input_priority_level));
 	input_level->level = calloc(len, sizeof(int));
 	return(input_level);
 }
@@ -214,11 +369,11 @@ int	is_close_parenthesis(char c)
 		return (FALSE);
 }
 
-void	attribute_level(char *user_input)
+t_input_priority_level	*attribute_level(char *user_input)
 {
-	int				level;
-	int				i;
-	t_input_level	*input_level;
+	int						level;
+	int						i;
+	t_input_priority_level	*input_level;
 
 	int	len;
 	len = strlen(user_input);
@@ -237,13 +392,13 @@ void	attribute_level(char *user_input)
 		{
 			level--;
 		}
-	
 		i++;
 	}
-	printab_input_level(input_level, len);
+	printab_input_level(input_level, len); // DEBUG
+	return (input_level);
 }
 
-void printab_input_level(t_input_level	*input_level, int len)
+void	printab_input_level(t_input_priority_level	*input_level, int len)
 {
 	for (int i = 0; i < len; i++)
 	{
