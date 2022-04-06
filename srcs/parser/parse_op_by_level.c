@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_logical_op.c                                :+:      :+:    :+:   */
+/*   parse_op_by_level.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:41:57 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/06 14:06:34 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:25:07 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,10 @@ t_btree	*parse_op_by_level(t_logic_op **logical_op, t_input_level *input_level)
 		}
 		increase_level(&level.current);
 	}
-	print2D(btree);
 	return (btree);
 }
 
-/*//	*/
+/*//	print2D(btree);	*/
 
 int	priority_levels_remaining(int actual_level, int level_max)
 {
