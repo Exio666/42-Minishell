@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:35:48 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 19:59:50 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/06 14:01:53 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ t_list	*lstlast(t_list *lst)
 	return (lst);
 }
 
-t_list	*lstnew(t_btree *elem)
+t_list	*lstnew(void *elem)
 {
 	t_list	*new_elem;
 
 	new_elem = malloc(sizeof(*new_elem));
 	if (new_elem == NULL)
 		return (NULL);
-	new_elem->elem = elem;
+	new_elem->content = elem;
 	new_elem->next = NULL;
 	return (new_elem);
 }

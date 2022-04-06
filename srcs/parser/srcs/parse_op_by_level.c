@@ -6,13 +6,13 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:41:57 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 21:38:14 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/06 14:06:34 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/parser.h"
 
-void	logical_op_parser(t_logic_op **logical_op, t_input_level *input_level)
+t_btree	*parse_op_by_level(t_logic_op **logical_op, t_input_level *input_level)
 {
 	t_btree			*btree;
 	t_prio_level	level;
@@ -39,6 +39,7 @@ void	logical_op_parser(t_logic_op **logical_op, t_input_level *input_level)
 		increase_level(&level.current);
 	}
 	print2D(btree);
+	return (btree);
 }
 
 /*//	*/

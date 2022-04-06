@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:34:34 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 19:53:24 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/06 13:55:27 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 /*----- list_management.c -----*/
 
-t_list	*lstnew(t_btree *elem);
+t_list	*lstnew(void *elem);
 t_list	*lstlast(t_list *lst);
 void	lstadd_back(t_list **alst, t_list *new);
 void	ft_lstdelone(t_list **lst);

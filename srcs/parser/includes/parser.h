@@ -5,17 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 15:09:10 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 20:13:56 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/06 13:12:20 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/06 14:59:31 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
-
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
 
 # define COUNT 10
 # define OPERATOR_NOT_FOUND 0
@@ -43,7 +39,7 @@ typedef struct s_btree
 typedef struct s_list
 {
 	struct s_list	*next;
-	t_btree			*elem;
+	void			*content;
 }	t_list;
 
 typedef struct s_priority_level
@@ -66,7 +62,12 @@ typedef struct s_input_prio_level
 # include "input_priority_level_utils.h"
 # include "list_management.h"
 # include "logical_operator_indexation.h"
-# include "parser_logical_op.h"
+# include "parse_op_by_level.h"
 # include "print_debug_funct.h"
+# include "get_btree_of_logical_op.h"
+
+# include <stdlib.h>
+# include <stdio.h>
+# include <string.h>
 
 #endif

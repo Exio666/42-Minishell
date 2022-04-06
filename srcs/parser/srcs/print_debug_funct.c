@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:35:18 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 20:00:00 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/06 14:02:18 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	level_by_level_printing(t_btree *root)
 	{
 		while (q1 != NULL)
 		{
-			root = q1->elem;
+			root = q1->content;
 			printf("%s ", root->logic_op->symbol);
 			ft_lstdelone(&q1);
 			if (root->left)
@@ -72,7 +72,7 @@ void	level_by_level_printing(t_btree *root)
 		printf("\n");
 		while (q2 != NULL)
 		{
-			root = q2->elem;
+			root = q2->content;
 			printf("%s ", root->logic_op->symbol);
 			ft_lstdelone(&q2);
 			if (root->left)
