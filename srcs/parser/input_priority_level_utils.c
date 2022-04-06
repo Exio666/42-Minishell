@@ -1,41 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   jump_caracters.c                                   :+:      :+:    :+:   */
+/*   input_priority_level_utils.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 15:20:50 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 15:07:55 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/05 20:12:43 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/05 21:46:50 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../includes/parser.h"
 
-int jump_caracters(char *str, char *caracters, int index, int step)
+void	increase_level(int *level)
 {
-	while (str[index] && index >= 0 && step != 0)
-	{
-		if (strchr(caracters, str[index]))
-			return (index);
-		index += step;
-	}
-	return (-1);
+	*level = *level + 1;
 }
 
-int is_double_quote(char c)
+void	decrease_level(int *level)
 {
-	if (c == '\"')
-		return (TRUE);
-	else
-		return (FALSE);
+	*level = *level - 1;
 }
-
-int is_quote(char c)
-{
-	if (c == '\'')
-		return (TRUE);
-	else
-		return (FALSE);
-}
-*/

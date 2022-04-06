@@ -1,41 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   jump_caracters.c                                   :+:      :+:    :+:   */
+/*   logical_operator_indexation.h                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 15:20:50 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 15:07:55 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/06 13:12:43 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/06 13:12:57 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef LOGICAL_OPERATOR_INDEXATION_H
+# define LOGICAL_OPERATOR_INDEXATION_H
 
-int jump_caracters(char *str, char *caracters, int index, int step)
-{
-	while (str[index] && index >= 0 && step != 0)
-	{
-		if (strchr(caracters, str[index]))
-			return (index);
-		index += step;
-	}
-	return (-1);
-}
+/*----- logical_operator_indexation.c -----*/
 
-int is_double_quote(char c)
-{
-	if (c == '\"')
-		return (TRUE);
-	else
-		return (FALSE);
-}
+t_logic_op	*get_current_log_op(int actual_op_index, t_logic_op **logical_op);
+t_logic_op	**malloc_logical_op_reference(char *user_input);
+t_logic_op	**create_logical_op_array(char *user_input);
 
-int is_quote(char c)
-{
-	if (c == '\'')
-		return (TRUE);
-	else
-		return (FALSE);
-}
-*/
+#endif

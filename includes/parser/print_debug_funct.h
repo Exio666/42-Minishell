@@ -1,41 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   jump_caracters.c                                   :+:      :+:    :+:   */
+/*   print_debug_funct.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 15:20:50 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 15:07:55 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/05 17:34:43 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/05 19:52:49 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef PRINT_DEBUG_FUNCT_H
+# define PRINT_DEBUG_FUNCT_H
 
-int jump_caracters(char *str, char *caracters, int index, int step)
-{
-	while (str[index] && index >= 0 && step != 0)
-	{
-		if (strchr(caracters, str[index]))
-			return (index);
-		index += step;
-	}
-	return (-1);
-}
+/*----- print_debug_funct.c -----*/
 
-int is_double_quote(char c)
-{
-	if (c == '\"')
-		return (TRUE);
-	else
-		return (FALSE);
-}
+void	print2DUtil(t_btree *root, int space);
+void	print2D(t_btree *root);
+void	printab_input_level(t_input_level	*input_level, int len);
+void	level_by_level_printing(t_btree *root);
 
-int is_quote(char c)
-{
-	if (c == '\'')
-		return (TRUE);
-	else
-		return (FALSE);
-}
-*/
+#endif

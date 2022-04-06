@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   jump_caracters.c                                   :+:      :+:    :+:   */
+/*   find_specific_char_funct.h                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 15:20:50 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 15:07:55 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/05 17:34:27 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/05 19:53:42 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef FIND_SPECIFIC_CHAR_FUNCT_H
+# define FIND_SPECIFIC_CHAR_FUNCT_H
 
-int jump_caracters(char *str, char *caracters, int index, int step)
-{
-	while (str[index] && index >= 0 && step != 0)
-	{
-		if (strchr(caracters, str[index]))
-			return (index);
-		index += step;
-	}
-	return (-1);
-}
+/*----- find_specific_char_funct.c -----*/
 
-int is_double_quote(char c)
-{
-	if (c == '\"')
-		return (TRUE);
-	else
-		return (FALSE);
-}
+int	is_logical_op_char(char c);
+int	is_and_symbol(char c);
+int	is_or_symbol(char c);
+int	is_open_parenthesis(char c);
+int	is_close_parenthesis(char c);
 
-int is_quote(char c)
-{
-	if (c == '\'')
-		return (TRUE);
-	else
-		return (FALSE);
-}
-*/
+#endif

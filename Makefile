@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
+#    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/06 14:48:00 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/04/06 15:06:53 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,8 @@ SRCS_TEST =	checker/and_or_checker.c	\
 			checker/quote_checker.c		\
 			checker/main.c				\
 			parser/jump_caracters.c
+			checker/quote_checker.c	\
+			checker/jump_caracters.c
 
 ################################################################################
 ########							Libraries							########

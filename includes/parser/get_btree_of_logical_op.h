@@ -1,41 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   jump_caracters.c                                   :+:      :+:    :+:   */
+/*   get_btree_of_logical_op.h                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 15:20:50 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 15:07:55 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/06 14:17:10 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/06 14:18:41 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef GET_BTREE_OF_LOGICAL_OP_H
+# define GET_BTREE_OF_LOGICAL_OP_H
 
-int jump_caracters(char *str, char *caracters, int index, int step)
-{
-	while (str[index] && index >= 0 && step != 0)
-	{
-		if (strchr(caracters, str[index]))
-			return (index);
-		index += step;
-	}
-	return (-1);
-}
+/*----- get_btree_of_logical_op.c ------*/
 
-int is_double_quote(char c)
-{
-	if (c == '\"')
-		return (TRUE);
-	else
-		return (FALSE);
-}
+t_btree	*get_btree_of_logical_op(char *user_input);
 
-int is_quote(char c)
-{
-	if (c == '\'')
-		return (TRUE);
-	else
-		return (FALSE);
-}
-*/
+#endif

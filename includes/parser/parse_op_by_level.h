@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   jump_caracters.c                                   :+:      :+:    :+:   */
+/*   parse_op_by_level.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 15:20:50 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 15:07:55 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/05 17:34:21 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/06 14:59:49 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef PARSER_LOGICAL_OP_H
+# define PARSER_LOGICAL_OP_H
 
-int jump_caracters(char *str, char *caracters, int index, int step)
-{
-	while (str[index] && index >= 0 && step != 0)
-	{
-		if (strchr(caracters, str[index]))
-			return (index);
-		index += step;
-	}
-	return (-1);
-}
+/*----- parser_logical_op.c -----*/
 
-int is_double_quote(char c)
-{
-	if (c == '\"')
-		return (TRUE);
-	else
-		return (FALSE);
-}
+t_btree	*parse_op_by_level(t_logic_op **logical_op,
+			t_input_level *input_level);
+int		priority_levels_remaining(int actual_level, int level_max);
+int		actual_level_not_fully_checked(int i);
+int		is_part_of_current_level(int char_level, int actual_level);
+int		logical_op_type_is_found(int logical_op_type);
 
-int is_quote(char c)
-{
-	if (c == '\'')
-		return (TRUE);
-	else
-		return (FALSE);
-}
-*/
+#endif
