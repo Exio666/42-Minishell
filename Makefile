@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/05 16:28:22 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/04/06 14:48:00 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,15 @@ ARGUMENT_RUN_TEST =
 
 SRCS_PATH 	=	srcs/
 
-INCS = -I includes -I libft/includes
+INCS = -I includes -I libft/includes -I includes/builtins -I includes/checker -I includes/utils -I includes/wildcard 
 
-SRCS =	
+SRCS =	builtins/echo/echo.c		\
+		builtins/exit/exit.c		\
+		checker/and_or_checker.c	\
+		checker/primary_check.c		\
+		checker/quote_checker.c		\
+		checker/main.c				\
+		utils/jump_caracters.c
 
 SRCS_TEST =	checker/and_or_checker.c	\
 			checker/primary_check.c		\
@@ -124,7 +130,7 @@ run_test: header test
 val_run_test: header test
 	valgrind $(NAME_TEST) $(ARGUMENT_RUN_TEST)
 
-push: header
+push:
 		make fclean
 		git add . && git commit -m "Makefile push" && git push && echo "$(BLUE)Push: $(GREEN)Success $(NO_COLOR)" || echo "$(BLUE)Push: $(RED)Fail $(NO_COLOR)"
 

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/04 16:28:56 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/06 10:34:53 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,10 @@ typedef struct s_token
 	struct s_token	*next;
 	t_command		**content;
 }	t_token;
+
+/*
+ *	primary checker
+ */
 
 typedef struct s_checker
 {

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/05 15:18:48 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/06 14:38:28 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,31 +27,39 @@
 # include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+
+/*
+ *	Genral
+ */
+
 # include "struct_enum.h"
 # include "define.h"
 # include "all_lib.h"
-# include "checker.h"
 
-/*****************
-***  Builtins  ***
-******************/
+/*
+ *	Builtins
+ */
 
-/***************
-***  Cheker  ***
-****************/
+#include "echo.h"
+#include "exit.h"
 
-/***************
-***  Parser  ***
-****************/
+/*
+ *	Checker
+ */
 
-/*****************
-***  Wildcard  ***
-******************/
+# include "and_or_checker.h"
+# include "primary_checker.h"
+# include "quote_checker.h"
 
-/**************
-***  Utils  ***
-***************/
+/*
+ *	Utils
+ */
 
-int jump_caracters(char *str, char *caracters, int index, int step);
+#include "jump_caracters.h"
+
+/*
+ *	Wilcard
+ */
+
 
 #endif
