@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
+#    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/06 15:06:53 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/06 16:08:33 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,23 +30,36 @@ ARGUMENT_RUN_TEST =
 
 SRCS_PATH 	=	srcs/
 
-INCS = -I includes -I libft/includes -I includes/builtins -I includes/checker -I includes/utils -I includes/wildcard 
+INCS =	-I includes				\
+		-I libft/includes		\
+		-I includes/builtins	\
+		-I includes/checker		\
+		-I includes/utils		\
+		-I includes/wildcard	\
+		-I includes/parser
 
-SRCS =	builtins/echo/echo.c		\
-		builtins/exit/exit.c		\
-		checker/and_or_checker.c	\
-		checker/primary_check.c		\
-		checker/quote_checker.c		\
-		checker/main.c				\
+SRCS =	builtins/echo/echo.c					\
+		builtins/exit/exit.c					\
+		checker/and_or_checker.c				\
+		checker/primary_check.c					\
+		checker/quote_checker.c					\
+		checker/main.c							\
+		parser/btree_management.c				\
+		parser/count_and_update_logic_op.c		\
+		parser/find_specific_char_funct.c		\
+		parser/get_btree_of_logical_op.c		\
+		parser/get_logic_op.c					\
+		parser/input_priority_level_utils.c		\
+		parser/input_priority_level.c			\
+		parser/list_management.c				\
+		parser/logical_operator_indexation.c	\
+		parser/parse_op_by_level.c				\
+		parser/parse_simple_commande.c			\
+		parser/pipe_parser.c					\
+		parser/print_debug_funct				\
 		utils/jump_caracters.c
 
-SRCS_TEST =	checker/and_or_checker.c	\
-			checker/primary_check.c		\
-			checker/quote_checker.c		\
-			checker/main.c				\
-			parser/jump_caracters.c
-			checker/quote_checker.c	\
-			checker/jump_caracters.c
+SRCS_TEST =
 
 ################################################################################
 ########							Libraries							########
@@ -111,11 +124,11 @@ $(NAME_TEST): header $(LIBS) $(OBJS_TEST)
 	echo "$(BLUE)$(NAME_TEST): $(GREEN)Success $(NO_COLOR)"
 
 clean : header
-	$(RM) $(OBJS) $(DEPS)
+	$(RM) objs
 	$(MAKE) -C libft clean
 
 fclean : header clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(NAME_TEST)
 	$(RM) libft/libft.a
 
 re : header fclean all

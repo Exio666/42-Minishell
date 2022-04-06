@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 10:34:53 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:42:10 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include "minishell.h"
 
-/*
- *	Enumeration
- */
+/**********************
+***   Enumeration   ***
+**********************/
 
 typedef enum e_bool
 {
@@ -49,9 +49,9 @@ typedef enum e_type_command
 	WILDCARD
 }	t_type_command;
 
-/*
- *	Structure
- */
+/********************
+***	  Structure   ***
+********************/
 
 typedef struct s_commande
 {
@@ -78,5 +78,41 @@ typedef struct s_checker
 	char	*str;
 	int		par_lvl;
 }	t_checker;
+
+/*
+ *	Parsing AND/OR
+ */
+
+typedef struct s_logical_op
+{
+	char	symbol[3];
+	UI		type;
+	UI		index;
+}	t_logic_op;
+
+typedef struct s_btree
+{
+	struct s_btree	*left;
+	struct s_btree	*right;
+	t_logic_op		*logic_op;
+}	t_btree;
+
+typedef struct s_list
+{
+	struct s_list	*next;
+	void			*content;
+}	t_list;
+
+typedef struct s_priority_level
+{
+	int		current;
+	int		max;
+}	t_prio_level;
+
+typedef struct s_input_prio_level
+{
+	char	*input;
+	int		*level;
+}	t_input_level;
 
 #endif

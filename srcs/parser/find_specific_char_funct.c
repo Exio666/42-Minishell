@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   find_specific_char_funct.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:46:16 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 19:59:44 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:49:46 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parser.h"
+#include "minishell.h"
 
 int	is_logical_op_char(char c)
 {

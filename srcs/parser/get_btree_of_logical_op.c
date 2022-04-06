@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_btree_of_logical_op.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:56:03 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/06 15:00:15 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:52:55 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parser.h"
+#include "minishell.h"
 
 t_btree	*get_btree_of_logical_op(char *user_input)
 {

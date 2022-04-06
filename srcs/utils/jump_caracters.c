@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   jump_caracters.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:20:50 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 15:07:55 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:42:09 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int jump_caracters(char *str, char *caracters, int index, int step)
+int	jump_caracters(char *str, char *caracters, int index, int step)
 {
 	while (str[index] && index >= 0 && step != 0)
 	{
@@ -23,7 +23,7 @@ int jump_caracters(char *str, char *caracters, int index, int step)
 	return (-1);
 }
 
-int is_double_quote(char c)
+int	is_double_quote(char c)
 {
 	if (c == '\"')
 		return (TRUE);
@@ -31,7 +31,7 @@ int is_double_quote(char c)
 		return (FALSE);
 }
 
-int is_quote(char c)
+int	is_quote(char c)
 {
 	if (c == '\'')
 		return (TRUE);

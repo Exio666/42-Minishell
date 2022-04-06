@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_debug_funct.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:35:18 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/06 14:02:18 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:51:24 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parser.h"
+#include "minishell.h"
 
 void print2DUtil(t_btree *root, int space)
 {

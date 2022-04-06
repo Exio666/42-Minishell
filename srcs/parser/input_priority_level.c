@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parser.h"
+#include "minishell.h"
 
 /*
 ** input example:
@@ -33,9 +33,9 @@ t_input_level	*attribute_level(char *user_input)
 	t_input_level	*input_level;
 	int				len;
 
-	len = strlen(user_input);
+	len = ft_strlen(user_input);
 	input_level = malloc_input_level(user_input);
-	input_level->input = strdup(user_input);
+	input_level->input = ft_strdup(user_input);
 	i = 0;
 	level = 0;
 	while (input_level->input[i])
@@ -55,9 +55,9 @@ t_input_level	*malloc_input_level(char *user_input)
 	int				len;
 	t_input_level	*input_level;
 
-	len = strlen(user_input);
-	input_level = calloc(1, sizeof(t_input_level));
-	input_level->level = calloc(len, sizeof(int));
+	len = ft_strlen(user_input);
+	input_level = __malloc(sizeof(t_input_level));
+	input_level->level = __malloc(len * sizeof(int));
 	return (input_level);
 }
 
@@ -67,7 +67,7 @@ int	get_max_level(t_input_level	*input_level)
 	int	max_level;
 	int	input_len;
 
-	input_len = strlen(input_level->input);
+	input_len = ft_strlen(input_level->input);
 	i = 0;
 	max_level = 0;
 	while (i < input_len)

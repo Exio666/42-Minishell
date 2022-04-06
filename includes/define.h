@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/05 15:36:38 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:40:55 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,16 @@
 # ifndef DEBUG
 #  define DEBUG 1
 # endif
+# define UI unsigned int
 
+# define COUNT 10
+# define OPERATOR_NOT_FOUND 0
+# define AND_OPERATOR 1
+# define OR_OPERATOR 2
 
+/*
+ * Error message
+ */
 
 # define S_ERROR_M_QUOTE "Syntax error : missing \'\'\'"
 # define S_ERROR_M_DQUOTE "Syntax error : missing \'\"\'"

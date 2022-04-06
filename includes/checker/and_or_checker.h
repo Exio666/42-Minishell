@@ -6,14 +6,14 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:07:00 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 14:10:40 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:28:25 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AND_OR_CHECKER_H
 # define AND_OR_CHECKER_H
 
-#include "minishell.h"
+# include "minishell.h"
 
 void	and_checker(char *commande, t_checker *check);
 void	or_checker(char *commande, t_checker *check);

@@ -6,11 +6,11 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:41:57 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/06 15:25:07 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/06 16:19:44 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parser.h"
+#include "minishell.h"
 
 t_btree	*parse_op_by_level(t_logic_op **logical_op, t_input_level *input_level)
 {
@@ -23,7 +23,7 @@ t_btree	*parse_op_by_level(t_logic_op **logical_op, t_input_level *input_level)
 	btree = NULL;
 	while (priority_levels_remaining(level.current, level.max))
 	{
-		i = strlen(input_level->input) - 1;
+		i = ft_strlen(input_level->input) - 1;
 		while (actual_level_not_fully_checked(i))
 		{
 			if (is_part_of_current_level(input_level->level[i], level.current)
@@ -38,6 +38,7 @@ t_btree	*parse_op_by_level(t_logic_op **logical_op, t_input_level *input_level)
 		}
 		increase_level(&level.current);
 	}
+	DEBUG || print2D(btree);
 	return (btree);
 }
 
