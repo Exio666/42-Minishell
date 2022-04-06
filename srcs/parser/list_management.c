@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   list_management.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:35:48 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/06 14:01:53 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:50:29 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parser.h"
+#include "minishell.h"
 
 t_list	*lstlast(t_list *lst)
 {

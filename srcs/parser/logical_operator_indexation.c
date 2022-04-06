@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   logical_operator_indexation.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:18:50 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 19:59:52 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:55:38 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parser.h"
+#include "minishell.h"
 
 t_logic_op	**malloc_logical_op_reference(char *input)
 {
@@ -44,7 +44,7 @@ t_logic_op	**create_logical_op_array(char *input)
 
 	logical_op = malloc_logical_op_reference(input);
 	if (logical_op == NULL)
-		printf("FAIL 0\n");
+		return (NULL);
 	i = 0;
 	j = 0;
 	while (input[i] && input[i + 1])

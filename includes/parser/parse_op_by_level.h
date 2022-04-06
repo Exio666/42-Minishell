@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse_op_by_level.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:34:21 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/06 14:59:49 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:29:20 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_LOGICAL_OP_H
-# define PARSER_LOGICAL_OP_H
+#ifndef PARSE_OP_BY_LEVEL_H
+# define PARSE_OP_BY_LEVEL_H
 
 /*----- parser_logical_op.c -----*/
 

@@ -6,13 +6,13 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 12:07:48 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 13:53:15 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:44:16 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_list **parse_commande(char *commande)
+t_list	**parse_commande(char *commande)
 {
 	commande_quote_treatment(commande);
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   btree_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:49:04 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 21:42:04 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:50:22 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parser.h"
+#include "minishell.h"
 
 void	*set_to_null(void)
 {
@@ -39,7 +39,7 @@ t_btree	*btree_create_node(void *item)
 {
 	t_btree	*new;
 
-	new = malloc(sizeof(t_btree));
+	new = __malloc(sizeof(t_btree));
 	if (!new)
 		return (NULL);
 	new->logic_op = item;

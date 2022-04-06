@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   count_and_update_logic_op.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:45:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 19:59:42 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:49:33 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parser.h"
+#include "minishell.h"
 
 void	update_logical_op(t_logic_op *logical_op, int position, int cur_log_op)
 {	

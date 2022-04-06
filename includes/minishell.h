@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 14:38:28 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:33:46 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # include <readline/history.h>
 
 /*
- *	Genral
+ *	General
  */
 
 # include "struct_enum.h"
@@ -40,8 +40,8 @@
  *	Builtins
  */
 
-#include "echo.h"
-#include "exit.h"
+# include "echo.h"
+# include "exit.h"
 
 /*
  *	Checker
@@ -52,14 +52,29 @@
 # include "quote_checker.h"
 
 /*
+ *	Parser
+ */
+
+# include "btree_management.h"
+# include "count_and_update_logic_op.h"
+# include "find_specific_char_funct.h"
+# include "get_logical_op.h"
+# include "input_priority_level.h"
+# include "input_priority_level_utils.h"
+# include "list_management.h"
+# include "logical_operator_indexation.h"
+# include "parse_op_by_level.h"
+# include "print_debug_funct.h"
+# include "get_btree_of_logical_op.h"
+
+/*
  *	Utils
  */
 
-#include "jump_caracters.h"
+# include "jump_caracters.h"
 
 /*
  *	Wilcard
  */
-
 
 #endif

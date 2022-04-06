@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:26:33 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 13:17:48 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:48:09 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,20 @@ void	skip_quote(char *commande, int i)
 	}
 }
 
-int len_pipe(char *pipe_sequence, int index)
+int	len_pipe(char *pipe_sequence, int index)
 {
-	int		len_pipe;
+	int	len_pipe;
 
 	len_pipe = 0;
 	while (index > -1 && pipe_sequence[index] != '|')
 	{
 		len_pipe++;
-		index--;	
+		index--;
 	}
 	return (0);
 }
 
-char *split_pipe(char *pipe_sequence, int index)
+char	*split_pipe(char *pipe_sequence, int index)
 {
 	int		len_pipe;
 	char	*pipe;
@@ -58,14 +58,14 @@ char *split_pipe(char *pipe_sequence, int index)
 	{
 		pipe[len_pipe] = pipe_sequence[index];
 		len_pipe--;
-		index--;	
+		index--;
 	}
 	return (pipe);
 }
 
 t_list **parser_pipe(char *pipe_sequence)
 {
-	int index;
+	int 	index;
 	t_list	**start;
 
 	index = 0;
