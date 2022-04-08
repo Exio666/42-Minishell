@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_enum.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 15:42:10 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/08 15:01:00 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ typedef struct s_checker
 
 typedef struct s_logical_op
 {
-	char	symbol[3];
-	UI		type;
-	UI		index;
+	char			symbol[3];
+	unsigned int	type;
+	unsigned int	index;
 }	t_logic_op;
 
 typedef struct s_btree
@@ -96,12 +96,6 @@ typedef struct s_btree
 	struct s_btree	*right;
 	t_logic_op		*logic_op;
 }	t_btree;
-
-typedef struct s_list
-{
-	struct s_list	*next;
-	void			*content;
-}	t_list;
 
 typedef struct s_priority_level
 {

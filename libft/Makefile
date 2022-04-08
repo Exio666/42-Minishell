@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
+#    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/23 11:34:09 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/05 10:33:28 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/04/08 16:35:47 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ PATH_GNL = gnl/
 PATH_PFT = pft/
 
 SRCS_LIBFT	= 	$(addprefix $(PATH_LIBFT),	\
-				__malloc.c					\
+				__ft_calloc.c					\
 				ft_atoi.c					\
 				ft_bzero.c					\
 				ft_calloc.c					\
@@ -94,7 +94,7 @@ NAME	= libft.a
 
 CC		= cc
 
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g3
 
 all: $(NAME)
 

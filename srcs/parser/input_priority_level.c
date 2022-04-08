@@ -56,8 +56,8 @@ t_input_level	*malloc_input_level(char *user_input)
 	t_input_level	*input_level;
 
 	len = ft_strlen(user_input);
-	input_level = __malloc(sizeof(t_input_level));
-	input_level->level = __malloc(len * sizeof(int));
+	input_level = __ft_calloc(sizeof(t_input_level));
+	input_level->level = __ft_calloc(len * sizeof(int));
 	return (input_level);
 }
 

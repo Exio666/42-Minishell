@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
+#    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/06 16:08:33 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/04/08 16:11:54 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ SRCS =	builtins/echo/echo.c					\
 		parser/print_debug_funct				\
 		utils/jump_caracters.c
 
-SRCS_TEST =
+SRCS_TEST = env_rodolphe/env_tab_to_list.c
 
 ################################################################################
 ########							Libraries							########
@@ -120,7 +120,7 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	$(CC) $(CFLAGS) -MMD -c $< -o $@ $(INCS)
 
 $(NAME_TEST): header $(LIBS) $(OBJS_TEST)
-	$(CC) $(CFLAGS) $(OBJS_TEST) $(LIBS) -o $(NAME)_test $(INCS)
+	$(CC) $(CFLAGS) $(OBJS_TEST) $(LIBS) -o $(NAME_TEST) $(INCS)
 	echo "$(BLUE)$(NAME_TEST): $(GREEN)Success $(NO_COLOR)"
 
 clean : header

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 13:44:31 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/03 14:17:10 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/08 15:54:55 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	exit(int ac, char **av)
 {
 	if (!(good_arg_for_exit(av[1]) && ac > 2))
 	{
-		__malloc(-1);
+		__ft_calloc(-1);
 		if (ac == 1)
 			exit(1);
 		if (!good_arg_for_exit(av[1]))

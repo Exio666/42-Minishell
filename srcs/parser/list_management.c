@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   list_management.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:35:48 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/06 15:50:29 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/08 15:04:52 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/*
 t_list	*lstlast(t_list *lst)
 {
 	if (lst)
@@ -44,8 +45,8 @@ void	lstadd_back(t_list **alst, t_list *new)
 		tmp->next = new;
 	}
 }
-
-void	ft_lstdelone(t_list **lst)
+*/
+void	ft_lstdelone_parser(t_list **lst)
 {
 	t_list	*tmp;
 

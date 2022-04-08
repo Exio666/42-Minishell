@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   btree_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:49:04 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/06 15:50:22 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/08 15:54:55 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_btree	*btree_create_node(void *item)
 {
 	t_btree	*new;
 
-	new = __malloc(sizeof(t_btree));
+	new = __ft_calloc(sizeof(t_btree));
 	if (!new)
 		return (NULL);
 	new->logic_op = item;

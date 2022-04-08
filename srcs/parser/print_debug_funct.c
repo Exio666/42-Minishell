@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_debug_funct.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:35:18 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/06 15:51:24 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/08 15:50:48 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,21 @@ void	level_by_level_printing(t_btree *root)
 		return;
 	q1 = NULL;
 	q2 = NULL;
-	lstadd_back(&q1, lstnew(root));
+	ft_lstadd_back(&q1, ft_lstnew(root));
 	while (q1 != NULL || q2 != NULL)
 	{
 		while (q1 != NULL)
 		{
 			root = q1->content;
 			printf("%s ", root->logic_op->symbol);
-			ft_lstdelone(&q1);
+			ft_lstdelone_parser(&q1);
 			if (root->left)
 			{
-				lstadd_back(&q2, lstnew(root->left));
+				ft_lstadd_back(&q2, ft_lstnew(root->left));
 			}
 			if (root->right)
 			{
-				lstadd_back(&q2, lstnew(root->right));
+				ft_lstadd_back(&q2, ft_lstnew(root->right));
 			}
 		}
 		printf("\n");
@@ -74,11 +74,11 @@ void	level_by_level_printing(t_btree *root)
 		{
 			root = q2->content;
 			printf("%s ", root->logic_op->symbol);
-			ft_lstdelone(&q2);
+			ft_lstdelone_parser(&q2);
 			if (root->left)
-				lstadd_back(&q1, lstnew(root->left));
+				ft_lstadd_back(&q1, ft_lstnew(root->left));
 			if (root->right)
-				lstadd_back(&q1, lstnew(root->right));
+				ft_lstadd_back(&q1, ft_lstnew(root->right));
 		}
 		printf("\n");
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:35:47 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 14:36:31 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/08 15:01:27 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 # define EXIT_H
 
 int		good_arg_for_exit(char *arg);
-void	exit(int ac, char **av);
+void	ft_exit(int ac, char **av);
 
 #endif
