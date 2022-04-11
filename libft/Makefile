@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/23 11:34:09 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/05 10:33:28 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/04/11 15:51:56 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -117,4 +117,3 @@ re: fclean all
 
 .PHONY: all clean fclean re
 
-.SILENT :

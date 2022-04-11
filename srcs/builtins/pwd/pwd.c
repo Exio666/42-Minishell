@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 13:56:54 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/11 15:39:07 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/04/08 13:55:12 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/04/08 15:46:00 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
+#include "minishell.h"
 
-void	*ft_calloc(size_t nmenb, size_t size)
+void	ft_pwd()
 {
-	void	*array;
+	char str[2048];
 
-	array = __ft_calloc(size * nmenb);
-	if (array == NULL)
-		return (NULL);
-	ft_bzero(array, size * nmenb);
-	return (array);
+	getcwd(str, 2048);
+	printf("%s\n", str);
 }

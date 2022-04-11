@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   annexe.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 11:22:34 by rpottier          #+#    #+#             */
-/*   Updated: 2022/03/30 11:24:10 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/11 15:43:35 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,12 @@ char **split_path_env_variable_and_add_slash(char *path_env_variable)
 	while (all_path[i] != NULL && all_path[i][0] != 0)
 	{
 		path_len = strlen(all_path[i]);
-		current_path = malloc(sizeof(*current_path) * (path_len + 2));
+		current_path = __ft_calloc(sizeof(*current_path) * (path_len + 2));
 		if (!current_path)
 			return (NULL);
 		ft_strlcpy(current_path, all_path[i], path_len + 1);
 		current_path[path_len] = '/';
 		current_path[path_len + 1] = '\0';
-		free(all_path[i]);
 		all_path[i] = current_path;
 		i++;
 	}
@@ -84,7 +83,6 @@ void execute_command(char **exe_argv, char **all_path, char **envp)
 		{
 			full_path_command = ft_strjoin(all_path[i], exe_argv[0]);
 			exe_read = execve(full_path_command, exe_argv, envp);
-			free(full_path_command);
 		}
 		i++;
 	}

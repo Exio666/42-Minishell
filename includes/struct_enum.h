@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 15:42:10 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/08 13:24:05 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef enum e_type_token
 typedef enum e_type_command
 {
 	COMMANDE,
+	NO_TOKEN,
 	PIPE,
 	OPTION,
 	SIMPLE_QUOTE,
@@ -66,6 +67,18 @@ typedef struct s_token
 	struct s_token	*next;
 	t_command		**content;
 }	t_token;
+
+/*
+ *	Environement
+ */
+
+typedef struct s_lst_env
+{
+	char			*name;
+	char			*content;
+	struct s_env	*next;
+	struct s_env	*prev;
+}	t_lst_env;
 
 /*
  *	primary checker
