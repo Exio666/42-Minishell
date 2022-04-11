@@ -5,39 +5,55 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/07 18:00:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/08 16:39:26 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/11 11:17:04 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/11 15:25:06 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include 
+
+void	__ft_lstclear(t_list **lst);
+void	__free_exit(t_list **lst);
 
 void	*__ft_calloc(ssize_t size)
 {
-	static t_dlist	*list_malloc;
-	t_dlist			*new;
+	static t_list	*list_malloc;
+	t_list			*new;
 	void			*content;
 
 	if (size < 0)
-	{
-		ft_dlistclear(&list_malloc, &free);
-		return (NULL);
-	}
+		__free_exit(&list_malloc);
 	content = ft_calloc(1, size);
 	if (!content)
-	{
-		ft_dlistclear(&list_malloc, &free);
-		return (NULL);
-	}
-	new = ft_dlistnew(content);
+		__free_exit(&list_malloc);
+	new = ft_lstnew(content);
 	if (!new)
 	{
 		free(content);
-		ft_dlistclear(&list_malloc, &free);
-		return (NULL);
+		__free_exit(&list_malloc);
 	}
 	if (!list_malloc)
-		list_malloc = new;	
-	ft_dlistadd_back(&list_malloc, new);
+		list_malloc = new;
+	else
+		ft_lstadd_back(&list_malloc, new);
 	return (content);
+}
+
+void	ft_lstclear(t_list **lst)
+{
+	t_list	*tmp;
+
+	while (*lst)
+	{
+		tmp = *lst;
+		*lst = (*lst)->next;
+		free(tmp->content);
+		free(tmp);
+	}
+}
+
+void	__free_exit(t_list **lst)
+{
+	ft_lstclear(lst);
+	return (NULL);
 }
