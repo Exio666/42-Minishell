@@ -6,11 +6,11 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 11:17:04 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/11 15:25:06 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/11 15:43:13 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include 
+#include "libft.h"
 
 void	__ft_lstclear(t_list **lst);
 void	__free_exit(t_list **lst);
@@ -39,7 +39,7 @@ void	*__ft_calloc(ssize_t size)
 	return (content);
 }
 
-void	ft_lstclear(t_list **lst)
+void	__ft_lstclear(t_list **lst)
 {
 	t_list	*tmp;
 
@@ -54,6 +54,6 @@ void	ft_lstclear(t_list **lst)
 
 void	__free_exit(t_list **lst)
 {
-	ft_lstclear(lst);
-	return (NULL);
+	__ft_lstclear(lst);
+	exit(EXIT_FAILURE);
 }

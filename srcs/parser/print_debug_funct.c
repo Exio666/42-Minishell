@@ -6,12 +6,12 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:35:18 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/08 15:50:48 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/11 15:40:25 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
+/*
 void print2DUtil(t_btree *root, int space)
 {
     // Base case
@@ -98,3 +98,4 @@ void	printab_input_level(t_input_level	*input_level, int len)
 	}
 	printf("\n");
 }
+*/
