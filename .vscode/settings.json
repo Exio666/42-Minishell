@@ -1,8 +1,10 @@
 {
 	"C_Cpp.errorSquiggles": "Disabled",
 	"files.associations": {
+		"*.json": "c",
 		"typeinfo": "c",
 		"define.h": "c",
-		"struct_enum.h": "c"
+		"struct_enum.h": "c",
+		"env_tab_to_list.h": "c"
 	}
 }

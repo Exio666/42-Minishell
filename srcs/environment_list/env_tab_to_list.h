@@ -6,16 +6,17 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 13:16:10 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/08 16:01:51 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/11 17:06:54 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENV_TAB_TO_LIST_H
 # define ENV_TAB_TO_LIST_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "minishell.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include "minishell.h"
+
 typedef struct s_lst_env
 {
 	char				*name;
@@ -35,5 +36,7 @@ int			get_var_content_len(char	*variable_env);
 
 t_lst_env	*ft_dlist_env_last(t_lst_env *lst);
 void		ft_dlist_env_add_back(t_lst_env **alst, t_lst_env *new);
+
+void		print_lst_env(t_lst_env	*list_elem);
 
 #endif
