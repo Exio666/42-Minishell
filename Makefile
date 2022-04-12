@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
+#    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/08 16:11:54 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/12 14:54:13 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,14 +102,14 @@ test: header $(NAME_TEST)
 bonus: header all
 
 header:
-		@echo "${BLUE}"
-		@echo "          (_)     (_)   | |        | | | "
-		@echo " _ __ ___  _ _ __  _ ___| |__   ___| | | "
-		@echo "| '_ \` _ \| | '_ \| / __| '_ \ / _ \ | | "
-		@echo "| | | | | | | | | | \__ \ | | |  __/ | | "
-		@echo "|_| |_| |_|_|_| |_|_|___/_| |_|\___|_|_| "
-		@echo "                 by rpottier and bsavinel"
-		@echo "${NO_COLOR}"
+		echo "${BLUE}"
+		echo "          (_)     (_)   | |        | | | "
+		echo " _ __ ___  _ _ __  _ ___| |__   ___| | | "
+		echo "| '_ \` _ \| | '_ \| / __| '_ \ / _ \ | | "
+		echo "| | | | | | | | | | \__ \ | | |  __/ | | "
+		echo "|_| |_| |_|_|_| |_|_|___/_| |_|\___|_|_| "
+		echo "                 by rpottier and bsavinel"
+		echo "${NO_COLOR}"
 
 $(NAME) : header $(OBJS) $(LIBS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME) $(INCS)
@@ -123,12 +123,13 @@ $(NAME_TEST): header $(LIBS) $(OBJS_TEST)
 	$(CC) $(CFLAGS) $(OBJS_TEST) $(LIBS) -o $(NAME_TEST) $(INCS)
 	echo "$(BLUE)$(NAME_TEST): $(GREEN)Success $(NO_COLOR)"
 
-clean : header
-	$(RM) objs
+clean :
+	$(RM) $(OBJS_PATH)
 	$(MAKE) -C libft clean
 
-fclean : header clean
-	$(RM) $(NAME) $(NAME_TEST)
+fclean : clean
+	$(RM) $(NAME) 
+	$(RM) $(NAME_TEST)
 	$(RM) libft/libft.a
 
 re : header fclean all
@@ -157,7 +158,7 @@ libft/libft.a :
 	$(MAKE) -C libft all && echo "$(BLUE)Compiation of libft: $(GREEN)Success $(NO_COLOR)" || echo "$(BLUE)Compiation of libft: $(RED)Fail $(NO_COLOR)"
 
 -include $(DEPS)
+-include $(DEPS_TEST)
 
 .PHONY: all clean fclean re bonus val_run_test run_test val_run run push test
 
-.SILENT :

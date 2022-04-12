@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 10:11:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/11/29 13:00:36 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/11 15:35:21 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		i++;
 	if ((size_t)i == ft_strlen(s1))
 	{
-		dest = malloc(sizeof(char) * 1);
+		dest = __ft_calloc(sizeof(char) * 1);
 		if (!dest)
 			return (NULL);
 		dest[0] = '\0';

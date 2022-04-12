@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 10:11:34 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/19 14:31:08 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/11 15:34:42 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_itoa(int n)
 
 	nb = (long int)n;
 	i = len_number(nb) - 1;
-	str = malloc(sizeof(char) * (i + 2));
+	str = __ft_calloc(sizeof(char) * (i + 2));
 	if (!str)
 		return (NULL);
 	if (n == 0)

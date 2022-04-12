@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 14:24:19 by rpottier          #+#    #+#             */
-/*   Updated: 2021/12/06 10:22:53 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/11 15:40:06 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_realloc(char *str, int size)
 {
 	char	*new_str;
 
-	new_str = malloc(sizeof(*new_str) * size + 1);
+	new_str = __ft_calloc(sizeof(*new_str) * size + 1);
 	ft_bzero(new_str, size);
 	if (str)
 	{
