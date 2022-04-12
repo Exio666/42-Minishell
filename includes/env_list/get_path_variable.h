@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 13:00:04 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/12 15:48:32 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/12 20:17:15 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,7 @@
 
 char **split_path_env_variable(char *path_env_variable);
 char *get_path_env_variable(t_lst_env	*list_env_var);
+
+void print_char_two_dim_array(char		**split_path_env);
 
 #endif
