@@ -5,6 +5,7 @@
 		"typeinfo": "c",
 		"define.h": "c",
 		"struct_enum.h": "c",
-		"env_tab_to_list.h": "c"
+		"env_tab_to_list.h": "c",
+		"minishell.h": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/08 15:01:00 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/12 15:20:46 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,24 @@ typedef struct s_checker
 
 /*
  *	Parsing AND/OR
+ */
+
+
+
+/*
+ *	env_list
+ */
+
+typedef struct s_lst_env
+{
+	char				*name;
+	char				*content;
+	struct s_lst_env	*next;
+	struct s_lst_env	*prev;
+}	t_lst_env;
+
+/*
+ *	parser
  */
 
 typedef struct s_logical_op

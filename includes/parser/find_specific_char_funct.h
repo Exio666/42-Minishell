@@ -6,12 +6,14 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:34:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 19:53:42 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/12 15:23:18 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIND_SPECIFIC_CHAR_FUNCT_H
 # define FIND_SPECIFIC_CHAR_FUNCT_H
+
+# include "minishell.h"
 
 /*----- find_specific_char_funct.c -----*/
 

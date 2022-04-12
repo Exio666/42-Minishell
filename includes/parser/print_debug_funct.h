@@ -6,12 +6,14 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:34:43 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 19:52:49 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/12 15:23:59 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINT_DEBUG_FUNCT_H
 # define PRINT_DEBUG_FUNCT_H
+
+# include "minishell.h"
 
 /*----- print_debug_funct.c -----*/
 

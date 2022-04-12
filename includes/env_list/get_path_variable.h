@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_logical_op.h                                   :+:      :+:    :+:   */
+/*   get_path_variable.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 17:34:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/12 15:23:25 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/12 13:00:04 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/12 15:48:32 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_LOGICAL_OP_H
-# define GET_LOGICAL_OP_H
+#ifndef GET_PATH_VARIABLE_H
+# define GET_PATH_VARIABLE_H
 
-# include "minishell.h"
+#include "minishell.h"
 
-/*----- get_logical_op.c -----*/
-
-int	get_logic_op_from_end(char *user_input, int i);
-int	get_logic_op_from_begin(char *user_input, int i);
+char **split_path_env_variable(char *path_env_variable);
+char *get_path_env_variable(t_lst_env	*list_env_var);
 
 #endif

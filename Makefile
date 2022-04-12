@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/11 15:54:44 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/12 15:31:16 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ NAME_TEST = minishell_test
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -g3
+CFLAGS = -Wall -Wextra -Werror -g3
 
 ARGUMENT_RUN = 
 ARGUMENT_RUN_TEST =
@@ -36,30 +36,31 @@ INCS =	-I includes				\
 		-I includes/checker		\
 		-I includes/utils		\
 		-I includes/wildcard	\
-		-I includes/parser
+		-I includes/parser		\
+		-I includes/env_list
 
-SRCS =	builtins/echo/echo.c					\
-		builtins/exit/exit.c					\
-		checker/and_or_checker.c				\
+SRCS =	checker/and_or_checker.c				\
 		checker/primary_check.c					\
 		checker/quote_checker.c					\
-		checker/main.c							\
 		parser/btree_management.c				\
 		parser/count_and_update_logic_op.c		\
 		parser/find_specific_char_funct.c		\
 		parser/get_btree_of_logical_op.c		\
-		parser/get_logic_op.c					\
 		parser/input_priority_level_utils.c		\
 		parser/input_priority_level.c			\
 		parser/list_management.c				\
 		parser/logical_operator_indexation.c	\
 		parser/parse_op_by_level.c				\
+		parser/get_logical_op.c					\
 		parser/parse_simple_commande.c			\
-		parser/pipe_parser.c					\
-		parser/print_debug_funct				\
-		utils/jump_caracters.c
+		parser/print_debug_funct.c				\
+		env_list/env_list_management.c			\
+		env_list/get_functions.c				\
+		env_list/transform_env_array_in_list.c	\
+		env_list/print_env_lst.c				\
+		utils/jump_caracters.c						
 
-SRCS_TEST = env_rodolphe/env_tab_to_list.c
+SRCS_TEST = env_list/main_path_var.c				
 
 ################################################################################
 ########							Libraries							########
@@ -108,7 +109,7 @@ header:
 		@echo "| '_ \` _ \| | '_ \| / __| '_ \ / _ \ | | "
 		@echo "| | | | | | | | | | \__ \ | | |  __/ | | "
 		@echo "|_| |_| |_|_|_| |_|_|___/_| |_|\___|_|_| "
-		@echo "                 by rpottier and bsavinel"
+		@echo "                 by Airpottier & co"
 		@echo "${NO_COLOR}"
 
 $(NAME) : header $(OBJS) $(LIBS)
@@ -119,8 +120,8 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -MMD -c $< -o $@ $(INCS)
 
-$(NAME_TEST): header $(LIBS) $(OBJS_TEST)
-	$(CC) $(CFLAGS) $(OBJS_TEST) $(LIBS) -o $(NAME_TEST) $(INCS)
+$(NAME_TEST): header $(LIBS) $(OBJS_TEST) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS_TEST) $(OBJS) $(LIBS) -o $(NAME_TEST) $(INCS)
 	echo "$(BLUE)$(NAME_TEST): $(GREEN)Success $(NO_COLOR)"
 
 clean : header
@@ -156,8 +157,8 @@ push:
 libft/libft.a :
 	$(MAKE) -C libft all && echo "$(BLUE)Compiation of libft: $(GREEN)Success $(NO_COLOR)" || echo "$(BLUE)Compiation of libft: $(RED)Fail $(NO_COLOR)"
 
--include $(DEPS)
+#-include $(DEPS)
 
 .PHONY: all clean fclean re bonus val_run_test run_test val_run run push test
 
-.SILENT :
+#.SILENT :

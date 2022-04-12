@@ -6,12 +6,14 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 13:12:43 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/06 13:12:57 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/12 15:23:38 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LOGICAL_OPERATOR_INDEXATION_H
 # define LOGICAL_OPERATOR_INDEXATION_H
+
+# include "minishell.h"
 
 /*----- logical_operator_indexation.c -----*/
 

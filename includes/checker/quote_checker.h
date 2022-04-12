@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quote_checker.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:07:25 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 15:28:21 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/12 15:07:35 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 # include "minishell.h"
 
-int		give_next_character(char *str, int start, char c);
-int		check_error(t_checker *check, char *str);
-void	init_struct_checker(t_checker *check);
-int		primary_checker(char *commande);
+int	quote_jump(char *commande, t_checker *check);
+int	quote_parenthise_checker(char *commande, t_checker *check);
 
 #endif

@@ -6,24 +6,14 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 13:16:10 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/11 17:06:54 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/12 15:01:45 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENV_TAB_TO_LIST_H
 # define ENV_TAB_TO_LIST_H
 
-# include <stdio.h>
-# include <stdlib.h>
 # include "minishell.h"
-
-typedef struct s_lst_env
-{
-	char				*name;
-	char				*content;
-	struct s_lst_env	*next;
-	struct s_lst_env	*prev;
-}	t_lst_env;
 
 t_lst_env	*transform_env_array_in_list(char **envp_array);
 t_lst_env	*create_list_env_elem(char *variable_env);
