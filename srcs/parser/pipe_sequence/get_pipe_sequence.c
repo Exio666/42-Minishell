@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:56:56 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/13 16:53:43 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/13 17:13:50 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ void remove_parenthesis(char *str)
 	while (str[i])
 	{
 		if (is_quote(str[i]) || is_double_quote(str[i]))
-			i = quo(s)
+			skip_quote(str, &i);
 		if (str[i] == '(' || str[i] == ')')
-			str[i] =
+			str[i] = ' ';
+		i++;
 	}
 }
 
