@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_path_variable.h                                :+:      :+:    :+:   */
+/*   convert_env_array_in_list.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/12 13:00:04 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/13 10:51:03 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/11 16:59:04 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/11 17:03:50 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_PATH_VARIABLE_H
-# define GET_PATH_VARIABLE_H
+#include "minishell.h"
 
-# include "minishell.h"
+t_lst_env	*convert_env_array_in_list(char **envp_array)
+{
+	t_lst_env	*head_list;
+	t_lst_env	*list_elem;
+	int			i;
 
-char	**split_path_env_variable(char *path_env_variable);
-char	*get_path_env_variable(t_lst_env	*list_env_var);
-void	free_char_two_dim_array(char **array);
-void	print_char_two_dim_array(char **array);
-
-#endif
+	head_list = NULL;
+	i = 0;
+	while (envp_array[i])
+	{
+		list_elem = create_list_env_elem(envp_array[i]);
+		ft_dlist_env_add_back(&head_list, list_elem);
+		i++;
+	}
+	return (head_list);
+}

@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/12 20:19:22 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/13 10:23:01 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,8 +56,7 @@ SRCS =	checker/and_or_checker.c				\
 		parser/print_debug_funct.c				\
 		env_list/env_list_management.c			\
 		env_list/get_functions.c				\
-		env_list/transform_env_array_in_list.c	\
-		env_list/print_env_lst.c				\
+		env_list/convert_env_array_in_list.c	\
 		env_list/get_path_variable.c						\
 		utils/jump_caracters.c						
 

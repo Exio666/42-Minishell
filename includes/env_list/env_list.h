@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_path_variable.h                                :+:      :+:    :+:   */
+/*   env_list.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/12 13:00:04 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/13 10:51:03 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/13 10:03:35 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/13 10:50:45 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_PATH_VARIABLE_H
-# define GET_PATH_VARIABLE_H
+#ifndef ENV_LIST_H
+# define ENV_LIST_H
 
-# include "minishell.h"
-
-char	**split_path_env_variable(char *path_env_variable);
-char	*get_path_env_variable(t_lst_env	*list_env_var);
-void	free_char_two_dim_array(char **array);
-void	print_char_two_dim_array(char **array);
+# include "env_list_management.h"
+# include "get_functions.h"
+# include "convert_env_array_in_list.h"
+# include "get_path_variable.h"
 
 #endif

@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_env_lst.c                                    :+:      :+:    :+:   */
+/*   convert_env_array_in_list.h                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/12 13:14:18 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/12 13:14:39 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/13 10:49:42 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/13 10:50:36 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef CONVERT_ENV_ARRAY_IN_LIST_H
+# define CONVER_ENV_ARRAY_IN_LIST_H
 
-void	print_lst_env(t_lst_env	*list_elem)
-{
-	while (list_elem)
-	{
-		printf("%s = %s\n", list_elem->name, list_elem->content);
-		list_elem = list_elem->next;
-	}
-}
+# include "minishell.h"
+
+t_lst_env	*convert_env_array_in_list(char **envp_array);
+
+#endif

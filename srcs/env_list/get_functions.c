@@ -6,11 +6,11 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 13:15:58 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/11 17:04:48 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/13 10:12:20 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env_tab_to_list.h"
+#include "minishell.h"
 
 char	*get_variable_name(char	*variable_env)
 {

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/12 14:43:04 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/13 10:49:13 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 /*
  *	Parser
  */
-
+/*
 # include "btree_management.h"
 # include "count_and_update_logic_op.h"
 # include "find_specific_char_funct.h"
@@ -66,13 +66,14 @@
 # include "parse_op_by_level.h"
 # include "print_debug_funct.h"
 # include "get_btree_of_logical_op.h"
+*/
+# include "parser.h"
 
 /*
  *	Env_list
  */
 
-# include "env_tab_to_list.h"
-# include "get_path_variable.h"
+# include "env_list.h"
 /*
  *	Utils
  */
