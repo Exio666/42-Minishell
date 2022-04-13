@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/13 11:00:03 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/13 16:40:32 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,15 +52,14 @@ SRCS =	checker/and_or_checker.c				\
 		parser/logical_operator_indexation.c	\
 		parser/parse_op_by_level.c				\
 		parser/get_logical_op.c					\
-		parser/parse_simple_commande.c			\
 		parser/print_debug_funct.c				\
 		env_list/env_list_management.c			\
 		env_list/get_functions.c				\
 		env_list/convert_env_array_in_list.c	\
-		env_list/get_path_variable.c						\
+		env_list/get_path_variable.c			\
 		utils/jump_caracters.c						
 
-SRCS_TEST = env_list/main_path_var.c				
+SRCS_TEST = parser/pipe_sequence/get_pipe_sequence.c				
 
 ################################################################################
 ########							Libraries							########
@@ -109,7 +108,7 @@ header:
 		echo "| '_ \` _ \| | '_ \| / __| '_ \ / _ \ | | "
 		echo "| | | | | | | | | | \__ \ | | |  __/ | | "
 		echo "|_| |_| |_|_|_| |_|_|___/_| |_|\___|_|_| "
-		echo "                 by rpottier and bsavinel"
+		echo "                 by bsavinel"
 		echo "${NO_COLOR}"
 
 $(NAME) : header $(OBJS) $(LIBS)
@@ -163,3 +162,4 @@ libft/libft.a :
 
 .PHONY: all clean fclean re bonus val_run_test run_test val_run run push test
 
+.SILENT:

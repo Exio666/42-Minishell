@@ -6,11 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:26:33 by bsavinel          #+#    #+#             */
-<<<<<<< HEAD:srcs/parser/commande_parser/pipe_paser.c
-/*   Updated: 2022/04/11 15:39:03 by bsavinel         ###   ########.fr       */
-=======
-/*   Updated: 2022/04/12 15:15:36 by rpottier         ###   ########.fr       */
->>>>>>> rpottier:srcs/parser/pipe_parser.c
+/*   Updated: 2022/04/13 12:11:30 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   btree_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:49:04 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/12 14:53:49 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/13 14:18:16 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,18 @@ void	insert_logic_op(t_btree	**bt, int curr_op_index, t_logic_op **logic_op)
 	t_logic_op	*current_log_op;
 
 	current_log_op = get_current_log_op(curr_op_index, logic_op);
-	btree_insert(bt, current_log_op, cmp_index_logical_op);
+	btree_insert_log_op(bt, current_log_op, cmp_index_logical_op);
 }
 
-void	btree_insert(t_btree **root, t_logic_op *logic_op, int (*cmpf)(UI, UI))
+void	btree_insert_log_op(t_btree **root, t_logic_op *logic_op,
+	int (*cmpf)(UI, UI))
 {
 	if (*root == NULL)
 		*root = btree_create_node(logic_op);
 	else if ((*cmpf)(logic_op->index, (*root)->logic_op->index) < 0)
-		btree_insert(&(*root)->left, logic_op, cmpf);
+		btree_insert_log_op(&(*root)->left, logic_op, cmpf);
 	else
-		btree_insert(&(*root)->right, logic_op, cmpf);
+		btree_insert_log_op(&(*root)->right, logic_op, cmpf);
 }
 
 t_btree	*btree_create_node(void *item)

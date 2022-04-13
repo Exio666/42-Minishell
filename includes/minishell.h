@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/13 10:49:13 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/13 16:15:09 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@
 # include "get_btree_of_logical_op.h"
 */
 # include "parser.h"
-
+# include "get_pipe_sequence.h"   
 /*
  *	Env_list
  */

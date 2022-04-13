@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/13 10:59:40 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/13 16:17:25 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,6 @@ typedef struct s_token
 	t_command		**content;
 }	t_token;
 
-/*
- *	Environement
- */
-
-typedef struct s_lst_env
-{
-	char			*name;
-	char			*content;
-	struct s_env	*next;
-	struct s_env	*prev;
-}	t_lst_env;
 
 /*
  *	primary checker
