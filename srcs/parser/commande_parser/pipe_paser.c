@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:26:33 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/11 15:39:03 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/13 17:15:26 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,17 @@ void	skip_quote(char *commande, int *i)
 {
 	if (commande[i] == '\'')
 	{
-		i = jump_caracters(commande, "\'", i + 1, 1);
-		if (i != -1)
+		*i = jump_caracters(commande, "\'", *i + 1, 1);
+		if (*i != -1)
 			*i++;
 	}
 	else if (commande[i] == '\"')
 	{
-		i = give_next_character(commande, i + 1, '\"');
-		if (i != -1)
+		*i = give_next_character(commande, *i + 1, '\"');
+		if (*i != -1)
 			*i++;
 	}
 }
-
-skin
 
 int	len_pipe(char *pipe_sequence, int index)
 {

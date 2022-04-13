@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   ft_get_env.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 13:55:12 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/13 17:12:38 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/04/13 11:58:58 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/04/13 11:59:40 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FT_GET_ENV_H
+# define FT_GET_ENV_H
+
 #include "minishell.h"
 
-int	ft_pwd()
-{
-	char str[2048];
+char *join_env_var(t_lst_env *lst);
+char *ft_get_env(t_lst_env **env_list, char *name);
 
-	getcwd(str, 2048);
-	if (!str)
-		return (1);
-	printf("%s\n", str);
-	return (0);
-}
+#endif
