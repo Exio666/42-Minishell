@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse_simple_commande.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 12:07:48 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/08 12:53:19 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/13 11:00:54 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
+/*
 int epandeur(char *commande)
 {
 	int index;
@@ -32,3 +32,4 @@ t_list	**parse_commande(char *commande)
 	epandeur(commande);
 	commande_quote_treatment(commande);
 }
+*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jump_caracters.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:20:50 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 15:42:09 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/12 15:17:03 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,3 @@ int	is_quote(char c)
 	else
 		return (FALSE);
 }
-*/

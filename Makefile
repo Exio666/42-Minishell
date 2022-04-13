@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
+#    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/12 14:54:13 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/04/13 11:00:03 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,30 +36,31 @@ INCS =	-I includes				\
 		-I includes/checker		\
 		-I includes/utils		\
 		-I includes/wildcard	\
-		-I includes/parser
+		-I includes/parser		\
+		-I includes/env_list
 
-SRCS =	builtins/echo/echo.c					\
-		builtins/exit/exit.c					\
-		checker/and_or_checker.c				\
+SRCS =	checker/and_or_checker.c				\
 		checker/primary_check.c					\
 		checker/quote_checker.c					\
-		checker/main.c							\
 		parser/btree_management.c				\
 		parser/count_and_update_logic_op.c		\
 		parser/find_specific_char_funct.c		\
 		parser/get_btree_of_logical_op.c		\
-		parser/get_logic_op.c					\
 		parser/input_priority_level_utils.c		\
 		parser/input_priority_level.c			\
 		parser/list_management.c				\
 		parser/logical_operator_indexation.c	\
 		parser/parse_op_by_level.c				\
+		parser/get_logical_op.c					\
 		parser/parse_simple_commande.c			\
-		parser/pipe_parser.c					\
-		parser/print_debug_funct				\
-		utils/jump_caracters.c
+		parser/print_debug_funct.c				\
+		env_list/env_list_management.c			\
+		env_list/get_functions.c				\
+		env_list/convert_env_array_in_list.c	\
+		env_list/get_path_variable.c						\
+		utils/jump_caracters.c						
 
-SRCS_TEST = env_rodolphe/env_tab_to_list.c
+SRCS_TEST = env_list/main_path_var.c				
 
 ################################################################################
 ########							Libraries							########
@@ -119,8 +120,8 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -MMD -c $< -o $@ $(INCS)
 
-$(NAME_TEST): header $(LIBS) $(OBJS_TEST)
-	$(CC) $(CFLAGS) $(OBJS_TEST) $(LIBS) -o $(NAME_TEST) $(INCS)
+$(NAME_TEST): header $(LIBS) $(OBJS_TEST) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS_TEST) $(OBJS) $(LIBS) -o $(NAME_TEST) $(INCS)
 	echo "$(BLUE)$(NAME_TEST): $(GREEN)Success $(NO_COLOR)"
 
 clean :

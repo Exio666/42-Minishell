@@ -31,9 +31,7 @@ t_input_level	*attribute_level(char *user_input)
 	int				level;
 	int				i;
 	t_input_level	*input_level;
-	int				len;
 
-	len = ft_strlen(user_input);
 	input_level = malloc_input_level(user_input);
 	input_level->input = ft_strdup(user_input);
 	i = 0;

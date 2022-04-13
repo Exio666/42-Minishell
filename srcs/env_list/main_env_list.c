@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_logical_op.h                                   :+:      :+:    :+:   */
+/*   main_env_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 17:34:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/12 15:23:25 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/11 16:59:52 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/13 10:19:57 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_LOGICAL_OP_H
-# define GET_LOGICAL_OP_H
+#include "minishell.h"
 
-# include "minishell.h"
+int	main(int argc, char **argv, char **envp)
+{
+	t_lst_env	*list_elem;
 
-/*----- get_logical_op.c -----*/
-
-int	get_logic_op_from_end(char *user_input, int i);
-int	get_logic_op_from_begin(char *user_input, int i);
-
-#endif
+	(void)(argc);
+	(void)(argv);
+	list_elem = convert_env_array_in_list(envp);
+	print_lst_env(list_elem);
+	__ft_calloc(-1);
+	return (0);
+}

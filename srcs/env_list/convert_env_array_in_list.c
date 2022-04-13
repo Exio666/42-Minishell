@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_logical_op.h                                   :+:      :+:    :+:   */
+/*   convert_env_array_in_list.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 17:34:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/12 15:23:25 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/11 16:59:04 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/11 17:03:50 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_LOGICAL_OP_H
-# define GET_LOGICAL_OP_H
+#include "minishell.h"
 
-# include "minishell.h"
+t_lst_env	*convert_env_array_in_list(char **envp_array)
+{
+	t_lst_env	*head_list;
+	t_lst_env	*list_elem;
+	int			i;
 
-/*----- get_logical_op.c -----*/
-
-int	get_logic_op_from_end(char *user_input, int i);
-int	get_logic_op_from_begin(char *user_input, int i);
-
-#endif
+	head_list = NULL;
+	i = 0;
+	while (envp_array[i])
+	{
+		list_elem = create_list_env_elem(envp_array[i]);
+		ft_dlist_env_add_back(&head_list, list_elem);
+		i++;
+	}
+	return (head_list);
+}

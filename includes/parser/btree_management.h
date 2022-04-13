@@ -6,12 +6,14 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:34:47 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/06 12:16:02 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/12 15:23:11 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BTREE_MANAGEMENT_H
 # define BTREE_MANAGEMENT_H
+
+# include "minishell.h"
 
 /*----- btree_management.c -----*/
 

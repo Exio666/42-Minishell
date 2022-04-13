@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   logical_operator_indexation.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:18:50 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/06 15:55:38 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/12 15:10:26 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_logic_op	*get_current_log_op(int actual_op_index, t_logic_op **logical_op)
 	i = 0;
 	while (logical_op[i])
 	{
-		if (actual_op_index == logical_op[i]->index)
+		if ((unsigned int)actual_op_index == logical_op[i]->index)
 			return (logical_op[i]);
 		i++;
 	}
