@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/03/16 17:17:33 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/11 15:34:59 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char	*insert_word(int word_len, char const *s, char c)
 	char	*split;
 
 	i = 0;
-	split = malloc(sizeof(char) * (word_len + 1));
+	split = __ft_calloc(sizeof(char) * (word_len + 1));
 	if (!split)
 		return (NULL);
 	while (s[i] && s[i] != c)
@@ -77,7 +77,7 @@ char	**ft_split(char const *s, char c)
 	k = 0;
 	if (!s)
 		return (NULL);
-	split = malloc(sizeof(char *) * (count_word(s, c) + 1));
+	split = __ft_calloc(sizeof(char *) * (count_word(s, c) + 1));
 	if (split == NULL)
 		return (NULL);
 	while (s[i] && k < count_word(s, c))

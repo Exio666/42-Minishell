@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
+#    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/23 11:34:09 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/08 16:35:47 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/12 14:53:58 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -117,4 +117,3 @@ re: fclean all
 
 .PHONY: all clean fclean re
 
-.SILENT :
