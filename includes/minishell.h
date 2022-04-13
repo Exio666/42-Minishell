@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/13 16:15:09 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:51:29 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@
  */
 
 # include "jump_caracters.h"
-
+# include "is_functions.h"
 /*
  *	Wilcard
  */

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 16:12:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/13 16:23:36 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:41:16 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ char	*get_pipe_sequence(char	*user_input, int start_index);
 int		get_start_index(char *user_input, int pipe_sequence_to_find);
 char	**split_all_pipe_sequence(char *user_input);
 void	insert_all_pipe_seq_in_btree(char *user_input);
-
+void remove_parenthesis(char *str);
 #endif

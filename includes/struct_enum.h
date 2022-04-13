@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/13 16:17:25 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/13 20:09:23 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,8 @@ typedef struct s_btree
 {
 	struct s_btree	*left;
 	struct s_btree	*right;
-	t_logic_op		*logic_op;
+	void			*item;
+	int				item_type;
 }	t_btree;
 
 typedef struct s_priority_level

@@ -6,12 +6,32 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:56:56 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/13 17:13:50 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/13 20:09:54 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+
+
+int main(int argc, char	**argv)
+{
+	t_btree	*root;
+	if (argc < 2)
+	{
+		printf("NEED ARG\n");
+		return (0);
+	}
+	remove_parenthesis(argv[1]);
+	char	**splited_pipe_seq = split_all_pipe_sequence(argv[1]);
+	
+	print_char_two_dim_array(splited_pipe_seq);
+	root = get_btree_of_logical_op(argv[1]);
+	
+	level_by_level_printing(root);
+	__ft_calloc(-1);
+	return (0);
+}
 void remove_parenthesis(char *str)
 {
 	int i;
@@ -27,17 +47,6 @@ void remove_parenthesis(char *str)
 	}
 }
 
-int main(int argc, char	**argv)
-{
-	(void)(argc);
-	remove_parenthesis(argv[1]);
-	char	**splited_pipe_seq = split_all_pipe_sequence(argv[1]);
-	
-	print_char_two_dim_array(splited_pipe_seq);
-	return (0);
-}
-
-
 /*
 void	btree_insert_pipe_sequence(t_btree **root,
 	t_pipe_sequence *pipe_sequence, int (*cmpf)(UI, UI))
@@ -45,9 +54,9 @@ void	btree_insert_pipe_sequence(t_btree **root,
 	if (*root == NULL)
 		*root = btree_create_node(pipe_sequence);
 	else if ((*cmpf)(pipe_sequence->index, (*root)->logic_op->index) <= 0)
-		btree_insert_log_op(&(*root)->left, pipe_sequence, cmpf);
+		btree_insert_pipe_sequence(&(*root)->left, pipe_sequence, cmpf);
 	else
-		btree_insert_log_op(&(*root)->right, pipe_sequence, cmpf);
+		btree_insert_pipe_sequence(&(*root)->right, pipe_sequence, cmpf);
 }
 */
 int		count_pipe_sequence(char *user_input)
@@ -113,6 +122,8 @@ int		get_start_index(char *user_input, int pipe_sequence_to_find)
 		{
 			start_index += 2;
 			current_pipe_seq++;
+			while (is_space(user_input[start_index]))
+				start_index++;
 		}
 		else
 			start_index++;
@@ -130,16 +141,17 @@ char	**split_all_pipe_sequence(char *user_input)
 	
 	index_pipe_seq = 0;
 	nb_pipe_sequence = count_pipe_sequence(user_input);
-	splited_pipe_seq = __ft_calloc(sizeof(char*) * nb_pipe_sequence);
+	splited_pipe_seq = __ft_calloc(sizeof(char*) * (nb_pipe_sequence + 1));
 	while (index_pipe_seq < nb_pipe_sequence)
 	{
 		start_index = get_start_index(user_input, index_pipe_seq);
 		splited_pipe_seq[index_pipe_seq] = get_pipe_sequence(user_input, start_index);
 		index_pipe_seq++;
 	}
+	splited_pipe_seq[index_pipe_seq] = '\0';
 	return (splited_pipe_seq);
 }
-
+/*
 void	insert_all_pipe_seq_in_btree(char *user_input)
 {
 	char	**all_pipe_sequence;
@@ -147,3 +159,4 @@ void	insert_all_pipe_seq_in_btree(char *user_input)
 	all_pipe_sequence = split_all_pipe_sequence(user_input);
 	
 }
+*/

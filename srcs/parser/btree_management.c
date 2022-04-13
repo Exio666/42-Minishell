@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:49:04 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/13 14:18:16 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/13 20:15:38 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	btree_insert_log_op(t_btree **root, t_logic_op *logic_op,
 {
 	if (*root == NULL)
 		*root = btree_create_node(logic_op);
-	else if ((*cmpf)(logic_op->index, (*root)->logic_op->index) < 0)
+	else if ((*cmpf)(logic_op->index, (*root)->item->index) < 0)
 		btree_insert_log_op(&(*root)->left, logic_op, cmpf);
 	else
 		btree_insert_log_op(&(*root)->right, logic_op, cmpf);
@@ -43,7 +43,7 @@ t_btree	*btree_create_node(void *item)
 	new = __ft_calloc(sizeof(t_btree));
 	if (!new)
 		return (NULL);
-	new->logic_op = item;
+	new->item = item;
 	new->left = NULL;
 	new->right = NULL;
 	return (new);

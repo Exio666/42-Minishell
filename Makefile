@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/13 17:11:00 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/13 19:52:22 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,8 @@ SRCS =	checker/and_or_checker.c				\
 		env_list/get_functions.c				\
 		env_list/convert_env_array_in_list.c	\
 		env_list/get_path_variable.c			\
-		utils/jump_caracters.c						
+		utils/jump_caracters.c					\
+		utils/is_functions.c
 
 SRCS_TEST = parser/pipe_sequence/get_pipe_sequence.c				
 
@@ -108,7 +109,7 @@ header:
 		echo "| '_ \` _ \| | '_ \| / __| '_ \ / _ \ | | "
 		echo "| | | | | | | | | | \__ \ | | |  __/ | | "
 		echo "|_| |_| |_|_|_| |_|_|___/_| |_|\___|_|_| "
-		echo "                 by bsavinel"
+		echo "                 by Airpottier and co"
 		echo "${NO_COLOR}"
 
 $(NAME) : header $(OBJS) $(LIBS)
