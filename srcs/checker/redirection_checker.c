@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 11:35:16 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 14:08:47 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/14 16:28:23 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	redirect_out_checker(char *commande, t_checker *check)
 			check->error = TRUE;
 		}
 	}
-	while (commande[check->index] && ft_iswhitespace(commande[check->index]) 
-			&& check->error == FALSE)
+	while (commande[check->index] && ft_iswhitespace(commande[check->index])
+		&& check->error == FALSE)
 		check->index++;
-	if (commande[check->index] && commande[check->index] != '>' 
-			&& commande[check->index] != '<' && commande[check->index] != '|')
+	if (commande[check->index] && commande[check->index] != '>'
+		&& commande[check->index] != '<' && commande[check->index] != '|')
 		check->arg_of_redirect = TRUE;
 	if (check->arg_of_redirect == FALSE)
 	{
@@ -49,11 +49,11 @@ void	redirect_in_checker(char *commande, t_checker *check)
 			check->error = TRUE;
 		}
 	}
-	while (commande[check->index] && ft_iswhitespace(commande[check->index]) 
-			&& check->error == FALSE)
+	while (commande[check->index] && ft_iswhitespace(commande[check->index])
+		&& check->error == FALSE)
 		check->index++;
-	if (commande[check->index] && commande[check->index] != '>' 
-			&& commande[check->index] != '<' && commande[check->index] != '|')
+	if (commande[check->index] && commande[check->index] != '>'
+		&& commande[check->index] != '<' && commande[check->index] != '|')
 		check->arg_of_redirect = TRUE;
 	if (check->arg_of_redirect == FALSE)
 	{
@@ -65,8 +65,8 @@ void	redirect_in_checker(char *commande, t_checker *check)
 void	pipe_content_checker(char *commande, t_checker *check)
 {
 	int	i;
-	int len;
-	
+	int	len;
+
 	check->index++;
 	i = check->index;
 	len = 0;

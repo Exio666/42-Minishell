@@ -6,8 +6,11 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:36:17 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 15:32:38 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/14 16:29:37 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+int	main(void)
+{
+	return (0);
+}

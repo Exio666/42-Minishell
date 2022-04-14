@@ -6,13 +6,13 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 12:09:11 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 13:38:15 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/14 16:28:33 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int len_no_whitespace(char *commande)
+int	len_no_whitespace(char *commande)
 {
 	int	i;
 	int	len;
@@ -39,7 +39,7 @@ int	pipe_sequence_checker(char *commande)
 		check.str = S_ERROR_MISSING_COMMANDE;
 	}
 	if (check.error == FALSE)
-		redirection_checker(commande, &check)
+		redirection_checker(commande, &check);
 	if (check.error == TRUE)
 		printf("%s\n", check.str);
 	return (!check.error);

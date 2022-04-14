@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 11:17:04 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 14:32:55 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/14 16:20:40 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,26 +55,3 @@ void	*__ft_calloc(ssize_t size)
 		ft_lstadd_back(&list_malloc, new);
 	return (content);
 }
-<<<<<<< HEAD
-
-void	__ft_lstclear(t_list **lst)
-{
-	t_list	*tmp;
-
-	while (*lst)
-	{
-		tmp = *lst;
-		*lst = (*lst)->next;
-		if (tmp->content)
-			free(tmp->content);
-		free(tmp);
-	}
-}
-
-void	__free_exit(t_list **lst)
-{
-	__ft_lstclear(lst);
-	exit(EXIT_FAILURE);
-}
-=======
->>>>>>> bsavinel

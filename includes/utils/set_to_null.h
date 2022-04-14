@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   set_to_null.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 13:43:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 13:43:37 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 16:21:53 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SET_TO_NULL
-# define SET_TO_NULL
+#ifndef SET_TO_NULL_H
+# define SET_TO_NULL_H
 
 void	*set_to_null(void);
 

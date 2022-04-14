@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_enum.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 15:48:02 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 16:23:58 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ typedef struct s_token
 	t_command		**content;
 }	t_token;
 
-
 /*
  *	primary checker
  */
@@ -85,8 +84,6 @@ typedef struct s_checker
 /*
  *	Parsing AND/OR
  */
-
-
 
 /*
  *	env_list
@@ -111,7 +108,7 @@ typedef struct s_logical_op
 	unsigned int	index;
 }	t_logic_op;
 
-typedef	struct s_pipe_sequence
+typedef struct s_pipe_sequence
 {
 	char			*str;
 	unsigned int	index;
