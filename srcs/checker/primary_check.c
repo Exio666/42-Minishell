@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 10:02:21 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/05 16:34:47 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/14 13:27:38 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,15 @@ int	give_next_character(char *str, int start, char c)
 
 int	check_error(t_checker *check, char *str)
 {
-	check->error = FALSE;
+	check->error = TRUE;
 	check->str = str;
 	return (0);
 }
 
 void	init_struct_checker(t_checker *check)
 {
-	check->error = TRUE;
+	check->arg_of_redirect = FALSE;
+	check->error = FALSE;
 	check->index = 0;
 	check->str = NULL;
 	check->par_lvl = 0;
@@ -50,7 +51,7 @@ int	primary_checker(char *commande)
 		check.index = 0;
 		and_or_pipe_checker(commande, &check);
 	}
-	if (check.error == FALSE)
+	if (check.error == TRUE)
 		printf("%s\n", check.str);
-	return (check.error);
+	return (!check.error);
 }

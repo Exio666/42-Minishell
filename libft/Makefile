@@ -6,20 +6,20 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/23 11:34:09 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/12 16:24:27 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/04/14 11:57:34 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-OBJS_PATH =	objs/
+OBJS_PATH	=	objs/
 
-SRCS_PATH =	srcs/
+SRCS_PATH	=	srcs/
 
-PATH_LIBFT = libft/
-PATH_GNL = gnl/
-PATH_PFT = pft/
+PATH_LIBFT	=	libft/
+PATH_GNL	=	gnl/
+PATH_PFT	=	pft/
 
 SRCS_LIBFT	= 	$(addprefix $(PATH_LIBFT),	\
-				__ft_calloc.c					\
+				__ft_calloc.c				\
 				ft_atoi.c					\
 				ft_bzero.c					\
 				ft_calloc.c					\
@@ -28,6 +28,7 @@ SRCS_LIBFT	= 	$(addprefix $(PATH_LIBFT),	\
 				ft_isascii.c				\
 				ft_isdigit.c				\
 				ft_isprint.c				\
+				ft_iswhitespace.c			\
 				ft_memchr.c					\
 				ft_memcmp.c					\
 				ft_memcpy.c					\
@@ -80,21 +81,21 @@ SRCS_PFT	=	$(addprefix $(PATH_PFT),	\
 				struct_info.c				\
 				unsign.c)
 
-SRCS = $(SRCS_GNL) $(SRCS_LIBFT) $(SRCS_PFT)
+SRCS		=	$(SRCS_GNL) $(SRCS_LIBFT) $(SRCS_PFT)
 
-OBJS = $(addprefix $(OBJS_PATH), $(SRCS:.c=.o))
+OBJS		=	$(addprefix $(OBJS_PATH), $(SRCS:.c=.o))
 
-DEPS = $(addprefix $(OBJS_PATH), $(SRCS:.c=.d))
+DEPS		=	$(addprefix $(OBJS_PATH), $(SRCS:.c=.d))
 
-INCS = -I includes
+INCS		=	-I includes
 
-RM = rm -rf
+RM			=	rm -rf
 
-NAME	= libft.a
+NAME		=	libft.a
 
-CC		= cc
+CC			=	cc
 
-CFLAGS	= -Wall -Wextra -Werror -g3
+CFLAGS		=	-Wall -Wextra -Werror -g3
 
 all: $(NAME)
 

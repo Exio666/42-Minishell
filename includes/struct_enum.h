@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/12 14:54:04 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/14 13:20:43 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct s_checker
 	t_bool	error;
 	char	*str;
 	int		par_lvl;
+	int		arg_of_redirect;
 }	t_checker;
 
 /*
