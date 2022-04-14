@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_btree_of_logical_op.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:56:03 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/06 15:52:55 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/14 17:09:33 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_btree	*get_btree_of_logical_op(char *user_input)
 	t_btree			*logical_op_in_btree;
 
 	input_level = attribute_level(user_input);
+	printab_input_level(input_level);
 	logical_op = create_logical_op_array(user_input);
 	logical_op_in_btree = parse_op_by_level(logical_op, input_level);
 	if (!logical_op_in_btree)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_and_update_logic_op.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:45:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/06 15:49:33 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/14 17:14:30 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	count_logic_op(char *user_input)
 	logical_op_count = 0;
 	while (user_input[i + 1])
 	{
+		skip_quote(user_input, &i);
 		if (user_input[i + 1] && is_logical_op_char(user_input[i]) == TRUE)
 		{
 			actual_logical_op = get_logic_op_from_begin(user_input, i);

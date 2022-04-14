@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:56:56 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 16:12:05 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 16:20:33 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_pipe_sequence	**split_all_pipe_sequence(char *user_input)
 
 	i = 0;
 	nb_pipe_sequence = count_pipe_sequence(user_input);
-	printf("%d\n", nb_pipe_sequence);
 	splited = __ft_calloc(sizeof(t_pipe_sequence *) * (nb_pipe_sequence + 1));
 	while (i < nb_pipe_sequence)
 	{
