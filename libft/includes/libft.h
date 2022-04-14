@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:38:07 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/08 15:56:49 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 11:58:06 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,6 @@ size_t		ft_unsigned_strlen(const unsigned char *s);
 int			ft_abs(int a);
 long int	ft_atoi_long(const char *nptr);
 void		*__ft_calloc(ssize_t size);
+int			ft_iswhitespace(char c);
 
 #endif

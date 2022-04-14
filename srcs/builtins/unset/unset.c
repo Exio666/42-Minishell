@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 14:33:45 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/08 14:35:03 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/14 10:45:02 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_unset(char **str, t_lst_env **lst_env)
 {
-	int			i;
+	/*int			i;
 	t_lst_env	*tmp;
 
 	i = 0;
@@ -36,6 +36,6 @@ int	ft_unset(char **str, t_lst_env **lst_env)
 			tmp = tmp->next;
 		}
 		i++;
-	}
+	}*/
 	return (0);
 }

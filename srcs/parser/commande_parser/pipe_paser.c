@@ -1,16 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipe_parser.c                                      :+:      :+:    :+:   */
+/*   pipe_paser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 10:26:33 by bsavinel          #+#    #+#             */
-<<<<<<< HEAD:srcs/parser/commande_parser/pipe_paser.c
-/*   Updated: 2022/04/11 15:39:03 by bsavinel         ###   ########.fr       */
-=======
-/*   Updated: 2022/04/12 15:15:36 by rpottier         ###   ########.fr       */
->>>>>>> rpottier:srcs/parser/pipe_parser.c
+/*   Created: 2022/04/14 14:33:09 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/04/14 14:33:12 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +16,17 @@ void	skip_quote(char *commande, int *i)
 {
 	if (commande[i] == '\'')
 	{
-		i = jump_caracters(commande, "\'", i + 1, 1);
-		if (i != -1)
+		*i = jump_caracters(commande, "\'", *i + 1, 1);
+		if (*i != -1)
 			*i++;
 	}
 	else if (commande[i] == '\"')
 	{
-		i = give_next_character(commande, i + 1, '\"');
-		if (i != -1)
+		*i = give_next_character(commande, *i + 1, '\"');
+		if (*i != -1)
 			*i++;
 	}
 }
-
-skin
 
 int	len_pipe(char *pipe_sequence, int index)
 {

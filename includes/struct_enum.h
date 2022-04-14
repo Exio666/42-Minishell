@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_enum.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/13 10:59:40 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 14:32:24 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct s_checker
 	t_bool	error;
 	char	*str;
 	int		par_lvl;
+	int		arg_of_redirect;
 }	t_checker;
 
 /*

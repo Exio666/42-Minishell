@@ -1,53 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   pipe_sequence_checker.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 10:40:00 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 10:45:49 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/04/14 12:09:11 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/04/14 13:38:15 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	arg_is_flag_echo(char *arg)
+int len_no_whitespace(char *commande)
 {
 	int	i;
+	int	len;
 
-	if (!str)
-		return (0);
-	if (str[0] != '-')
-		return (0);
-	i = 1;
+	i = 0;
+	len = 0;
 	while (str[i])
 	{
-		if (str[i] != 'n')
-			return (0);
 		i++;
-	}
-	return (1);
+		if (!ft_iswhitespace(str[i]))
+			len++;
+	}	
+	return (len);
 }
 
-int	echo(int ac, char **argv)
+int	pipe_sequence_checker(char *commande)
 {
-	int	i;
-	int	flag_n;
+	t_checker	check;
 
-	i = 1;
-	flag_n = 0;
-	while (i < ac && arg_is_flag_echo(argv[1]))
+	init_struct_checker(&check);
+	if (len_no_whitespace(commande) == 0)
 	{
-		flag_n = 1;
-		i++;
+		check.error = TRUE;
+		check.str = S_ERROR_MISSING_COMMANDE;
 	}
-	while (i < ac)
-	{
-		ft_putstr_fd(argv[i], 1);
-		i++;
-	}
-	if (flag_n == 0)
-		write(1, "\n", 1);
-	return (1);
+	if (check.error == FALSE)
+		redirection_checker(commande, &check)
+	if (check.error == TRUE)
+		printf("%s\n", check.str);
+	return (!check.error);
 }

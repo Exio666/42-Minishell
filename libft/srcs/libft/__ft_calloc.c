@@ -3,17 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   __ft_calloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 11:17:04 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/13 11:00:25 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 14:32:55 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	__ft_lstclear(t_list **lst);
-void	__free_exit(t_list **lst);
+static void	__ft_lstclear(t_list **lst)
+{
+	t_list	*tmp;
+
+	while (*lst)
+	{
+		tmp = *lst;
+		*lst = (*lst)->next;
+		if (tmp->content)
+			free(tmp->content);
+		free(tmp);
+	}
+}
+
+static void	__free_exit(t_list **lst)
+{
+	__ft_lstclear(lst);
+	exit(EXIT_FAILURE);
+}
 
 void	*__ft_calloc(ssize_t size)
 {
@@ -38,6 +55,7 @@ void	*__ft_calloc(ssize_t size)
 		ft_lstadd_back(&list_malloc, new);
 	return (content);
 }
+<<<<<<< HEAD
 
 void	__ft_lstclear(t_list **lst)
 {
@@ -58,3 +76,5 @@ void	__free_exit(t_list **lst)
 	__ft_lstclear(lst);
 	exit(EXIT_FAILURE);
 }
+=======
+>>>>>>> bsavinel

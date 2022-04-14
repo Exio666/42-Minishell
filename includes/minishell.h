@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/13 10:49:13 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 14:32:19 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,11 @@
  */
 
 # include "echo.h"
+# include "env.h"
 # include "exit.h"
+# include "ft_cd.h"
+# include "pwd.h"
+# include "unset.h"
 
 /*
  *	Checker
@@ -50,6 +54,12 @@
 # include "and_or_checker.h"
 # include "primary_checker.h"
 # include "quote_checker.h"
+
+/*
+ *	Env
+ */
+
+# include "ft_get_env.h"
 
 /*
  *	Parser
