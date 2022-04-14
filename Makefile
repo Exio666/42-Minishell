@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/14 15:47:48 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/14 16:09:36 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,10 @@ NAME_TEST = minishell_test
 
 CC = cc
 
-CFLAGS = -MMD -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -g3
 
-#ARGUMENT_RUN =  
-#ARGUMENT_RUN_TEST =
+ARGUMENT_RUN = 
+ARGUMENT_RUN_TEST =
 
 ################################################################################
 ########							Sources 							########
@@ -41,9 +41,33 @@ INCS =	-I includes				\
 		-I includes/parser/pipe_sequence		\
 		-I includes/env_list
 
-SRCS =
+SRCS =	checker/and_or_checker.c				\
+		checker/primary_check.c					\
+		checker/quote_checker.c					\
+		btree_management/compare_functions.c	\
+		btree_management/insert_functions.c		\
+		btree_management/create_node_functions.c	\
+		parser/logical_operator/count_and_update_logic_op.c		\
+		parser/logical_operator/find_specific_char_funct.c		\
+		parser/logical_operator/get_btree_of_logical_op.c		\
+		parser/logical_operator/increase_and_decrease_level.c		\
+		parser/logical_operator/input_priority_level.c			\
+		parser/logical_operator/lstdelone_parser.c				\
+		parser/logical_operator/logical_operator_indexation.c	\
+		parser/logical_operator/parse_op_by_level.c				\
+		parser/logical_operator/get_logical_op.c					\
+		parser/logical_operator/print_debug_funct.c				\
+		parser/pipe_sequence/get_pipe_sequence.c \
+		parser/pipe_sequence/add_all_pipe_sequence_in_tree.c \
+		parser/pipe_sequence/get_start_and_end_index.c				\
+		env_list/env_list_management.c			\
+		env_list/get_functions.c				\
+		env_list/convert_env_array_in_list.c	\
+		env_list/get_path_variable.c			\
+		utils/jump_caracters.c					\
+		utils/is_functions.c
 
-SRCS_TEST =			
+SRCS_TEST = parser/pipe_sequence/main_pipe_sequence.c				
 
 ################################################################################
 ########							Libraries							########
@@ -58,9 +82,9 @@ LIBS = libft/libft.a
 OBJS_PATH =	objs/
 
 OBJS =	$(addprefix $(OBJS_PATH), $(SRCS:.c=.o))
-OBJS_TEST = $(addprefix $(OBJS_PATH), $(SRCS_TEST:.c=.d))
-DEPS =	$(OBJS:.o=.d)
-DEPS_TEST = $(OBJS_TEST:.o=.d)
+OBJS_TEST = $(addprefix $(OBJS_PATH), $(SRCS_TEST:.c=.o))
+DEPS =	$(addprefix $(OBJS_PATH), $(SRCS:.c=.d))
+DEPS_TEST =	$(addprefix $(OBJS_PATH), $(SRCS_TEST:.c=.d))
 
 ################################################################################
 ########							Others								########
@@ -81,16 +105,9 @@ NO_COLOR	=	\033[m
 ########							Rules								########
 ################################################################################
 
-all: $(NAME)
-
-
-$(NAME): header $(OBJS) $(LIBS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME) $(INCS)
-	echo "$(BLUE)$(NAME): $(GREEN)Success $(NO_COLOR)"
-
-test: $(NAME_TEST)
-
-bonus: all
+all: header $(NAME)
+test: header $(NAME_TEST)
+bonus: header all
 
 header:
 		echo "${BLUE}"
@@ -102,26 +119,28 @@ header:
 		echo "                 by Airpottier and co"
 		echo "${NO_COLOR}"
 
+$(NAME) : header $(OBJS) $(LIBS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME) $(INCS)
+	echo "$(BLUE)$(NAME): $(GREEN)Success $(NO_COLOR)"
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
+	$(CC) $(CFLAGS) -MMD -c $< -o $@ $(INCS)
 
 $(NAME_TEST): header $(LIBS) $(OBJS_TEST) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS_TEST) $(OBJS) $(LIBS) -o $(NAME_TEST) $(INCS)
 	echo "$(BLUE)$(NAME_TEST): $(GREEN)Success $(NO_COLOR)"
 
-clean: 
+clean :
 	$(RM) $(OBJS_PATH)
-	@echo "rm -rf libft/objs" 
-	@$(MAKE) -C libft clean --no-print-directory --silent
+	$(MAKE) -C libft clean
 
-fclean: clean
-	$(RM) minishell
-	$(RM) minishell_test 
+fclean : clean
+	$(RM) $(NAME) 
+	$(RM) $(NAME_TEST)
 	$(RM) libft/libft.a
 
-re: header fclean all
+re : header fclean all
 
 run: header all
 	$(NAME) $(ARGUMENT_RUN)
@@ -146,15 +165,9 @@ push:
 libft/libft.a :
 	$(MAKE) -C libft all && echo "$(BLUE)Compiation of libft: $(GREEN)Success $(NO_COLOR)" || echo "$(BLUE)Compiation of libft: $(RED)Fail $(NO_COLOR)"
 
-ifneq ($(MAKECMDGOALS), fclean)
- ifneq ($(MAKECMDGOALS), clean)
-  -include $(DEPS) $(DEPS_TEST)
- endif
-endif
+-include $(DEPS)
+-include $(DEPS_TEST)
 
-
-<<<<<<< HEAD
 .PHONY: all clean fclean re bonus val_run_test run_test val_run run push test
-=======
+
 .SILENT:
->>>>>>> rpottier

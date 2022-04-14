@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 15:47:58 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 16:11:04 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@
  *	Env
  */
 
-# include "ft_get_env.h"
+//# include "ft_get_env.h"
 
 /*
  *	Parser
