@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/13 19:52:22 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/14 15:13:34 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,27 +32,34 @@ SRCS_PATH 	=	srcs/
 
 INCS =	-I includes				\
 		-I libft/includes		\
+		-I includes/btree_management	\
 		-I includes/builtins	\
 		-I includes/checker		\
 		-I includes/utils		\
 		-I includes/wildcard	\
-		-I includes/parser		\
+		-I includes/parser/logical_operator		\
+		-I includes/parser/pipe_sequence		\
 		-I includes/env_list
 
 SRCS =	checker/and_or_checker.c				\
 		checker/primary_check.c					\
 		checker/quote_checker.c					\
-		parser/btree_management.c				\
-		parser/count_and_update_logic_op.c		\
-		parser/find_specific_char_funct.c		\
-		parser/get_btree_of_logical_op.c		\
-		parser/input_priority_level_utils.c		\
-		parser/input_priority_level.c			\
-		parser/list_management.c				\
-		parser/logical_operator_indexation.c	\
-		parser/parse_op_by_level.c				\
-		parser/get_logical_op.c					\
-		parser/print_debug_funct.c				\
+		btree_management/compare_functions.c	\
+		btree_management/insert_functions.c		\
+		btree_management/create_node_functions.c	\
+		parser/logical_operator/count_and_update_logic_op.c		\
+		parser/logical_operator/find_specific_char_funct.c		\
+		parser/logical_operator/get_btree_of_logical_op.c		\
+		parser/logical_operator/increase_and_decrease_level.c		\
+		parser/logical_operator/input_priority_level.c			\
+		parser/logical_operator/lstdelone_parser.c				\
+		parser/logical_operator/logical_operator_indexation.c	\
+		parser/logical_operator/parse_op_by_level.c				\
+		parser/logical_operator/get_logical_op.c					\
+		parser/logical_operator/print_debug_funct.c				\
+		parser/pipe_sequence/get_pipe_sequence.c \
+		parser/pipe_sequence/add_all_pipe_sequence_in_tree.c \
+		parser/pipe_sequence/get_start_and_end_index.c				\
 		env_list/env_list_management.c			\
 		env_list/get_functions.c				\
 		env_list/convert_env_array_in_list.c	\
@@ -60,7 +67,7 @@ SRCS =	checker/and_or_checker.c				\
 		utils/jump_caracters.c					\
 		utils/is_functions.c
 
-SRCS_TEST = parser/pipe_sequence/get_pipe_sequence.c				
+SRCS_TEST = parser/pipe_sequence/main_pipe_sequence.c				
 
 ################################################################################
 ########							Libraries							########

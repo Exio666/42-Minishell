@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_functions.c                                     :+:      :+:    :+:   */
+/*   btree_management.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 19:49:28 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 15:44:02 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/05 15:49:04 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/14 13:59:24 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef BTREE_MANAGEMENT_H
+# define BTREE_MANAGEMENT_H
 
-int	is_space(char c)
-{
-	if (c == ' ')
-		return (1);
-	return (0);
-}
+# include "minishell.h"
+# include "compare_functions.h"
+# include "create_node_functions.h"
+# include "insert_functions.h"
+
+#endif

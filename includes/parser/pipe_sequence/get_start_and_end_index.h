@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_functions.c                                     :+:      :+:    :+:   */
+/*   get_start_and_end_index.h                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 19:49:28 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 15:44:02 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/14 15:08:20 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/14 15:40:49 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef GET_START_AND_END_INDEX_H
+# define GET_START_AND_END_INDEX_H
 
-int	is_space(char c)
-{
-	if (c == ' ')
-		return (1);
-	return (0);
-}
+# include "minishell.h"
+
+int	get_start_index_pipe_sequence(char *user_input, int pipe_sequence_to_find);
+int	get_end_index_pipe_sequence(char	*user_input, int start_index);
+int	is_log_op(char *user_input, int i);
+
+#endif

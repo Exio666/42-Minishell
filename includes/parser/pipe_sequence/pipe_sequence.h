@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_functions.c                                     :+:      :+:    :+:   */
+/*   pipe_sequence.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 19:49:28 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 15:44:02 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/14 15:05:25 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/14 15:40:51 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef PIPE_SEQUENCE_H
+# define PIPE_SEQUENCE_H
 
-int	is_space(char c)
-{
-	if (c == ' ')
-		return (1);
-	return (0);
-}
+# include "minishell.h"
+
+# include "add_all_pipe_sequence_in_tree.h"
+# include "get_pipe_sequence.h"
+# include "get_start_and_end_index.h"
+
+#endif

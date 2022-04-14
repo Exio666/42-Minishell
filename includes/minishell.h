@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/13 19:51:29 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 15:11:42 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,13 @@
 # include "echo.h"
 # include "exit.h"
 
+
+/*
+ *	btree_management
+ */
+
+#include "btree_management.h"
+
 /*
  *	Checker
  */
@@ -67,8 +74,8 @@
 # include "print_debug_funct.h"
 # include "get_btree_of_logical_op.h"
 */
-# include "parser.h"
-# include "get_pipe_sequence.h"   
+# include "logical_operator.h"
+# include "pipe_sequence.h"   
 /*
  *	Env_list
  */

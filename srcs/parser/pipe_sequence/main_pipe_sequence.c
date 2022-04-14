@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_functions.c                                     :+:      :+:    :+:   */
+/*   main_pipe_sequence.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 19:49:28 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 15:44:02 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/14 14:32:07 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/14 15:40:08 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	is_space(char c)
+int	main(int argc, char	**argv)
 {
-	if (c == ' ')
-		return (1);
+	t_btree	*root;
+
+	if (argc < 2)
+	{
+		printf("NEED ARG\n");
+		return (0);
+	}
+	root = get_btree_of_logical_op(argv[1]);
+	add_all_pipe_sequence_in_tree(&root, argv[1]);
+	print2D(root);
+	__ft_calloc(-1);
 	return (0);
 }

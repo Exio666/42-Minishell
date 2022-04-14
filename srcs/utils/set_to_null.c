@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_functions.c                                     :+:      :+:    :+:   */
+/*   set_to_null.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 19:49:28 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 15:44:02 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/14 13:44:41 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/14 15:43:52 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	is_space(char c)
+void	*set_to_null(void)
 {
-	if (c == ' ')
-		return (1);
-	return (0);
+	return (NULL);
 }

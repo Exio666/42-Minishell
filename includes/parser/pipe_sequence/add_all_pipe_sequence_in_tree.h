@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_functions.c                                     :+:      :+:    :+:   */
+/*   add_all_pipe_sequence_in_tree.h                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 19:49:28 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 15:44:02 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/14 15:09:25 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/14 15:41:08 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef ADD_ALL_PIPE_SEQUENCE_IN_TREE_H
+# define ADD_ALL_PIPE_SEQUENCE_IN_TREE_H
 
-int	is_space(char c)
-{
-	if (c == ' ')
-		return (1);
-	return (0);
-}
+# include "minishell.h"
+
+void			add_all_pipe_sequence_in_tree(t_btree **root, char *user_input);
+t_pipe_sequence	**split_all_pipe_sequence(char *user_input);
+void			remove_parenthesis(char *str);
+int				count_pipe_sequence(char *user_input);
+
+#endif

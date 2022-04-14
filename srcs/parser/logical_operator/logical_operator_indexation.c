@@ -6,34 +6,11 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:18:50 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/12 15:10:26 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 14:29:01 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-t_logic_op	**malloc_logical_op_reference(char *input)
-{
-	t_logic_op	**logical_op;
-	int			size;
-	int			i;
-
-	i = 0;
-	if (input == NULL)
-		return (NULL);
-	size = count_logic_op(input);
-	logical_op = calloc(size + 1, sizeof(t_logic_op *));
-	if (logical_op == NULL)
-		return (NULL);
-	while (i < size)
-	{
-		logical_op[i] = calloc(1, sizeof(t_logic_op));
-		if (logical_op[i] == NULL)
-			return (NULL);
-		i++;
-	}
-	return (logical_op);
-}
 
 t_logic_op	**create_logical_op_array(char *input)
 {
@@ -59,6 +36,29 @@ t_logic_op	**create_logical_op_array(char *input)
 			}
 			i++;
 		}
+		i++;
+	}
+	return (logical_op);
+}
+
+t_logic_op	**malloc_logical_op_reference(char *input)
+{
+	t_logic_op	**logical_op;
+	int			size;
+	int			i;
+
+	i = 0;
+	if (input == NULL)
+		return (NULL);
+	size = count_logic_op(input);
+	logical_op = __ft_calloc(sizeof(t_logic_op *) * (size + 1));
+	if (logical_op == NULL)
+		return (NULL);
+	while (i < size)
+	{
+		logical_op[i] = __ft_calloc(sizeof(t_logic_op) * 1);
+		if (logical_op[i] == NULL)
+			return (NULL);
 		i++;
 	}
 	return (logical_op);

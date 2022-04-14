@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:26:33 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/13 12:11:30 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 15:45:09 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	skip_quote(char *commande, int *i)
 			*i++;
 	}
 }
-
-skin
 
 int	len_pipe(char *pipe_sequence, int index)
 {
