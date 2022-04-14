@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_env_array_in_list.h                        :+:      :+:    :+:   */
+/*   set_to_null.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 10:49:42 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/13 16:21:17 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/14 13:44:41 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/14 15:43:52 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONVERT_ENV_ARRAY_IN_LIST_H
-# define CONVERT_ENV_ARRAY_IN_LIST_H
+#include "minishell.h"
 
-# include "minishell.h"
-
-t_lst_env	*convert_env_array_in_list(char **envp_array);
-
-#endif
+void	*set_to_null(void)
+{
+	return (NULL);
+}

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
+#    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/14 14:32:13 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/04/14 15:47:48 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,16 +32,18 @@ SRCS_PATH 	=	srcs/
 
 INCS =	-I includes				\
 		-I libft/includes		\
+		-I includes/btree_management	\
 		-I includes/builtins	\
 		-I includes/checker		\
 		-I includes/utils		\
 		-I includes/wildcard	\
-		-I includes/parser		\
-		-I includes/env
+		-I includes/parser/logical_operator		\
+		-I includes/parser/pipe_sequence		\
+		-I includes/env_list
 
-SRCS =	
+SRCS =
 
-SRCS_TEST = 
+SRCS_TEST =			
 
 ################################################################################
 ########							Libraries							########
@@ -97,7 +99,7 @@ header:
 		echo "| '_ \` _ \| | '_ \| / __| '_ \ / _ \ | | "
 		echo "| | | | | | | | | | \__ \ | | |  __/ | | "
 		echo "|_| |_| |_|_|_| |_|_|___/_| |_|\___|_|_| "
-		echo "                 by rpottier and bsavinel"
+		echo "                 by Airpottier and co"
 		echo "${NO_COLOR}"
 
 
@@ -151,4 +153,8 @@ ifneq ($(MAKECMDGOALS), fclean)
 endif
 
 
+<<<<<<< HEAD
 .PHONY: all clean fclean re bonus val_run_test run_test val_run run push test
+=======
+.SILENT:
+>>>>>>> rpottier

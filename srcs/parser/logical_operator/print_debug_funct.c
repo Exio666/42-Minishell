@@ -6,12 +6,12 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:35:18 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/11 15:40:25 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 10:55:55 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-/*
+
 void print2DUtil(t_btree *root, int space)
 {
     // Base case
@@ -28,9 +28,13 @@ void print2DUtil(t_btree *root, int space)
     // count
     printf("\n");
     for (int i = COUNT; i < space; i++)
+	{
         printf(" ");
-    printf("%s\n", root->logic_op->symbol);
- 
+	}
+	if (root->logic_op)
+   		printf("%s\n", root->logic_op->symbol);
+	else if (root->pipe_seq)
+		printf("%s\n", root->pipe_seq->str);
     // Process left child
     print2DUtil(root->left, space);
 }
@@ -42,7 +46,7 @@ void print2D(t_btree *root)
    // Pass initial space count as 0
    print2DUtil(root, 0);
 }
-
+/*
 void	level_by_level_printing(t_btree *root)
 {
 	t_list	*q1;
@@ -58,7 +62,10 @@ void	level_by_level_printing(t_btree *root)
 		while (q1 != NULL)
 		{
 			root = q1->content;
-			printf("%s ", root->logic_op->symbol);
+			if (root->logic_op)
+				printf("%s ", root->logic_op->symbol);
+			else if (root->pipe_seq)
+				printf("%s ", root->pipe_seq->str);
 			ft_lstdelone_parser(&q1);
 			if (root->left)
 			{
@@ -73,7 +80,10 @@ void	level_by_level_printing(t_btree *root)
 		while (q2 != NULL)
 		{
 			root = q2->content;
-			printf("%s ", root->logic_op->symbol);
+			if (root->logic_op)
+				printf("%s ", root->logic_op->symbol);
+			else if (root->pipe_seq)
+				printf("%s ", root->pipe_seq->str);
 			ft_lstdelone_parser(&q2);
 			if (root->left)
 				ft_lstadd_back(&q1, ft_lstnew(root->left));
@@ -84,7 +94,7 @@ void	level_by_level_printing(t_btree *root)
 	}
 }
 
-
+*/
 void	printab_input_level(t_input_level	*input_level, int len)
 {
 	for (int i = 0; i < len; i++)
@@ -98,4 +108,3 @@ void	printab_input_level(t_input_level	*input_level, int len)
 	}
 	printf("\n");
 }
-*/

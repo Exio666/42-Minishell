@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_env_array_in_list.h                        :+:      :+:    :+:   */
+/*   create_node_functions.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 10:49:42 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/13 16:21:17 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/14 15:41:32 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/14 15:41:47 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONVERT_ENV_ARRAY_IN_LIST_H
-# define CONVERT_ENV_ARRAY_IN_LIST_H
+#ifndef CREATE_NODE_FUNCTIONS_H
+# define CREATE_NODE_FUNCTIONS_H
 
 # include "minishell.h"
 
-t_lst_env	*convert_env_array_in_list(char **envp_array);
+t_btree	*btree_create_node_logic_op(void *item);
+t_btree	*btree_create_node_pipe_seq(void *item);
 
 #endif

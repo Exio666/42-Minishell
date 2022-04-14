@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_env_array_in_list.h                        :+:      :+:    :+:   */
+/*   compare_functions.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 10:49:42 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/13 16:21:17 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/14 13:41:39 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/14 15:42:40 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONVERT_ENV_ARRAY_IN_LIST_H
-# define CONVERT_ENV_ARRAY_IN_LIST_H
+#ifndef COMPARE_FUNCTIONS_H
+# define COMPARE_FUNCTIONS_H
 
 # include "minishell.h"
 
-t_lst_env	*convert_env_array_in_list(char **envp_array);
+int	cmp_index_logical_op(unsigned int actual_op_index, unsigned int index_node);
+int	cmp_index_pipe_seq(unsigned int actual_op_index, unsigned int index_node);
 
 #endif

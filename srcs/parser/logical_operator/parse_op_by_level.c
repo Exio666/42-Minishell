@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:41:57 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/12 15:10:45 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 15:44:58 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_btree	*parse_op_by_level(t_logic_op **logical_op, t_input_level *input_level)
 			{
 				cur_op.type = get_logic_op_from_end(input_level->input, i);
 				if (logical_op_type_is_found(cur_op.type))
-					insert_logic_op(&btree, i - 1, logical_op);
+					insert_all_logic_op_in_tree(&btree, i - 1, logical_op);
 				i--;
 			}
 			i--;
@@ -41,8 +41,6 @@ t_btree	*parse_op_by_level(t_logic_op **logical_op, t_input_level *input_level)
 //	DEBUG || print2D(btree);
 	return (btree);
 }
-
-/*//	print2D(btree);	*/
 
 int	priority_levels_remaining(int actual_level, int level_max)
 {

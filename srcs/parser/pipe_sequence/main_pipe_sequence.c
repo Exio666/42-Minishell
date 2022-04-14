@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_env_array_in_list.h                        :+:      :+:    :+:   */
+/*   main_pipe_sequence.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 10:49:42 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/13 16:21:17 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/14 14:32:07 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/14 15:40:08 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONVERT_ENV_ARRAY_IN_LIST_H
-# define CONVERT_ENV_ARRAY_IN_LIST_H
+#include "minishell.h"
 
-# include "minishell.h"
+int	main(int argc, char	**argv)
+{
+	t_btree	*root;
 
-t_lst_env	*convert_env_array_in_list(char **envp_array);
-
-#endif
+	if (argc < 2)
+	{
+		printf("NEED ARG\n");
+		return (0);
+	}
+	root = get_btree_of_logical_op(argv[1]);
+	add_all_pipe_sequence_in_tree(&root, argv[1]);
+	print2D(root);
+	__ft_calloc(-1);
+	return (0);
+}

@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_env_array_in_list.h                        :+:      :+:    :+:   */
+/*   get_pipe_sequence.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 10:49:42 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/13 16:21:17 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/13 16:12:29 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/14 15:40:46 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONVERT_ENV_ARRAY_IN_LIST_H
-# define CONVERT_ENV_ARRAY_IN_LIST_H
+#ifndef GET_PIPE_SEQUENCE_H
+# define GET_PIPE_SEQUENCE_H
 
 # include "minishell.h"
 
-t_lst_env	*convert_env_array_in_list(char **envp_array);
+char	*get_pipe_sequence(char	*user_input, int start_index);
+int		get_size_pipe_sequence(int start_index, int end_index);
 
 #endif

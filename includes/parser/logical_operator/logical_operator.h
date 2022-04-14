@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   logical_operator.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 13:12:20 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/12 15:23:55 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 14:17:21 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 # include "find_specific_char_funct.h"
 # include "get_logical_op.h"
 # include "input_priority_level.h"
-# include "input_priority_level_utils.h"
-# include "list_management.h"
+# include "increase_and_decrease_level.h"
+# include "lstdelone_parser.h"
 # include "logical_operator_indexation.h"
 # include "parse_op_by_level.h"
 # include "print_debug_funct.h"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_paser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:33:09 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 14:33:12 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/14 15:48:28 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,3 +79,4 @@ t_list **parser_pipe(char *pipe_sequence)
 	}
 	ft_lstadd_back(ft_lstnew(parse_commande(split_pipe(pipe_sequence, index))));
 }
+*/

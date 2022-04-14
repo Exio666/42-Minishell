@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 11:16:25 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/13 10:21:57 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 15:44:19 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	main(int argc, char **argv, char **envp)
 	char		*path_variable;
 	char		**split_path_env;
 	t_lst_env	*list_elem;
+	
 	(void)(argc);
 	(void)(argv);
-
 	list_elem = convert_env_array_in_list(envp);
 	print_lst_env(list_elem);
 	path_variable = get_path_env_variable(list_elem);

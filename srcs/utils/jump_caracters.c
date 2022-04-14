@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:20:50 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/12 15:17:03 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/13 17:13:27 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,20 @@ int	is_quote(char c)
 		return (TRUE);
 	else
 		return (FALSE);
+}
+
+void	skip_quote(char *commande, int *i)
+{
+	if (commande[*i] == '\'')
+	{
+		*i = jump_caracters(commande, "\'", *i + 1, 1);
+		if (*i != -1)
+			(*i)++;
+	}
+	else if (commande[*i] == '\"')
+	{
+		*i = give_next_character(commande, *i + 1, '\"');
+		if (*i != -1)
+			(*i)++;
+	}
 }

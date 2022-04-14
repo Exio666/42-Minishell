@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_enum.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 14:32:24 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/14 15:48:02 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,6 @@ typedef struct s_token
 	t_command		**content;
 }	t_token;
 
-/*
- *	Environement
- */
-
-typedef struct s_lst_env
-{
-	char			*name;
-	char			*content;
-	struct s_env	*next;
-	struct s_env	*prev;
-}	t_lst_env;
 
 /*
  *	primary checker
@@ -122,11 +111,19 @@ typedef struct s_logical_op
 	unsigned int	index;
 }	t_logic_op;
 
+typedef	struct s_pipe_sequence
+{
+	char			*str;
+	unsigned int	index;
+}	t_pipe_sequence;
+
 typedef struct s_btree
 {
 	struct s_btree	*left;
 	struct s_btree	*right;
+	t_pipe_sequence	*pipe_seq;
 	t_logic_op		*logic_op;
+	int				item_type;
 }	t_btree;
 
 typedef struct s_priority_level

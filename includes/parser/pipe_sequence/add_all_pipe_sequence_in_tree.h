@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_env_array_in_list.h                        :+:      :+:    :+:   */
+/*   add_all_pipe_sequence_in_tree.h                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 10:49:42 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/13 16:21:17 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/14 15:09:25 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/14 15:41:08 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONVERT_ENV_ARRAY_IN_LIST_H
-# define CONVERT_ENV_ARRAY_IN_LIST_H
+#ifndef ADD_ALL_PIPE_SEQUENCE_IN_TREE_H
+# define ADD_ALL_PIPE_SEQUENCE_IN_TREE_H
 
 # include "minishell.h"
 
-t_lst_env	*convert_env_array_in_list(char **envp_array);
+void			add_all_pipe_sequence_in_tree(t_btree **root, char *user_input);
+t_pipe_sequence	**split_all_pipe_sequence(char *user_input);
+void			remove_parenthesis(char *str);
+int				count_pipe_sequence(char *user_input);
 
 #endif
