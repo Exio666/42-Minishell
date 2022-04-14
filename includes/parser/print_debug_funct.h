@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   print_debug_funct.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:34:43 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 19:52:49 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 10:49:29 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINT_DEBUG_FUNCT_H
 # define PRINT_DEBUG_FUNCT_H
+
+# include "minishell.h"
 
 /*----- print_debug_funct.c -----*/
 

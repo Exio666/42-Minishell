@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   get_logical_op.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:34:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 19:53:32 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 10:48:54 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_LOGICAL_OP_H
 # define GET_LOGICAL_OP_H
+
+# include "minishell.h"
 
 /*----- get_logical_op.c -----*/
 

@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   btree_management.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:34:47 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/06 12:16:02 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 10:48:41 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BTREE_MANAGEMENT_H
 # define BTREE_MANAGEMENT_H
+
+# include "minishell.h"
 
 /*----- btree_management.c -----*/
 

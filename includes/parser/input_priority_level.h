@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   input_priority_level.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:34:32 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/05 19:51:07 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 10:49:05 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INPUT_PRIORITY_LEVEL_H
 # define INPUT_PRIORITY_LEVEL_H
+
+# include "minishell.h"
 
 /*----- input_prio_level.c -----*/
 

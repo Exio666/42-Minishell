@@ -6,13 +6,15 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 14:22:14 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/08 14:22:40 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/14 10:48:25 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PWD_H
 # define PWD_H
 
-void	ft_pwd();
+# include "minishell.h"
+
+void	ft_pwd(void);
 
 #endif

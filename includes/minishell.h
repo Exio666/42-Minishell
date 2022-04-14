@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/13 12:00:15 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/14 10:54:52 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,11 @@
  */
 
 # include "echo.h"
+# include "env.h"
 # include "exit.h"
+# include "ft_cd.h"
+# include "pwd.h"
+# include "unset.h"
 
 /*
  *	Checker
@@ -55,7 +59,7 @@
  *	Env
  */
 
-#include "ft_get_env.h"
+# include "ft_get_env.h"
 
 /*
  *	Parser

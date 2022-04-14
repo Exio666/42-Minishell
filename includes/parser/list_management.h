@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   list_management.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:34:34 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/08 15:05:07 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 10:49:08 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIST_MANAGEMENT_H
 # define LIST_MANAGEMENT_H
+
+# include "minishell.h"
 
 /*----- list_management.c -----*/
 /*

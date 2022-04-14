@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   logical_operator_indexation.h                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 13:12:43 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/06 13:12:57 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 10:49:13 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LOGICAL_OPERATOR_INDEXATION_H
 # define LOGICAL_OPERATOR_INDEXATION_H
+
+# include "minishell.h"
 
 /*----- logical_operator_indexation.c -----*/
 

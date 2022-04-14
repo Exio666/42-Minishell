@@ -6,15 +6,15 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 13:55:12 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/13 17:12:38 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/14 10:44:00 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_pwd()
+int	ft_pwd(void)
 {
-	char str[2048];
+	char	str[2048];
 
 	getcwd(str, 2048);
 	if (!str)

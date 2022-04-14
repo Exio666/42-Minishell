@@ -6,12 +6,14 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:34:21 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/06 15:29:20 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/14 10:49:16 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_OP_BY_LEVEL_H
 # define PARSE_OP_BY_LEVEL_H
+
+# include "minishell.h"
 
 /*----- parser_logical_op.c -----*/
 
