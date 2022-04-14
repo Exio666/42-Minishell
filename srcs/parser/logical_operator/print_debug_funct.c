@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   print_debug_funct.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:35:18 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 10:55:55 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 16:32:13 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void print2DUtil(t_btree *root, int space)
+void	print2DUtil(t_btree *root, int space)
 {
     // Base case
     if (root == NULL)
         return;
- 
+
     // Increase distance between levels
     space += COUNT;
- 
+
     // Process right child first
     print2DUtil(root->right, space);
- 
+
     // Print current node after space
     // count
     printf("\n");
@@ -40,7 +40,7 @@ void print2DUtil(t_btree *root, int space)
 }
  
 // Wrapper over print2DUtil()
-void print2D(t_btree *root)
+void	print2D(t_btree *root)
 {
     printf("\n");
    // Pass initial space count as 0
