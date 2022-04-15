@@ -34,7 +34,7 @@ t_input_level	*attribute_level(char *user_input)
 	{
 		input_level->level[i] = level;
 		if (is_quote(input_level->input[i]) || is_double_quote(input_level->input[i]))
-			apply_current_level_to_content_in_quote_and_skip(input_level, &i, level);
+			skip_quote(input_level->input, &i);
 		if (is_open_parenthesis(input_level->input[i]))
 			increase_level(&level);
 		else if (is_close_parenthesis(input_level->input[i]))
@@ -76,12 +76,19 @@ void apply_current_level_to_content_in_quote_and_skip(t_input_level	*input_level
 
 t_input_level	*malloc_input_level(char *user_input)
 {
+	int				i;
 	int				len;
 	t_input_level	*input_level;
 
 	len = ft_strlen(user_input);
 	input_level = __ft_calloc(sizeof(t_input_level));
 	input_level->level = __ft_calloc(len * sizeof(int));
+	i = 0;
+	while (i < len)
+	{
+		input_level->level[i] = -1;
+		i++;
+	}		
 	return (input_level);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:59:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 15:36:10 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/15 12:01:16 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	get_start_index_pipe_sequence(char *user_input, int pipe_sequence_to_find)
 	current_pipe_seq = 0;
 	while (user_input[start_index] && current_pipe_seq < pipe_sequence_to_find)
 	{
+		pipe_skip_quote(user_input, &start_index);
 		if (is_log_op(user_input, start_index))
 		{
 			start_index += 2;
@@ -30,7 +31,7 @@ int	get_start_index_pipe_sequence(char *user_input, int pipe_sequence_to_find)
 		}
 		else
 			start_index++;
-	}	
+	}
 	return (start_index);
 }
 
@@ -40,8 +41,32 @@ int	get_end_index_pipe_sequence(char	*user_input, int start_index)
 
 	i = start_index;
 	while (user_input[i] && !is_log_op(user_input, i))
+	{
+		pipe_skip_quote(user_input, &i);
 		i++;
+	}
 	return (i - 1);
+}
+
+void pipe_skip_quote(char *str, int *index)
+{
+	if (is_quote(str[(*index)]) || is_double_quote(str[(*index)]))
+	{
+		if (is_quote(str[(*index)]))
+		{
+			(*index)++;
+			while (!is_quote(str[(*index)]))
+				(*index)++;
+			(*index)++;
+		}
+		else if (is_double_quote(str[(*index)]))
+		{
+			(*index)++;
+			while (!is_double_quote(str[(*index)]))
+				(*index)++;
+			(*index)++;
+		}
+	}	
 }
 
 int	is_log_op(char *user_input, int i)

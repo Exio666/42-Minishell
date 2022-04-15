@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:41:57 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 17:29:22 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/15 10:25:32 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,6 @@ t_btree	*parse_op_by_level(t_logic_op **logical_op, t_input_level *input_level)
 		i = ft_strlen(input_level->input) - 1;
 		while (actual_level_not_fully_checked(i))
 		{
-			/*skip quote*/
-
-			if (input_level->input[i] == '\'' || input_level->input[i] == '\'\'')
-			{
-				if (input_level->input[i] == '\'')
-				{
-					i--;
-					while (i > 0 && input_level->input[i] != '\'')
-						i--;
-				}
-				if (input_level->input[i] == '\'\'')
-				{
-					i--;
-					while (i > 0 && input_level->input[i] != '\'')
-						i--;
-				}
-			}
-
-			/*end skip quote*/
-
-			
 			if (is_part_of_current_level(input_level->level[i], level.current)
 				&& is_logical_op_char(input_level->input[i]))
 			{
@@ -59,7 +38,7 @@ t_btree	*parse_op_by_level(t_logic_op **logical_op, t_input_level *input_level)
 		}
 		increase_level(&level.current);
 	}
-//	DEBUG || print2D(btree);
+	print2D(btree);
 	return (btree);
 }
 
