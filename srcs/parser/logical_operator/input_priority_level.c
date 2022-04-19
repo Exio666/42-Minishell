@@ -44,36 +44,6 @@ t_input_level	*attribute_level(char *user_input)
 	return (input_level);
 }
 
-
-
-void apply_current_level_to_content_in_quote_and_skip(t_input_level	*input_level, int *index, int level)
-{
-	if (is_quote(input_level->input[*index]))
-	{
-		input_level->level[*index] = level;
-		(*index)++;
-		while (!is_quote(input_level->input[*index]))
-		{
-			input_level->level[*index] = level;
-			(*index)++;
-		}
-		input_level->level[*index] = level;
-		(*index)++;
-	}
-	else if (is_double_quote(input_level->input[*index]))
-	{
-		input_level->level[*index] = level;
-		(*index)++;
-		while (!is_double_quote(input_level->input[*index]))
-		{
-			input_level->level[*index] = level;
-			(*index)++;
-		}
-		input_level->level[*index] = level;
-		(*index)++;
-	}
-}
-
 t_input_level	*malloc_input_level(char *user_input)
 {
 	int				i;

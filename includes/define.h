@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 16:11:39 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/19 16:55:12 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,15 @@
 # define AND_OPERATOR 1
 # define OR_OPERATOR 2
 
-
 # define OP_LOGIC 1
 # define PIPE_SEQ 2
+
+/*
+ * tokenisation
+ */
+
+# define SEPARATORS "\'\"| "
+# define PIPE_SEP '|'
 /*
  * Error message
  */

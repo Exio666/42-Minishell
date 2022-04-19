@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/15 10:04:05 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/19 17:49:54 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ NAME_TEST = minishell_test
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = #-Wall -Wextra -Werror -g
 
 ARGUMENT_RUN = 
 ARGUMENT_RUN_TEST =
@@ -39,7 +39,8 @@ INCS =	-I includes				\
 		-I includes/wildcard	\
 		-I includes/parser/logical_operator		\
 		-I includes/parser/pipe_sequence		\
-		-I includes/env_list
+		-I includes/env_list					\
+		-I includes/tokenisation
 
 SRCS =	checker/and_or_checker.c				\
 		checker/primary_check.c					\
@@ -65,9 +66,10 @@ SRCS =	checker/and_or_checker.c				\
 		env_list/convert_env_array_in_list.c	\
 		env_list/get_path_variable.c			\
 		utils/jump_caracters.c					\
-		utils/is_functions.c
+		utils/is_functions.c					\
+		tokenisation_cmd/ft_split_multi.c		
 
-SRCS_TEST = parser/pipe_sequence/main_pipe_sequence.c				
+SRCS_TEST = tokenisation_cmd/main_tokenisation.c				
 
 ################################################################################
 ########							Libraries							########

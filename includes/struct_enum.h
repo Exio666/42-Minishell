@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/15 15:37:33 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/19 16:39:00 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,21 @@ typedef enum e_bool
 
 typedef enum e_type_token
 {
-	OPEN_PARENTHESIS,
-	CLOSE_PARENTHESIS,
-	PIPE_SEQUENCE,
-	OR,
-	AND
+	TOK_WORD,
+	TOK_REDIRECT_IN,			// <
+	TOK_REDIRECT_OUT,			// >
+	TOK_REDIRECT_OUT_APPEND,	// >>
+	TOK_HEREDOC,				// <<
+	TOK_PIPE,					// |
+	TOK_SPACE,					// ' '
+	TOK_DOLLAR,					// $
+
+	
+	TOK_AND,
+	TOK_OR,
+	TOK_OPEN_PARENTHESIS,
+	TOK_CLOSE_PARENTHESIS,
+	TOK_PIPE_SEQUENCE
 }	t_type_token;
 
 typedef enum e_type_command
@@ -64,8 +74,8 @@ typedef struct s_commande
 typedef struct s_token
 {
 	t_type_token	type_token;
-	struct s_token	*next;
 	t_command		**content;
+	struct s_token	*next;
 }	t_token;
 
 
