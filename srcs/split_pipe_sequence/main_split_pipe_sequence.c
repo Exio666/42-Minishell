@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:08:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/20 19:46:07 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/20 22:13:03 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_token
 
 void	add_token_to_lst(t_list **lst, t_token *token)
 {
-	t_list *elem;
+	t_list	*elem;
 	
 	elem = ft_lstnew(token);
 	ft_lstadd_back(lst, elem);	
@@ -92,7 +92,6 @@ int	is_here_doc_token(char *str)
 
 int	find_token_type(char *str)
 {
-	
 	if (is_here_doc_token(str))
 		return (TOK_HEREDOC);
 	else if (is_redirect_in_token(str))
@@ -138,36 +137,48 @@ char	*dup_without_extra_space(char *str)
 
 t_list	*tokenise_split_pipe_seq(char **split)
 {
-	int	i;
-	int j;
+	int		i;
+	int		j;
 	char	**space_split;
 	t_list	*lst;
-	t_token *token;
+	t_token	*token;
 
 	lst = NULL;
 	i = 0;
 	while (split[i])
 	{
 		space_split = ft_split_pipe_by_space(split[i], " ");
-/*		for (int k = 0; space_split[k]; k++)
-			printf("%s\n", space_split[k]);
-		printf("\n");*/
 		j = 0;
 		while (space_split[j])
 		{
 			token = __ft_calloc(sizeof(t_token));
 			token->str = dup_without_extra_space(space_split[j]);
-			//printf("%s\n", token->str);
 			token->type = find_token_type(space_split[j]);
 			add_token_to_lst(&lst, token);
 			j++;
 		}
-		
 		i++;
 	}
 	return (lst);
 }
 
+void print_split_tab(char **split)
+{
+	for (int i = 0; split[i]; i++)
+		printf("%s\n", split[i]);
+	printf("--------------------------\n");
+}
+
+void print_split_lst(t_list	*lst)
+{
+	while (lst)
+	{
+		t_token *ptr = lst->content;
+	//	printf("%-10s - type token ==  %d\n", (char *)ptr->str, ptr->type);
+		printf("%s\n", (char *)ptr->str);
+		lst = lst->next;
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -179,19 +190,14 @@ int	main(int argc, char **argv)
 		printf("NEED_ARG\n");
 		return (1);
 	}
-	printf("%s\n\n", argv[1]);
-	split = ft_split_pipe_seq(argv[1], "|<>");
-/*	for (int i = 0; split[i]; i++)
-		printf("%s\n", split[i]);
-	printf("\n");*/
-	lst = tokenise_split_pipe_seq(split);
 	
-	while (lst)
-	{
-		t_token *ptr = lst->content;
-		printf("%-10s - type token ==  %d\n", (char *)ptr->str, ptr->type);
-		lst = lst->next;
-	}
+	printf("%s\n\n", argv[1]);
+	
+	split = ft_split_pipe_seq(argv[1], "|<>");
+	print_split_tab(split);
+	
+	lst = tokenise_split_pipe_seq(split);
+		print_split_lst(lst);
 
 	__ft_calloc(-1);
 	return (0);

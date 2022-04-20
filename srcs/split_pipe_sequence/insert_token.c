@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 06:03:24 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/20 11:24:41 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/20 21:46:02 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char *insert_token_separator(char *str, char *sep)
 		return (insert_token_heredoc());
 	else if (str[i] == '<')
 		return (insert_token_redirect_in());
-	else /*if (str[i] == '>')*/
+	else
 	{
 		if (str[i + 1] && str[i + 1] == '>')
 			return (insert_token_redirect_out_append());

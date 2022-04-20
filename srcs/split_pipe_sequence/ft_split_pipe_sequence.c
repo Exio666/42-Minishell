@@ -6,13 +6,13 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/20 07:02:14 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/20 21:45:47 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*----- version | < > -----*/
+/*----- version | < > << >> -----*/
 
 int	is_separator(char c, char *separator)
 {
@@ -35,6 +35,10 @@ static int	count_word(char *str, char *sep)
 
 	nb_word = 0;
 	i = 0;
+	while(is_space(*str))
+		str++;
+	if (*str == '<' || *str == '>')
+		nb_word++;
 	while (str[i])
 	{
 		while (str[i] && is_separator(str[i], sep))
@@ -55,6 +59,8 @@ static int	word_len(char *str, char *sep)
 	int	length;
 
 	length = 0;
+	while(is_space(*str))
+		str++;
 	while (str[length] && !is_separator(str[length], sep))
 	{
 		if (is_quote(str[length]) || is_double_quote(str[length]))
@@ -74,12 +80,20 @@ static char	*insert_word(int word_len, char *s)
 	split = __ft_calloc(sizeof(char) * (word_len + 1));
 	if (!split)
 		return (NULL);
+	while(is_space(*s))
+		s++;
 	while (s[i] && i < word_len)
 	{
 		split[i] = s[i];
 		i++;
 	}
 	split[i] = '\0';
+	i--;
+	while (is_space(split[i]))
+	{
+		split[i] = '\0';
+		i--;
+	}
 	return (split);
 }
 
@@ -96,6 +110,8 @@ char	**ft_split_pipe_seq(char *s, char *sep)
 	split = __ft_calloc(sizeof(char *) * (nb_word + 1));
 	i = 0;
 	k = -1;
+	if (is_separator(s[i], sep))
+		split[++k] = insert_token_separator(&s[i], sep);
 	while (s[i] && ++k < nb_word)
 	{
 		while (s[i] && is_separator(s[i], sep))
