@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/20 06:27:13 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/20 06:33:33 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ char	**ft_split_pipe_seq(char *s, char *sep)
 			i++;
 		split[k] = insert_word(word_len(&s[i], sep), &s[i]);
 		if ((k + 1) < nb_word)
-			split[k++] = insert_token_separator(&s[i], sep);
+			split[++k] = insert_token_separator(&s[i], sep);
 		while (s[i] && !is_separator(s[i], sep))
 		{
 			pipe_skip_quote(s, &i);
