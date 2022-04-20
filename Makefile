@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/20 06:07:05 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/20 19:46:07 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ NAME_TEST = minishell_test
 
 CC = cc
 
-CFLAGS = #-Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g3
 
 ARGUMENT_RUN = 
 ARGUMENT_RUN_TEST =
@@ -67,7 +67,8 @@ SRCS =	checker/and_or_checker.c				\
 		env_list/get_path_variable.c			\
 		utils/jump_caracters.c					\
 		utils/is_functions.c					\
-		split_pipe_sequence/ft_split_multi.c	\
+		split_pipe_sequence/ft_split_pipe_sequence.c	\
+		split_pipe_sequence/ft_split_pipe_by_space.c	\
 		split_pipe_sequence/insert_token.c
 			
 

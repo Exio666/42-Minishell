@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/19 16:39:00 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/20 10:48:21 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ typedef enum e_type_token
 	TOK_REDIRECT_OUT_APPEND,	// >>
 	TOK_HEREDOC,				// <<
 	TOK_PIPE,					// |
-	TOK_SPACE,					// ' '
+	TOK_SINGLE_QUOTE,			// '
+	TOK_DOUBLE_QUOTE,			// '
 	TOK_DOLLAR,					// $
 
 	
@@ -70,14 +71,6 @@ typedef struct s_commande
 	struct s_commande	*next;
 	char				*content;
 }	t_command;
-
-typedef struct s_token
-{
-	t_type_token	type_token;
-	t_command		**content;
-	struct s_token	*next;
-}	t_token;
-
 
 /*
  *	primary checker

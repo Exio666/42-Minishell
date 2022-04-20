@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_multi.c                                   :+:      :+:    :+:   */
+/*   ft_split_pipe_by_space.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/20 06:33:33 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/20 10:40:14 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*----- version | < > -----*/
-
-int	is_separator(char c, char *separator)
-{
-	int	i;
-
-	i = 0;
-	while (separator[i])
-	{
-		if (c == separator[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 static int	count_word(char *str, char *sep)
 {
@@ -43,8 +29,10 @@ static int	count_word(char *str, char *sep)
 			nb_word++;
 		while (str[i] && !is_separator(str[i], sep))
 		{
-			pipe_skip_quote(str, &i);
-			i++;
+			if (is_quote(str[i]) || is_double_quote(str[i]))
+				pipe_skip_quote(str, &i);
+			else
+				i++;
 		}
 	}
 	return (nb_word);
@@ -83,7 +71,7 @@ static char	*insert_word(int word_len, char *s)
 	return (split);
 }
 
-char	**ft_split_pipe_seq(char *s, char *sep)
+char	**ft_split_pipe_by_space(char *s, char *sep)
 {
 	int		i;
 	int		k;
@@ -92,7 +80,7 @@ char	**ft_split_pipe_seq(char *s, char *sep)
 
 	if (!s)
 		return (NULL);
-	nb_word = (count_word(s, sep) * 2) - 1;
+	nb_word = count_word(s, sep);
 	split = __ft_calloc(sizeof(char *) * (nb_word + 1));
 	i = 0;
 	k = -1;
@@ -101,12 +89,12 @@ char	**ft_split_pipe_seq(char *s, char *sep)
 		while (s[i] && is_separator(s[i], sep))
 			i++;
 		split[k] = insert_word(word_len(&s[i], sep), &s[i]);
-		if ((k + 1) < nb_word)
-			split[++k] = insert_token_separator(&s[i], sep);
 		while (s[i] && !is_separator(s[i], sep))
 		{
-			pipe_skip_quote(s, &i);
-			i++;
+			if (is_quote(s[i]) || is_double_quote(s[i]))
+				pipe_skip_quote(s, &i);
+			else
+				i++;
 		}
 	}
 	return (split);
