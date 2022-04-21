@@ -13,6 +13,6 @@
 #ifndef SPLIT_BY_SPACE_H
 # define SPLIT_BY_SPACE_H
 
-char	**split_pipe_by_space(char *s, char *sep);
+char	**split_pipe_by_space(char *s);
 
 #endif

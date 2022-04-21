@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/21 14:04:25 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/21 21:54:54 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*----- version | < > -----*/
 
-static int	count_word(char *str, char *sep)
+static int	count_word(char *str)
 {
 	int	nb_word;
 	int	i;
@@ -23,13 +23,13 @@ static int	count_word(char *str, char *sep)
 	i = 0;
 	while (str[i])
 	{
-		while (str[i] && is_separator(str[i], sep))
+		while (str[i] && is_space(str[i]))
 			i++;
-		if (str[i] && !is_separator(str[i], sep))
+		if (str[i] && !is_space(str[i]))
 			nb_word++;
-		while (str[i] && !is_separator(str[i], sep))
+		while (str[i] && !is_space(str[i]))
 		{
-			if (is_simple_quote(str[i]) || is_double_quote(str[i]))
+			if (is_quote(str[i]))
 				pipe_skip_quote(str, &i);
 			else
 				i++;
@@ -38,12 +38,12 @@ static int	count_word(char *str, char *sep)
 	return (nb_word);
 }
 
-static int	word_len(char *str, char *sep)
+static int	word_len(char *str)
 {
 	int	length;
 
 	length = 0;
-	while (str[length] && !is_separator(str[length], sep))
+	while (str[length] && !is_space(str[length]))
 	{
 		if (is_quote(str[length]))
 			pipe_skip_quote(str, &length);
@@ -71,7 +71,7 @@ static char	*insert_word(int word_len, char *s)
 	return (split);
 }
 
-char	**split_pipe_by_space(char *s, char *sep)
+char	**split_pipe_by_space(char *s)
 {
 	int		i;
 	int		k;
@@ -80,18 +80,18 @@ char	**split_pipe_by_space(char *s, char *sep)
 
 	if (!s)
 		return (NULL);
-	nb_word = count_word(s, sep);
+	nb_word = count_word(s);
 	split = __ft_calloc(sizeof(char *) * (nb_word + 1));
 	i = 0;
 	k = -1;
 	while (s[i] && ++k < nb_word)
 	{
-		while (s[i] && is_separator(s[i], sep))
+		while (s[i] && is_space(s[i]))
 			i++;
-		split[k] = insert_word(word_len(&s[i], sep), &s[i]);
-		while (s[i] && !is_separator(s[i], sep))
+		split[k] = insert_word(word_len(&s[i]), &s[i]);
+		while (s[i] && !is_space(s[i]))
 		{
-			if (is_simple_quote(s[i]) || is_double_quote(s[i]))
+			if (is_quote(s[i]))
 				pipe_skip_quote(s, &i);
 			else
 				i++;

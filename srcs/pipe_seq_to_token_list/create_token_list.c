@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:00:15 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/21 14:54:41 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/21 21:53:55 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_list	*create_token_list(char **split)
 	i = 0;
 	while (split[i])
 	{
-		space_split = split_pipe_by_space(split[i], " ");
+		space_split = split_pipe_by_space(split[i]);
 		j = 0;
 		while (space_split[j])
 		{
