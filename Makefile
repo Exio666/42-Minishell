@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/20 19:46:07 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/21 12:55:04 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,9 +67,9 @@ SRCS =	checker/and_or_checker.c				\
 		env_list/get_path_variable.c			\
 		utils/jump_caracters.c					\
 		utils/is_functions.c					\
-		split_pipe_sequence/ft_split_pipe_sequence.c	\
-		split_pipe_sequence/ft_split_pipe_by_space.c	\
-		split_pipe_sequence/insert_token.c
+		pipe_seq_to_token_list/ft_split_pipe_sequence.c	\
+		pipe_seq_to_token_list/ft_split_pipe_by_space.c	\
+		pipe_seq_to_token_list/insert_token.c
 			
 
 SRCS_TEST =split_pipe_sequence/main_split_pipe_sequence.c				

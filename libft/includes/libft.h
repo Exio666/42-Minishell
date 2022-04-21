@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:38:07 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/19 20:07:50 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/21 12:52:14 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,4 @@ int			ft_abs(int a);
 long int	ft_atoi_long(const char *nptr);
 void		*__ft_calloc(ssize_t size);
 int			ft_iswhitespace(char c);
-//char	**ft_split_pipe_seq(char *s, char c);
-char	**ft_split_pipe_seq(char *s, char *sep);
 #endif

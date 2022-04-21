@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/20 10:48:21 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/21 12:41:18 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,5 +140,11 @@ typedef struct s_input_prio_level
 	char	*input;
 	int		*level;
 }	t_input_level;
+
+typedef struct s_token
+{
+	char			*str;
+	t_type_token	type;
+}	t_token;
 
 #endif
