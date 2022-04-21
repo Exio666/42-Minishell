@@ -6,20 +6,20 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 06:03:24 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/21 12:56:43 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/21 14:08:52 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char *insert_token_separator(char *str, char *sep)
+char	*insert_token_separator(char *str, char *sep)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] && !is_separator(str[i], sep))
 	{
-		if (is_quote(str[i]) || is_double_quote(str[i]))
+		if (is_simple_quote(str[i]) || is_double_quote(str[i]))
 			pipe_skip_quote(str, &i);
 		else
 			i++;

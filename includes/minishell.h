@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/19 17:48:33 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/21 13:58:14 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@
 /*
  * tokenisation
  */
-# include "tokenisation.h"
+# include "pipe_seq_to_token_list.h"
 
 /*
  *	Utils

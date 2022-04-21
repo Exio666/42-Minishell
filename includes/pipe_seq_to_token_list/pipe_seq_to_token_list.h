@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insert_token_separator_utils.c                     :+:      :+:    :+:   */
+/*   pipe_seq_to_token_list.h                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 12:56:36 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/21 13:46:35 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/15 16:07:02 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/21 13:57:53 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef PIPE_SEQ_TO_TOKEN_LIST_H
+# define PIPE_SEQ_TO_TOKEN_LIST_H
 
-char	*insert_token_heredoc(void)
-{
-	return (ft_strdup("<<"));
-}
+# include "minishell.h"
 
-char	*insert_token_redirect_in(void)
-{
-	return (ft_strdup("<"));
-}
+# include "create_token_list.h"
+# include "insert_token_separator_utils.h"
+# include "insert_token_separator.h"
+# include "is_token_1.h"
+# include "is_token_2.h"
+# include "print_tab_or_lst_split.h"
+# include "split_by_separator.h"
+# include "split_pipe_by_space.h"
 
-char	*insert_token_redirect_out_append(void)
-{
-	return (ft_strdup(">>"));
-}
-
-char	*insert_token_redirect_out(void)
-{
-	return (ft_strdup(">"));
-}
-
-char	*insert_token_pipe(void)
-{
-	return (ft_strdup("|"));
-}
+#endif

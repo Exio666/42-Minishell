@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/21 12:55:04 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/21 14:03:37 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ INCS =	-I includes				\
 		-I includes/parser/logical_operator		\
 		-I includes/parser/pipe_sequence		\
 		-I includes/env_list					\
-		-I includes/tokenisation
+		-I includes/pipe_seq_to_token_list
 
 SRCS =	checker/and_or_checker.c				\
 		checker/primary_check.c					\
@@ -67,12 +67,17 @@ SRCS =	checker/and_or_checker.c				\
 		env_list/get_path_variable.c			\
 		utils/jump_caracters.c					\
 		utils/is_functions.c					\
-		pipe_seq_to_token_list/ft_split_pipe_sequence.c	\
-		pipe_seq_to_token_list/ft_split_pipe_by_space.c	\
-		pipe_seq_to_token_list/insert_token.c
+		pipe_seq_to_token_list/create_token_list.c	\
+		pipe_seq_to_token_list/insert_token_separator_utils.c	\
+		pipe_seq_to_token_list/insert_token_separator.c \
+		pipe_seq_to_token_list/is_token_1.c \
+		pipe_seq_to_token_list/is_token_2.c \
+		pipe_seq_to_token_list/print_tab_or_lst_split.c \
+		pipe_seq_to_token_list/split_by_separator.c \
+		pipe_seq_to_token_list/split_pipe_by_space.c \
 			
 
-SRCS_TEST =split_pipe_sequence/main_split_pipe_sequence.c				
+SRCS_TEST =pipe_seq_to_token_list/main_split_pipe_sequence.c				
 
 ################################################################################
 ########							Libraries							########

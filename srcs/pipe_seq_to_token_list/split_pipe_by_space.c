@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_pipe_by_space.c                              :+:      :+:    :+:   */
+/*   split_pipe_by_space.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/20 10:40:14 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/21 14:04:25 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	count_word(char *str, char *sep)
 			nb_word++;
 		while (str[i] && !is_separator(str[i], sep))
 		{
-			if (is_quote(str[i]) || is_double_quote(str[i]))
+			if (is_simple_quote(str[i]) || is_double_quote(str[i]))
 				pipe_skip_quote(str, &i);
 			else
 				i++;
@@ -45,7 +45,7 @@ static int	word_len(char *str, char *sep)
 	length = 0;
 	while (str[length] && !is_separator(str[length], sep))
 	{
-		if (is_quote(str[length]) || is_double_quote(str[length]))
+		if (is_quote(str[length]))
 			pipe_skip_quote(str, &length);
 		else
 			length++;
@@ -71,7 +71,7 @@ static char	*insert_word(int word_len, char *s)
 	return (split);
 }
 
-char	**ft_split_pipe_by_space(char *s, char *sep)
+char	**split_pipe_by_space(char *s, char *sep)
 {
 	int		i;
 	int		k;
@@ -91,7 +91,7 @@ char	**ft_split_pipe_by_space(char *s, char *sep)
 		split[k] = insert_word(word_len(&s[i], sep), &s[i]);
 		while (s[i] && !is_separator(s[i], sep))
 		{
-			if (is_quote(s[i]) || is_double_quote(s[i]))
+			if (is_simple_quote(s[i]) || is_double_quote(s[i]))
 				pipe_skip_quote(s, &i);
 			else
 				i++;

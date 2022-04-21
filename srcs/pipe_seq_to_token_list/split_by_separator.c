@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/21 13:08:55 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/21 14:04:14 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	word_len(char *str, char *sep)
 		str++;
 	while (str[length] && !is_separator(str[length], sep))
 	{
-		if (is_quote(str[length]) || is_double_quote(str[length]))
+		if (is_quote(str[length]))
 			pipe_skip_quote(str, &length);
 		else
 			length++;

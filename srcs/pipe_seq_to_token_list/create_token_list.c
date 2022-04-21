@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:00:15 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/21 13:15:40 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/21 14:54:41 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_token	*create_token(char	*space_split)
 {
 	t_token	*token;
 
+	printf("HERE: |%s|\n", space_split);
 	token = __ft_calloc(sizeof(t_token));
 	token->str = dup_without_extra_space(space_split);
 	token->type = find_token_type(space_split);
@@ -33,7 +34,7 @@ t_list	*create_token_list(char **split)
 	i = 0;
 	while (split[i])
 	{
-		space_split = ft_split_pipe_by_space(split[i], " ");
+		space_split = split_pipe_by_space(split[i], " ");
 		j = 0;
 		while (space_split[j])
 		{
@@ -69,7 +70,7 @@ void	add_token_to_lst(t_list **lst, t_token *token)
 {
 	t_list	*elem;
 
-	elem = ft_lstnew(token);
+	elem = ft_lstnew_calloc(token);
 	ft_lstadd_back(lst, elem);
 }
 
@@ -83,8 +84,12 @@ char	*dup_without_extra_space(char *str)
 	i = 0;
 	while (is_space(str[i]))
 		i++;
-	end = ft_strlen(&str[i]) - 1;
+	while (is_quote(str[i]))
+		i++;
+	end = ft_strlen(str) - 1;
 	while (is_space(str[end]))
+		end--;
+	while (is_quote(str[end]))
 		end--;
 	dup = __ft_calloc(sizeof(char) * ((end - i) + 2));
 	j = 0;

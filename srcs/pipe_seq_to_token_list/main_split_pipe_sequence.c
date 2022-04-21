@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:08:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/21 13:03:49 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/21 14:43:34 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@ int	main(int argc, char **argv)
 		printf("NEED_ARG\n");
 		return (1);
 	}
-	
-	printf("%s\n\n", argv[1]);
-	
-	split = split_by_separator(argv[1], "|<>");
+	(void)(argv);
+	printf("%d\n", argc);
+//	printf("%s\n\n", argv[1]);
+	char str[] = "\"\"bonjour monsieur\"\"";
+	printf("%s\n\n", str);
+	split = split_by_separator( str, "|<>");
 	print_split_tab(split);
 	
 	lst = create_token_list(split);
