@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 12:59:32 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/21 21:57:41 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/22 11:18:26 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	print_split_lst(t_list	*lst)
 	while (lst)
 	{
 		t_token *ptr = lst->content;
-	//	printf("%-10s - type token ==  %d\n", (char *)ptr->str, ptr->type);
-		printf("|%s|\n", (char *)ptr->str);
+		printf("%-10s - type token ==  %d\n", (char *)ptr->str, ptr->type);
+	//	printf("|%s|\n", (char *)ptr->str);
 		lst = lst->next;
 	}
 }
