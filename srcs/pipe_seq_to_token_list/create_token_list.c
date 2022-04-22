@@ -6,22 +6,11 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:00:15 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/21 21:53:55 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/21 22:11:42 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-t_token	*create_token(char	*space_split)
-{
-	t_token	*token;
-
-	printf("HERE: |%s|\n", space_split);
-	token = __ft_calloc(sizeof(t_token));
-	token->str = dup_without_extra_space(space_split);
-	token->type = find_token_type(space_split);
-	return (token);
-}
 
 t_list	*create_token_list(char **split)
 {
@@ -44,6 +33,17 @@ t_list	*create_token_list(char **split)
 		i++;
 	}
 	return (lst);
+}
+
+t_token	*create_token(char	*space_split)
+{
+	t_token	*token;
+
+//	printf("HERE: |%s|\n", space_split);
+	token = __ft_calloc(sizeof(t_token));
+	token->str = dup_without_extra_space(space_split);
+	token->type = find_token_type(space_split);
+	return (token);
 }
 
 int	find_token_type(char *str)
@@ -84,13 +84,13 @@ char	*dup_without_extra_space(char *str)
 	i = 0;
 	while (is_space(str[i]))
 		i++;
-	while (is_quote(str[i]))
-		i++;
+//	while (is_quote(str[i]))
+//		i++;
 	end = ft_strlen(str) - 1;
 	while (is_space(str[end]))
 		end--;
-	while (is_quote(str[end]))
-		end--;
+//	while (is_quote(str[end]))
+//		end--;
 	dup = __ft_calloc(sizeof(char) * ((end - i) + 2));
 	j = 0;
 	while (str[i + j] && (i + j <= end))

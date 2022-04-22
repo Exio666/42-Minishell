@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:59:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/21 13:34:02 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/22 10:52:41 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,16 @@ void pipe_skip_quote(char *str, int *index)
 			(*index)++;
 			while (!is_simple_quote(str[(*index)]))
 				(*index)++;
-			(*index)++;
+			if (((*index) + 1) != '\0')
+				(*index)++;
 		}
 		else if (is_double_quote(str[(*index)]))
 		{
 			(*index)++;
 			while (!is_double_quote(str[(*index)]))
 				(*index)++;
-			(*index)++;
+			if (((*index) + 1) != '\0')
+				(*index)++;
 		}
 	}	
 }
