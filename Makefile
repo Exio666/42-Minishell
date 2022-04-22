@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/21 14:03:37 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/22 13:33:22 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ NAME = minishell
 NAME_TEST = minishell_test
 
 CC = cc
-
-CFLAGS = -Wall -Wextra -Werror -g3
+#-Wall -Wextra -Werror
+CFLAGS =  -g3
 
 ARGUMENT_RUN = 
 ARGUMENT_RUN_TEST =
@@ -77,13 +77,13 @@ SRCS =	checker/and_or_checker.c				\
 		pipe_seq_to_token_list/split_pipe_by_space.c \
 			
 
-SRCS_TEST =pipe_seq_to_token_list/main_split_pipe_sequence.c				
+SRCS_TEST = prompt/main_prompt.c				
 
 ################################################################################
 ########							Libraries							########
 ################################################################################
 
-LIBS = libft/libft.a
+LIBS = libft/libft.a -lreadline
 
 ################################################################################
 ########						Objects/Dependences						########

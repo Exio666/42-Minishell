@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/21 12:41:18 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/22 13:45:19 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ typedef enum e_type_token
 	TOK_CLOSE_PARENTHESIS,
 	TOK_PIPE_SEQUENCE
 }	t_type_token;
+
+typedef enum e_btree_item_type
+{
+	LOGIC_OPERATOR
+} t_btree_item_type;
 
 typedef enum e_type_command
 {
@@ -124,8 +129,10 @@ typedef struct s_btree
 {
 	struct s_btree	*left;
 	struct s_btree	*right;
+	struct s_lst	*list;
 	t_pipe_sequence	*pipe_seq;
 	t_logic_op		*logic_op;
+	t_token			*token;
 	int				item_type;
 }	t_btree;
 
