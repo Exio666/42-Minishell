@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 16:24:18 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/25 09:43:23 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,12 @@
  */
 
 # include "env_list.h"
+
+/*
+ * tokenisation
+ */
+# include "pipe_seq_to_token_list.h"
+
 /*
  *	Utils
  */

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/25 09:30:43 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/25 09:43:18 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,28 @@ typedef enum e_bool
 
 typedef enum e_type_token
 {
-	OPEN_PARENTHESIS,
-	CLOSE_PARENTHESIS,
-	PIPE_SEQUENCE,
-	OR,
-	AND
+	TOK_WORD,
+	TOK_REDIRECT_IN,			// <
+	TOK_REDIRECT_OUT,			// >
+	TOK_REDIRECT_OUT_APPEND,	// >>
+	TOK_HEREDOC,				// <<
+	TOK_PIPE,					// |
+	TOK_SINGLE_QUOTE,			// '
+	TOK_DOUBLE_QUOTE,			// '
+	TOK_DOLLAR,					// $
+
+	
+	TOK_AND,
+	TOK_OR,
+	TOK_OPEN_PARENTHESIS,
+	TOK_CLOSE_PARENTHESIS,
+	TOK_PIPE_SEQUENCE
 }	t_type_token;
+
+typedef enum e_btree_item_type
+{
+	LOGIC_OPERATOR
+} t_btree_item_type;
 
 typedef enum e_type_command
 {
@@ -114,12 +130,21 @@ typedef struct s_pipe_sequence
 	unsigned int	index;
 }	t_pipe_sequence;
 
+typedef struct s_token
+{
+	char			*str;
+	t_type_token	type;
+}	t_token;
+
+
 typedef struct s_btree
 {
 	struct s_btree	*left;
 	struct s_btree	*right;
+	struct s_lst	*list;
 	t_pipe_sequence	*pipe_seq;
 	t_logic_op		*logic_op;
+	struct s_list	*token_list;
 	int				item_type;
 }	t_btree;
 
@@ -134,5 +159,7 @@ typedef struct s_input_prio_level
 	char	*input;
 	int		*level;
 }	t_input_level;
+
+
 
 #endif

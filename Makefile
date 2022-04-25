@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/15 10:04:05 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/22 14:14:51 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ NAME = minishell
 NAME_TEST = minishell_test
 
 CC = cc
-
-CFLAGS = -Wall -Wextra -Werror -g
+#-Wall -Wextra -Werror
+CFLAGS =  -g3
 
 ARGUMENT_RUN = 
 ARGUMENT_RUN_TEST =
@@ -39,7 +39,8 @@ INCS =	-I includes				\
 		-I includes/wildcard	\
 		-I includes/parser/logical_operator		\
 		-I includes/parser/pipe_sequence		\
-		-I includes/env_list
+		-I includes/env_list					\
+		-I includes/pipe_seq_to_token_list
 
 SRCS =	checker/and_or_checker.c				\
 		checker/primary_check.c					\
@@ -65,15 +66,24 @@ SRCS =	checker/and_or_checker.c				\
 		env_list/convert_env_array_in_list.c	\
 		env_list/get_path_variable.c			\
 		utils/jump_caracters.c					\
-		utils/is_functions.c
+		utils/is_functions.c					\
+		pipe_seq_to_token_list/create_token_list.c	\
+		pipe_seq_to_token_list/insert_token_separator_utils.c	\
+		pipe_seq_to_token_list/insert_token_separator.c \
+		pipe_seq_to_token_list/is_token_1.c \
+		pipe_seq_to_token_list/is_token_2.c \
+		pipe_seq_to_token_list/print_tab_or_lst_split.c \
+		pipe_seq_to_token_list/split_by_separator.c \
+		pipe_seq_to_token_list/split_pipe_by_space.c \
+		pipe_seq_to_token_list/get_token_list.c \
 
-SRCS_TEST = parser/pipe_sequence/main_pipe_sequence.c				
+SRCS_TEST = prompt/main_prompt.c				
 
 ################################################################################
 ########							Libraries							########
 ################################################################################
 
-LIBS = libft/libft.a
+LIBS = libft/libft.a -lreadline
 
 ################################################################################
 ########						Objects/Dependences						########

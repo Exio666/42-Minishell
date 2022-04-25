@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 16:23:11 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/25 09:43:39 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@
 
 # define OP_LOGIC 1
 # define PIPE_SEQ 2
+
+/*
+ * tokenisation
+ */
+
+# define SEPARATORS "\'\"| "
+# define PIPE_SEP '|'
 
 /*
  * Error message

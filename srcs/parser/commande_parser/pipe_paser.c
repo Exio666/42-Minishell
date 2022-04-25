@@ -6,12 +6,12 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:33:09 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 15:48:28 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/22 13:31:00 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
+/*
 void	skip_quote(char *commande, int *i)
 {
 	if (commande[i] == '\'')

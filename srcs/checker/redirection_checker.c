@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 11:35:16 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 16:28:23 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/25 09:42:52 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	redirect_out_checker(char *commande, t_checker *check)
 		check->index++;
 		else if (commande[check->index] == '>')
 		{
-			check->str = S_ERROR_UNEX_TOK_REDIRECT_IN;
+			check->str = S_ERROR_UNEX_;
 			check->error = TRUE;
 		}
 	}

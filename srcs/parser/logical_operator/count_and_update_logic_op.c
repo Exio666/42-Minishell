@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:45:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/15 10:24:29 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/15 21:05:43 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ int	count_logic_op(char *user_input)
 		}
 		i++;
 	}
-	printf("logical op count = %d \n", logical_op_count);
+//	printf("logical op count = %d \n", logical_op_count);
 	return (logical_op_count);
 }
