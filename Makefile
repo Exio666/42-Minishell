@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/22 13:33:22 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/22 14:14:51 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,7 @@ SRCS =	checker/and_or_checker.c				\
 		pipe_seq_to_token_list/print_tab_or_lst_split.c \
 		pipe_seq_to_token_list/split_by_separator.c \
 		pipe_seq_to_token_list/split_pipe_by_space.c \
-			
+		pipe_seq_to_token_list/get_token_list.c \
 
 SRCS_TEST = prompt/main_prompt.c				
 

@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipe_seq_to_token_list.h                           :+:      :+:    :+:   */
+/*   get_token_list.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 16:07:02 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/22 14:14:00 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/22 13:48:05 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/22 14:15:37 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPE_SEQ_TO_TOKEN_LIST_H
-# define PIPE_SEQ_TO_TOKEN_LIST_H
+#include "minishell.h"
 
-# include "minishell.h"
+t_list *get_token_list(char	*pipe_sequence)
+{
+	char	**split;
+	t_list 	*token_lst;
+	
+	split = split_by_separator(pipe_sequence, "|<>");
+	token_lst = create_token_list(split);
+	return (token_lst);
+}
 
-# include "create_token_list.h"
-# include "insert_token_separator_utils.h"
-# include "insert_token_separator.h"
-# include "is_token_1.h"
-# include "is_token_2.h"
-# include "print_tab_or_lst_split.h"
-# include "split_by_separator.h"
-# include "split_pipe_by_space.h"
-# include "get_token_list.h"
-
-#endif
+void	add_token_list_in_tree(t_btree **root, t_list *token_list)
+{
+		
+}

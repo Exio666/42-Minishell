@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_token_lst_in_tree.c                            :+:      :+:    :+:   */
+/*   get_token_list.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/22 13:48:05 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/22 13:57:19 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/22 14:13:01 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/22 14:14:06 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef GET_TOKEN_LIST_H
+# define GET_TOKEN_LIST_H
 
-t_lst *get_token_list(char	*pipe_sequence)
-{
-	char	**split;
-	t_lst 	*token_lst;
-	
-	split = split_by_separator(pipe_sequence, "|<>");
-	token_lst = create_token_list(split);
-	return (token_lst);
-}
+t_list *get_token_list(char	*pipe_sequence);
 
-void	add_token_list_in_tree(t_btree **root, t_lst *token_list)
-{
-		
-}
-
-int main(void)
-{
-	
-	return (0);
-}
+#endif
