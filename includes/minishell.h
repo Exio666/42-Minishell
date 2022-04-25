@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/25 09:43:23 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/25 10:29:36 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,7 @@
  *	Checker
  */
 
-# include "and_or_checker.h"
-# include "primary_checker.h"
-# include "quote_checker.h"
+# include "checker.h"
 
 /*
  *	Env
