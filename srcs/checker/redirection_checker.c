@@ -6,12 +6,12 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 11:35:16 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/15 16:04:40 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/25 10:25:46 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
+/*
 void	redirect_out_checker(char *commande, t_checker *check)
 {
 	check->index++;
@@ -24,8 +24,7 @@ void	redirect_out_checker(char *commande, t_checker *check)
 			check->error = TRUE;
 		}
 	}
-	while (commande[check->index] && ft_iswhitespace(commande[check->index]) 
-			&& check->error == FALSE)
+	while (commande[check->index] && ft_iswhitespace(commande[check->index]) && check->error == FALSE)
 		check->index++;
 	if (commande[check->index] && commande[check->index] != '>' 
 			&& commande[check->index] != '<' && commande[check->index] != '|')
@@ -98,3 +97,4 @@ int	redirection_checker(char *pipe_sequence, t_checker *check)
 	}
 	return (1);
 }
+*/

@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   space.c                                  :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 11:42:52 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 11:49:12 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/04/25 09:59:01 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/25 10:22:34 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef CHECKER_H
+# define CHECKER_H
 
-int	ft_iswhitespace(char c)
-{
-	if (c == ' ' || c == '\f' || c == '\n' || 
-		c == '\r' || c == '\t' || c == '\v')
-		return (1);
-	return (0);
-}
+# include "and_or_checker.h"
+# include "pipe_sequence_checker.h"
+# include "primary_checker.h"
+# include "quote_checker.h"
+# include "redirection_checker.h"
+
+#endif

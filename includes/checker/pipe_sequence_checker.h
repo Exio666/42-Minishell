@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   space.c                                  :+:      :+:    :+:   */
+/*   pipe_sequence_checker.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 11:42:52 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 11:49:12 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/04/25 09:57:55 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/25 09:58:40 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PIPE_SEQUENCE_CHECKER_H
+# define PIPE_SEQUENCE_CHECKER_H
 
-int	ft_iswhitespace(char c)
-{
-	if (c == ' ' || c == '\f' || c == '\n' || 
-		c == '\r' || c == '\t' || c == '\v')
-		return (1);
-	return (0);
-}
+
+int len_no_whitespace(char *commande);
+int	pipe_sequence_checker(char *commande);
+
+#endif

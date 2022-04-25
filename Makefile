@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/22 14:14:51 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/25 10:23:22 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 NAME = minishell
 NAME_TEST = minishell_test
 
-CC = cc
+CC = cc 
 #-Wall -Wextra -Werror
 CFLAGS =  -g3
 
@@ -45,6 +45,8 @@ INCS =	-I includes				\
 SRCS =	checker/and_or_checker.c				\
 		checker/primary_check.c					\
 		checker/quote_checker.c					\
+		checker/pipe_sequence_checker.c					\
+		checker/redirection_checker.c 				\
 		btree_management/compare_functions.c	\
 		btree_management/insert_functions.c		\
 		btree_management/create_node_functions.c	\
@@ -77,7 +79,7 @@ SRCS =	checker/and_or_checker.c				\
 		pipe_seq_to_token_list/split_pipe_by_space.c \
 		pipe_seq_to_token_list/get_token_list.c \
 
-SRCS_TEST = prompt/main_prompt.c				
+SRCS_TEST = prompt/main_prompt.c		
 
 ################################################################################
 ########							Libraries							########
