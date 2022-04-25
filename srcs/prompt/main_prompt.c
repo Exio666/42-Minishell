@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:23:39 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/22 13:35:14 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/25 08:52:48 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ int	main(void)
 		command_line = readline(prompt);
 		add_history(command_line);
 		printf("%s\n", command_line);
+
+	if(primary_checker(command_line) == TRUE)
+	{
+		printf("The checker say 'commande is good'\n");
 		root = get_btree_of_logical_op(command_line);
 		add_all_pipe_sequence_in_tree(&root, command_line);
 		/*
@@ -45,6 +49,16 @@ int	main(void)
 */
 		print2D(root);
 		free(command_line);
+
+	
+	}
+	else
+	{	
+		
+		printf("The checker say 'commande is bad'\n");
+	
+	}
+
 	}
 	return (0);
 }
