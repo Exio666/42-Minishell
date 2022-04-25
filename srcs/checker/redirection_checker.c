@@ -6,21 +6,21 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 11:35:16 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/25 10:30:14 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/25 10:55:37 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-/*
+
 void	redirect_out_checker(char *commande, t_checker *check)
 {
 	check->index++;
 	if (commande[check->index] && commande[check->index] == '>')
 	{
 		check->index++;
-		else if (commande[check->index] == '>')
+		if (commande[check->index] == '>')
 		{
-			check->str = S_ERROR_UNEX_;
+			check->str = S_ERROR_MIS_ARG_REDIRECT_OUT;
 			check->error = TRUE;
 		}
 	}
@@ -97,4 +97,3 @@ int	redirection_checker(char *pipe_sequence, t_checker *check)
 	}
 	return (1);
 }
-*/

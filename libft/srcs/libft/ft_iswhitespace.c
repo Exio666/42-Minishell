@@ -19,3 +19,16 @@ int	ft_iswhitespace(char c)
 		return (1);
 	return (0);
 }
+
+piep_seque lst
+{
+	first millon
+	next
+}
+
+first maillon_d'un pipe
+{
+	int fd_out;
+	int fd_in;
+	t_pipe
+}
