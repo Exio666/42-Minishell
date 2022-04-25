@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_debug_funct.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:34:43 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 14:32:48 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/14 17:10:17 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 void	print2DUtil(t_btree *root, int space);
 void	print2D(t_btree *root);
-void	printab_input_level(t_input_level	*input_level, int len);
+void	printab_input_level(t_input_level	*input_level);
 void	level_by_level_printing(t_btree *root);
 
 #endif

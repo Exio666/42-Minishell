@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:35:18 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 16:32:13 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/25 09:30:38 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,9 @@ void	level_by_level_printing(t_btree *root)
 }
 
 */
-void	printab_input_level(t_input_level	*input_level, int len)
+void	printab_input_level(t_input_level	*input_level)
 {
+	int len = ft_strlen(input_level->input);
 	for (int i = 0; i < len; i++)
 	{
 		printf("%c ", input_level->input[i]);

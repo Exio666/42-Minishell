@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:18:50 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 14:29:01 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 17:23:06 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_logic_op	**create_logical_op_array(char *input)
 	j = 0;
 	while (input[i] && input[i + 1])
 	{
+		skip_quote(input, &i);
 		if (input[i] && input[i + 1] && is_logical_op_char(input[i]) == TRUE)
 		{
 			actual_log_op = get_logic_op_from_begin(input, i);
@@ -40,6 +41,7 @@ t_logic_op	**create_logical_op_array(char *input)
 	}
 	return (logical_op);
 }
+
 
 t_logic_op	**malloc_logical_op_reference(char *input)
 {

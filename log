@@ -63,4 +63,4 @@ GIO_LAUNCHED_DESKTOP_FILE_PID=40108
 GIO_LAUNCHED_DESKTOP_FILE=/usr/share/applications/code.desktop
 OLDPWD=/mnt/nfs/homes/bsavinel/Documents/organisation_github/42-Minishell/Annexes
 TERM_PROGRAM=vscode
-_=/usr/bin/env
+_=/usr/bin/env	

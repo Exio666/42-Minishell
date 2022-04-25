@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:56:56 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 16:12:05 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/15 10:31:24 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	add_all_pipe_sequence_in_tree(t_btree **root, char *user_input)
 {
 	t_pipe_sequence	**splited_pipe_seq;
 
-	remove_parenthesis(user_input);
+//	remove_parenthesis(user_input);
 	splited_pipe_seq = split_all_pipe_sequence(user_input);
 	insert_all_pipe_seq_in_btree(root, splited_pipe_seq);
 }
@@ -30,7 +30,6 @@ t_pipe_sequence	**split_all_pipe_sequence(char *user_input)
 
 	i = 0;
 	nb_pipe_sequence = count_pipe_sequence(user_input);
-	printf("%d\n", nb_pipe_sequence);
 	splited = __ft_calloc(sizeof(t_pipe_sequence *) * (nb_pipe_sequence + 1));
 	while (i < nb_pipe_sequence)
 	{
@@ -41,6 +40,7 @@ t_pipe_sequence	**split_all_pipe_sequence(char *user_input)
 		i++;
 	}
 	splited[i] = NULL;
+	print_pipe_seq_array(splited);
 	return (splited);
 }
 
@@ -64,5 +64,13 @@ int	count_pipe_sequence(char *user_input)
 	int	nb_of_pipe_sequence;
 
 	nb_of_pipe_sequence = count_logic_op(user_input) + 1;
+	printf("b_of_pipe_sequence %d\n", nb_of_pipe_sequence);
 	return (nb_of_pipe_sequence);
+}
+
+void print_pipe_seq_array(t_pipe_sequence **pip_seq)
+{
+	for (int i = 0; pip_seq[i]; i++)
+		printf("%s\n", pip_seq[i]->str);
+
 }

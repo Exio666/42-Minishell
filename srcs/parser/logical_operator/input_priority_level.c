@@ -20,12 +20,6 @@
 ** 000000000001111112222222111111000001111111 
 */
 
-/*
-** DEBUG	
-** inserer cette fonction au dessus de - return (input_level);-
-** printab_input_level(input_level, len);
-*/
-
 t_input_level	*attribute_level(char *user_input)
 {
 	int				level;
@@ -39,6 +33,8 @@ t_input_level	*attribute_level(char *user_input)
 	while (input_level->input[i])
 	{
 		input_level->level[i] = level;
+		if (is_quote(input_level->input[i]) || is_double_quote(input_level->input[i]))
+			skip_quote(input_level->input, &i);
 		if (is_open_parenthesis(input_level->input[i]))
 			increase_level(&level);
 		else if (is_close_parenthesis(input_level->input[i]))
@@ -48,14 +44,51 @@ t_input_level	*attribute_level(char *user_input)
 	return (input_level);
 }
 
+
+
+void apply_current_level_to_content_in_quote_and_skip(t_input_level	*input_level, int *index, int level)
+{
+	if (is_quote(input_level->input[*index]))
+	{
+		input_level->level[*index] = level;
+		(*index)++;
+		while (!is_quote(input_level->input[*index]))
+		{
+			input_level->level[*index] = level;
+			(*index)++;
+		}
+		input_level->level[*index] = level;
+		(*index)++;
+	}
+	else if (is_double_quote(input_level->input[*index]))
+	{
+		input_level->level[*index] = level;
+		(*index)++;
+		while (!is_double_quote(input_level->input[*index]))
+		{
+			input_level->level[*index] = level;
+			(*index)++;
+		}
+		input_level->level[*index] = level;
+		(*index)++;
+	}
+}
+
 t_input_level	*malloc_input_level(char *user_input)
 {
+	int				i;
 	int				len;
 	t_input_level	*input_level;
 
 	len = ft_strlen(user_input);
 	input_level = __ft_calloc(sizeof(t_input_level));
 	input_level->level = __ft_calloc(len * sizeof(int));
+	i = 0;
+	while (i < len)
+	{
+		input_level->level[i] = -1;
+		i++;
+	}		
 	return (input_level);
 }
 
