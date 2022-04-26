@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 16:56:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/13 10:48:22 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/26 15:22:37 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ t_lst_env	*create_list_env_elem(char *variable_env)
 	list_elem = __ft_calloc(sizeof(t_lst_env));
 	list_elem->name = get_variable_name(variable_env);
 	list_elem->content = get_variable_content(variable_env);
+	/*
+	printf("%s\n", list_elem->name);
+	printf("%s\n\n", list_elem->content);
+	*/
 	list_elem->next = NULL;
 	list_elem->prev = NULL;
 	return (list_elem);

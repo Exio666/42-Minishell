@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 13:15:58 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/13 10:12:20 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/26 15:23:21 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*get_variable_name(char	*variable_env)
 	variable_name_len = get_var_name_len(variable_env);
 	variable_name = __ft_calloc(sizeof(char) * (variable_name_len + 1));
 	ft_strlcpy(variable_name, variable_env, variable_name_len + 1);
-	return (variable_env);
+//	printf("%s\n", variable_name);
+	return (variable_name);
 }
 
 char	*get_variable_content(char	*variable_env)
@@ -33,7 +34,7 @@ char	*get_variable_content(char	*variable_env)
 	len = get_var_content_len(variable_env);
 	variable_content = __ft_calloc(sizeof(char) * (len + 1));
 	ft_strlcpy(variable_content, &variable_env[start_content_index], len + 1);
-	return (variable_env);
+	return (variable_content);
 }
 
 int	get_var_name_len(char	*variable_env)
