@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 13:38:18 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/29 14:17:33 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/29 15:40:00 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_btree	*btree_create_node_logic_op(void *item)
 		return (NULL);
 	new->logic_op = item;
 	new->pipe_seq = NULL;
-	new->token_list = NULL;
+	new->token = NULL;
 	new->left = NULL;
 	new->right = NULL;
 	return (new);
@@ -38,7 +38,7 @@ t_btree	*btree_create_node_pipe_seq(void *item)
 	new->logic_op = NULL;
 	new->pipe_seq = item;
 	pipe_sequence = (t_pipe_sequence*)item;
-	new->token_list = get_token_list(pipe_sequence->str);
+	new->token = get_token_list(pipe_sequence->str);
 	new->left = NULL;
 	new->right = NULL;
 	return (new);

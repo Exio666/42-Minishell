@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/22 14:12:29 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/29 15:40:00 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,8 @@ typedef struct s_token
 {
 	char			*str;
 	t_type_token	type;
-}	t_token;
+	struct s_token	*next;
+}	t_lst_token;
 
 
 typedef struct s_btree
@@ -139,7 +140,7 @@ typedef struct s_btree
 	struct s_lst	*list;
 	t_pipe_sequence	*pipe_seq;
 	t_logic_op		*logic_op;
-	struct s_list	*token_list;
+	t_lst_token		*token;
 	int				item_type;
 }	t_btree;
 

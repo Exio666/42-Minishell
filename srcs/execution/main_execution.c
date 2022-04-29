@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/29 15:30:07 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/29 17:17:51 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,36 +17,44 @@ void	execute_command_tree(t_btree *root, t_lst_env *env_list)
 	if (!root)
 		return ;
 	execute_command_tree(root->left, env_list);
-	if (root->token_list)
-		execute_pipe_sequence(root->token_list, env_list);
+	if (root->token)
+		execute_pipe_sequence(root->token, env_list);
 	execute_command_tree(root->right, env_list);
 }
 
 // parcourir les commandes séparés par les pipes
-void	execute_pipe_sequence(t_list *token_list, t_lst_env *env_list)
+void	execute_pipe_sequence(t_lst_token *token, t_lst_env *env_list)
 {
-	t_token	*token;
-
-	while (token_list)
+	while (token)
 	{
-		execute_command(token_list, env_list);
-		token_list = find_next_cmd(token_list);
-		if (token_list)
-			token = token_list->content;
+		execute_command(token, env_list);
+		token = find_next_cmd(token);
 	}
 }
 
+void	tokenisation_post_expand(t_lst_token *token)
+{
+	while (token && token->type != TOK_PIPE)
+	{
+		if (token->type == TOK_SINGLE_QUOTE || token->type == TOK_DOUBLE_QUOTE)
+			token->type = TOK_WORD;
+		token = token->next;
+	}
+}
 
-void	execute_command(t_list *cmd, t_lst_env *env_list)
+void	execute_command(t_lst_token *token, t_lst_env *env_list)
 {
 	char	**argv;
 
-	expand(cmd, env_list);
-	argv = find_cmd(cmd);
+	expand(token, env_list);
+	tokenisation_post_expand(token);
+	argv = find_cmd(token);
 	if (argv)
 	{	
+		printf("-----------------\n");
 		printf("argv_arg:\n");
 		print_char_two_dim_array(argv);
+		printf("-----------------\n");
 	}
 //	set_up_redirect_in();
 //	set_up_redirect_out();
@@ -54,97 +62,79 @@ void	execute_command(t_list *cmd, t_lst_env *env_list)
 //	execute();
 }
 
-char	**find_cmd(t_list *cmd)
+char	**find_cmd(t_lst_token *token)
 {
-	t_token	*token;
 	char	**argv_cmd;
 
-	token = cmd->content;
-	while (cmd && token->type != TOK_PIPE)
+	argv_cmd = NULL;
+	while (token && token->type != TOK_PIPE)
 	{
 		if (is_heredoc_token(token->type) || is_redirect_token(token->type))
-			cmd = skip_two_token(cmd);
-		if (cmd)
-			token = cmd->content;
-		if (cmd && token->type == TOK_WORD)
+			token = skip_two_token(token);
+		if (token && token->type == TOK_WORD)
 		{
-			argv_cmd = create_argv_cmd(cmd);
+			argv_cmd = create_argv_cmd(token);
 			break ;
 		}
-		if (cmd)
-			cmd = cmd->next;
+		if (token)
+			token = token->next;
 	}
 	return (argv_cmd);
 }
 
-char	**create_argv_cmd(t_list *cmd)
+char	**create_argv_cmd(t_lst_token *token)
 {
 	char	**argv_cmd;
-	t_list	*tmp;
-	t_token	*token;
+	t_lst_token	*tmp;
 	int		count_word_tok;
 	int		i;
 	
-	tmp = cmd;
-	token = tmp->content;
+	tmp = token;
 	count_word_tok = 0;
-	while (tmp && token->type == TOK_WORD)
+	while (tmp && tmp->type == TOK_WORD)
 	{
 		count_word_tok++;
 		tmp = tmp->next;
-		if (tmp)
-			token = tmp->content;
 	}
 	argv_cmd = __ft_calloc(sizeof(char*) * (count_word_tok + 1));
 	i = 0;
-	tmp = cmd;
+	tmp = token;
+	
 	while (i < count_word_tok)
 	{
-		token = tmp->content;
-		argv_cmd[i] = token->str;
+		argv_cmd[i] = tmp->str;
 		tmp = tmp->next;
 		i++;
 	}
+	print_char_two_dim_array(argv_cmd);
 	return (argv_cmd);
 }
 
-void	expand(t_list *cmd, t_lst_env *env_list)
+void	expand(t_lst_token *token, t_lst_env *env_list)
 {
-	t_token	*token;
-
-	token = cmd->content;
-	while (cmd && token->type != TOK_PIPE)
+	while (token && token->type != TOK_PIPE)
 	{
 		if (is_heredoc_token(token->type))
-			cmd = skip_two_token(cmd);
-		if (!cmd)
+			token = skip_two_token(token);
+		if (!token)
 			break ;
-		token = cmd->content;
-		if (token->type == TOK_WORD)
+		if (token->type == TOK_WORD || token->type == TOK_DOUBLE_QUOTE)
 		{
 			if (token->str)
 				token->str = expand_command(token->str, env_list);
 		}
-		token = cmd->content;
-		cmd = cmd->next;
+		token = token->next;
 	}
 }
 
-t_list	*find_next_cmd(t_list *elem)
+t_lst_token	*find_next_cmd(t_lst_token *token)
 {
-	t_token	*token;
-
-	token = elem->content;
-	while (elem && token->type != TOK_PIPE)
-	{
-		elem = elem->next;
-		if (elem)
-			token = elem->content;
-	}
-	if (!elem)
+	while (token && token->type != TOK_PIPE)
+		token = token->next;
+	if (!token)
 		return (NULL); //no more command
 	else
-		return (elem->next); //considérant que le checker ne laisse pas passer une cmd qui se termine pas un |
+		return (token->next); //considérant que le checker ne laisse pas passer une cmd qui se termine pas un |
 }
 
 
@@ -168,11 +158,11 @@ int	is_heredoc_token(t_type_token token_type)
 		return (FALSE);
 }
 
-t_list	*skip_two_token(t_list *cmd)
+t_lst_token	*skip_two_token(t_lst_token *token)
 {
-	cmd = cmd->next;
-	cmd = cmd->next;
-	return (cmd);
+	token = token->next;
+	token = token->next;
+	return (token);
 }
 
 

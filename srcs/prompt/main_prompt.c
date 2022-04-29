@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:23:39 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/27 02:59:27 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/29 17:11:23 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,29 @@ int	main(void)
 		add_history(command_line);
 		printf("%s\n", command_line);
 
-	if(primary_checker(command_line) == TRUE)
-	{
-		printf("The checker say 'commande is good'\n");
-		root = get_btree_of_logical_op(command_line);
-		add_all_pipe_sequence_in_tree(&root, command_line);
-		/*
-		split = split_by_separator(command_line, "|<>");
-		print_split_tab(split);
+		if(primary_checker(command_line) == TRUE)
+		{
+			printf("The checker say 'commande is good'\n");
+			root = get_btree_of_logical_op(command_line);
+			add_all_pipe_sequence_in_tree(&root, command_line);
+			/*
+			split = split_by_separator(command_line, "|<>");
+			print_split_tab(split);
 
-		lst = create_token_list(split);
-		print_split_lst(lst);
-*/
-		print2D(root);
-		free(command_line);
+			lst = create_token_list(split);
+			print_split_lst(lst);
+	*/
+			print2D(root);
+			free(command_line);
 
-	
-	}
-	else
-	{	
 		
-		printf("The checker say 'commande is bad'\n");
-	
-	}
+		}
+		else
+		{	
+			
+			printf("The checker say 'commande is bad'\n");
+		
+		}
 
 	}
 	return (0);

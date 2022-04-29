@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/29 14:50:00 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/29 16:27:25 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,11 @@ char	*expand_command(char *command, t_lst_env *env_list)
 	char	*variable_name;
 	int var_len;
 	int i;
-
+printf("%s\n", command);
 	i = 0;
 	while (command[i])
 	{
+		
 		if (is_dollar(command[i]))
 		{
 
