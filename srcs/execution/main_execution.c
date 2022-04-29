@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/29 18:30:11 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/29 18:39:00 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void	expand(t_lst_token *token, t_lst_env *env_list)
 		if (token->type == TOK_WORD || token->type == TOK_DOUBLE_QUOTE)
 		{
 			if (token->str)
-				token->str = expand_command(token->str, env_list);
+				token->str = expand_token(token->str, env_list);
 		}
 		token = token->next;
 	}
