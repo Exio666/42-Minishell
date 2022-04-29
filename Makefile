@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/27 02:57:58 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/28 12:39:37 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,9 @@ INCS =	-I includes				\
 		-I includes/parser/logical_operator		\
 		-I includes/parser/pipe_sequence		\
 		-I includes/env_list					\
-		-I includes/pipe_seq_to_token_list
+		-I includes/pipe_seq_to_token_list \
+		-I includes/expand					\
+		-I includes/execution
 
 SRCS =	checker/and_or_checker.c				\
 		checker/primary_check.c					\
@@ -78,9 +80,10 @@ SRCS =	checker/and_or_checker.c				\
 		pipe_seq_to_token_list/split_by_separator.c \
 		pipe_seq_to_token_list/split_pipe_by_space.c \
 		pipe_seq_to_token_list/get_token_list.c \
+		expand/expand.c
 
 #SRCS_TEST = builtins/export/main_export.c		
-SRCS_TEST = expand/main_expand.c	
+SRCS_TEST = execution/main_execution.c	
 
 ################################################################################
 ########							Libraries							########

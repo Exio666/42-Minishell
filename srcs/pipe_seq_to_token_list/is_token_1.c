@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 12:57:38 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/21 12:59:44 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/28 14:50:28 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	is_pipe_token(char *str)
 
 int	is_here_doc_token(char *str)
 {
-	if (*str == '<' && (*str + 1) == '<')
+	if (*str == '<' && (*(str + 1)) == '<')
 		return (TRUE);
 	return (FALSE);
 }

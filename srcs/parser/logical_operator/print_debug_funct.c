@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:35:18 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/22 14:24:40 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:22:33 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void print2DUtil(t_btree *root, int space)
 		printf("NULL\n");
 	}
 	else if (root->pipe_seq)
-		printf("%s\n", root->pipe_seq->str);
+		printf("piepe_seq:%s\n", root->pipe_seq->str);
 
     // Process left child
     print2DUtil(root->left, space);

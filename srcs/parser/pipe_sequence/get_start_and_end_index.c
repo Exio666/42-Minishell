@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:59:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/22 10:52:41 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/28 15:58:13 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	get_start_index_pipe_sequence(char *user_input, int pipe_sequence_to_find)
 		{
 			start_index += 2;
 			current_pipe_seq++;
-			while (is_space(user_input[start_index]))
+			while (user_input[start_index] && is_space(user_input[start_index]))
 				start_index++;
 		}
 		else
@@ -55,7 +55,7 @@ void pipe_skip_quote(char *str, int *index)
 		if (is_simple_quote(str[(*index)]))
 		{
 			(*index)++;
-			while (!is_simple_quote(str[(*index)]))
+			while (*index && !is_simple_quote(str[(*index)]))
 				(*index)++;
 			if (((*index) + 1) != '\0')
 				(*index)++;
@@ -63,7 +63,7 @@ void pipe_skip_quote(char *str, int *index)
 		else if (is_double_quote(str[(*index)]))
 		{
 			(*index)++;
-			while (!is_double_quote(str[(*index)]))
+			while (*index && !is_double_quote(str[(*index)]))
 				(*index)++;
 			if (((*index) + 1) != '\0')
 				(*index)++;

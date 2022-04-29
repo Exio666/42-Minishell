@@ -6,13 +6,13 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/22 10:58:20 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/28 15:55:12 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*----- version | < > -----*/
+
 
 static int	count_word(char *str)
 {

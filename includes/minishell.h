@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/25 10:02:59 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/28 12:36:39 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,6 @@
  *	Wilcard
  */
 
+# include "expand.h"
+# include "execution.h"
 #endif

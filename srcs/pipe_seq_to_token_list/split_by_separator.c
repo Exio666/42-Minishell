@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/22 10:58:52 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/28 17:02:56 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static int	count_word(char *str, char *sep)
 	i = 0;
 	while (is_space(*str))
 		str++;
-	if (*str == '<' || *str == '>')
-		nb_word++;
+//	if (*str == '<' || *str == '>')
+//		nb_word++;
 	while (str[i])
 	{
 		while (str[i] && is_separator(str[i], sep))
@@ -105,7 +105,11 @@ char	**split_by_separator(char *s, char *sep)
 	char	**split;
 	int		nb_word;
 
-	nb_word = (count_word(s, sep) * 2) - 1;
+
+	nb_word = (count_word(s, sep));
+	if (separator_in_)
+		nb_word*2;
+	printf("%d\n", nb_word);
 	split = __ft_calloc(sizeof(char *) * (nb_word + 1));
 	i = 0;
 	k = -1;
