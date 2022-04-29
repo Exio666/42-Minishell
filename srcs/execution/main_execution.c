@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/29 10:18:31 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/29 10:36:54 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,18 @@ int execute_pipe_sequence(t_list *token_list, t_lst_env *env_list)
 
 int execute_command(t_list *cmd, t_lst_env *env_list)
 {
-//	char	**argv;
+	char	**argv;
 //	t_token *token;
 
 //	token = cmd;
 	expand(cmd, env_list);
+
 	printf("TEMOIN 0:\n");
-//	argv = find_cmd(cmd);
-//	printf("TEMOIN 1:\n");
-//	printf("argv_arg:\n");
-	//print_char_two_dim_array(argv);
+	argv = find_cmd(cmd);
+	printf("TEMOIN 1:\n");
+	printf("argv_arg:\n");
+	print_char_two_dim_array(argv);
+
 //	set_up_redirect_in();
 //	set_up_redirect_out();
 //	set_up_redirect_out_append();
