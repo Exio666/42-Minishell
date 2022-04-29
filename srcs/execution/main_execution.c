@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/29 17:17:51 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/29 18:30:11 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,31 +82,34 @@ char	**find_cmd(t_lst_token *token)
 	return (argv_cmd);
 }
 
+int count_tok_word(t_lst_token *token)
+{
+	int	count;
+
+	count = 0;
+	while (token && token->type == TOK_WORD)
+	{
+		count++;
+		token = token->next;
+	}
+	return (count);
+}
+
 char	**create_argv_cmd(t_lst_token *token)
 {
 	char	**argv_cmd;
-	t_lst_token	*tmp;
-	int		count_word_tok;
+	int		nb_word_tok;
 	int		i;
-	
-	tmp = token;
-	count_word_tok = 0;
-	while (tmp && tmp->type == TOK_WORD)
-	{
-		count_word_tok++;
-		tmp = tmp->next;
-	}
-	argv_cmd = __ft_calloc(sizeof(char*) * (count_word_tok + 1));
+
+	nb_word_tok = count_tok_word(token);
+	argv_cmd = __ft_calloc(sizeof(char*) * (nb_word_tok + 1));
 	i = 0;
-	tmp = token;
-	
-	while (i < count_word_tok)
+	while (i < nb_word_tok)
 	{
-		argv_cmd[i] = tmp->str;
-		tmp = tmp->next;
+		argv_cmd[i] = token->str;
+		token = token->next;
 		i++;
 	}
-	print_char_two_dim_array(argv_cmd);
 	return (argv_cmd);
 }
 

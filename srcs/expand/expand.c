@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/29 16:27:25 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/29 18:33:34 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,28 +94,22 @@ char	*expand_command(char *command, t_lst_env *env_list)
 	char	*variable_name;
 	int var_len;
 	int i;
-printf("%s\n", command);
+
 	i = 0;
 	while (command[i])
 	{
-		
 		if (is_dollar(command[i]))
 		{
 
 			var_len = get_var_length(command);
 			variable_name = get_variable_to_expand_name(&command[i + 1]);
-//			if (variable_name)
-//				printf("%s\n", variable_name);	
-
 			var_content = get_var_to_expand_content(variable_name, env_list);
-//			printf("var_content: [%s]\n", var_content);
 			if (!var_content)
 			{
 				printf("Variable doesn't exist\n");
 				return (NULL);
 			}
 			insert_var_content_to_command(&command, var_content, i);
-//			printf("command : %s\n", command);
 		}
 		i++;
 	}
