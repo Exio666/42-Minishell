@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 13:38:18 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/28 16:26:39 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/29 14:17:33 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ t_btree	*btree_create_node_pipe_seq(void *item)
 	new->logic_op = NULL;
 	new->pipe_seq = item;
 	pipe_sequence = (t_pipe_sequence*)item;
-	printf("pipe_seq_str: %s\n",pipe_sequence->str);
 	new->token_list = get_token_list(pipe_sequence->str);
 	new->left = NULL;
 	new->right = NULL;

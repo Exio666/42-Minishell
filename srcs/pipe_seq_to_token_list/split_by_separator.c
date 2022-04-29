@@ -109,6 +109,7 @@ char	**split_by_separator(char *s, char *sep)
 
 
 	nb_word = (count_word(s, sep));
+	printf("%d\n", nb_word);
 	split = __ft_calloc(sizeof(char *) * (nb_word + 1));
 	i = 0;
 	k = -1;

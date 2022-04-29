@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef EXPAND_H
-# define EXPAN_H
+# define EXPAND_H
 
 # include "minishell.h"
 

@@ -6,80 +6,75 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/29 10:36:54 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/29 15:30:07 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void execute_command_tree(t_btree *root, t_lst_env *env_list)
+void	execute_command_tree(t_btree *root, t_lst_env *env_list)
 {
 	if (!root)
 		return ;
-	execute_command_tree(root->left, env_list);	//go->left
+	execute_command_tree(root->left, env_list);
 	if (root->token_list)
-		execute_pipe_sequence(root->token_list, env_list);	//do action
-	execute_command_tree(root->right, env_list);	//go->right
+		execute_pipe_sequence(root->token_list, env_list);
+	execute_command_tree(root->right, env_list);
 }
 
-int execute_pipe_sequence(t_list *token_list, t_lst_env *env_list)
+// parcourir les commandes séparés par les pipes
+void	execute_pipe_sequence(t_list *token_list, t_lst_env *env_list)
 {
-	t_token *token;
-	// parcourir les commandes séparés par les pipes
+	t_token	*token;
+
 	while (token_list)
 	{
 		execute_command(token_list, env_list);
-		//pipe
 		token_list = find_next_cmd(token_list);
 		if (token_list)
-		{
 			token = token_list->content;
-			printf("token : %s\n", token->str);
-		}
 	}
 }
 
 
-int execute_command(t_list *cmd, t_lst_env *env_list)
+void	execute_command(t_list *cmd, t_lst_env *env_list)
 {
 	char	**argv;
-//	t_token *token;
 
-//	token = cmd;
 	expand(cmd, env_list);
-
-	printf("TEMOIN 0:\n");
 	argv = find_cmd(cmd);
-	printf("TEMOIN 1:\n");
-	printf("argv_arg:\n");
-	print_char_two_dim_array(argv);
-
+	if (argv)
+	{	
+		printf("argv_arg:\n");
+		print_char_two_dim_array(argv);
+	}
 //	set_up_redirect_in();
 //	set_up_redirect_out();
 //	set_up_redirect_out_append();
 //	execute();
 }
 
-char **find_cmd(t_list *cmd)
+char	**find_cmd(t_list *cmd)
 {
 	t_token	*token;
+	char	**argv_cmd;
 
 	token = cmd->content;
 	while (cmd && token->type != TOK_PIPE)
 	{
-		if (is_heredoc_token(token->type))
-			cmd = skip_heredoc_token(cmd);
 		if (is_heredoc_token(token->type) || is_redirect_token(token->type))
 			cmd = skip_two_token(cmd);
 		if (cmd)
 			token = cmd->content;
 		if (cmd && token->type == TOK_WORD)
 		{
-			create_argv_cmd(cmd);
+			argv_cmd = create_argv_cmd(cmd);
+			break ;
 		}
 		if (cmd)
 			cmd = cmd->next;
 	}
+	return (argv_cmd);
 }
 
 char	**create_argv_cmd(t_list *cmd)
@@ -87,22 +82,23 @@ char	**create_argv_cmd(t_list *cmd)
 	char	**argv_cmd;
 	t_list	*tmp;
 	t_token	*token;
-	int		count;
+	int		count_word_tok;
 	int		i;
+	
 	tmp = cmd;
 	token = tmp->content;
-	count = 0;
-
+	count_word_tok = 0;
 	while (tmp && token->type == TOK_WORD)
 	{
-		count++;
+		count_word_tok++;
 		tmp = tmp->next;
-		token = tmp->content;
+		if (tmp)
+			token = tmp->content;
 	}
-	argv_cmd = __ft_calloc(sizeof(char*) * (count + 1));
+	argv_cmd = __ft_calloc(sizeof(char*) * (count_word_tok + 1));
 	i = 0;
 	tmp = cmd;
-	while (i < count)
+	while (i < count_word_tok)
 	{
 		token = tmp->content;
 		argv_cmd[i] = token->str;
@@ -112,7 +108,7 @@ char	**create_argv_cmd(t_list *cmd)
 	return (argv_cmd);
 }
 
-void expand(t_list *cmd, t_lst_env *env_list)
+void	expand(t_list *cmd, t_lst_env *env_list)
 {
 	t_token	*token;
 
@@ -120,11 +116,13 @@ void expand(t_list *cmd, t_lst_env *env_list)
 	while (cmd && token->type != TOK_PIPE)
 	{
 		if (is_heredoc_token(token->type))
-			cmd = skip_heredoc_token(cmd);
+			cmd = skip_two_token(cmd);
+		if (!cmd)
+			break ;
 		token = cmd->content;
 		if (token->type == TOK_WORD)
 		{
-			if (token->str);
+			if (token->str)
 				token->str = expand_command(token->str, env_list);
 		}
 		token = cmd->content;
@@ -132,10 +130,9 @@ void expand(t_list *cmd, t_lst_env *env_list)
 	}
 }
 
-
-t_list *find_next_cmd(t_list *elem)
+t_list	*find_next_cmd(t_list *elem)
 {
-	t_token *token;
+	t_token	*token;
 
 	token = elem->content;
 	while (elem && token->type != TOK_PIPE)
@@ -151,7 +148,7 @@ t_list *find_next_cmd(t_list *elem)
 }
 
 
-int is_redirect_token(t_type_token token_type)
+int	is_redirect_token(t_type_token token_type)
 {
 	if (token_type == TOK_REDIRECT_IN)
 		return (TRUE);
@@ -163,7 +160,7 @@ int is_redirect_token(t_type_token token_type)
 		return (FALSE);
 }
 
-int is_heredoc_token(t_type_token token_type)
+int	is_heredoc_token(t_type_token token_type)
 {
 	if (token_type == TOK_HEREDOC)
 		return (TRUE);
@@ -171,14 +168,7 @@ int is_heredoc_token(t_type_token token_type)
 		return (FALSE);
 }
 
-t_list *skip_heredoc_token(t_list *cmd)
-{
-	cmd = cmd->next;
-	cmd = cmd->next;
-	return (cmd);
-}
-
-t_list *skip_two_token(t_list *cmd)
+t_list	*skip_two_token(t_list *cmd)
 {
 	cmd = cmd->next;
 	cmd = cmd->next;
@@ -234,11 +224,10 @@ printf("------------------------------\n");
 		env_list = convert_env_array_in_list(envp);
 		execute_command_tree(root, env_list);
 		
-		(root);
+		print2D(root);
 		printf("------------------------------\n");
 		free(command_line);
 		//__ft_calloc(-1);
-	
 	}
 	else
 	{	
@@ -248,5 +237,6 @@ printf("------------------------------\n");
 	}
 
 	}
+	
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/28 14:44:30 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/29 14:50:00 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*get_variable_to_expand_name(char *command)
 	var_len = get_var_length(command);
 	if (var_len == 0)
 		return (NULL);
-	var_name = malloc(sizeof(char) * (var_len + 1));
+	var_name = __ft_calloc(sizeof(char) * (var_len + 1));
 	ft_strlcpy (var_name, command, var_len + 1);
 	return (var_name);
 }
@@ -84,7 +84,7 @@ void	insert_var_content_to_command(char **command, char *var_content, int start_
 	ft_strlcat(expanded_command, &(*command)[start_index + var_len + 1], (expanded_command_len + command_len + 1));
 //	printf("3 expanded_command: [%s]\n", expanded_command);
 	
-	free(*command);
+//	free(*command);
 	*command = expanded_command;
 }
 
