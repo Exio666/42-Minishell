@@ -3,30 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   list_to_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 13:19:55 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/11 15:42:42 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/30 17:14:33 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_dlistsize(t_lst_env *lst)
+int env_lst_size(t_lst_env *list)
 {
-	int			i;
-	t_lst_env	*tmp;
+	int count;
 
-	if (!lst)
-		return (0);
-	i = 1;
-	tmp = lst->next;
-	while (tmp != NULL)
+	count = 0;
+	while (list)
 	{
-		tmp = tmp->next;
-		i++;
+		count++;
+		list = list->next;
 	}
-	return (i);
+	return (count);
 }
 
 char	**env_list_to_tab(t_lst_env **list_env)

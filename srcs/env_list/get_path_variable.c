@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 20:18:51 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/13 10:48:02 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/30 17:01:08 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	**split_path_env_variable(char *path_env_variable)
 	return (all_path);
 }
 
-char	*get_path_env_variable(t_lst_env	*list_env_var)
+char	*get_path_env_variable_from_lst(t_lst_env	*list_env_var)
 {
 	while (list_env_var)
 	{

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 15:02:48 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/30 17:23:49 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,72 @@ void	execute_pipe_sequence(t_lst_token *token, t_lst_env *env_list)
 	}
 }
 
+/* REDIRECT_IN */
+
+void	set_up_redirect_out(t_lst_token *token)
+{
+	int	fd_file;
+
+	while (token && token->type != TOK_REDIRECT_OUT)
+	{
+		token = token->next;
+	}
+	if (token && token->type == TOK_REDIRECT_OUT)
+	{
+		token = token->next;
+		if (token)
+		{
+			fd_file = open(token->str, O_CREAT, O_RDWR);
+			dup2(fd_file, STDOUT_FILENO);
+			close(fd_file);
+		}
+	}
+}
+
+void	set_up_redirect_in(t_lst_token *token)
+{
+	int	fd_file;
+
+	while (token && token->type != TOK_REDIRECT_IN)
+	{
+		token = token->next;
+	}
+	if (token && token->type == TOK_REDIRECT_IN)
+	{
+		token = token->next;
+		if (token)
+		{
+			fd_file = open(token->str, O_RDONLY);
+			dup2(fd_file, STDIN_FILENO);
+			close(fd_file);
+		}
+	}
+}
+
+void	set_up_redirect_out_append(t_lst_token *token)
+{
+	int	fd_file;
+
+	while (token && token->type != TOK_REDIRECT_OUT_APPEND)
+	{
+		token = token->next;
+	}
+	if (token && token->type == TOK_REDIRECT_OUT_APPEND)
+	{
+		token = token->next;
+		if (token)
+		{
+			fd_file = open(token->str, O_CREAT, O_APPEND);
+			dup2(fd_file, STDOUT_FILENO);
+			close(fd_file);
+		}
+	}
+}
+
 void	execute_command(t_lst_token *token, t_lst_env *env_list)
 {
 	char	**argv;
-
+	int status;
 	expand(token, env_list);
 	tokenisation_post_expand(token);
 	argv = create_argv_cmd(token);
@@ -47,8 +109,16 @@ void	execute_command(t_lst_token *token, t_lst_env *env_list)
 		printf("-----------------\n");
 	}
 */
-//	set_up_redirect_in();
-//	set_up_redirect_out();
-//	set_up_redirect_out_append();
-//	execute();
+
+	int pid = fork();
+	if (pid == 0)
+	{
+		set_up_redirect_in(token);
+		set_up_redirect_out(token);
+		set_up_redirect_out_append(token);
+		execute(argv, env_list);
+		exit(0);
+	}
+	else
+		wait(&status);
 }

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/28 12:36:39 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/30 17:16:37 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@
  *	Env
  */
 
+# include "get_all_path.h"
+# include "list_to_tab.h"
 //# include "ft_get_env.h"
 
 /*

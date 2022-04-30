@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/30 14:59:10 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/30 17:14:20 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ INCS =	-I includes				\
 		-I includes/parser/logical_operator		\
 		-I includes/parser/pipe_sequence		\
 		-I includes/env_list					\
+		-I includes/env					\
 		-I includes/pipe_seq_to_token_list \
 		-I includes/expand					\
 		-I includes/execution
@@ -65,6 +66,8 @@ SRCS =	checker/and_or_checker.c				\
 		parser/pipe_sequence/get_pipe_sequence.c \
 		parser/pipe_sequence/add_all_pipe_sequence_in_tree.c \
 		parser/pipe_sequence/get_start_and_end_index.c				\
+		env/get_all_path.c \
+		env/list_to_tab.c \
 		env_list/env_list_management.c			\
 		env_list/get_functions.c				\
 		env_list/convert_env_array_in_list.c	\

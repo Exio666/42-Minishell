@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:37:47 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/03/31 16:18:39 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/30 17:00:34 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	pipex(int ac, char **av, char **envp)
 	char	**all_path;
 
 	i = 3;
-	all_path = split_path_env_variable_and_add_slash(get_path_env_variable(envp));
+	all_path = split_path_env_variable_and_add_slash(get_path_env_variable_from_array(envp));
 	pipe(pipe_stock);
 	pid = fork();
 	if (pid == 0)

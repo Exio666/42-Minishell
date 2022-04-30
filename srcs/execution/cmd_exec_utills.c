@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:53:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 15:03:42 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/30 16:19:53 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	**create_argv_cmd(t_lst_token *token)
 
 	first_token_of_cmd = find_first_token_cmd(token);
 	nb_word_tok = count_tok_word(token);
-	argv_cmd = _ft_calloc(sizeof(char *) * (nb_word_tok + 1));
+	argv_cmd = __ft_calloc(sizeof(char *) * (nb_word_tok + 1));
 	i = 0;
 	while (i < nb_word_tok)
 	{

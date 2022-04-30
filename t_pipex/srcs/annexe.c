@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   annexe.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 11:22:34 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/11 15:43:35 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/04/30 17:01:25 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char **parse_arg(char *arg)
 	return (arg_with_option);
 }
 
-char *get_path_env_variable(char **envp)
+char *get_path_env_variable_from_array(char **envp)
 {
 	int i;
 
@@ -70,7 +70,7 @@ char *get_name_command(char **exe_argv)
 	return (name_command);
 }
 
-void execute_command(char **exe_argv, char **all_path, char **envp)
+void execute(char **exe_argv, char **all_path, char **envp)
 {
 	int		exe_read = -1;
 	char	*full_path_command;
