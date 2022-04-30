@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/04/30 17:14:20 by rpottier         ###   ########.fr        #
+#    Updated: 2022/04/30 21:50:38 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,7 @@ SRCS =	checker/and_or_checker.c				\
 		execution/execution.c	\
 		execution/find_token_cmd.c	\
 		execution/token_utils.c	\
+		execution/set_up_redirection.c	\
 
 #SRCS_TEST = builtins/export/main_export.c		
 SRCS_TEST = execution/main_execution.c	
