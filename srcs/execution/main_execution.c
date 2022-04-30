@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 17:29:41 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/30 22:09:29 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,16 @@ int	main(int argc, char **argv, char **envp)
 	while (42)
 	{
 		command_line = readline(prompt);
+		if (strcmp(command_line, "EXIT") == 0)
+		{
+			free(command_line);
+			rl_clear_history();
+			return (0);
+		}
 		add_history(command_line);
 
-	if(primary_checker(command_line) == TRUE)
-	{
+	//if(primary_checker(command_line) == TRUE)
+	//{
 	//	printf("The checker say 'commande is good'\n");
 		root = get_btree_of_logical_op(command_line);
 		add_all_pipe_sequence_in_tree(&root, command_line);
@@ -49,20 +55,20 @@ printf("------------------------------\n");
 		*/
 //		printf("------------------------------\n");
 		env_list = convert_env_array_in_list(envp);
+		//execute_here_doc_tree(root);
 		execute_command_tree(root, env_list);
 		
 //		print2D(root);
 //		printf("------------------------------\n");
-		free(command_line);
-		//__ft_calloc(-1);
-	}
-	else
-	{	
+	//}
+	//else
+	//{	
 		
-		printf("The checker say 'commande is bad'\n");
+	//	printf("The checker say 'commande is bad'\n");
 	
-	}
-
+	//}
+	free(command_line);
+	__ft_calloc(-1);
 	}
 	
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 16:48:21 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 17:34:45 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/30 22:20:38 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,8 @@ int execute(char **exe_argv, t_lst_env *env_list)
 		{
 			full_path_command = ft_strjoin(all_path[i], exe_argv[0]);
 			exe_read = execve(full_path_command, exe_argv, envp);
-			
 		}
 		i++;
 	}
-	return (-1);
+	return (ERROR_EXECVE);
 }

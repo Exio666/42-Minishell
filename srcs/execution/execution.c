@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 21:48:02 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/30 22:09:49 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,11 @@ void	execute_command(t_lst_token *token, t_lst_env *env_list)
 {
 	char	**argv;
 	int status;
+	
 	expand(token, env_list);
 	tokenisation_post_expand(token);
 	argv = create_argv_cmd(token);
+	
 /*	if (argv)
 	{	
 		printf("-----------------\n");
@@ -60,3 +62,5 @@ void	execute_command(t_lst_token *token, t_lst_env *env_list)
 	else
 		wait(&status);
 }
+
+void	execute_here_doc_tree(t_btree *root);

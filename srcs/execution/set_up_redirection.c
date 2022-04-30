@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 21:47:51 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 21:48:10 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/30 22:27:26 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	set_up_redirect_out(t_lst_token *token)
 		token = token->next;
 		if (token)
 		{
-			fd_file = open(token->str, O_CREAT, O_RDWR);
+			fd_file = open(token->str, O_WRONLY | O_CREAT, 00777);
 			dup2(fd_file, STDOUT_FILENO);
-			close(fd_file);
+		//	close(fd_file);
 		}
 	}
 }
@@ -47,7 +47,7 @@ void	set_up_redirect_in(t_lst_token *token)
 		{
 			fd_file = open(token->str, O_RDONLY);
 			dup2(fd_file, STDIN_FILENO);
-			close(fd_file);
+			//close(fd_file);
 		}
 	}
 }
@@ -65,7 +65,7 @@ void	set_up_redirect_out_append(t_lst_token *token)
 		token = token->next;
 		if (token)
 		{
-			fd_file = open(token->str, O_CREAT, O_APPEND);
+			fd_file = open(token->str, O_CREAT | O_APPEND);
 			dup2(fd_file, STDOUT_FILENO);
 			close(fd_file);
 		}
