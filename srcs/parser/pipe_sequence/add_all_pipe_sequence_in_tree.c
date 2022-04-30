@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:56:56 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/29 14:22:58 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/30 12:58:52 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ void	add_all_pipe_sequence_in_tree(t_btree **root, char *user_input)
 	t_pipe_sequence	**splited_pipe_seq;
 
 	remove_parenthesis(user_input);
-	printf("user_input: %s\n", user_input);
+//	printf("user_input: %s\n", user_input);
 	splited_pipe_seq = split_all_pipe_sequence(user_input);
-	for (int i = 0; splited_pipe_seq[i]; i++)
-		printf("HERE:%s\n", splited_pipe_seq[i]->str);
+//	for (int i = 0; splited_pipe_seq[i]; i++)
+//		printf("HERE:%s\n", splited_pipe_seq[i]->str);
 	insert_all_pipe_seq_in_btree(root, splited_pipe_seq);
-	printf("***********************\n");
+//	printf("***********************\n");
 //	print2D(*root);
-	printf("***********************\n");
+//	printf("***********************\n");
 }
 
 t_pipe_sequence	**split_all_pipe_sequence(char *user_input)
@@ -82,5 +82,4 @@ void print_pipe_seq_array(t_pipe_sequence **pip_seq)
 {
 	for (int i = 0; pip_seq[i]; i++)
 		printf("%s\n", pip_seq[i]->str);
-
 }

@@ -6,177 +6,12 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/29 18:39:00 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/30 14:59:37 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	execute_command_tree(t_btree *root, t_lst_env *env_list)
-{
-	if (!root)
-		return ;
-	execute_command_tree(root->left, env_list);
-	if (root->token)
-		execute_pipe_sequence(root->token, env_list);
-	execute_command_tree(root->right, env_list);
-}
-
-// parcourir les commandes séparés par les pipes
-void	execute_pipe_sequence(t_lst_token *token, t_lst_env *env_list)
-{
-	while (token)
-	{
-		execute_command(token, env_list);
-		token = find_next_cmd(token);
-	}
-}
-
-void	tokenisation_post_expand(t_lst_token *token)
-{
-	while (token && token->type != TOK_PIPE)
-	{
-		if (token->type == TOK_SINGLE_QUOTE || token->type == TOK_DOUBLE_QUOTE)
-			token->type = TOK_WORD;
-		token = token->next;
-	}
-}
-
-void	execute_command(t_lst_token *token, t_lst_env *env_list)
-{
-	char	**argv;
-
-	expand(token, env_list);
-	tokenisation_post_expand(token);
-	argv = find_cmd(token);
-	if (argv)
-	{	
-		printf("-----------------\n");
-		printf("argv_arg:\n");
-		print_char_two_dim_array(argv);
-		printf("-----------------\n");
-	}
-//	set_up_redirect_in();
-//	set_up_redirect_out();
-//	set_up_redirect_out_append();
-//	execute();
-}
-
-char	**find_cmd(t_lst_token *token)
-{
-	char	**argv_cmd;
-
-	argv_cmd = NULL;
-	while (token && token->type != TOK_PIPE)
-	{
-		if (is_heredoc_token(token->type) || is_redirect_token(token->type))
-			token = skip_two_token(token);
-		if (token && token->type == TOK_WORD)
-		{
-			argv_cmd = create_argv_cmd(token);
-			break ;
-		}
-		if (token)
-			token = token->next;
-	}
-	return (argv_cmd);
-}
-
-int count_tok_word(t_lst_token *token)
-{
-	int	count;
-
-	count = 0;
-	while (token && token->type == TOK_WORD)
-	{
-		count++;
-		token = token->next;
-	}
-	return (count);
-}
-
-char	**create_argv_cmd(t_lst_token *token)
-{
-	char	**argv_cmd;
-	int		nb_word_tok;
-	int		i;
-
-	nb_word_tok = count_tok_word(token);
-	argv_cmd = __ft_calloc(sizeof(char*) * (nb_word_tok + 1));
-	i = 0;
-	while (i < nb_word_tok)
-	{
-		argv_cmd[i] = token->str;
-		token = token->next;
-		i++;
-	}
-	return (argv_cmd);
-}
-
-void	expand(t_lst_token *token, t_lst_env *env_list)
-{
-	while (token && token->type != TOK_PIPE)
-	{
-		if (is_heredoc_token(token->type))
-			token = skip_two_token(token);
-		if (!token)
-			break ;
-		if (token->type == TOK_WORD || token->type == TOK_DOUBLE_QUOTE)
-		{
-			if (token->str)
-				token->str = expand_token(token->str, env_list);
-		}
-		token = token->next;
-	}
-}
-
-t_lst_token	*find_next_cmd(t_lst_token *token)
-{
-	while (token && token->type != TOK_PIPE)
-		token = token->next;
-	if (!token)
-		return (NULL); //no more command
-	else
-		return (token->next); //considérant que le checker ne laisse pas passer une cmd qui se termine pas un |
-}
-
-
-int	is_redirect_token(t_type_token token_type)
-{
-	if (token_type == TOK_REDIRECT_IN)
-		return (TRUE);
-	else if (token_type == TOK_REDIRECT_OUT)
-		return (TRUE);
-	else if (token_type == TOK_REDIRECT_OUT_APPEND)
-		return (TRUE);
-	else
-		return (FALSE);
-}
-
-int	is_heredoc_token(t_type_token token_type)
-{
-	if (token_type == TOK_HEREDOC)
-		return (TRUE);
-	else
-		return (FALSE);
-}
-
-t_lst_token	*skip_two_token(t_lst_token *token)
-{
-	token = token->next;
-	token = token->next;
-	return (token);
-}
-
-
-
-
-#include "minishell.h"
-#include <stdio.h>
-#include <readline/readline.h>
-#include <readline/history.h>
-
-//int	main(int argc, char **argv)
 int	main(int argc, char **argv, char **envp)
 {
 
@@ -195,7 +30,6 @@ int	main(int argc, char **argv, char **envp)
 	{
 		command_line = readline(prompt);
 		add_history(command_line);
-		printf("%s\n", command_line);
 
 	if(primary_checker(command_line) == TRUE)
 	{
@@ -213,12 +47,12 @@ printf("------------------------------\n");
 		print_split_lst(lst_token);
 
 		*/
-		printf("------------------------------\n");
+//		printf("------------------------------\n");
 		env_list = convert_env_array_in_list(envp);
 		execute_command_tree(root, env_list);
 		
 		print2D(root);
-		printf("------------------------------\n");
+//		printf("------------------------------\n");
 		free(command_line);
 		//__ft_calloc(-1);
 	}

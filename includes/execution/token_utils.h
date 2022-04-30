@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execution.h                                        :+:      :+:    :+:   */
+/*   token_utils.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 12:34:08 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 15:00:09 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/30 13:19:20 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/30 15:00:05 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTION_H
-# define EXECUTION_H
+#ifndef TOKEN_UTILS_H
+# define TOKEN_UTILS_H
 
 # include "minishell.h"
-# include "cmd_exec_utils.h"
-# include "find_token_cmd.h"
-# include "token_utils.h"
 
-void	execute_command_tree(t_btree *root, t_lst_env *env_list);
-void	execute_pipe_sequence(t_lst_token *token, t_lst_env *env_list);
-void	execute_command(t_lst_token *token, t_lst_env *env_list);
+int			is_redirect_token(t_type_token token_type);
+int			is_heredoc_token(t_type_token token_type);
+int 		count_tok_word(t_lst_token *token);
+t_lst_token	*skip_two_token(t_lst_token *token);
 
 #endif

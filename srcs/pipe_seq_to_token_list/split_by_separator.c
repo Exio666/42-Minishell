@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/29 10:32:13 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/30 13:01:22 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ char	**split_by_separator(char *s, char *sep)
 
 
 	nb_word = (count_word(s, sep));
-	printf("%d\n", nb_word);
 	split = __ft_calloc(sizeof(char *) * (nb_word + 1));
 	i = 0;
 	k = -1;

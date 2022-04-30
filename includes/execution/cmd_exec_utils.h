@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execution.h                                        :+:      :+:    :+:   */
+/*   cmd_exec_utils.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 12:34:08 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 15:00:09 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/30 14:54:06 by rpottier          #+#    #+#             */
+/*   Updated: 2022/04/30 15:00:10 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTION_H
-# define EXECUTION_H
+#ifndef CMD_EXEC_UTILS_H
+# define CMD_EXEC_UTILS_H
 
 # include "minishell.h"
-# include "cmd_exec_utils.h"
-# include "find_token_cmd.h"
-# include "token_utils.h"
 
-void	execute_command_tree(t_btree *root, t_lst_env *env_list);
-void	execute_pipe_sequence(t_lst_token *token, t_lst_env *env_list);
-void	execute_command(t_lst_token *token, t_lst_env *env_list);
+void	expand(t_lst_token *token, t_lst_env *env_list);
+void	tokenisation_post_expand(t_lst_token *token);
+char	**create_argv_cmd(t_lst_token *token);
 
 #endif
