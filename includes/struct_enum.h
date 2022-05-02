@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/25 10:31:44 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/02 19:13:38 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,16 @@ typedef struct s_input_prio_level
 	int		*level;
 }	t_input_level;
 
+/*
+ *	Wildcard
+ */
 
+typedef struct s_wildcard
+{
+	int		str_in_simple_quote;
+	int		str_in_double_quote;
+	int		wild_in_simple_quote;
+	int		wild_in_double_quote;
+}	t_wildcard;
 
 #endif
