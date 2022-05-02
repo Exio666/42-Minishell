@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:18:55 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/02 16:36:23 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/02 16:41:25 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	add_varr_env(char *name, char *varraible, t_lst_env **envp)
 	return (0);
 }
 
-int	ft_export(char *arg, t_lst_env **envp)
+char *put_varraible(char *arg, t_lst_env **envp)
 {
 	char	*name;
 	char	*variable_env;
@@ -72,5 +72,20 @@ int	ft_export(char *arg, t_lst_env **envp)
 	name[i] = '\0';
 	ft_unset(name, envp);
 	add_varr_env(name, &arg[len], envp);
+	return (0);
+}
+
+int	ft_export(int ac, char **arg, t_lst_env **envp)
+{
+	int i;
+
+	i = 1;
+	if (!arg)
+		return (1);
+	while (i < ac)
+	{
+		put_varraible(arg[i], envp);
+		i++;
+	}
 	return (0);
 }
