@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 11:35:16 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/02 09:30:30 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/02 14:34:04 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	redirect_out_checker(char *commande, t_checker *check)
 			check->error = TRUE;
 		}
 	}
-	while (commande[check->index] && ft_iswhitespace(commande[check->index]) && check->error == FALSE)
+	while (commande[check->index] && ft_iswhitespace(commande[check->index])
+		&& check->error == FALSE)
 		check->index++;
 	if (commande[check->index] && commande[check->index] != '>'
 		&& commande[check->index] != '<' && commande[check->index] != '|')
