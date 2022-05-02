@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 11:35:16 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/25 10:55:37 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/02 09:30:30 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,10 @@ void	pipe_content_checker(char *commande, t_checker *check)
 		i++;
 	}
 	if (len == 0)
+	{
+		check->str = S_ERROR_MIS_CMD_PIPE;
 		check->error = TRUE;
+	}
 }
 
 int	redirection_checker(char *pipe_sequence, t_checker *check)

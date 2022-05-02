@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/25 09:43:39 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/02 09:16:08 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,18 @@
 # define S_ERROR_UNEX_TOK_AND "Syntax error : near unexpected token \'&&\'"
 # define S_ERROR_UNEX_TOK_OR "Syntax error : near unexpected token \'||\'"
 # define S_ERROR_UNEX_TOK_PIPE "Syntax error : near unexpected token \'|\'"
-# define S_ERROR_UNEX_TOK_REDIRECT_IN "Syntax error : \
-near unexpected token \'>\'"
 # define S_ERROR_UNEX_TOK_REDIRECT_OUT "Syntax error : \
+near unexpected token \'>\'"
+# define S_ERROR_UNEX_TOK_REDIRECT_IN "Syntax error : \
 near unexpected token \'<\'"
-# define S_ERROR_MIS_ARG_REDIRECT_OUT "Syntax error : \
+# define S_ERROR_MIS_ARG_REDIRECT_IN "Syntax error : \
 missing argument after \'<\'"
-# define S_ERROR_MIS_ARG_REDIRECT_IN "Syntax error : missing argument after \'>\'"
+# define S_ERROR_MIS_ARG_REDIRECT_OUT "Syntax error : \
+missing argument after \'>\'"
 # define S_ERROR_MISSING_COMMANDE "Syntax error : missing commande"
 # define CD_ERROR_NO_DIR "cd: no such file or directory: "
 # define CD_ERROR_HOME_MOT_SET "cd: HOME not set\n"
 # define CD_TOO_MANY_ARGS "cd: too many arguments\n"
+# define S_ERROR_MIS_CMD_PIPE "Syntax error : missing commande after \'|\'"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 12:09:11 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/25 10:30:28 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/02 09:04:30 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	pipe_sequence_checker(char *commande)
 		check.error = TRUE;
 		check.str = S_ERROR_MISSING_COMMANDE;
 	}
-	/*if (check.error == FALSE)
-		redirection_checker(commande, &check);*/
+	if (check.error == FALSE)
+		redirection_checker(commande, &check);
 	if (check.error == TRUE)
 		printf("%s\n", check.str);
 	return (!check.error);
