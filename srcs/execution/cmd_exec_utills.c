@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:53:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/03 13:40:47 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/03 17:15:53 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,7 @@ void insert_split_in_token_list(t_lst_token *token, char **split)
 	}	
 }
 
-void	expand(t_lst_token *token, t_lst_env *env_list)
-{
-	while (token && token->type != TOK_PIPE)
-	{
-		if (is_heredoc_token(token->type))
-			token = skip_two_token(token);
-		if (!token)
-			break ;
-		if (token->type == TOK_WORD || token->type == TOK_DOUBLE_QUOTE)
-		{
-			if (token->str)
-				token->str = expand_token(token->str, env_list);
-
-			// ADD
+/*
 //			printf("TEMOIN 0\n");
 			if (token->type == TOK_WORD)
 			{
@@ -75,6 +62,25 @@ void	expand(t_lst_token *token, t_lst_env *env_list)
 //				printf("TEMOIN 3\n");
 			}
 			//END ADD
+*/
+
+void	expand(t_lst_token *token, t_lst_env *env_list)
+{
+	while (token && token->type != TOK_PIPE)
+	{
+		if (is_heredoc_token(token->type))
+			token = skip_two_token(token);
+		if (!token)
+			break ;
+		if (token->type == TOK_WORD || token->type == TOK_DOUBLE_QUOTE)
+		{
+			if (token->str)
+				token->str = expand_token(token->str, env_list);
+
+			// ADD
+			
+			//END ADD
+
 		}
 		if (token)
 			token = token->next;
@@ -82,12 +88,48 @@ void	expand(t_lst_token *token, t_lst_env *env_list)
 //c	printf("TEMOIN 4\n");
 }
 
+char	*dup_without_extra_space_quote(char *str)
+{
+	char	*dup;
+	int		end;
+	int		i;
+	int		j;
+	int		begun_with_quote = 0;
+
+
+//	printf("STR= [%s]\n", str);
+	i = 0;
+	while (is_space(str[i]))
+		i++;
+	while (is_quote(str[i]))
+	{
+		begun_with_quote = 1;
+		i++;
+	}
+	end = ft_strlen(str) - 1;
+	while (is_space(str[end]))
+		end--;
+	while (begun_with_quote && is_quote(str[end]))
+		end--;
+	dup = __ft_calloc(sizeof(char) * ((end - i) + 2));
+	j = 0;
+	while (str[i + j] && (i + j <= end))
+	{
+		dup[j] = str[i + j];
+		j++;
+	}
+	return (dup);
+}
+
 void	tokenisation_post_expand(t_lst_token *token)
 {
 	while (token && token->type != TOK_PIPE)
 	{
 		if (token->type == TOK_SINGLE_QUOTE || token->type == TOK_DOUBLE_QUOTE)
+		{
+			token->str = dup_without_extra_space(token->str);
 			token->type = TOK_WORD;
+		}
 		token = token->next;
 	}
 }

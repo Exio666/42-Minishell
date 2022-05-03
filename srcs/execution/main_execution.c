@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/03 14:41:42 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/03 16:35:54 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,10 @@ int	main(int argc, char **argv, char **envp)
 		print_split_tab(split);
 printf("------------------------------\n");
 		lst_token = create_token_list(split);
+		
 		print_split_lst(lst_token);
-
-		*/
+*/
+		
 //		printf("------------------------------\n");
 		env_list = convert_env_array_in_list(envp);
 		//execute_here_doc_tree(root);
@@ -73,3 +74,25 @@ printf("------------------------------\n");
 	
 	return (0);
 }
+
+/*
+export a="cho a"
+
+e$a   -> a
+e'$a' -> Command 'e$a' not found
+e"$a" -> echo a: command not found
+
+export a="cho ' 'a"
+
+e$a   -> ' ' a
+e'$a' -> Command 'e$a' not found
+e"$a" -> echo a: command not found
+
+
+export a="cho  $b a"
+export a="cho '$b' a"
+
+export a=BENOIT
+export b=SAVINEL
+echo -n BONJOUR $a && echo -n ' ' && echo $b
+*/
