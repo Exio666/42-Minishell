@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:35:18 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/03 10:02:55 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/03 14:21:26 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	print2DUtil(t_btree *root, int space)
    		printf("%s\n", root->logic_op->symbol);
 	else if (root->token)
 	{
-		t_lst_token *token;
+		//t_lst_token *token;
 		while (root->token)
 		{
 			printf("%d | [%s]  ->  ", root->token->type, root->token->str);

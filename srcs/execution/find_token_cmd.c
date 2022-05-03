@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_token_cmd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:51:03 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 15:04:07 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/03 12:04:35 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_lst_token	*find_first_token_cmd(t_lst_token *token)
 		if (token)
 			token = token->next;
 	}
+	return (NULL);
 }
 
 t_lst_token	*find_first_token_next_cmd(t_lst_token *token)

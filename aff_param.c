@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cd.h                                            :+:      :+:    :+:   */
+/*   aff_param.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 10:34:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 10:41:56 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/03 10:15:00 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/03 14:26:39 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CD_H
-# define FT_CD_H
+#include <stdio.h>
 
-# include "minishell.h"
+int main(int ac, char **av)
+{
+    int i;
 
-int	ft_cd_absolu_path(char *path_move);
-int	no_dir(char *path_move);
-int	ft_cd_relative_path(char *path_move);
-int	ft_cd_movedir(char *path_move);
-int	ft_cd(int ac, char *argv, t_lst_env **envp);
-
-#endif
+    i = 1;
+    while (i < ac)
+    {
+        printf("|%s|\n", av[i]);
+        i++;
+    }
+    return (0);
+}

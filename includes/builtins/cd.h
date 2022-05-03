@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_up_redirection.h                               :+:      :+:    :+:   */
+/*   cd.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/30 21:48:23 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/03 11:56:06 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/04/14 10:34:20 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/03 16:33:53 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SET_UP_REDIRECTION_H
-# define SET_UP_REDIRECTION_H
+#ifndef CD_H
+# define CD_H
 
-void	redirect_out(t_lst_token *token);
-void	redirect_out_append(t_lst_token *token);
-void	set_up_redirect_out(t_lst_token *token);
-void	set_up_redirect_in(t_lst_token *token);
+# include "minishell.h"
+
+int	ft_cd_absolu_path(char *path_move, t_lst_env **envp);
+int	no_dir(char *path_move);
+int	ft_cd_relative_path(char *path_move, t_lst_env **envp);
+int	ft_cd_movedir(char *path_move, t_lst_env **envp);
+int	ft_cd(int ac, char **argv, t_lst_env **envp);
 
 #endif

@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_up_redirection.h                               :+:      :+:    :+:   */
+/*   export.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/30 21:48:23 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/03 11:56:06 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/03 11:13:25 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/03 16:40:36 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SET_UP_REDIRECTION_H
-# define SET_UP_REDIRECTION_H
+#ifndef EXPORT_H
+# define EXPORT_H
 
-void	redirect_out(t_lst_token *token);
-void	redirect_out_append(t_lst_token *token);
-void	set_up_redirect_out(t_lst_token *token);
-void	set_up_redirect_in(t_lst_token *token);
+# include "minishell.h"
+
+int	ft_strlen_stop_car(char *str, char c);
+int	str_conctent_car(char *str, char c);
+int	add_varr_env(char *name, char *varraible, t_lst_env **envp);
+int	put_varraible(char *arg, t_lst_env **envp);
+int	ft_export(int ac, char **arg, t_lst_env **envp);
+
 
 #endif

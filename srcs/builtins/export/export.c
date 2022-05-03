@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:18:55 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/02 16:46:16 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/03 16:40:45 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	str_conctent_car(char *str, char c)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '=')
+		if (str[i] == c)
 			return (1);
 		i++;
 	}
@@ -42,6 +42,7 @@ int	add_varr_env(char *name, char *varraible, t_lst_env **envp)
 	t_lst_env	*new;
 
 	end = *envp;
+	new = __ft_calloc(sizeof(t_lst_env) * 1);
 	while (end->next)
 		end = end->next;
 	new->name = name;
@@ -52,17 +53,16 @@ int	add_varr_env(char *name, char *varraible, t_lst_env **envp)
 	return (0);
 }
 
-char *put_varraible(char *arg, t_lst_env **envp)
+int	put_varraible(char *arg, t_lst_env **envp)
 {
 	char	*name;
-	char	*variable_env;
 	int		i;
 	int		len;
 
 	if (!arg || str_conctent_car(arg, '='))
 		return (1);
 	len = ft_strlen_stop_car(arg, '=');
-	name = __ft_calloc(sizeof(char), len + 1);
+	name = __ft_calloc(sizeof(char) * (len + 1));
 	i = 0;
 	while (i < len)
 	{
@@ -70,7 +70,7 @@ char *put_varraible(char *arg, t_lst_env **envp)
 		i++;
 	}
 	name[i] = '\0';
-	ft_unset(name, envp);
+	delete_varraible(name, envp);
 	add_varr_env(name, &arg[len], envp);
 	return (0);
 }

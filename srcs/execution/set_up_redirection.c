@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 21:47:51 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/03 10:03:32 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/03 18:03:40 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	redirect_out(t_lst_token *token)
 {
+	int	fd_file;
+	
 	token = token->next;
 	if (token)
 	{
@@ -25,6 +27,8 @@ void	redirect_out(t_lst_token *token)
 
 void	redirect_out_append(t_lst_token *token)
 {
+	int	fd_file;
+	
 	token = token->next;
 	if (token)
 	{
@@ -36,9 +40,9 @@ void	redirect_out_append(t_lst_token *token)
 
 void	set_up_redirect_out(t_lst_token *token)
 {
-	int	fd_file;
+	//int	fd_file;
 
-	while (token)
+	while (token && token->type != TOK_PIPE)
 	{
 		if (token && token->type == TOK_REDIRECT_OUT)
 			redirect_out(token);
@@ -52,7 +56,7 @@ void	set_up_redirect_in(t_lst_token *token)
 {
 	int	fd_file;
 
-	while (token)
+	while (token && token->type != TOK_PIPE)
 	{
 		if (token && token->type == TOK_REDIRECT_IN)
 		{
@@ -63,8 +67,8 @@ void	set_up_redirect_in(t_lst_token *token)
 				dup2(fd_file, STDIN_FILENO);
 				close(fd_file);
 			}
-			token = token->next;
 		}
+		token = token->next;
 	}
 }
 

@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_up_redirection.h                               :+:      :+:    :+:   */
+/*   exec_pipe_cmd.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/30 21:48:23 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/03 11:56:06 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/03 14:13:04 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/03 16:32:05 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SET_UP_REDIRECTION_H
-# define SET_UP_REDIRECTION_H
+#ifndef EXEC_PIPE_CMD_H
+# define EXEC_PIPE_CMD_H
 
-void	redirect_out(t_lst_token *token);
-void	redirect_out_append(t_lst_token *token);
-void	set_up_redirect_out(t_lst_token *token);
-void	set_up_redirect_in(t_lst_token *token);
+#include "minishell.h"
+
+int		len_av(char **argv);
+void	exec_cmd(t_lst_token *token, t_lst_env **env_list);
+int		exec_pipe_cmd(t_lst_token *token, t_lst_env **env_list, int nb_cmd);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:40:00 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 10:45:49 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/03 18:00:06 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ int	arg_is_flag_echo(char *arg)
 {
 	int	i;
 
-	if (!str)
+	if (!arg)
 		return (0);
-	if (str[0] != '-')
+	if (arg[0] != '-')
 		return (0);
 	i = 1;
-	while (str[i])
+	while (arg[i])
 	{
-		if (str[i] != 'n')
+		if (arg[i] != 'n')
 			return (0);
 		i++;
 	}
@@ -37,7 +37,7 @@ int	echo(int ac, char **argv)
 
 	i = 1;
 	flag_n = 0;
-	while (i < ac && arg_is_flag_echo(argv[1]))
+	while (i < ac && arg_is_flag_echo(argv[i]))
 	{
 		flag_n = 1;
 		i++;
@@ -45,6 +45,8 @@ int	echo(int ac, char **argv)
 	while (i < ac)
 	{
 		ft_putstr_fd(argv[i], 1);
+		if (i < ac - 1)
+			ft_putchar_fd(' ', 1);
 		i++;
 	}
 	if (flag_n == 0)

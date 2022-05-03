@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_execution.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 22:09:29 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/03 17:57:43 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 int	main(int argc, char **argv, char **envp)
 {
 
-	t_list *lst_token;
-	char **split;
-	t_list *lst;
+	//t_list *lst_token;
+	//char **split;
+	//t_list *lst;
 	char	*command_line;
 	t_btree *root;
 	t_lst_env *env_list;
 
 	(void)(argc);
 	(void)(argv);
-	const char	prompt[] = GRN " Airpottier_shell$ " RESET;
+	const char	prompt[] = GRN "Bsavinel_and_associate_shell$ " RESET;
 
+	env_list = convert_env_array_in_list(envp);
 	while (42)
 	{
 		command_line = readline(prompt);
@@ -37,9 +38,9 @@ int	main(int argc, char **argv, char **envp)
 		}
 		add_history(command_line);
 
-	//if(primary_checker(command_line) == TRUE)
-	//{
-	//	printf("The checker say 'commande is good'\n");
+	if(primary_checker(command_line) == TRUE)
+	{
+		//printf("The checker say 'commande is good'\n");
 		root = get_btree_of_logical_op(command_line);
 		add_all_pipe_sequence_in_tree(&root, command_line);
 		
@@ -48,25 +49,21 @@ int	main(int argc, char **argv, char **envp)
 		
 		printf("------------------------------\n");
 		print_split_tab(split);
-printf("------------------------------\n");
+		printf("------------------------------\n");
 		lst_token = create_token_list(split);
 		print_split_lst(lst_token);
-
 		*/
-//		printf("------------------------------\n");
-		env_list = convert_env_array_in_list(envp);
-		//execute_here_doc_tree(root);
-		execute_command_tree(root, env_list);
-		
-//		print2D(root);
-//		printf("------------------------------\n");
-	//}
-	//else
-	//{	
-		
-	//	printf("The checker say 'commande is bad'\n");
 	
-	//}
+		//printf("------------------------------\n");
+		
+		//execute_here_doc_tree(root);
+		//print2D(root);
+		
+		//printf("------------------------------\n");
+		execute_command_tree(root, &env_list);
+	}
+	/*else
+		printf("The checker say 'commande is bad'\n");*/
 	free(command_line);
 	__ft_calloc(-1);
 	}

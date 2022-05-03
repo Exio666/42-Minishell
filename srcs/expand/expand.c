@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/29 18:38:06 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/03 14:22:16 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	insert_var_content_to_token(char **token, char *var_content, int start_inde
 	int expanded_token_len;
 	int var_len;
 	char	*expanded_token;
-	int i = 0;
+	//int i = 0;
 
 //	printf("0 token:[%s]\n", *token);
 	

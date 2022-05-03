@@ -6,11 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2022/04/30 21:50:38 by rpottier         ###   ########.fr        #
-=======
-#    Updated: 2022/05/02 08:59:08 by bsavinel         ###   ########.fr        #
->>>>>>> bsavinel
+#    Updated: 2022/05/03 18:59:53 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +19,8 @@ NAME_TEST = minishell_test
 
 CC = cc 
 #-Wall -Wextra -Werror
-CFLAGS =  -g3
+CFLAGS = -Wall -Wextra -Werror -g3 
+#-fsanitize=address
 
 ARGUMENT_RUN = 
 ARGUMENT_RUN_TEST =
@@ -34,65 +31,77 @@ ARGUMENT_RUN_TEST =
 
 SRCS_PATH 	=	srcs/
 
-INCS =	-I includes				\
-		-I libft/includes		\
-		-I includes/btree_management	\
-		-I includes/builtins	\
-		-I includes/checker		\
-		-I includes/utils		\
-		-I includes/wildcard	\
+INCS =	-I includes								\
+		-I libft/includes						\
+		-I includes/btree_management			\
+		-I includes/builtins					\
+		-I includes/checker						\
+		-I includes/env							\
+		-I includes/env_list					\
+		-I includes/execution					\
+		-I includes/expand						\
+		-I includes/utils						\
+		-I includes/heredoc						\
 		-I includes/parser/logical_operator		\
 		-I includes/parser/pipe_sequence		\
-		-I includes/env_list					\
-		-I includes/env					\
-		-I includes/pipe_seq_to_token_list \
-		-I includes/expand					\
-		-I includes/execution
+		-I includes/pipe_seq_to_token_list 		\
+		-I includes/wildcard
 
-SRCS =	checker/and_or_checker.c				\
-		checker/primary_check.c					\
-		checker/quote_checker.c					\
-		checker/pipe_sequence_checker.c					\
-		checker/redirection_checker.c 				\
-		btree_management/compare_functions.c	\
-		btree_management/insert_functions.c		\
-		btree_management/create_node_functions.c	\
+SRCS =	checker/and_or_checker.c								\
+		checker/primary_check.c									\
+		checker/quote_checker.c									\
+		checker/pipe_sequence_checker.c							\
+		checker/redirection_checker.c 							\
+		btree_management/compare_functions.c					\
+		btree_management/insert_functions.c						\
+		btree_management/create_node_functions.c				\
+		builtins/cd/cd.c										\
+		builtins/echo/echo.c									\
+		builtins/env/env.c										\
+		builtins/exit/exit.c									\
+		builtins/export/export.c								\
+		builtins/pwd/pwd.c										\
+		builtins/unset/unset.c									\
 		parser/logical_operator/count_and_update_logic_op.c		\
 		parser/logical_operator/find_specific_char_funct.c		\
 		parser/logical_operator/get_btree_of_logical_op.c		\
-		parser/logical_operator/increase_and_decrease_level.c		\
+		parser/logical_operator/increase_and_decrease_level.c	\
 		parser/logical_operator/input_priority_level.c			\
 		parser/logical_operator/lstdelone_parser.c				\
 		parser/logical_operator/logical_operator_indexation.c	\
 		parser/logical_operator/parse_op_by_level.c				\
-		parser/logical_operator/get_logical_op.c					\
+		parser/logical_operator/get_logical_op.c				\
 		parser/logical_operator/print_debug_funct.c				\
-		parser/pipe_sequence/get_pipe_sequence.c \
-		parser/pipe_sequence/add_all_pipe_sequence_in_tree.c \
-		parser/pipe_sequence/get_start_and_end_index.c				\
-		env/get_all_path.c \
-		env/list_to_tab.c \
-		env_list/env_list_management.c			\
-		env_list/get_functions.c				\
-		env_list/convert_env_array_in_list.c	\
-		env_list/get_path_variable.c			\
-		utils/jump_caracters.c					\
-		utils/is_functions.c					\
-		pipe_seq_to_token_list/create_token_list.c	\
+		parser/pipe_sequence/get_pipe_sequence.c				\
+		parser/pipe_sequence/add_all_pipe_sequence_in_tree.c 	\
+		parser/pipe_sequence/get_start_and_end_index.c			\
+		env/ft_get_env.c 										\
+		env/get_all_path.c 										\
+		env/list_to_tab.c										\
+		env_list/env_list_management.c							\
+		env_list/get_functions.c								\
+		env_list/convert_env_array_in_list.c					\
+		env_list/get_path_variable.c							\
+		utils/jump_caracters.c									\
+		utils/is_functions.c									\
+		pipe_seq_to_token_list/create_token_list.c				\
 		pipe_seq_to_token_list/insert_token_separator_utils.c	\
-		pipe_seq_to_token_list/insert_token_separator.c \
-		pipe_seq_to_token_list/is_token_1.c \
-		pipe_seq_to_token_list/is_token_2.c \
-		pipe_seq_to_token_list/print_tab_or_lst_split.c \
-		pipe_seq_to_token_list/split_by_separator.c \
-		pipe_seq_to_token_list/split_pipe_by_space.c \
-		pipe_seq_to_token_list/get_token_list.c \
-		expand/expand.c \
-		execution/cmd_exec_utills.c	\
-		execution/execution.c	\
-		execution/find_token_cmd.c	\
-		execution/token_utils.c	\
-		execution/set_up_redirection.c	\
+		pipe_seq_to_token_list/insert_token_separator.c 		\
+		pipe_seq_to_token_list/is_token_1.c 					\
+		pipe_seq_to_token_list/is_token_2.c 					\
+		pipe_seq_to_token_list/print_tab_or_lst_split.c 		\
+		pipe_seq_to_token_list/split_by_separator.c 			\
+		pipe_seq_to_token_list/split_pipe_by_space.c 			\
+		pipe_seq_to_token_list/get_token_list.c 				\
+		expand/expand.c 										\
+		execution/cmd_exec_utills.c								\
+		execution/execution.c									\
+		execution/find_token_cmd.c								\
+		execution/token_utils.c									\
+		execution/set_up_redirection.c							\
+		execution/exec_buitins.c								\
+		execution/exec_pipe_cmd.c								\
+		execution/count_pipe.c
 
 #SRCS_TEST = builtins/export/main_export.c		
 SRCS_TEST = execution/main_execution.c	

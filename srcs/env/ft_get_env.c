@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 10:50:46 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 16:30:35 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/03 16:51:08 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@ char	*join_env_var(t_lst_env *lst)
 {
 	char	*varriable;
 
-	varriable = ft_strjoin(list->name, "=");
-	if (!tmp)
-		return (NULL);
-	varriable = ft_strjoin(varriable, list->content);
+	varriable = ft_strjoin(lst->name, "=");
+	varriable = ft_strjoin(varriable, lst->content);
+	return (varriable);
 }
 
 char	*ft_get_env(t_lst_env **env_list, char *name)

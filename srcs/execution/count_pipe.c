@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_up_redirection.h                               :+:      :+:    :+:   */
+/*   count_pipe.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/30 21:48:23 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/03 11:56:06 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/03 10:27:40 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/03 18:52:05 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SET_UP_REDIRECTION_H
-# define SET_UP_REDIRECTION_H
+#include "minishell.h"
 
-void	redirect_out(t_lst_token *token);
-void	redirect_out_append(t_lst_token *token);
-void	set_up_redirect_out(t_lst_token *token);
-void	set_up_redirect_in(t_lst_token *token);
+int	count_pipe(t_lst_token *token)
+{
+	t_lst_token	*tmp;
+	int			count;
 
-#endif
+	count = 1;
+	tmp = token;
+	while (tmp)
+	{
+		if (tmp->type == 5)
+			count++;
+		tmp = tmp->next;
+	}
+	return (count);
+}

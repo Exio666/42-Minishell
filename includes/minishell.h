@@ -6,12 +6,16 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/03 10:04:52 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/03 16:33:16 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+
+/*
+ *	Libraries
+ */
 
 # include <unistd.h>
 # include <stdio.h>
@@ -41,12 +45,7 @@
  *	Builtins
  */
 
-# include "echo.h"
-# include "env.h"
-# include "exit.h"
-# include "ft_cd.h"
-# include "pwd.h"
-# include "unset.h"
+# include "builtins.h"
 
 /*
  *	btree_management
@@ -66,7 +65,7 @@
 
 # include "get_all_path.h"
 # include "list_to_tab.h"
-//# include "ft_get_env.h"
+# include "ft_get_env.h"
 
 /*
  *	Parser
@@ -86,6 +85,7 @@
 */
 # include "logical_operator.h"
 # include "pipe_sequence.h"   
+
 /*
  *	Env_list
  */
@@ -93,8 +93,15 @@
 # include "env_list.h"
 
 /*
+ *	Builtins
+ */
+
+# include "builtins.h"
+
+/*
  * tokenisation
  */
+
 # include "pipe_seq_to_token_list.h"
 
 /*
@@ -103,10 +110,12 @@
 
 # include "jump_caracters.h"
 # include "is_functions.h"
+
 /*
  *	Wilcard
  */
 
 # include "expand.h"
 # include "execution.h"
+
 #endif
