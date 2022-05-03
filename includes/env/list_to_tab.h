@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   list_to_tab.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/30 17:12:25 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 17:13:41 by rpottier         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2022/05/03 10:06:11 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef LIST_TO_TAB_H
 # define LIST_TO_TAB_H

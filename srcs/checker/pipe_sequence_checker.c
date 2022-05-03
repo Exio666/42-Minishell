@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_sequence_checker.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 12:09:11 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/25 10:26:00 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/02 14:33:38 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int len_no_whitespace(char *commande)
+int	len_no_whitespace(char *commande)
 {
 	int	i;
 	int	len;
@@ -28,7 +28,6 @@ int len_no_whitespace(char *commande)
 	return (len);
 }
 
-
 int	pipe_sequence_checker(char *commande)
 {
 	t_checker	check;
@@ -39,8 +38,8 @@ int	pipe_sequence_checker(char *commande)
 		check.error = TRUE;
 		check.str = S_ERROR_MISSING_COMMANDE;
 	}
-//	if (check.error == FALSE)
-//		redirection_checker(commande, &check);
+	if (check.error == FALSE)
+		redirection_checker(commande, &check);
 	if (check.error == TRUE)
 		printf("%s\n", check.str);
 	return (!check.error);

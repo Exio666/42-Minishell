@@ -3,10 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
+#    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2022/04/30 21:50:38 by rpottier         ###   ########.fr        #
+=======
+#    Updated: 2022/05/02 08:59:08 by bsavinel         ###   ########.fr        #
+>>>>>>> bsavinel
 #                                                                              #
 # **************************************************************************** #
 
@@ -140,7 +144,7 @@ header:
 		echo "| '_ \` _ \| | '_ \| / __| '_ \ / _ \ | | "
 		echo "| | | | | | | | | | \__ \ | | |  __/ | | "
 		echo "|_| |_| |_|_|_| |_|_|___/_| |_|\___|_|_| "
-		echo "                 by Airpottier and co"
+		echo "                 by bsavinel and associate"
 		echo "${NO_COLOR}"
 
 $(NAME) : header $(OBJS) $(LIBS)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_prompt.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:23:39 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/29 17:11:23 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/03 10:02:43 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 	t_list *lst;
 	char	*command_line;
 	t_btree *root;
-	const char	prompt[] = GRN " Airpottier_shell$ " RESET;
+	const char	prompt[] = GRN " Bsavinel_and_associate_shell$ " RESET;
 
 	while (42)
 	{

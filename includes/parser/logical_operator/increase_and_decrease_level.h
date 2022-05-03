@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_priority_level_utils.h                       :+:      :+:    :+:   */
+/*   increase_and_decrease_level.h                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 20:13:23 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 14:32:39 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/04/14 16:25:41 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/04/14 16:26:09 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INPUT_PRIORITY_LEVEL_UTILS_H
-# define INPUT_PRIORITY_LEVEL_UTILS_H
+#ifndef INCREASE_AND_DECREASE_LEVEL_H
+# define INCREASE_AND_DECREASE_LEVEL_H
 
 # include "minishell.h"
 

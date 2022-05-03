@@ -3,31 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   redirection_checker.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 11:35:16 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/25 10:25:46 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/02 14:34:04 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-/*
+
 void	redirect_out_checker(char *commande, t_checker *check)
 {
 	check->index++;
 	if (commande[check->index] && commande[check->index] == '>')
 	{
 		check->index++;
-		else if (commande[check->index] == '>')
+		if (commande[check->index] == '>')
 		{
-			check->str = S_ERROR_UNEX_;
+			check->str = S_ERROR_MIS_ARG_REDIRECT_OUT;
 			check->error = TRUE;
 		}
 	}
-	while (commande[check->index] && ft_iswhitespace(commande[check->index]) && check->error == FALSE)
+	while (commande[check->index] && ft_iswhitespace(commande[check->index])
+		&& check->error == FALSE)
 		check->index++;
-	if (commande[check->index] && commande[check->index] != '>' 
-			&& commande[check->index] != '<' && commande[check->index] != '|')
+	if (commande[check->index] && commande[check->index] != '>'
+		&& commande[check->index] != '<' && commande[check->index] != '|')
 		check->arg_of_redirect = TRUE;
 	if (check->arg_of_redirect == FALSE)
 	{
@@ -48,11 +49,11 @@ void	redirect_in_checker(char *commande, t_checker *check)
 			check->error = TRUE;
 		}
 	}
-	while (commande[check->index] && ft_iswhitespace(commande[check->index]) 
-			&& check->error == FALSE)
+	while (commande[check->index] && ft_iswhitespace(commande[check->index])
+		&& check->error == FALSE)
 		check->index++;
-	if (commande[check->index] && commande[check->index] != '>' 
-			&& commande[check->index] != '<' && commande[check->index] != '|')
+	if (commande[check->index] && commande[check->index] != '>'
+		&& commande[check->index] != '<' && commande[check->index] != '|')
 		check->arg_of_redirect = TRUE;
 	if (check->arg_of_redirect == FALSE)
 	{
@@ -64,8 +65,8 @@ void	redirect_in_checker(char *commande, t_checker *check)
 void	pipe_content_checker(char *commande, t_checker *check)
 {
 	int	i;
-	int len;
-	
+	int	len;
+
 	check->index++;
 	i = check->index;
 	len = 0;
@@ -76,7 +77,10 @@ void	pipe_content_checker(char *commande, t_checker *check)
 		i++;
 	}
 	if (len == 0)
+	{
+		check->str = S_ERROR_MIS_CMD_PIPE;
 		check->error = TRUE;
+	}
 }
 
 int	redirection_checker(char *pipe_sequence, t_checker *check)
@@ -97,4 +101,3 @@ int	redirection_checker(char *pipe_sequence, t_checker *check)
 	}
 	return (1);
 }
-*/

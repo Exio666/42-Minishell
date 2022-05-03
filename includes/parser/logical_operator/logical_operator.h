@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   logical_operator.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 13:12:20 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 14:17:21 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/04/14 16:24:38 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#ifndef LOGICAL_OPERATOR_H
+# define LOGICAL_OPERATOR_H
 
 # include "minishell.h"
 

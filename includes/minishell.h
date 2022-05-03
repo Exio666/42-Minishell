@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/30 17:16:37 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/03 10:04:52 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <dirent.h>
 
 /*
  *	General
@@ -47,12 +48,11 @@
 # include "pwd.h"
 # include "unset.h"
 
-
 /*
  *	btree_management
  */
 
-#include "btree_management.h"
+# include "btree_management.h"
 
 /*
  *	Checker
