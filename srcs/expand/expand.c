@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/29 18:38:06 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/03 14:22:43 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ int	get_var_length(char	*token)
 {
 	int length;
 
+//	printf("TOKEN = %s\n", token);
 	length = 0;
-	while (token[length] != '\0' && !is_space(token[length]))
+	while (token[length] != '\0' && !is_space(token[length]) && !is_quote(token[length]))
 		length++;
 	return (length);
 }
@@ -92,7 +93,7 @@ char	*expand_token(char *token, t_lst_env *env_list)
 {
 	char	*var_content;
 	char	*variable_name;
-	int var_len;
+//	int var_len;
 	int i;
 
 	i = 0;
@@ -101,7 +102,7 @@ char	*expand_token(char *token, t_lst_env *env_list)
 		if (is_dollar(token[i]))
 		{
 
-			var_len = get_var_length(token);
+//			var_len = get_var_length(token);
 			variable_name = get_variable_to_expand_name(&token[i + 1]);
 			var_content = get_var_to_expand_content(variable_name, env_list);
 			if (!var_content)

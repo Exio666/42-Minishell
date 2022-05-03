@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:00:15 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/29 16:44:22 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/03 14:45:34 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ t_lst_token	*create_token_list(char **split)
 	while (split[i])
 	{
 		space_split = split_pipe_by_space(split[i]);
+//		printf("--------------------\n");
+//		print_char_two_dim_array(space_split);
+//		printf("--------------------\n");
 		j = 0;
 		while (space_split[j])
 		{
@@ -121,17 +124,23 @@ char	*dup_without_extra_space(char *str)
 	int		end;
 	int		i;
 	int		j;
+	int		begun_with_quote = 0;
 
+
+//	printf("STR= [%s]\n", str);
 	i = 0;
 	while (is_space(str[i]))
 		i++;
-	while (is_quote(str[i]))
+/*	while (is_quote(str[i]))
+	{
+		begun_with_quote = 1;
 		i++;
+	}*/
 	end = ft_strlen(str) - 1;
 	while (is_space(str[end]))
 		end--;
-	while (is_quote(str[end]))
-		end--;
+/*	while (begun_with_quote && is_quote(str[end]))
+		end--;*/
 	dup = __ft_calloc(sizeof(char) * ((end - i) + 2));
 	j = 0;
 	while (str[i + j] && (i + j <= end))

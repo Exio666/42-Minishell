@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 22:09:49 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/03 14:23:16 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,27 @@ void	execute_pipe_sequence(t_lst_token *token, t_lst_env *env_list)
 		token = find_first_token_next_cmd(token);
 	}
 }
+void print_token_list(t_lst_token *token)
+{
+	while (token)
+	{
+		printf("%d | [%s]  ->  ", token->type, token->str);
+		token = token->next;
+	}
+	printf("NULL\n");
+}
 
 void	execute_command(t_lst_token *token, t_lst_env *env_list)
 {
 	char	**argv;
 	int status;
-	
+//	print_token_list(token);
 	expand(token, env_list);
+	
 	tokenisation_post_expand(token);
 	argv = create_argv_cmd(token);
-	
-/*	if (argv)
+/*	
+	if (argv)
 	{	
 		printf("-----------------\n");
 		printf("argv_arg:\n");
@@ -53,9 +63,8 @@ void	execute_command(t_lst_token *token, t_lst_env *env_list)
 	int pid = fork();
 	if (pid == 0)
 	{
-		set_up_redirect_in(token);
-		set_up_redirect_out(token);
-		set_up_redirect_out_append(token);
+//		set_up_redirect_in(token);
+//		set_up_redirect_out(token);
 		execute(argv, env_list);
 		exit(0);
 	}

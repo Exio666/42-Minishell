@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 22:09:29 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/03 14:41:42 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)(argc);
 	(void)(argv);
-	const char	prompt[] = GRN " Airpottier_shell$ " RESET;
+	const char	prompt[] = GRN "AirPottier_shell$ " RESET;
 
 	while (42)
 	{
