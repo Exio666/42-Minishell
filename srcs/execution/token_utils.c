@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 13:17:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 11:48:36 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 14:48:25 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,17 @@ int	is_redirect_token(t_type_token token_type)
 		return (FALSE);
 }
 
+int	is_str_token(t_type_token token_type)
+{
+	if (token_type == TOK_WORD)
+		return (TRUE);
+	if (token_type == TOK_DOUBLE_QUOTE)
+		return (TRUE);
+	if (token_type == TOK_SINGLE_QUOTE)
+		return (TRUE);
+	return (FALSE);
+}
+
 int	is_heredoc_token(t_type_token token_type)
 {
 	if (token_type == TOK_HEREDOC)
@@ -39,9 +50,9 @@ int	count_tok_word(t_lst_token *token)
 	count = 0;
 	while (token && token->type != TOK_PIPE)
 	{
-		if (token->type == TOK_WORD || token->type == TOK_DOUBLE_QUOTE || token->type == TOK_SINGLE_QUOTE)
+		if (is_str_token(token->type))
 			count++;
-		if (token->type == TOK_REDIRECT_IN || token->type == TOK_REDIRECT_OUT_APPEND || token->type == TOK_REDIRECT_OUT)
+		if (is_redirect_token(token->type))
 			token = token->next;
 		if (token)
 			token = token->next;

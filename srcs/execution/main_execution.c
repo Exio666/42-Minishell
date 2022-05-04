@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 13:59:19 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 14:19:44 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,14 @@ int	main(int argc, char **argv, char **envp)
 	while (42)
 	{
 		fd_terminal = open("/dev/tty", O_RDWR);
+		if (fd_terminal == -1)
+		{
+			ft_putendl_fd("Error: cannot open /dev/tty", 2);
+			return (1);
+		}
 		dup2(fd_terminal, STDIN_FILENO);
 		dup2(fd_terminal, STDOUT_FILENO);
+		dup2(fd_terminal, STDERR_FILENO);
 		close(fd_terminal);
 		command_line = readline(prompt);
 		add_history(command_line);
@@ -55,8 +61,6 @@ int	main(int argc, char **argv, char **envp)
 			//printf("------------------------------\n");
 			execute_command_tree(root, &env_list);
 		}
-		/*else
-			printf("The checker say 'commande is bad'\n");*/
 		free(command_line);
 	}
 	__ft_calloc(-1);

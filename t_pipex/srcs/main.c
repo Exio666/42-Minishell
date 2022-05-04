@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:37:47 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/03 10:02:20 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 14:21:42 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	main(int ac, char **av, char **envp)
 	}
 	return (pipex(ac, av, envp));
 }
-//todo : define READ_END && WRITE_END
+
 
 /*
 int main(int ac, char **av)

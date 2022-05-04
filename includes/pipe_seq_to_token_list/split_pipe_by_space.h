@@ -10,8 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPLIT_BY_SPACE_H
-# define SPLIT_BY_SPACE_H
+#ifndef SPLIT_PIPE_BY_SPACE_H
+# define SPLIT_PIPE_BY_SPACE_H
+
+# include "minishell.h"
 
 char	**split_pipe_by_space(char *s);
 

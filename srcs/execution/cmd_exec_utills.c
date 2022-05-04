@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:53:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 11:58:52 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 14:43:29 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ char	**create_argv_cmd(t_lst_token *token)
 	i = 0;
 	while (i < nb_word_tok)
 	{
-		if (copie->type == TOK_WORD || copie->type == TOK_DOUBLE_QUOTE || copie->type == TOK_SINGLE_QUOTE)
+		if (is_str_token(copie->type))
 		{
 			argv_cmd[i] = copie->str;
 			i++;
 		}
-		if (copie->type == TOK_REDIRECT_IN || copie->type == TOK_REDIRECT_OUT_APPEND || copie->type == TOK_REDIRECT_OUT)
+		else if (is_redirect_token(copie->type))
 			copie = copie->next;
 		if (copie)
 			copie = copie->next;

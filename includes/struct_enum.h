@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/04 11:51:07 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 14:24:05 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ typedef enum e_type_token
 	TOK_SINGLE_QUOTE,			// '
 	TOK_DOUBLE_QUOTE,			// "
 	TOK_DOLLAR,					// $
-
-	
 	TOK_AND,
 	TOK_OR,
 	TOK_OPEN_PARENTHESIS,
@@ -48,7 +46,7 @@ typedef enum e_type_token
 typedef enum e_btree_item_type
 {
 	LOGIC_OPERATOR
-} t_btree_item_type;
+}	t_btree_item_type;
 
 typedef enum e_type_command
 {
@@ -129,7 +127,6 @@ typedef struct s_token
 	t_type_token	type;
 	struct s_token	*next;
 }	t_lst_token;
-
 
 typedef struct s_btree
 {
