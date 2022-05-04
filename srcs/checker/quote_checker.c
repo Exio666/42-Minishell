@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:04:44 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/04 11:10:26 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 13:31:33 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,9 @@ int	quote_jump(char *commande, t_checker *check)
 int	quote_parenthise_checker(char *commande, t_checker *check)
 {
 	char	tmp;
-	printf("commande : %s\n", commande);
+
 	while (check->index != -1 && commande[check->index])
 	{
-		printf("temoin\n");
 		if (commande[check->index] == '(')
 			check->par_lvl++;
 		if (commande[check->index] == ')')

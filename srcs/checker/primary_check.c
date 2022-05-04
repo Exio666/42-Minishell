@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 10:02:21 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/04 11:13:08 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 13:28:22 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,5 @@ int	primary_checker(char *commande)
 	}
 	if (check.error == TRUE)
 		printf("%s\n", check.str);
-	printf("check passe\n");
 	return (!check.error);
 }

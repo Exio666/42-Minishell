@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 12:15:55 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 13:59:19 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,23 @@
 
 int	main(int argc, char **argv, char **envp)
 {
-
-	//t_list *lst_token;
-	//char **split;
-	//t_list *lst;
-	char	*command_line;
-	t_btree *root;
-	t_lst_env *env_list;
+	char		*command_line;
+	t_btree		*root;
+	t_lst_env	*env_list;
+	int			fd_terminal;
 
 	(void)(argc);
 	(void)(argv);
 	const char	prompt[] = GRN "Bsavinel_and_associates_shell$ " RESET;
-
 	env_list = convert_env_array_in_list(envp);
 	while (42)
 	{
+		fd_terminal = open("/dev/tty", O_RDWR);
+		dup2(fd_terminal, STDIN_FILENO);
+		dup2(fd_terminal, STDOUT_FILENO);
+		close(fd_terminal);
 		command_line = readline(prompt);
-		/*if (ft_strncmp(command_line, "EXIT", 5) == 0)
-		{
-			free(command_line);
-			rl_clear_history();
-			return (0);
-		}*/
 		add_history(command_line);
-
 		if(ft_strlen(command_line) > 1 && primary_checker(command_line) == TRUE)
 		{
 			//printf("The checker say 'commande is good'\n");

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:27:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/04 11:51:36 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 13:27:53 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	exec_cmd(t_lst_token *token, t_lst_env **env_list)
 	char **argv;
 	int retour;
 
-	fprintf(stderr, "exec_cmd\n");
 	argv = create_argv_cmd(token);
 	//set_up_redirect_in(token);
 	//set_up_redirect_out(token);
@@ -48,7 +47,6 @@ int	exec_pipe_cmd(t_lst_token *token, t_lst_env **env_list, int nb_cmd)
 	while (i < nb_cmd)
 	{
 		pipe(new_pipe);
-		fprintf(stderr, "fork\n");
 		pid = fork();
 		if (pid == 0)
 		{
