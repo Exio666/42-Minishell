@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/03 14:41:16 by rpottier         ###   ########.fr        #
+#    Updated: 2022/05/04 18:40:02 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ INCS =	-I includes				\
 		-I includes/pipe_seq_to_token_list \
 		-I includes/expand					\
 		-I includes/execution
+		-I includes/execution/test
 
 SRCS =	checker/and_or_checker.c				\
 		checker/primary_check.c					\
@@ -89,6 +90,7 @@ SRCS =	checker/and_or_checker.c				\
 		execution/find_token_cmd.c	\
 		execution/token_utils.c	\
 		execution/set_up_redirection.c	\
+		execution/test/test.c
 
 #SRCS_TEST = builtins/export/main_export.c		
 SRCS_TEST = execution/main_execution.c	
