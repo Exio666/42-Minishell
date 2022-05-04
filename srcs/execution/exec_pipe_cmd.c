@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:27:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/04 14:37:59 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:03:09 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	exec_cmd(t_lst_token *token, t_lst_env **env_list)
 	int		retour;
 
 	argv = create_argv_cmd(token);
-	//set_up_redirect_in(token);
-	//set_up_redirect_out(token);
+	set_up_redirect_in(token);
+	set_up_redirect_out(token);
 	retour = exec_builtins(len_av(argv), argv, env_list);
 	if (retour == 127)
 		execute(argv, env_list);
@@ -63,9 +63,9 @@ int	exec_pipe_cmd(t_lst_token *token, t_lst_env **env_list, int nb_cmd)
 		if (pid == 0)
 		{
 			if (i != nb_cmd - 1)
-				dup2(new_pipe[0], STDOUT_FILENO);
+				dup2(new_pipe[1], STDOUT_FILENO);
 			if (i != 0)
-				dup2(pipe_stock[1], STDIN_FILENO);
+				dup2(pipe_stock[0], STDIN_FILENO);
 			multi_close(pipe_stock[0], pipe_stock[1], new_pipe[0], new_pipe[1]);
 			exec_cmd(token, env_list);
 		}
@@ -73,7 +73,8 @@ int	exec_pipe_cmd(t_lst_token *token, t_lst_env **env_list, int nb_cmd)
 			token = token->next;
 		if (token && token->type == TOK_PIPE)
 			token = token->next;
-		multi_close(pipe_stock[0], pipe_stock[1], -1, -1);
+		if (i != 0)
+			multi_close(pipe_stock[0], pipe_stock[1], -1, -1);
 		pipe_stock[0] = new_pipe[0];
 		pipe_stock[1] = new_pipe[1];
 		i++;

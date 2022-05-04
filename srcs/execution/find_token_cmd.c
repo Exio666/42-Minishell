@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:51:03 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 14:38:16 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:43:00 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,20 @@ t_lst_token	*find_first_token_next_cmd(t_lst_token *token)
 	while (token && token->type != TOK_PIPE)
 		token = token->next;
 	if (!token)
+		return (NULL);
+	else
+		return (token->next);
+}
+
+/*
+t_lst_token	*find_first_token_next_cmd(t_lst_token *token)
+{
+	while (token && token->type != TOK_PIPE)
+		token = token->next;
+	if (!token)
 		return (NULL); //no more command
 	else
-		return (token->next); //considérant que le checker ne laisse pas passer une cmd qui se termine pas un |
+		return (token->next);	//considérant que le checker ne laisse 
+								//pas passer une cmd qui se termine pas un |
 }
+*/

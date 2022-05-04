@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 10:02:21 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/04 13:28:22 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:34:57 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	primary_checker(char *commande)
 {
 	t_checker	check;
 
+	if (ft_strlen(commande) == 0)
+		return (FALSE);
 	init_struct_checker(&check);
 	if (quote_parenthise_checker(commande, &check))
 	{

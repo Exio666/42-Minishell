@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 13:17:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 14:48:25 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:08:24 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	is_redirect_token(t_type_token token_type)
 	else if (token_type == TOK_REDIRECT_OUT)
 		return (TRUE);
 	else if (token_type == TOK_REDIRECT_OUT_APPEND)
+		return (TRUE);
+	else if (token_type == TOK_HEREDOC)
 		return (TRUE);
 	else
 		return (FALSE);
