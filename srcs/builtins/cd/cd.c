@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:53:17 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/03 16:33:37 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 20:06:25 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	ft_cd(int ac, char **argv, t_lst_env **envp)
 {
 	char	*path_move;
 
-	if (ac > 1)
+	if (ac > 2)
 	{
 		ft_putstr_fd(CD_TOO_MANY_ARGS, 2);
 		return (1);
