@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_up_redirection.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 21:47:51 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/03 10:03:32 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/03 11:45:30 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	redirect_out(t_lst_token *token)
 {
+	int	fd_file;
+
 	token = token->next;
 	if (token)
 	{
@@ -25,6 +27,8 @@ void	redirect_out(t_lst_token *token)
 
 void	redirect_out_append(t_lst_token *token)
 {
+	int	fd_file;
+
 	token = token->next;
 	if (token)
 	{

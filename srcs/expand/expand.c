@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/29 18:38:06 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/04 15:09:16 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ int	get_var_length(char	*token)
 {
 	int length;
 
+//	printf("TOKEN = %s\n", token);
 	length = 0;
-	while (token[length] != '\0' && !is_space(token[length]))
+	while (token[length] != '\0' && !is_space(token[length]) && !is_quote(token[length]))
 		length++;
 	return (length);
 }
@@ -68,10 +69,9 @@ void	insert_var_content_to_token(char **token, char *var_content, int start_inde
 	
 	token_len = ft_strlen(*token);
 	var_content_len = ft_strlen(var_content);
-	expanded_token = __ft_calloc(sizeof(char) * (token_len + var_content_len + 1));
+	expanded_token = __ft_calloc(sizeof(char) * (token_len + var_content_len + 1 + 2));
 	
 	ft_strlcpy(expanded_token, *token, start_index + 1);
-//	printf("1 expanded_token: [%s]\n", expanded_token);
 	
 	ft_strlcat(expanded_token, var_content, (token_len + var_content_len + 1));
 //	printf("2 expanded_token: [%s]\n", expanded_token);
@@ -92,23 +92,35 @@ char	*expand_token(char *token, t_lst_env *env_list)
 {
 	char	*var_content;
 	char	*variable_name;
-	int var_len;
+//	int var_len;
 	int i;
+	int double_quote;
+	double_quote = 0;
 
 	i = 0;
 	while (token[i])
 	{
+		if (is_double_quote(token[i]))
+		{
+			if (double_quote == 1)
+				double_quote = 0;
+			else
+				double_quote = 1;
+		}
 		if (is_dollar(token[i]))
 		{
 
-			var_len = get_var_length(token);
+//			var_len = get_var_length(token);
 			variable_name = get_variable_to_expand_name(&token[i + 1]);
 			var_content = get_var_to_expand_content(variable_name, env_list);
+			
 			if (!var_content)
 			{
 				printf("Variable doesn't exist\n");
 				return (NULL);
 			}
+			if (double_quote == 0)
+				var_content = dup_without_extra_space(var_content);
 			insert_var_content_to_token(&token, var_content, i);
 		}
 		i++;

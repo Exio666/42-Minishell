@@ -3,14 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
+#    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2022/04/30 21:50:38 by rpottier         ###   ########.fr        #
-=======
-#    Updated: 2022/05/02 08:59:08 by bsavinel         ###   ########.fr        #
->>>>>>> bsavinel
+#    Updated: 2022/05/03 14:41:16 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

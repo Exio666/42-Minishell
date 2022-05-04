@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:00:15 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/29 16:44:22 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/04 13:57:48 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ t_lst_token	*create_token_list(char **split)
 	while (split[i])
 	{
 		space_split = split_pipe_by_space(split[i]);
+//		printf("--------------------\n");
+//		print_char_two_dim_array(space_split);
+//		printf("--------------------\n");
 		j = 0;
 		while (space_split[j])
 		{
@@ -35,17 +38,68 @@ t_lst_token	*create_token_list(char **split)
 	return (lst);
 }
 
+
+char	*clean_quote(char *token_str)
+{
+	int i;
+	int j;
+	int	index_dquote;
+	char	*str_without_extra_quote;
+
+	str_without_extra_quote = __ft_calloc(sizeof(char) * (ft_strlen(token_str) + 1));
+	i = 0;
+	j = 0;
+	while (token_str[i])
+	{
+		if (is_quote(token_str[i]))
+		{
+			if (is_double_quote(token_str[i]))
+			{
+				i++;
+				while (token_str[i] && !is_double_quote(token_str[i]))
+				{
+					str_without_extra_quote[j] = token_str[i];
+					j++;
+					i++;
+				}
+			}
+			else if (is_simple_quote(token_str[i]))
+			{
+				i++;
+				while (token_str[i] && !is_simple_quote(token_str[i]))
+				{
+					str_without_extra_quote[j] = token_str[i];
+					j++;
+					i++;
+				}
+			}
+		}
+		else
+		{
+			str_without_extra_quote[j] = token_str[i];
+			j++;
+			i++;
+		}
+	}
+	return (str_without_extra_quote);
+}
 t_lst_token	*create_token(char	*space_split)
 {
 	t_lst_token	*token;
-
-//	printf("HERE: |%s|\n", space_split);
+	char 	*dup;
+	printf("HERE: |%s|\n", space_split);
 	token = __ft_calloc(sizeof(t_lst_token));
-	token->str = dup_without_extra_space(space_split);
+	dup = dup_without_extra_space(space_split);
 	token->type = find_token_type(space_split);
+	if (token->type == TOK_SINGLE_QUOTE || token->type == TOK_DOUBLE_QUOTE)
+		token->str = clean_quote(dup);
+	else
+		token->str = dup;
+	printf("token->str = [%s]\n", token->str);
 	token->next = NULL;
 	return (token);
 }
+
 
 int	find_token_type(char *str)
 {
@@ -121,23 +175,73 @@ char	*dup_without_extra_space(char *str)
 	int		end;
 	int		i;
 	int		j;
+	int		begun_with_quote = 0;
 
 	i = 0;
 	while (is_space(str[i]))
 		i++;
-	while (is_quote(str[i]))
+/*	while (is_quote(str[i]))
+	{
+		begun_with_quote = 1;
 		i++;
+	}*/
 	end = ft_strlen(str) - 1;
 	while (is_space(str[end]))
 		end--;
-	while (is_quote(str[end]))
-		end--;
+
+//	printf("i = [%d] end = [%d]\n", i, end);
+/*	while (begun_with_quote && is_quote(str[end]))
+		end--;*/
 	dup = __ft_calloc(sizeof(char) * ((end - i) + 2));
 	j = 0;
-	while (str[i + j] && (i + j <= end))
+	while (str[i + j] && ((i + j) <= end))
 	{
+//		printf("TEMOIN %d\n", j);
 		dup[j] = str[i + j];
 		j++;
 	}
+
+//	printf("DUP= [%s]\n", dup);
+	return (dup);
+}
+
+
+char	*dup_without_extra_space_leave_one_space(char *str)
+{
+	char	*dup;
+	int		end;
+	int		i;
+	int		j;
+	int		begun_with_quote = 0;
+
+	i = 0;
+	while (is_space(str[i]))
+		i++;
+	if (i > 1)
+		i = i - 1;
+/*	while (is_quote(str[i]))
+	{
+		begun_with_quote = 1;
+		i++;
+	}*/
+	end = ft_strlen(str) - 1;
+	int save = end;
+	while (is_space(str[end]))
+		end--;
+	if ((save - end) > 1)
+		end++;
+//	printf("i = [%d] end = [%d]\n", i, end);
+/*	while (begun_with_quote && is_quote(str[end]))
+		end--;*/
+	dup = __ft_calloc(sizeof(char) * ((end - i) + 2));
+	j = 0;
+	while (str[i + j] && ((i + j) <= end))
+	{
+//		printf("TEMOIN %d\n", j);
+		dup[j] = str[i + j];
+		j++;
+	}
+
+//	printf("DUP= [%s]\n", dup);
 	return (dup);
 }
