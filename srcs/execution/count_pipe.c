@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 10:27:40 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/03 18:52:05 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 11:52:03 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	count_pipe(t_lst_token *token)
 	tmp = token;
 	while (tmp)
 	{
-		if (tmp->type == 5)
+		if (tmp->type == TOK_PIPE)
 			count++;
 		tmp = tmp->next;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   and_or_checker.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:05:36 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/25 09:50:26 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/04 11:12:05 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	or_checker(char *commande, t_checker *check)
 
 int	and_or_pipe_checker(char *commande, t_checker *check)
 {
-	while (commande[check->index])
+	while (check->index != -1 && commande[check->index])
 	{
 		if (commande[check->index] == '&')
 			and_checker(commande, check);
@@ -57,7 +57,8 @@ int	and_or_pipe_checker(char *commande, t_checker *check)
 		if (check->error == TRUE)
 			return (0);
 		check->index = jump_caracters(commande, "\"\'&|", check->index, 1);
-		quote_jump(commande, check);
+		if (check->index != -1)
+			quote_jump(commande, check);
 	}
 	return (1);
 }

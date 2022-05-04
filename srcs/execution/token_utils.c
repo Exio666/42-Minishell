@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 13:17:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 15:02:32 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/04 11:48:36 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,14 @@ int	count_tok_word(t_lst_token *token)
 	int	count;
 
 	count = 0;
-	while (token && token->type == TOK_WORD)
+	while (token && token->type != TOK_PIPE)
 	{
-		count++;
-		token = token->next;
+		if (token->type == TOK_WORD || token->type == TOK_DOUBLE_QUOTE || token->type == TOK_SINGLE_QUOTE)
+			count++;
+		if (token->type == TOK_REDIRECT_IN || token->type == TOK_REDIRECT_OUT_APPEND || token->type == TOK_REDIRECT_OUT)
+			token = token->next;
+		if (token)
+			token = token->next;
 	}
 	return (count);
 }

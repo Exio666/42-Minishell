@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:27:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/03 18:56:47 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 11:51:36 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ int	exec_pipe_cmd(t_lst_token *token, t_lst_env **env_list, int nb_cmd)
 			close(pipe_stock[1]);
 			exec_cmd(token, env_list);
 		}
-		while (token && token->type != PIPE)
+		while (token && token->type != TOK_PIPE)
 			token = token->next;
-		if (token->type == PIPE)
+		if (token && token->type == TOK_PIPE)
 			token = token->next;
 		close(pipe_stock[0]);
 		close(pipe_stock[1]);

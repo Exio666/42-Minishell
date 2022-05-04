@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/03 18:59:53 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/05/04 13:12:43 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,7 @@ NAME = minishell
 NAME_TEST = minishell_test
 
 CC = cc 
-#-Wall -Wextra -Werror
-CFLAGS = -Wall -Wextra -Werror -g3 
-#-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 
 ARGUMENT_RUN = 
 ARGUMENT_RUN_TEST =
@@ -101,7 +99,8 @@ SRCS =	checker/and_or_checker.c								\
 		execution/set_up_redirection.c							\
 		execution/exec_buitins.c								\
 		execution/exec_pipe_cmd.c								\
-		execution/count_pipe.c
+		execution/count_pipe.c									\
+		execution/main_execution.c
 
 #SRCS_TEST = builtins/export/main_export.c		
 SRCS_TEST = execution/main_execution.c	
@@ -153,7 +152,7 @@ header:
 		echo "| '_ \` _ \| | '_ \| / __| '_ \ / _ \ | | "
 		echo "| | | | | | | | | | \__ \ | | |  __/ | | "
 		echo "|_| |_| |_|_|_| |_|_|___/_| |_|\___|_|_| "
-		echo "                 by bsavinel and associate"
+		echo "                 by bsavinel and associates"
 		echo "${NO_COLOR}"
 
 $(NAME) : header $(OBJS) $(LIBS)

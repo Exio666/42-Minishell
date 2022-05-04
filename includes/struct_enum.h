@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/03 10:04:42 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 11:51:07 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef enum e_type_token
 	TOK_HEREDOC,				// <<
 	TOK_PIPE,					// |
 	TOK_SINGLE_QUOTE,			// '
-	TOK_DOUBLE_QUOTE,			// '
+	TOK_DOUBLE_QUOTE,			// "
 	TOK_DOLLAR,					// $
 
 	

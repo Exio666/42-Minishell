@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:53:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/03 16:25:20 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 11:58:52 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,24 @@ char	**create_argv_cmd(t_lst_token *token)
 	char		**argv_cmd;
 	int			nb_word_tok;
 	int			i;
-	t_lst_token	*first_token_of_cmd;
+	t_lst_token	*copie;
 
-	first_token_of_cmd = find_first_token_cmd(token);
+	copie = token;
 	nb_word_tok = count_tok_word(token);
 	argv_cmd = __ft_calloc(sizeof(char *) * (nb_word_tok + 1));
 	i = 0;
 	while (i < nb_word_tok)
 	{
-		argv_cmd[i] = token->str;
-		token = token->next;
-		i++;
+		if (copie->type == TOK_WORD || copie->type == TOK_DOUBLE_QUOTE || copie->type == TOK_SINGLE_QUOTE)
+		{
+			argv_cmd[i] = copie->str;
+			i++;
+		}
+		if (copie->type == TOK_REDIRECT_IN || copie->type == TOK_REDIRECT_OUT_APPEND || copie->type == TOK_REDIRECT_OUT)
+			copie = copie->next;
+		if (copie)
+			copie = copie->next;
 	}
+	argv_cmd[i] = NULL;
 	return (argv_cmd);
 }

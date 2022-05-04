@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 10:42:02 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/03 17:58:15 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 11:43:37 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int exec_builtins(int ac, char **av, t_lst_env **envp)
 {
+	fprintf(stderr, "commande: %s\n", av[0]);
 	if (ft_strncmp(av[0], "cd", 3) == 0)
 	{
 		ft_putstr_fd("Fonction cd :\n", 2);
