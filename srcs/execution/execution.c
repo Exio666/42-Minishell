@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 19:05:00 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:50:57 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,15 @@ void	execute_command(t_lst_token *token, t_lst_env **env_list)
 	int		count;
 
 	count = count_pipe(token);
-	fprintf(stderr, "nbr of pipe = %d\n", count);
 	if (count == 1)
 	{
-		ft_putstr_fd("exec solo\n", 2);
 		set_up_redirect_in(token);
 		set_up_redirect_out(token);
 		argv = create_argv_cmd(token);
 		exec_one_cmd(argv, env_list);
 	}
 	else
-	{
-		ft_putstr_fd("exec pipe\n", 2);
 		exec_pipe_cmd(token, env_list, count);
-	}
 }
 
 void	execute_here_doc_tree(t_btree *root);

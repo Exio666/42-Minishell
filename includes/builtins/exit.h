@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:35:47 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/03 11:50:22 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 20:00:03 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "minishell.h"
 
-int	good_arg_for_exit(char *arg);
-int	ft_exit(int ac, char **av);
+int		good_arg_for_exit(char *arg);
+void	builtins_exit_prog(int ac, char **av);
+int		ft_exit(int ac, char **av);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:18:55 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/03 16:40:45 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:56:27 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	put_varraible(char *arg, t_lst_env **envp)
 
 int	ft_export(int ac, char **arg, t_lst_env **envp)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	while (i < ac)
