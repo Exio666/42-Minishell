@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/05 13:58:43 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:37:07 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	main(int argc, char **argv, char **envp)
 	(void) (argc);
 	(void) (argv);
 
-	launch_test_a_equal_bonjour_with_space(envp);
-//	launch_test_a_equal_cho_a(envp);
+//	launch_test_a_equal_bonjour_with_space(envp);
+	launch_test_a_equal_cho_a(envp);
 	return (0);
 }
 

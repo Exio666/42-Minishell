@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:01:16 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/05 14:04:12 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/05 15:44:37 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 
 void	launch_test_a_equal_cho_a(char **envp)
 {
+	printf(RED "a=\"cho a\"\n" RESET);
+	
+	test0(envp);
 	test1(envp);
 	test2(envp);
 	test3(envp);
@@ -24,32 +27,67 @@ void	launch_test_a_equal_cho_a(char **envp)
 	test6(envp);
 	test7(envp);
 	test8(envp);
+	test_8_bis(envp);
+}
+
+void test0(char **envp)
+{
+	char	command_line[] = "echo \"e\"\"$a\"\"e\"";
+	t_btree *root;
+	t_lst_env *env_list;
+
+	printf(GRN "Test 0 : echo \"e\"\"$a\"\"e\"\n" RESET);
+	root = get_btree_of_logical_op(command_line);
+	add_all_pipe_sequence_in_tree(&root, command_line);
+	printf("0 | [echo]  ->  0 | [echo a]  ->  NULL : EXPECTED\n");
+	env_list = convert_env_array_in_list(envp);
+	execute_command(root->token, env_list);
+	printf("|echo a| : EXPECTED\n");
+
+	printf("\n");
 }
 
 void test1(char **envp)
 {
-	char	command_line[] = "echo $a";
+	char	command_line[] = "echo e\"$a\"";
 	t_btree *root;
 	t_lst_env *env_list;
 
-	printf(GRN "Test 1\n" RESET);
+	printf(GRN "Test 1 : echo e\"$a\"\n" RESET);
 	root = get_btree_of_logical_op(command_line);
 	add_all_pipe_sequence_in_tree(&root, command_line);
-	printf("0 | [echo]  ->  0 | [cho a]  ->  NULL : EXPECTED\n");
+	printf("0 | [echo]  ->  0 | [echo a]  ->  NULL : EXPECTED\n");
 	env_list = convert_env_array_in_list(envp);
 	execute_command(root->token, env_list);
-	printf("|cho a| : EXPECTED\n");
+	printf("|echo a| : EXPECTED\n");
 
 	printf("\n");
 }
 
 void test2(char **envp)
 {
+	char	command_line[] = "echo $a";
+	t_btree *root;
+	t_lst_env *env_list;
+
+	printf(GRN "Test 2 : echo $a\n" RESET);
+	root = get_btree_of_logical_op(command_line);
+	add_all_pipe_sequence_in_tree(&root, command_line);
+	printf("0 | [echo]  ->  0 | [cho a]  ->  NULL : EXPECTED\n");
+	env_list = convert_env_array_in_list(envp);
+	execute_command(root->token, env_list);
+	printf("|cho a| : EXPECTED\n");
+
+	printf("\n");
+}
+
+void test3(char **envp)
+{
 	char	command_line[] = "echo \"$a\"";
 	t_btree *root;
 	t_lst_env *env_list;
 
-	printf(GRN "Test 2\n" RESET);
+	printf(GRN "Test 3 : echo \"$a\"\n" RESET);
 	root = get_btree_of_logical_op(command_line);
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | [cho a]  ->  NULL : EXPECTED\n");
@@ -61,13 +99,13 @@ void test2(char **envp)
 }
 
 
-void test3(char **envp)
+void test4(char **envp)
 {
 	char	command_line[] = "echo \'$a\'";
 	t_btree *root;
 	t_lst_env *env_list;
 
-	printf(GRN "Test 3\n" RESET);
+	printf(GRN "Test 4 : echo \'$a\'n" RESET);
 	root = get_btree_of_logical_op(command_line);
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | [$a]  ->  NULL : EXPECTED\n");
@@ -78,13 +116,13 @@ void test3(char **envp)
 	printf("\n");
 }
 
-void test4(char **envp)
+void test5(char **envp)
 {
 	char	command_line[] = "e$a";
 	t_btree *root;
 	t_lst_env *env_list;
 
-	printf(GRN "Test 4\n" RESET);
+	printf(GRN "Test 5 : e$a\n" RESET);
 	root = get_btree_of_logical_op(command_line);
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | [a]  ->  NULL : EXPECTED\n");
@@ -95,13 +133,13 @@ void test4(char **envp)
 	printf("\n");
 }
 
-void test5(char **envp)
+void test6(char **envp)
 {
 	char	command_line[] = "e\"$a\"";
 	t_btree *root;
 	t_lst_env *env_list;
 
-	printf(GRN "Test 5\n" RESET);
+	printf(GRN "Test 6 : e\"$a\"\n" RESET);
 	root = get_btree_of_logical_op(command_line);
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo a]  ->  NULL : EXPECTED\n");
@@ -112,13 +150,13 @@ void test5(char **envp)
 	printf("\n");
 }
 
-void test6(char **envp)
+void test7(char **envp)
 {
 	char	command_line[] = "e\'$a\'";
 	t_btree *root;
 	t_lst_env *env_list;
 
-	printf(GRN "Test 6\n" RESET);
+	printf(GRN "Test 7 : e\'$a\'\n" RESET);
 	root = get_btree_of_logical_op(command_line);
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [e$a]  ->  NULL : EXPECTED\n");
@@ -129,13 +167,13 @@ void test6(char **envp)
 	printf("\n");
 }
 
-void test7(char **envp)
+void test8(char **envp)
 {
 	char	command_line[] = "echo \"\" $a \"\"";
 	t_btree *root;
 	t_lst_env *env_list;
 
-	printf(GRN "Test 7\n" RESET);
+	printf(GRN "Test 8 ; echo \"\" $a \"\"\n" RESET);
 	root = get_btree_of_logical_op(command_line);
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | []  ->  0 | [cho]  ->  0 | [a]  ->  0 | []  ->  NULL : EXPECTED\n");
@@ -147,13 +185,13 @@ void test7(char **envp)
 }
 
 
-void test8(char **envp)
+void test_8_bis(char **envp)
 {
 	char	command_line[] = "echo \"\" \"$a\" \"\"";
 	t_btree *root;
 	t_lst_env *env_list;
 
-	printf(GRN "Test 8\n" RESET);
+	printf(GRN "Test 8_bis : echo \"\" \"$a\" \"\"\n" RESET);
 	root = get_btree_of_logical_op(command_line);
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | []  ->  0 | [cho a]  ->  0 | []  ->  NULL : EXPECTED\n");
