@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/04 19:11:14 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/05/05 11:22:18 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ SRCS =	checker/and_or_checker.c								\
 		builtins/env/env.c										\
 		builtins/exit/exit.c									\
 		builtins/export/export.c								\
+		builtins/export/export_utils.c							\
 		builtins/pwd/pwd.c										\
 		builtins/unset/unset.c									\
 		parser/logical_operator/count_and_update_logic_op.c		\

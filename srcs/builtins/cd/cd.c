@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:53:17 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/04 20:06:25 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/05 10:51:59 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	ft_cd(int ac, char **argv, t_lst_env **envp)
 	}
 	else if (ac == 1)
 	{
-		path_move = ft_get_env(envp, "HOME");
+		path_move = get_variable_content(ft_get_env(envp, "HOME"));
 		if (path_move == NULL)
 		{
 			ft_putstr_fd(CD_ERROR_HOME_MOT_SET, 2);
