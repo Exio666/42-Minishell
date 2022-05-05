@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_enum.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/03 10:04:42 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/05 11:07:51 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ typedef struct s_token
 {
 	char			*str;
 	t_type_token	type;
+	int				space_after;
 	struct s_token	*next;
 }	t_lst_token;
 

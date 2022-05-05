@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:56:56 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 12:58:52 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/05 13:28:27 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,17 @@ void	add_all_pipe_sequence_in_tree(t_btree **root, char *user_input)
 {
 	t_pipe_sequence	**splited_pipe_seq;
 
+
+	printf("CLARO 0\n");
 	remove_parenthesis(user_input);
+	printf("CLARO 1\n");
 //	printf("user_input: %s\n", user_input);
 	splited_pipe_seq = split_all_pipe_sequence(user_input);
+	printf("CLARO 2\n");
 //	for (int i = 0; splited_pipe_seq[i]; i++)
 //		printf("HERE:%s\n", splited_pipe_seq[i]->str);
 	insert_all_pipe_seq_in_btree(root, splited_pipe_seq);
+	printf("CLARO 3\n");
 //	printf("***********************\n");
 //	print2D(*root);
 //	printf("***********************\n");
@@ -61,9 +66,10 @@ void	remove_parenthesis(char *str)
 	i = 0;
 	while (str[i])
 	{
+		printf("CLARO i = %d\n", i);
 		if (is_simple_quote(str[i]) || is_double_quote(str[i]))
 			skip_quote(str, &i);
-		if (str[i] == '(' || str[i] == ')')
+		if (str[i] && (str[i] == '(' || str[i] == ')'))
 			str[i] = ' ';
 		i++;
 	}
