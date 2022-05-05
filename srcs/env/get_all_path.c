@@ -6,25 +6,25 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 16:48:21 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/03 16:23:21 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/05 16:12:55 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char **parse_arg(char *arg)
+char	**parse_arg(char *arg)
 {
-	char **arg_with_option;
-	
+	char	**arg_with_option;
+
 	arg_with_option = ft_split(arg, ' ');
 	if (!arg_with_option)
 		return (NULL);
 	return (arg_with_option);
 }
 
-char *get_path_env_variable_from_array(char **envp)
+char	*get_path_env_variable_from_array(char **envp)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (envp[i] != NULL)
@@ -36,16 +36,15 @@ char *get_path_env_variable_from_array(char **envp)
 	return (NULL);
 }
 
-char **split_path_env_variable_and_add_slash(char *path_env_variable)
+char	**split_path_env_variable_and_add_slash(char *path_env_variable)
 {
-	char *current_path;
-	char **all_path;
-	int i;
-	int path_len;
-	
+	char	*current_path;
+	char	**all_path;
+	int		i;
+	int		path_len;
+
 	all_path = ft_split(ft_strchr(path_env_variable, '=') + 1, ':');
 	i = 0;
-
 	while (all_path[i] != NULL && all_path[i][0] != 0)
 	{
 		path_len = strlen(all_path[i]);
@@ -60,9 +59,10 @@ char **split_path_env_variable_and_add_slash(char *path_env_variable)
 	}
 	return (all_path);
 }
-char *get_name_command(char **exe_argv)
+
+char	*get_name_command(char **exe_argv)
 {
-	char *name_command;
+	char	*name_command;
 
 	if (exe_argv == NULL)
 		return (NULL);
@@ -70,17 +70,20 @@ char *get_name_command(char **exe_argv)
 	return (name_command);
 }
 
-int execute(char **exe_argv, t_lst_env **env_list)
+int	execute(char **exe_argv, t_lst_env **env_list)
 {
-	int		exe_read = -1;
+	int		exe_read;
 	char	*full_path_command;
 	int		i;
-	char **all_path;
-	char **envp;
+	char	**all_path;
+	char	**envp;
 
+	exe_read = -1;
 	envp = env_list_to_tab(env_list);
-	all_path = split_path_env_variable_and_add_slash(get_path_env_variable_from_array(envp));
+	all_path = split_path_env_variable_and_add_slash(
+			get_path_env_variable_from_array(envp));
 	i = 0;
+	exe_read = execve(exe_argv[0], exe_argv, envp);
 	while (all_path[i] && exe_read == -1)
 	{
 		if (access(all_path[i], X_OK) == 0)

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/03 16:33:16 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/05 13:25:21 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
  *	Libraries
  */
 
+# include <signal.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -28,7 +29,6 @@
 # include <sys/wait.h>
 # include <stdlib.h>
 # include <string.h>
-# include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <dirent.h>
@@ -117,5 +117,11 @@
 
 # include "expand.h"
 # include "execution.h"
+
+/*
+ *	Signal
+ */
+
+# include "signal_management.h"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 21:47:51 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 14:46:54 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/05 12:00:48 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	set_up_redirect_in(t_lst_token *token)
 
 	while (token && token->type != TOK_PIPE)
 	{
-		if (token && token->type == TOK_REDIRECT_IN)
+		if (token && (token->type == TOK_REDIRECT_IN
+				|| token->type == TOK_HEREDOC))
 		{
 			token = token->next;
 			if (token)

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:04:44 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/04 13:31:33 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/05 13:55:22 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ int	quote_parenthise_checker(char *commande, t_checker *check)
 			else if (tmp == '\"')
 				return (check_error(check, S_ERROR_M_DQUOTE));
 		}
-		check->index = jump_caracters(commande, "\"\'()", check->index + 1, 1);
+		if (commande[check->index])
+			check->index = jump_caracters(commande, "\"\'()", check->index + 1, 1);
 	}
 	if (check->par_lvl != 0)
 		return (check_error(check, S_ERROR_M_OPEN_PAR));

@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/05 11:22:18 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/05/05 16:08:08 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ INCS =	-I includes								\
 		-I includes/parser/logical_operator		\
 		-I includes/parser/pipe_sequence		\
 		-I includes/pipe_seq_to_token_list 		\
-		-I includes/wildcard
+		-I includes/signal_management			\
+		-I includes/wildcard					\
 
 SRCS =	checker/and_or_checker.c								\
 		checker/primary_check.c									\
@@ -81,8 +82,6 @@ SRCS =	checker/and_or_checker.c								\
 		env_list/get_functions.c								\
 		env_list/convert_env_array_in_list.c					\
 		env_list/get_path_variable.c							\
-		utils/jump_caracters.c									\
-		utils/is_functions.c									\
 		pipe_seq_to_token_list/create_token_list.c				\
 		pipe_seq_to_token_list/insert_token_separator_utils.c	\
 		pipe_seq_to_token_list/insert_token_separator.c 		\
@@ -101,10 +100,13 @@ SRCS =	checker/and_or_checker.c								\
 		execution/exec_buitins.c								\
 		execution/exec_pipe_cmd.c								\
 		execution/count_pipe.c									\
-		execution/main_execution.c
+		execution/main_execution.c								\
+		signal_management/signal_management.c								\
+		utils/jump_caracters.c									\
+		utils/is_functions.c									\
 
 #SRCS_TEST = builtins/export/main_export.c		
-SRCS_TEST = execution/main_execution.c	
+SRCS_TEST = #execution/main_execution.c	
 
 ################################################################################
 ########							Libraries							########

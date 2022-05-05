@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 19:40:50 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/05 17:42:21 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,20 @@ int	main(int argc, char **argv, char **envp)
 	env_list = convert_env_array_in_list(envp);
 	while (42)
 	{
+		signal(SIGQUIT, &handler_sigquit_empty);
+		signal(SIGINT, &handler_sigint_prompt);
 		reset_terminal();
 		command_line = readline(prompt);
 		add_history(command_line);
 		if (primary_checker(command_line) == TRUE)
 		{
+			signal(SIGINT, &handler_sigint_endl);
+			signal(SIGQUIT, &handler_sigquit_exit);
 			root = get_btree_of_logical_op(command_line);
 			add_all_pipe_sequence_in_tree(&root, command_line);
 			execute_command_tree(root, &env_list);
 		}
-		else if (ft_strlen(command_line) == 0)
+		else if (!command_line)
 			exit_ctr_d(command_line);
 		free(command_line);
 	}

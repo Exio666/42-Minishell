@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_execution.h                                   :+:      :+:    :+:   */
+/*   signal_management.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 17:03:59 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/05 13:28:48 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/05 12:49:20 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/05 16:26:52 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_EXECUTION_H
-# define MAIN_EXECUTION_H
+#ifndef SIGNAL_MANAGEMENT_H
+# define SIGNAL_MANAGEMENT_H
 
 # include "minishell.h"
 
-void	reset_terminal(void);
-void	exit_ctr_d(char *command_line);
+void	handler_sigint_empty(int sig);
+void	handler_sigint_prompt(int sig);
+void	handler_sigint_endl(int sig);
+void	handler_sigquit_exit(int sig);
+void	handler_sigquit_empty(int sig);
 
 #endif
