@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/05 16:31:44 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/05 18:14:52 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	exec_one_cmd(char **argv, t_lst_env **env_list)
 		{
 			signal(SIGINT, &handler_sigint_empty);
 			execute(argv, env_list);
+			__ft_calloc(-1);
 			exit(127);
 		}
 		while (waitpid(-1, NULL, 0) > 0)
