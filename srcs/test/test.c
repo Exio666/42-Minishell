@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:01:16 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/05 13:25:35 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:04:12 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,10 +178,10 @@ export a="    bonjour    "
 void	launch_test_a_equal_bonjour_with_space(char **envp)
 {
 	printf(RED "a=\"    bonjour    \"\n" RESET);
-//	test9(envp);
-//	test10(envp);
-//	test11(envp); boucle inf
-//	test12(envp);
+	test9(envp);
+	test10(envp);
+	test11(envp);
+	test12(envp);
 	test13(envp);
 }
 
@@ -242,7 +242,7 @@ void test12(char **envp)
 	t_btree *root;
 	t_lst_env *env_list;
 
-	printf(GRN "Test 12\n" RESET);
+	printf(GRN "Test 12 : echo $a\"madame\"\n" RESET);
 	root = get_btree_of_logical_op(command_line);
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | [bonjour]  ->  0 | [madame]  ->  NULL : EXPECTED\n");
@@ -261,9 +261,7 @@ void test13(char **envp)
 
 	printf(GRN "Test 13 : echo e\"$a\"\"madame\"\n" RESET);
 	root = get_btree_of_logical_op(command_line);
-	printf("ICI\n");
 	add_all_pipe_sequence_in_tree(&root, command_line);
-	printf("ET LA\n");
 	printf("0 | [echo]  ->  0 | [e   bonjour    madame]  ->  NULL : EXPECTED\n");
 	env_list = convert_env_array_in_list(envp);
 	execute_command(root->token, env_list);

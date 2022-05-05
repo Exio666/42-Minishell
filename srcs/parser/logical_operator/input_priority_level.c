@@ -34,13 +34,10 @@ t_input_level	*attribute_level(char *user_input)
 	quote_skiped = FALSE;
 	while (input_level->input[i])
 	{
-		printf("%c\n", input_level->input[i]), 
 		input_level->level[i] = level;
 		if (is_quote(input_level->input[i]))
 		{
-			printf("temoin i = %d\n", i);
 			skip_quote(input_level->input, &i);
-			printf("temoin i = %d\n", i);
 			quote_skiped = TRUE;
 		}
 		if (is_open_parenthesis(input_level->input[i]))
