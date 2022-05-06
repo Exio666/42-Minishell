@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 11:17:04 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/03 10:04:36 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 14:20:23 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static void	__ft_lstclear(t_list **lst)
 static void	__free_exit(t_list **lst)
 {
 	__ft_lstclear(lst);
-//	exit(EXIT_FAILURE);
 }
 
 void	*__ft_calloc(ssize_t size)
@@ -39,7 +38,10 @@ void	*__ft_calloc(ssize_t size)
 	void			*content;
 
 	if (size < 0)
+	{
 		__free_exit(&list_malloc);
+		return (NULL);
+	}
 	content = ft_calloc(1, size);
 	if (!content)
 		__free_exit(&list_malloc);

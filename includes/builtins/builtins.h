@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_all_pipe_sequence_in_tree.h                    :+:      :+:    :+:   */
+/*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 15:09:25 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 14:25:02 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/03 11:19:48 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/05 11:20:22 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ADD_ALL_PIPE_SEQUENCE_IN_TREE_H
-# define ADD_ALL_PIPE_SEQUENCE_IN_TREE_H
+#ifndef BUILTINS_H
+# define BUILTINS_H
 
 # include "minishell.h"
 
-void			add_all_pipe_sequence_in_tree(t_btree **root, char *user_input);
-t_pipe_sequence	**split_all_pipe_sequence(char *user_input);
-void			remove_parenthesis(char *str);
-int				count_pipe_sequence(char *user_input);
-void			print_pipe_seq_array(t_pipe_sequence **pip_seq);
+# include "cd.h"
+# include "echo.h"
+# include "env.h"
+# include "exit.h"
+# include "export.h"
+# include "pwd.h"
+# include "unset.h"
+# include "export_utils.h"
+
 #endif

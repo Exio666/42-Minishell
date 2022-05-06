@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 13:15:58 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/26 15:23:21 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/04 14:20:32 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	*get_variable_name(char	*variable_env)
 	variable_name_len = get_var_name_len(variable_env);
 	variable_name = __ft_calloc(sizeof(char) * (variable_name_len + 1));
 	ft_strlcpy(variable_name, variable_env, variable_name_len + 1);
-//	printf("%s\n", variable_name);
 	return (variable_name);
 }
 

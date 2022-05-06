@@ -1,5 +1,5 @@
 {
-	"C_Cpp.errorSquiggles": "Disabled",
+	"C_Cpp.errorSquiggles": "Enabled",
 	"files.associations": {
 		"*.json": "c",
 		"typeinfo": "c",
@@ -8,6 +8,6 @@
 		"env_tab_to_list.h": "c",
 		"minishell.h": "c",
 		"token_utils.h": "c",
-		"execution.h": "c"
+		"algorithm": "c"
 	}
 }

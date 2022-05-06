@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_all_pipe_sequence_in_tree.h                    :+:      :+:    :+:   */
+/*   exec_pipe_cmd.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 15:09:25 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 14:25:02 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/03 14:13:04 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/04 14:29:33 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ADD_ALL_PIPE_SEQUENCE_IN_TREE_H
-# define ADD_ALL_PIPE_SEQUENCE_IN_TREE_H
+#ifndef EXEC_PIPE_CMD_H
+# define EXEC_PIPE_CMD_H
 
 # include "minishell.h"
 
-void			add_all_pipe_sequence_in_tree(t_btree **root, char *user_input);
-t_pipe_sequence	**split_all_pipe_sequence(char *user_input);
-void			remove_parenthesis(char *str);
-int				count_pipe_sequence(char *user_input);
-void			print_pipe_seq_array(t_pipe_sequence **pip_seq);
+int		len_av(char **argv);
+void	exec_cmd(t_lst_token *token, t_lst_env **env_list);
+int		exec_pipe_cmd(t_lst_token *token, t_lst_env **env_list, int nb_cmd);
+
 #endif

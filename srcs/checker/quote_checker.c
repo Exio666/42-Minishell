@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:04:44 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/06 15:42:31 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/05 18:02:38 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,17 @@ int	quote_jump(char *commande, t_checker *check)
 	return (1);
 }
 
+void	quote_parenthise_checker_next_char(char *commande, t_checker *check)
+{
+	if (commande[check->index] && check->index != -1)
+		check->index = jump_caracters(commande, "\"\'()", check->index + 1, 1);
+}
+
 int	quote_parenthise_checker(char *commande, t_checker *check)
 {
 	char	tmp;
 
-	while (commande[check->index] && check->index != -1)
+	while (check->index != -1 && commande[check->index])
 	{
 		if (commande[check->index] == '(')
 			check->par_lvl++;
@@ -55,7 +61,7 @@ int	quote_parenthise_checker(char *commande, t_checker *check)
 			else if (tmp == '\"')
 				return (check_error(check, S_ERROR_M_DQUOTE));
 		}
-		check->index = jump_caracters(commande, "\"\'()", check->index + 1, 1);
+		quote_parenthise_checker_next_char(commande, check);
 	}
 	if (check->par_lvl != 0)
 		return (check_error(check, S_ERROR_M_OPEN_PAR));

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:48:05 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/05 16:18:06 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/06 11:24:20 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void split_token_by_quote(char *token_str)
 	int word_len;
 	nb_word = count_word_quote(token_str);
 	printf("nb_word = %d\n",nb_word);
-	split = __ft_calloc(sizeof(char *) * (nb_word + 1))
+	split = __ft_calloc(sizeof(char *) * (nb_word + 1));
 	while (token_str[i] && k < nb_word)
 	{
 		word_len = 0;

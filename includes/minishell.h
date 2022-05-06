@@ -6,13 +6,22 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/05/05 10:08:33 by rpottier         ###   ########.fr       */
+=======
+/*   Updated: 2022/05/05 13:25:21 by bsavinel         ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+/*
+ *	Libraries
+ */
+
+# include <signal.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -24,7 +33,6 @@
 # include <sys/wait.h>
 # include <stdlib.h>
 # include <string.h>
-# include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <dirent.h>
@@ -41,12 +49,7 @@
  *	Builtins
  */
 
-# include "echo.h"
-# include "env.h"
-# include "exit.h"
-# include "ft_cd.h"
-# include "pwd.h"
-# include "unset.h"
+# include "builtins.h"
 
 /*
  *	btree_management
@@ -66,7 +69,7 @@
 
 # include "get_all_path.h"
 # include "list_to_tab.h"
-//# include "ft_get_env.h"
+# include "ft_get_env.h"
 
 /*
  *	Parser
@@ -86,6 +89,7 @@
 */
 # include "logical_operator.h"
 # include "pipe_sequence.h"   
+
 /*
  *	Env_list
  */
@@ -93,8 +97,15 @@
 # include "env_list.h"
 
 /*
+ *	Builtins
+ */
+
+# include "builtins.h"
+
+/*
  * tokenisation
  */
+
 # include "pipe_seq_to_token_list.h"
 
 /*
@@ -103,12 +114,22 @@
 
 # include "jump_caracters.h"
 # include "is_functions.h"
+
 /*
  *	Wilcard
  */
 
 # include "expand.h"
 # include "execution.h"
+<<<<<<< HEAD
 # include "test.h"
+=======
+
+/*
+ *	Signal
+ */
+
+# include "signal_management.h"
+>>>>>>> master
 
 #endif

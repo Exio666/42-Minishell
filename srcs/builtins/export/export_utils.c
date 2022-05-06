@@ -1,55 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 10:40:00 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/03 18:00:06 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/05 11:14:46 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/05 12:00:22 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	arg_is_flag_echo(char *arg)
+int	check_arg_export(char *arg)
 {
 	int	i;
 
-	if (!arg)
-		return (0);
-	if (arg[0] != '-')
-		return (0);
-	i = 1;
+	i = 0;
 	while (arg[i])
 	{
-		if (arg[i] != 'n')
+		if (!(ft_isalnum(arg[i]) || arg[i] == '_' || (arg[i] == '=' && i != 0)))
+		{
+			ft_putstr_fd("export: \'", 2);
+			ft_putstr_fd(arg, 2);
+			ft_putendl_fd("\' is not a valid identifier", 2);
 			return (0);
+		}
 		i++;
 	}
 	return (1);
 }
 
-int	echo(int ac, char **argv)
+int	ft_strlen_stop_car(char *str, char c)
 {
 	int	i;
-	int	flag_n;
 
-	i = 1;
-	flag_n = 0;
-	while (i < ac && arg_is_flag_echo(argv[i]))
+	i = 0;
+	while (str[i] && str[i] != c)
+		i++;
+	return (i);
+}
+
+int	str_conctent_car(char *str, char c)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		flag_n = 1;
+		if (str[i] == c)
+			return (1);
 		i++;
 	}
-	while (i < ac)
-	{
-		ft_putstr_fd(argv[i], 1);
-		if (i < ac - 1)
-			ft_putchar_fd(' ', 1);
-		i++;
-	}
-	if (flag_n == 0)
-		write(1, "\n", 1);
-	return (1);
+	return (0);
 }

@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cd.h                                            :+:      :+:    :+:   */
+/*   main_execution.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 10:34:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 10:41:56 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/04 17:03:59 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/05 13:28:48 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CD_H
-# define FT_CD_H
+#ifndef MAIN_EXECUTION_H
+# define MAIN_EXECUTION_H
 
 # include "minishell.h"
 
-int	ft_cd_absolu_path(char *path_move);
-int	no_dir(char *path_move);
-int	ft_cd_relative_path(char *path_move);
-int	ft_cd_movedir(char *path_move);
-int	ft_cd(int ac, char *argv, t_lst_env **envp);
+void	reset_terminal(void);
+void	exit_ctr_d(char *command_line);
 
 #endif

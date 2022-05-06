@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 14:21:04 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/14 10:47:54 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/03 11:51:32 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "minishell.h"
 
-void	ft_aff_env(t_lst_env **lst_env);
+int	ft_aff_env(t_lst_env **lst_env);
 
 #endif

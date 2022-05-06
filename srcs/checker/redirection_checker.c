@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 11:35:16 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/02 14:34:04 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 11:34:23 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	pipe_content_checker(char *commande, t_checker *check)
 
 int	redirection_checker(char *pipe_sequence, t_checker *check)
 {
-	while (pipe_sequence[check->index])
+	while (check->index != -1 && pipe_sequence[check->index])
 	{
 		check->arg_of_redirect = FALSE;
 		if (pipe_sequence[check->index] == '>')
@@ -97,7 +97,8 @@ int	redirection_checker(char *pipe_sequence, t_checker *check)
 		if (check->error == TRUE)
 			return (0);
 		check->index = jump_caracters(pipe_sequence, "\"\'<>|", check->index, 1);
-		quote_jump(pipe_sequence, check);
+		if (check->index != -1)
+			quote_jump(pipe_sequence, check);
 	}
 	return (1);
 }

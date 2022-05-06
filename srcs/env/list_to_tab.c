@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   list_to_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 13:19:55 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/30 17:14:33 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/05 12:04:42 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int env_lst_size(t_lst_env *list)
+int	env_lst_size(t_lst_env *list)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (list)

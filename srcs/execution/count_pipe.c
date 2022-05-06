@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_all_pipe_sequence_in_tree.h                    :+:      :+:    :+:   */
+/*   count_pipe.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 15:09:25 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 14:25:02 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/03 10:27:40 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/04 14:33:08 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ADD_ALL_PIPE_SEQUENCE_IN_TREE_H
-# define ADD_ALL_PIPE_SEQUENCE_IN_TREE_H
+#include "minishell.h"
 
-# include "minishell.h"
+int	count_pipe(t_lst_token *token)
+{
+	t_lst_token	*tmp;
+	int			count;
 
-void			add_all_pipe_sequence_in_tree(t_btree **root, char *user_input);
-t_pipe_sequence	**split_all_pipe_sequence(char *user_input);
-void			remove_parenthesis(char *str);
-int				count_pipe_sequence(char *user_input);
-void			print_pipe_seq_array(t_pipe_sequence **pip_seq);
-#endif
+	count = 1;
+	tmp = token;
+	while (tmp)
+	{
+		if (tmp->type == TOK_PIPE)
+			count++;
+		tmp = tmp->next;
+	}
+	return (count);
+}

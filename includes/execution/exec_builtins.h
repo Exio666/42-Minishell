@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_all_pipe_sequence_in_tree.h                    :+:      :+:    :+:   */
+/*   exec_builtins.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 15:09:25 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 14:25:02 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/03 14:16:25 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/04 14:29:27 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ADD_ALL_PIPE_SEQUENCE_IN_TREE_H
-# define ADD_ALL_PIPE_SEQUENCE_IN_TREE_H
+#ifndef EXEC_BUILTINS_H
+# define EXEC_BUILTINS_H
 
 # include "minishell.h"
 
-void			add_all_pipe_sequence_in_tree(t_btree **root, char *user_input);
-t_pipe_sequence	**split_all_pipe_sequence(char *user_input);
-void			remove_parenthesis(char *str);
-int				count_pipe_sequence(char *user_input);
-void			print_pipe_seq_array(t_pipe_sequence **pip_seq);
+int	exec_builtins(int ac, char **av, t_lst_env **envp);
+
 #endif

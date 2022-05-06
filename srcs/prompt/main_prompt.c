@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:23:39 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/03 10:02:43 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/04 11:05:08 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 	t_list *lst;
 	char	*command_line;
 	t_btree *root;
-	const char	prompt[] = GRN " Bsavinel_and_associate_shell$ " RESET;
+	const char	prompt[] = GRN " Bsavinel_and_associates_shell$ " RESET;
 
 	while (42)
 	{

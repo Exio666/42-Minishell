@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 13:17:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 15:02:32 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:08:24 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,21 @@ int	is_redirect_token(t_type_token token_type)
 		return (TRUE);
 	else if (token_type == TOK_REDIRECT_OUT_APPEND)
 		return (TRUE);
+	else if (token_type == TOK_HEREDOC)
+		return (TRUE);
 	else
 		return (FALSE);
+}
+
+int	is_str_token(t_type_token token_type)
+{
+	if (token_type == TOK_WORD)
+		return (TRUE);
+	if (token_type == TOK_DOUBLE_QUOTE)
+		return (TRUE);
+	if (token_type == TOK_SINGLE_QUOTE)
+		return (TRUE);
+	return (FALSE);
 }
 
 int	is_heredoc_token(t_type_token token_type)
@@ -37,10 +50,14 @@ int	count_tok_word(t_lst_token *token)
 	int	count;
 
 	count = 0;
-	while (token && token->type == TOK_WORD)
+	while (token && token->type != TOK_PIPE)
 	{
-		count++;
-		token = token->next;
+		if (is_str_token(token->type))
+			count++;
+		if (is_redirect_token(token->type))
+			token = token->next;
+		if (token)
+			token = token->next;
 	}
 	return (count);
 }

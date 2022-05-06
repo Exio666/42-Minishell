@@ -6,35 +6,11 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:18:55 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/02 16:46:16 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/05 11:18:52 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int	ft_strlen_stop_car(char *str, char c)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] && str[i] != c)
-		i++;
-	return (i);
-}
-
-int	str_conctent_car(char *str, char c)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '=')
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 int	add_varr_env(char *name, char *varraible, t_lst_env **envp)
 {
@@ -42,6 +18,7 @@ int	add_varr_env(char *name, char *varraible, t_lst_env **envp)
 	t_lst_env	*new;
 
 	end = *envp;
+	new = __ft_calloc(sizeof(t_lst_env) * 1);
 	while (end->next)
 		end = end->next;
 	new->name = name;
@@ -52,17 +29,18 @@ int	add_varr_env(char *name, char *varraible, t_lst_env **envp)
 	return (0);
 }
 
-char *put_varraible(char *arg, t_lst_env **envp)
+int	put_varraible(char *arg, t_lst_env **envp)
 {
 	char	*name;
-	char	*variable_env;
 	int		i;
 	int		len;
 
-	if (!arg || str_conctent_car(arg, '='))
-		return (1);
+	if (!arg || !str_conctent_car(arg, '='))
+		return (0);
 	len = ft_strlen_stop_car(arg, '=');
-	name = __ft_calloc(sizeof(char), len + 1);
+	if (len == 0)
+		return (1);
+	name = __ft_calloc(sizeof(char) * (len + 1));
 	i = 0;
 	while (i < len)
 	{
@@ -70,19 +48,20 @@ char *put_varraible(char *arg, t_lst_env **envp)
 		i++;
 	}
 	name[i] = '\0';
-	ft_unset(name, envp);
-	add_varr_env(name, &arg[len], envp);
+	delete_varraible(name, envp);
+	add_varr_env(name, &arg[len + 1], envp);
 	return (0);
 }
 
 int	ft_export(int ac, char **arg, t_lst_env **envp)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	while (i < ac)
 	{
-		put_varraible(arg[i], envp);
+		if (check_arg_export(arg[i]))
+			put_varraible(arg[i], envp);
 		i++;
 	}
 	return (0);
