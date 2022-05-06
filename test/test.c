@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:01:16 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/06 13:24:16 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/05 15:44:37 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,11 @@
 
 // export a="cho a"
 
-int main(int argc, char **argv, char **envp)
-{
-	(void)(argc);
-	(void)(argv);
-	
-	launch_test_a_equal_cho_a(envp);
-	return (0);
-}
-
 void	launch_test_a_equal_cho_a(char **envp)
 {
 	printf(RED "a=\"cho a\"\n" RESET);
-
+	
 	test0(envp);
-	printf("TEST 0 PASSE\n");
 	test1(envp);
 	test2(envp);
 	test3(envp);
@@ -48,11 +38,10 @@ void test0(char **envp)
 
 	printf(GRN "Test 0 : echo \"e\"\"$a\"\"e\"\n" RESET);
 	root = get_btree_of_logical_op(command_line);
-	printf("%p\n", root);
-	 add_all_pipe_sequence_in_tree(&root, command_line);
+	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | [echo a]  ->  NULL : EXPECTED\n");
 	env_list = convert_env_array_in_list(envp);
-	execute_command(root->token, &env_list);
+	execute_command(root->token, env_list);
 	printf("|echo a| : EXPECTED\n");
 
 	printf("\n");
@@ -69,7 +58,7 @@ void test1(char **envp)
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | [echo a]  ->  NULL : EXPECTED\n");
 	env_list = convert_env_array_in_list(envp);
-	execute_command(root->token, &env_list);
+	execute_command(root->token, env_list);
 	printf("|echo a| : EXPECTED\n");
 
 	printf("\n");
@@ -86,7 +75,7 @@ void test2(char **envp)
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | [cho a]  ->  NULL : EXPECTED\n");
 	env_list = convert_env_array_in_list(envp);
-	execute_command(root->token, &env_list);
+	execute_command(root->token, env_list);
 	printf("|cho a| : EXPECTED\n");
 
 	printf("\n");
@@ -103,7 +92,7 @@ void test3(char **envp)
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | [cho a]  ->  NULL : EXPECTED\n");
 	env_list = convert_env_array_in_list(envp);
-	execute_command(root->token, &env_list);
+	execute_command(root->token, env_list);
 	printf("|cho a| : EXPECTED\n");
 
 	printf("\n");
@@ -121,7 +110,7 @@ void test4(char **envp)
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | [$a]  ->  NULL : EXPECTED\n");
 	env_list = convert_env_array_in_list(envp);
-	execute_command(root->token, &env_list);
+	execute_command(root->token, env_list);
 	printf("|$a| : EXPECTED\n");
 
 	printf("\n");
@@ -138,7 +127,7 @@ void test5(char **envp)
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | [a]  ->  NULL : EXPECTED\n");
 	env_list = convert_env_array_in_list(envp);
-	execute_command(root->token, &env_list);
+	execute_command(root->token, env_list);
 	printf("|a| : EXPECTED\n");
 
 	printf("\n");
@@ -155,7 +144,7 @@ void test6(char **envp)
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo a]  ->  NULL : EXPECTED\n");
 	env_list = convert_env_array_in_list(envp);
-	execute_command(root->token, &env_list);
+	execute_command(root->token, env_list);
 	printf("|echo a: command not found| : EXPECTED\n");
 
 	printf("\n");
@@ -172,7 +161,7 @@ void test7(char **envp)
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [e$a]  ->  NULL : EXPECTED\n");
 	env_list = convert_env_array_in_list(envp);
-	execute_command(root->token, &env_list);
+	execute_command(root->token, env_list);
 	printf("|Command 'e$a' not found| : EXPECTED\n");
 
 	printf("\n");
@@ -189,7 +178,7 @@ void test8(char **envp)
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | []  ->  0 | [cho]  ->  0 | [a]  ->  0 | []  ->  NULL : EXPECTED\n");
 	env_list = convert_env_array_in_list(envp);
-	execute_command(root->token, &env_list);
+	execute_command(root->token, env_list);
 	printf("| cho a |: EXPECTED\n");
 
 	printf("\n");
@@ -207,7 +196,7 @@ void test_8_bis(char **envp)
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | []  ->  0 | [cho a]  ->  0 | []  ->  NULL : EXPECTED\n");
 	env_list = convert_env_array_in_list(envp);
-	execute_command(root->token, &env_list);
+	execute_command(root->token, env_list);
 	printf("| cho a | : EXPECTED\n");
 
 	printf("\n");
@@ -245,7 +234,7 @@ void test9(char **envp)
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | [bonjour]  ->  NULL : EXPECTED\n");
 	env_list = convert_env_array_in_list(envp);
-	execute_command(root->token, &env_list);
+	execute_command(root->token, env_list);
 	printf("|bonjour| : EXPECTED\n");
 
 	printf("\n");
@@ -262,7 +251,7 @@ void test10(char **envp)
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | [    bonjour    ]  ->  NULL : EXPECTED\n");
 	env_list = convert_env_array_in_list(envp);
-	execute_command(root->token, &env_list);
+	execute_command(root->token, env_list);
 	printf("|    bonjour    | : EXPECTED\n");
 
 	printf("\n");
@@ -279,7 +268,7 @@ void test11(char **envp)
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | [   bonjour    madame]  ->  NULL : EXPECTED\n");
 	env_list = convert_env_array_in_list(envp);
-	execute_command(root->token, &env_list);
+	execute_command(root->token, env_list);
 	printf("|   bonjour    madame| : EXPECTED\n");
 
 	printf("\n");
@@ -296,7 +285,7 @@ void test12(char **envp)
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | [bonjour]  ->  0 | [madame]  ->  NULL : EXPECTED\n");
 	env_list = convert_env_array_in_list(envp);
-	execute_command(root->token, &env_list);
+	execute_command(root->token, env_list);
 	printf("|   bonjour    madame| : EXPECTED\n");
 
 	printf("\n");
@@ -313,7 +302,7 @@ void test13(char **envp)
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | [e   bonjour    madame]  ->  NULL : EXPECTED\n");
 	env_list = convert_env_array_in_list(envp);
-	execute_command(root->token, &env_list);
+	execute_command(root->token, env_list);
 	printf("|e   bonjour    madame| : EXPECTED\n");
 
 	printf("\n");

@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/06 11:43:55 by rpottier         ###   ########.fr        #
+#    Updated: 2022/05/06 14:08:29 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ INCS =	-I includes								\
 		-I includes/pipe_seq_to_token_list 		\
 		-I includes/signal_management			\
 		-I includes/wildcard					\
+		-I includes/test						\
 
 SRCS =	checker/and_or_checker.c								\
 		checker/primary_check.c									\
@@ -101,13 +102,13 @@ SRCS =	checker/and_or_checker.c								\
 		execution/exec_buitins.c								\
 		execution/exec_pipe_cmd.c								\
 		execution/count_pipe.c									\
-		execution/main_execution.c								\
 		signal_management/signal_management.c					\
 		utils/jump_caracters.c									\
-		utils/is_functions.c									
+		utils/is_functions.c									\
+		execution/main_execution.c								\
 
 #SRCS_TEST = builtins/export/main_export.c		
-SRCS_TEST = #execution/main_execution.c	
+SRCS_TEST = test/test.c	
 
 ################################################################################
 ########							Libraries							########
