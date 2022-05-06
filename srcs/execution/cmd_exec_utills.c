@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:53:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/06 11:25:33 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/06 16:43:39 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	expand(t_lst_token *token, t_lst_env *env_list)
 			token = skip_two_token(token);
 		if (!token)
 			break ;
-		if (token->type == TOK_WORD || token->type == TOK_DOUBLE_QUOTE)
+		if (token->type == TOK_WORD)
 		{
 			if (token->str)
 				token->str = expand_token(token->str, env_list);
