@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:00:15 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/03 16:04:25 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/06 11:32:59 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_lst_token	*create_token_expand(char	*space_split)
 
 //	printf("HERE: |%s|\n", space_split);
 	token = __ft_calloc(sizeof(t_lst_token));
-	token->str = dup_without_extra_space_quote(space_split);
+	token->str = dup_without_extra_space(space_split);
 	token->type = find_token_type(space_split);
 	token->next = NULL;
 	return (token);
@@ -138,7 +138,7 @@ char	*dup_without_extra_space(char *str)
 	int		end;
 	int		i;
 	int		j;
-	int		begun_with_quote = 0;
+//	int		begun_with_quote = 0;
 
 
 //	printf("STR= [%s]\n", str);

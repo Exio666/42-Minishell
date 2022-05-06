@@ -6,11 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/05/05 10:08:33 by rpottier         ###   ########.fr       */
-=======
-/*   Updated: 2022/05/05 13:25:21 by bsavinel         ###   ########.fr       */
->>>>>>> master
+/*   Updated: 2022/05/06 11:32:01 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,15 +117,11 @@
 
 # include "expand.h"
 # include "execution.h"
-<<<<<<< HEAD
-# include "test.h"
-=======
 
 /*
  *	Signal
  */
 
 # include "signal_management.h"
->>>>>>> master
 
 #endif

@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/06 11:26:40 by rpottier         ###   ########.fr        #
+#    Updated: 2022/05/06 11:43:55 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ NAME = minishell
 NAME_TEST = minishell_test
 
 CC = cc 
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS =
+# -Wall -Wextra -Werror -g3 -fsanitize=address
 
 ARGUMENT_RUN = 
 ARGUMENT_RUN_TEST =
@@ -42,23 +43,6 @@ INCS =	-I includes								\
 		-I includes/heredoc						\
 		-I includes/parser/logical_operator		\
 		-I includes/parser/pipe_sequence		\
-<<<<<<< HEAD
-		-I includes/env_list					\
-		-I includes/env					\
-		-I includes/pipe_seq_to_token_list \
-		-I includes/expand					\
-		-I includes/execution				\
-		-I includes/test
-
-SRCS =	checker/and_or_checker.c				\
-		checker/primary_check.c					\
-		checker/quote_checker.c					\
-		checker/pipe_sequence_checker.c					\
-		checker/redirection_checker.c 				\
-		btree_management/compare_functions.c	\
-		btree_management/insert_functions.c		\
-		btree_management/create_node_functions.c	\
-=======
 		-I includes/pipe_seq_to_token_list 		\
 		-I includes/signal_management			\
 		-I includes/wildcard					\
@@ -79,7 +63,6 @@ SRCS =	checker/and_or_checker.c								\
 		builtins/export/export_utils.c							\
 		builtins/pwd/pwd.c										\
 		builtins/unset/unset.c									\
->>>>>>> master
 		parser/logical_operator/count_and_update_logic_op.c		\
 		parser/logical_operator/find_specific_char_funct.c		\
 		parser/logical_operator/get_btree_of_logical_op.c		\
@@ -102,22 +85,6 @@ SRCS =	checker/and_or_checker.c								\
 		env_list/get_path_variable.c							\
 		pipe_seq_to_token_list/create_token_list.c				\
 		pipe_seq_to_token_list/insert_token_separator_utils.c	\
-<<<<<<< HEAD
-		pipe_seq_to_token_list/insert_token_separator.c \
-		pipe_seq_to_token_list/is_token_1.c \
-		pipe_seq_to_token_list/is_token_2.c \
-		pipe_seq_to_token_list/print_tab_or_lst_split.c \
-		pipe_seq_to_token_list/split_by_separator.c \
-		pipe_seq_to_token_list/split_pipe_by_space.c \
-		pipe_seq_to_token_list/get_token_list.c \
-		expand/expand.c \
-		execution/cmd_exec_utills.c	\
-		execution/execution.c	\
-		execution/find_token_cmd.c	\
-		execution/token_utils.c	\
-		execution/set_up_redirection.c	\
-		test/test.c
-=======
 		pipe_seq_to_token_list/insert_token_separator.c 		\
 		pipe_seq_to_token_list/is_token_1.c 					\
 		pipe_seq_to_token_list/is_token_2.c 					\
@@ -135,10 +102,9 @@ SRCS =	checker/and_or_checker.c								\
 		execution/exec_pipe_cmd.c								\
 		execution/count_pipe.c									\
 		execution/main_execution.c								\
-		signal_management/signal_management.c								\
+		signal_management/signal_management.c					\
 		utils/jump_caracters.c									\
-		utils/is_functions.c									\
->>>>>>> master
+		utils/is_functions.c									
 
 #SRCS_TEST = builtins/export/main_export.c		
 SRCS_TEST = #execution/main_execution.c	

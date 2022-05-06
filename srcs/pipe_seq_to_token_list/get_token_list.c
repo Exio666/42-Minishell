@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:48:05 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/06 11:24:20 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/06 11:35:17 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void split_token_by_quote(char *token_str)
 
 void split_token_lst_by_quote(t_lst_token *token_lst)
 {
-	t_lst_token *token_lst_to_insert;
+//	t_lst_token *token_lst_to_insert;
 	t_lst_token *head_lst;
 	
 	head_lst = token_lst;
