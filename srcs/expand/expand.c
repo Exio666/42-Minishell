@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/03 14:22:16 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/07 10:43:12 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ char	*get_variable_to_expand_name(char *token)
 {
 	int var_len;
 	char *var_name;
-	int i;
-
-	i = 0;
+	
 	var_len = get_var_length(token);
 	if (var_len == 0)
 		return (NULL);
@@ -92,7 +90,7 @@ char	*expand_token(char *token, t_lst_env *env_list)
 {
 	char	*var_content;
 	char	*variable_name;
-	int var_len;
+//	int var_len;
 	int i;
 
 	i = 0;
@@ -101,7 +99,7 @@ char	*expand_token(char *token, t_lst_env *env_list)
 		if (is_dollar(token[i]))
 		{
 
-			var_len = get_var_length(token);
+//			var_len = get_var_length(token);
 			variable_name = get_variable_to_expand_name(&token[i + 1]);
 			var_content = get_var_to_expand_content(variable_name, env_list);
 			if (!var_content)
