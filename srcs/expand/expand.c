@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/06 11:26:29 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/07 11:01:28 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ char	*expand_token(char *token, t_lst_env *env_list)
 	{
 		if (is_dollar(token[i]))
 		{
-
 //			var_len = get_var_length(token);
 			variable_name = get_variable_to_expand_name(&token[i + 1]);
 			var_content = get_var_to_expand_content(variable_name, env_list);

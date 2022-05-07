@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/06 14:13:28 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/07 11:01:35 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	execute_command(t_lst_token *token, t_lst_env **env_list)
 	count = count_pipe(token);
 	if (count == 1)
 	{
+//		print_token_list(token);
 		expand(token, *env_list);
 		set_up_redirect_in(token);
 		set_up_redirect_out(token);

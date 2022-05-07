@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:00:15 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/06 11:32:59 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/07 10:57:23 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,6 @@ int	find_token_type(char *str)
 		return (TOK_REDIRECT_OUT);
 	else if (is_pipe_token(str))
 		return (TOK_PIPE);
-	else if (is_single_quote_token(str))
-		return (TOK_SINGLE_QUOTE);
-	else if (is_double_quote_token(str))
-		return (TOK_DOUBLE_QUOTE);
 	else
 		return (TOK_WORD);
 }
