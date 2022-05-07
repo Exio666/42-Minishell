@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/07 11:01:28 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/07 14:03:21 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,29 +89,146 @@ void	insert_var_content_to_token(char **token, char *var_content, int start_inde
 	*token = expanded_token;
 }
 
+typedef struct s_quote_index
+{
+	int open;
+	int close;	
+} t_quote_index;
+
+typedef struct s_lst_quote
+{
+	struct s_lst_quote	*next;
+	t_quote_index				index;
+	
+}	t_lst_quote;
+
+t_lst_quote *create_quote_index(int open_quote_index, int close_quote_index)
+{
+	t_lst_quote *lst_quote;
+
+	lst_quote = __ft_calloc(sizeof(t_lst_quote));
+	lst_quote->index.open = open_quote_index;
+	lst_quote->index.close = close_quote_index;
+	lst_quote->next = NULL;
+	return (lst_quote);
+	
+}
+t_lst_quote	*ft_lstquote_last(t_lst_quote *lst)
+{
+	t_lst_quote	*last;
+
+	last = lst;
+	if (!last)
+		return (lst);
+	while (last->next != NULL)
+		last = last->next;
+	return (last);
+}
+void	ft_lstquote_add_back(t_lst_quote **alst, t_lst_quote *new)
+{
+	t_lst_quote	*tmp;
+
+	if (*alst == NULL)
+	{
+		*alst = new;
+		return ;
+	}
+	tmp = ft_lstquote_last(*alst);
+	tmp->next = new;
+}
+
+void	print_lstquote(t_lst_quote *lst_quote)
+{
+	t_lst_quote *tmp;
+
+	tmp = lst_quote;
+	while (tmp)
+	{
+		printf("(%d) (%d)\n", lst_quote->index.open, lst_quote->index.close);
+		tmp = tmp->next;
+	}
+}
+
 char	*expand_token(char *token, t_lst_env *env_list)
 {
 	char	*var_content;
 	char	*variable_name;
 //	int var_len;
 	int i;
+	int quote_skiped;
+	int var_content_len;
+	int position_open_quote;
+	int position_close_quote;
+	t_lst_quote	*lst_quote;
 
+	lst_quote = NULL;
+	quote_skiped = FALSE;
 	i = 0;
 	while (token[i])
 	{
+		if (is_quote(token[i]))
+		{
+			position_open_quote = i;
+			printf("position_open_quote = %d\n", position_open_quote);
+			if (is_simple_quote(token[i]))
+			{
+				
+				skip_quote(token, &i);
+				if (token[i])
+					printf("token[%d] after skip_quote = %c\n", i, token[i]);
+				position_close_quote = i - 1;
+
+				printf("position_close_quote = %d\n", position_close_quote);
+				quote_skiped = TRUE;
+			}
+			else if (is_double_quote(token[i]))
+			{
+				i++;
+				while (token[i] && !is_double_quote(token[i]))
+				{
+					if (is_dollar(token[i]))
+					{
+			//			var_len = get_var_length(token);
+						variable_name = get_variable_to_expand_name(&token[i + 1]);
+						printf("variable name: %s\n", variable_name);
+						var_content = get_var_to_expand_content(variable_name, env_list);
+					//	var_content_len = ft_strlen(var_content);
+						if (!var_content)
+						{
+							printf("Variable doesn't exist\n");
+							return (NULL);
+						}
+						insert_var_content_to_token(&token, var_content, i);
+						i = i + var_content_len;
+						position_close_quote = i - 1;
+						printf("position_close_quote = %d\n", position_close_quote);
+						printf("token[i] = %c\n", token[i]);
+					}
+					i++;
+				}
+				ft_lstquote_add_back(&lst_quote, create_quote_index(position_open_quote, position_close_quote));
+			}
+			
+		}
 		if (is_dollar(token[i]))
 		{
 //			var_len = get_var_length(token);
 			variable_name = get_variable_to_expand_name(&token[i + 1]);
 			var_content = get_var_to_expand_content(variable_name, env_list);
+			var_content_len = ft_strlen(var_content);
 			if (!var_content)
 			{
 				printf("Variable doesn't exist\n");
 				return (NULL);
 			}
 			insert_var_content_to_token(&token, var_content, i);
+			i = i + var_content_len;
+			printf("token[i] = %c\n", token[i]);
 		}
-		i++;
+		if (token[i] && !quote_skiped)
+			i++;
+		quote_skiped = FALSE;
 	}
+	print_lstquote(lst_quote);
 	return (token);
 }
