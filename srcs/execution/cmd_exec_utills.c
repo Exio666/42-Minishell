@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:53:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/08 18:31:19 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/08 22:30:32 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void insert_split_in_token_list(t_lst_token *token, char **split)
 			//END ADD
 */
 
-void	expand(t_lst_token *token, t_lst_env *env_list)
+void	expand_command(t_lst_token *token, t_lst_env *env_list)
 {
 	while (token && token->type != TOK_PIPE)
 	{

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:54:06 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 15:00:10 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/08 22:30:20 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "minishell.h"
 
-void	expand(t_lst_token *token, t_lst_env *env_list);
+void	expand_command(t_lst_token *token, t_lst_env *env_list);
 void	tokenisation_post_expand(t_lst_token *token);
 char	**create_argv_cmd(t_lst_token *token);
 

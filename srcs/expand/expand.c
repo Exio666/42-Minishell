@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/08 17:37:35 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/08 22:49:46 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,14 +214,32 @@ char	*remove_quotes(char *token, t_lst_quote *lst_quote)
 	return (token_with_quotes_removed);
 }
 
-char	*expand_token(char *token, t_lst_env *env_list)
+char	*expand_variable(char *token, int *index, t_lst_env *env_list)
 {
 	char	*var_content;
 	char	*variable_name;
-//	int var_len;
+	int		var_content_len;
+
+	var_content = NULL;
+	variable_name = NULL;
+	var_content_len = 0;
+	variable_name = get_variable_to_expand_name(&token[*index + 1]);
+	var_content = get_var_to_expand_content(variable_name, env_list);
+	var_content_len = ft_strlen(var_content);
+	if (!var_content)
+	{
+		printf("Variable doesn't exist\n");
+		return (NULL);
+	}
+	insert_var_content_to_token(&token, var_content, *index);
+	*index = *index + (var_content_len - 1);
+	return (token);
+}
+
+char	*expand_token(char *token, t_lst_env *env_list)
+{
 	int i;
 	int quote_skiped;
-	int var_content_len;
 	int position_open_quote;
 	int position_close_quote;
 	t_lst_quote	*lst_quote;
@@ -230,26 +248,17 @@ char	*expand_token(char *token, t_lst_env *env_list)
 	nb_couple = count_quote_couple(token);
 	lst_quote = NULL;
 	quote_skiped = FALSE;
-	var_content_len = 0;
 	i = 0;
 	while (token[i])
 	{
 		if (is_quote(token[i]))
 		{
 			position_open_quote = i;
-			printf("position_open_quote = %d\n", position_open_quote);
 			if (is_simple_quote(token[i]))
 			{
-				
 				skip_quote(token, &i);
-				if (token[i])
-					printf("token[%d] after skip_quote = %c\n", i, token[i]);
 				position_close_quote = i - 1;
-
-				printf("position_close_quote = %d\n", position_close_quote);
 				quote_skiped = TRUE;
-
-				position_close_quote = i - 1;
 			}
 			else if (is_double_quote(token[i]))
 			{
@@ -257,52 +266,22 @@ char	*expand_token(char *token, t_lst_env *env_list)
 				while (token[i] && !is_double_quote(token[i]))
 				{
 					if (is_dollar(token[i]))
-					{
-			//			var_len = get_var_length(token);
-						variable_name = get_variable_to_expand_name(&token[i + 1]);
-						printf("variable name: %s\n", variable_name);
-						var_content = get_var_to_expand_content(variable_name, env_list);
-						var_content_len = ft_strlen(var_content);
-						if (!var_content)
-						{
-							printf("Variable doesn't exist\n");
-							return (NULL);
-						}
-						insert_var_content_to_token(&token, var_content, i);
-						i = i + (var_content_len-1);
-						printf("token[%d] = %c\n", i, token[i]);
-					}
+						token = expand_variable(token, &i, env_list);
 					i++;
 				}
 				position_close_quote = i ;
-						printf("position_close_quote = %d\n", position_close_quote);
-			//	i++;
 			}
-				ft_lstquote_add_back(&lst_quote, create_quote_index(position_open_quote, position_close_quote));
-			
+			ft_lstquote_add_back(&lst_quote, create_quote_index(position_open_quote, position_close_quote));	
 		}
-		printf("HERE token = [%s] && i = %d\n", token, i);
 		if (is_dollar(token[i]))
 		{
-//			var_len = get_var_length(token);
-			variable_name = get_variable_to_expand_name(&token[i + 1]);
-			var_content = get_var_to_expand_content(variable_name, env_list);
-			var_content_len = ft_strlen(var_content);
-			if (!var_content)
-			{
-				printf("Variable doesn't exist\n");
-				return (NULL);
-			}
-			insert_var_content_to_token(&token, var_content, i);
-			i = i + (var_content_len - 1);
-			printf("token[i] = %c\n", token[i]);
+			if (is_dollar(token[i]))
+				token = expand_variable(token, &i, env_list);
 		}
 		if (token[i] && !quote_skiped)
 			i++;
 		quote_skiped = FALSE;
 	}
-	print_lstquote(lst_quote);
 	token = remove_quotes(token, lst_quote);
-	printf("token = [%s]\n", token);
 	return (token);
 }
