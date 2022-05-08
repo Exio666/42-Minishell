@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:53:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/07 10:55:18 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/08 18:31:19 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,25 @@ void	expand(t_lst_token *token, t_lst_env *env_list)
 				token->str = expand_token(token->str, env_list);
 
 			// ADD
-			
+			//			printf("TEMOIN 0\n");
+			if (token->type == TOK_WORD)
+			{
+				char **split = split_pipe_by_space(token->str);
+				int size = size_2d_array(split);
+//				printf("TEMOIN 1\n");
+				if (size > 1)
+				{
+					insert_split_in_token_list(token, split);
+				}
+//				printf("TEMOIN 2\n");
+				int i = 0;
+				while (token && i < size - 1)
+				{
+					i++;
+					token = token->next;
+				}
+//				printf("TEMOIN 3\n");
+			}
 			//END ADD
 
 		}
@@ -125,11 +143,7 @@ void	tokenisation_post_expand(t_lst_token *token)
 {
 	while (token && token->type != TOK_PIPE)
 	{
-		if (token->type == TOK_SINGLE_QUOTE || token->type == TOK_DOUBLE_QUOTE)
-		{
-			token->str = dup_without_extra_space(token->str);
-			token->type = TOK_WORD;
-		}
+		token->str = dup_without_extra_space(token->str);
 		token = token->next;
 	}
 }
