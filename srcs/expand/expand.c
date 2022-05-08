@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/07 14:03:21 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/08 17:32:38 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	get_var_length(char	*token)
 
 //	printf("TOKEN = %s\n", token);
 	length = 0;
-	while (token[length] != '\0' && !is_space(token[length]) && !is_quote(token[length]))
+	while (token[length] != '\0' && !is_space(token[length]) && !is_quote(token[length])&& !is_dollar(token[length]))
 		length++;
 	return (length);
 }
@@ -144,9 +144,74 @@ void	print_lstquote(t_lst_quote *lst_quote)
 	tmp = lst_quote;
 	while (tmp)
 	{
-		printf("(%d) (%d)\n", lst_quote->index.open, lst_quote->index.close);
+		printf("(%d) (%d)\n", tmp->index.open, tmp->index.close);
 		tmp = tmp->next;
 	}
+}
+
+typedef struct s_count_quote
+{
+	int	double_quote;
+	int simple_quote;
+}	t_count_quote;
+
+t_count_quote	*count_quote_couple(char *token)
+{
+	t_count_quote *nb_couple;
+	int i;
+
+	i = 0;
+	nb_couple = malloc(sizeof(nb_couple));
+	nb_couple->double_quote = 0;
+	nb_couple->simple_quote = 0;
+	while (token[i])
+	{
+		if (is_quote(token[i]))
+		{
+			if(is_simple_quote(token[i]))
+				nb_couple->simple_quote++;
+			else
+				nb_couple->double_quote++;
+		}
+		i++;
+	}
+	nb_couple->simple_quote /= 2;
+	nb_couple->double_quote /= 2;
+	return (nb_couple);
+}
+
+int is_in_lst_quote(int index, t_lst_quote *lst_quote)
+{
+	while (lst_quote)
+	{
+		if (index == lst_quote->index.open || index == lst_quote->index.close)
+			return (1);
+		lst_quote = lst_quote->next;
+	}
+	return (0);
+}
+
+char	*remove_quotes(char *token, t_lst_quote *lst_quote)
+{
+	char	*token_with_quotes_removed;
+	int		token_len;
+	int index;
+	int j;
+
+	index = 0;
+	j = 0;
+	token_len = ft_strlen(token);
+	token_with_quotes_removed = __ft_calloc(sizeof(char) * (token_len + 1));
+	while (token[index])
+	{
+		if (!is_in_lst_quote(index ,lst_quote))
+		{
+			token_with_quotes_removed[j] = token[index];
+			j++;
+		}
+		index++;
+	}
+	return (token_with_quotes_removed);
 }
 
 char	*expand_token(char *token, t_lst_env *env_list)
@@ -160,9 +225,12 @@ char	*expand_token(char *token, t_lst_env *env_list)
 	int position_open_quote;
 	int position_close_quote;
 	t_lst_quote	*lst_quote;
+	t_count_quote *nb_couple;
 
+	nb_couple = count_quote_couple(token);
 	lst_quote = NULL;
 	quote_skiped = FALSE;
+	var_content_len = 0;
 	i = 0;
 	while (token[i])
 	{
@@ -180,6 +248,8 @@ char	*expand_token(char *token, t_lst_env *env_list)
 
 				printf("position_close_quote = %d\n", position_close_quote);
 				quote_skiped = TRUE;
+
+				position_close_quote = i - 1;
 			}
 			else if (is_double_quote(token[i]))
 			{
@@ -192,24 +262,26 @@ char	*expand_token(char *token, t_lst_env *env_list)
 						variable_name = get_variable_to_expand_name(&token[i + 1]);
 						printf("variable name: %s\n", variable_name);
 						var_content = get_var_to_expand_content(variable_name, env_list);
-					//	var_content_len = ft_strlen(var_content);
+						var_content_len = ft_strlen(var_content);
 						if (!var_content)
 						{
 							printf("Variable doesn't exist\n");
 							return (NULL);
 						}
 						insert_var_content_to_token(&token, var_content, i);
-						i = i + var_content_len;
-						position_close_quote = i - 1;
-						printf("position_close_quote = %d\n", position_close_quote);
-						printf("token[i] = %c\n", token[i]);
+						i = i + (var_content_len-1);
+						printf("token[%d] = %c\n", i, token[i]);
 					}
 					i++;
 				}
-				ft_lstquote_add_back(&lst_quote, create_quote_index(position_open_quote, position_close_quote));
+				position_close_quote = i ;
+						printf("position_close_quote = %d\n", position_close_quote);
+			//	i++;
 			}
+				ft_lstquote_add_back(&lst_quote, create_quote_index(position_open_quote, position_close_quote));
 			
 		}
+		printf("HERE token = [%s] && i = %d\n", token, i);
 		if (is_dollar(token[i]))
 		{
 //			var_len = get_var_length(token);
@@ -230,5 +302,7 @@ char	*expand_token(char *token, t_lst_env *env_list)
 		quote_skiped = FALSE;
 	}
 	print_lstquote(lst_quote);
+	token = remove_quotes(token, lst_quote);
+	printf("token = [%s]\n", token);
 	return (token);
 }
