@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/08 17:32:38 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/08 17:37:35 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -294,7 +294,7 @@ char	*expand_token(char *token, t_lst_env *env_list)
 				return (NULL);
 			}
 			insert_var_content_to_token(&token, var_content, i);
-			i = i + var_content_len;
+			i = i + (var_content_len - 1);
 			printf("token[i] = %c\n", token[i]);
 		}
 		if (token[i] && !quote_skiped)
