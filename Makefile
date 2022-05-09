@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/09 14:39:59 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/05/09 16:30:18 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -181,7 +181,8 @@ fclean : clean
 	$(RM) $(NAME_TEST)
 	$(RM) libft/libft.a
 
-re : header fclean all
+re : fclean
+	$(MAKE) all
 
 run: header all
 	$(NAME) $(ARGUMENT_RUN)
