@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/06 11:31:39 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/09 22:24:56 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,19 @@ typedef enum e_type_command
 /********************
 ***	  Structure   ***
 ********************/
+
+typedef struct s_quote_index
+{
+	int open;
+	int close;	
+} t_quote_index;
+
+typedef struct s_lst_quote
+{
+	struct s_lst_quote	*next;
+	t_quote_index				index;
+	
+}	t_lst_quote;
 
 typedef struct s_commande
 {

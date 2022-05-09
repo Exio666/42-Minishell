@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/09 22:03:33 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/09 22:24:27 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,19 +74,6 @@ void	insert_var_content_to_token(char **token, char *var_content, int start_inde
 	ft_strlcat(expanded_token, &(*token)[start_index + var_len + 1], (expanded_token_len + token_len + 1));
 	*token = expanded_token;
 }
-
-typedef struct s_quote_index
-{
-	int open;
-	int close;	
-} t_quote_index;
-
-typedef struct s_lst_quote
-{
-	struct s_lst_quote	*next;
-	t_quote_index				index;
-	
-}	t_lst_quote;
 
 t_lst_quote *create_quote_index(int open_quote_index, int close_quote_index)
 {
