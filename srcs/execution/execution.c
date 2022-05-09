@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/09 14:40:36 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/09 16:12:05 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,7 @@ int	execute_command(t_lst_token *token, t_lst_env **env_list)
 	count = count_pipe(token);
 	if (count == 1)
 	{
-		if (set_up_redirect_in(token, 0) == 1)
-			return (1);
-		if (set_up_redirect_out(token, 0) == 1)
+		if (set_up_redirect(token, 0) == 1)
 			return (1);
 		argv = create_argv_cmd(token);
 		return (exec_one_cmd(argv, env_list));

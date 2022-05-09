@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:27:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 14:08:27 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/09 16:11:57 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void	exec_cmd(t_lst_token *token, t_lst_env **env_list)
 	int		retour;
 
 	argv = create_argv_cmd(token);
-	set_up_redirect_in(token, 1);
-	set_up_redirect_out(token, 1);
+	set_up_redirect(token, 1);
 	retour = exec_builtins(len_av(argv), argv, env_list);
 	if (retour == 127)
 		execute(argv, env_list);
