@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 14:26:42 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:44:26 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <dirent.h>
+
+/*
+ *	heredoc.h
+ */
+
+# include "heredoc.h"
 
 /*
  *	Gestion Erreur

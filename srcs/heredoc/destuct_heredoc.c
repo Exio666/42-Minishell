@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc.h                                          :+:      :+:    :+:   */
+/*   destuct_heredoc.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 14:25:18 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 17:42:57 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/09 17:33:57 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/09 17:37:59 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEREDOC_H
-# define HEREDOC_H
+#include "minishell.h"
 
-# include "minishell.h"
-# include "destruct_heredoc.h"
+void	destuct_heredoc(t_lst_token *token)
+{
+	t_lst_token *tmp;
 
-int		change_name_heredoc(char *str);
-void	feed_herdoc(int fd, char *end);
-char	*heredoc_create(char *end);
-
-#endif
+	tmp = token;
+	while (tmp)
+	{
+		if (tmp->type == TOK_HEREDOC)
+		{
+			tmp = tmp->next;
+			unlink(tmp->str);
+		}
+		tmp = tmp->next;
+	}
+}

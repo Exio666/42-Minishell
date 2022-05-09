@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc.h                                          :+:      :+:    :+:   */
+/*   destruct_heredoc.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 14:25:18 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 17:42:57 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/09 17:41:59 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/09 17:43:30 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEREDOC_H
-# define HEREDOC_H
+#ifndef DESTRUCT_HEREDOC_H
+# define DESTRUCT_HEREDOC_H
 
 # include "minishell.h"
-# include "destruct_heredoc.h"
 
-int		change_name_heredoc(char *str);
-void	feed_herdoc(int fd, char *end);
-char	*heredoc_create(char *end);
+void	destuct_heredoc(t_lst_token *token);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 12:15:25 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/02 14:33:28 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:33:35 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	change_name_heredoc(char *str);
+int	change_name_heredoc(char *str)
 {
 	if (str[12] != 122)
 	{
