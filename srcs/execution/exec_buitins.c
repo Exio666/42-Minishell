@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 10:42:02 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/04 19:22:20 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/09 18:58:24 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	exec_builtins(int ac, char **av, t_lst_env **envp)
 {
+	if (!av[0])
+		return (127);
 	if (ft_strncmp(av[0], "cd", 3) == 0)
 		return (ft_cd(ac, av, envp));
 	else if (ft_strncmp(av[0], "echo", 5) == 0)
