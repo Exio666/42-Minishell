@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/09 20:59:01 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/09 22:00:34 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,49 +234,53 @@ char	*expand_variable(char *token, int *index, t_lst_env *env_list)
 	return (token);
 }
 
+int expand_in_quotes(char **token, int *i, t_lst_env *env_list)
+{
+	int	closing_quote_position;
 
+	if (is_simple_quote((*token)[*i]))
+	{
+		closing_quote_position = skip_quote(*token, i);
+		closing_quote_position--;
+	}
+	else if (is_double_quote((*token)[*i]))
+	{
+		*i = *i + 1;
+		while ((*token)[*i] && !is_double_quote((*token)[*i]))
+		{
+			if (is_dollar((*token)[*i]))
+				*token = expand_variable(*token, i, env_list);
+			*i = *i + 1;
+		}
+		closing_quote_position = *i;
+	}
+	return (closing_quote_position);
+}
 
 char	*expand_token(char *token, t_lst_env *env_list)
 {
 	int i;
-	int quote_skiped;
-	int position_open_quote;
-	int position_close_quote;
+	t_quote_index quote;
 	t_lst_quote	*lst_quote;
+	t_lst_quote	*elem;
 
 	lst_quote = NULL;
-	quote_skiped = FALSE;
 	i = 0;
 	while (token[i])
 	{
+		quote.open = i;
 		if (is_quote(token[i]))
 		{
-			position_open_quote = i;
-			if (is_simple_quote(token[i]))
-			{
-				skip_quote(token, &i);
-				position_close_quote = i - 1;
-				quote_skiped = TRUE;
-			}
-			else if (is_double_quote(token[i]))
-			{
-				i++;
-				while (token[i] && !is_double_quote(token[i]))
-				{
-					if (is_dollar(token[i]))
-						token = expand_variable(token, &i, env_list);
-					i++;
-				}
-				position_close_quote = i ;
-			}
-			ft_lstquote_add_back(&lst_quote, create_quote_index(position_open_quote, position_close_quote));	
+			quote.close = expand_in_quotes(&token, &i, env_list);
+			elem = create_quote_index(quote.open, quote.close);
+			ft_lstquote_add_back(&lst_quote, elem);
 		}
 		if (is_dollar(token[i]))
 			token = expand_variable(token, &i, env_list);
-		if (token[i] && !quote_skiped)
+		if (token[i] && !is_simple_quote(token[quote.open]))
 			i++;
-		quote_skiped = FALSE;
 	}
+	print_lstquote(lst_quote);
 	token = remove_quotes(token, lst_quote);
 	return (token);
 }
