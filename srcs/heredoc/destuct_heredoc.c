@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 17:33:57 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 17:37:59 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:49:41 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	destuct_heredoc(t_lst_token *token)
 {
-	t_lst_token *tmp;
+	t_lst_token	*tmp;
 
 	tmp = token;
 	while (tmp)
