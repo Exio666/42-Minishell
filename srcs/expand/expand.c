@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/08 22:49:46 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/09 20:59:01 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ char	*get_variable_to_expand_name(char *token)
 {
 	int var_len;
 	char *var_name;
-	int i;
 
-	i = 0;
 	var_len = get_var_length(token);
 	if (var_len == 0)
 		return (NULL);
@@ -236,6 +234,8 @@ char	*expand_variable(char *token, int *index, t_lst_env *env_list)
 	return (token);
 }
 
+
+
 char	*expand_token(char *token, t_lst_env *env_list)
 {
 	int i;
@@ -243,9 +243,7 @@ char	*expand_token(char *token, t_lst_env *env_list)
 	int position_open_quote;
 	int position_close_quote;
 	t_lst_quote	*lst_quote;
-	t_count_quote *nb_couple;
 
-	nb_couple = count_quote_couple(token);
 	lst_quote = NULL;
 	quote_skiped = FALSE;
 	i = 0;
@@ -274,10 +272,7 @@ char	*expand_token(char *token, t_lst_env *env_list)
 			ft_lstquote_add_back(&lst_quote, create_quote_index(position_open_quote, position_close_quote));	
 		}
 		if (is_dollar(token[i]))
-		{
-			if (is_dollar(token[i]))
-				token = expand_variable(token, &i, env_list);
-		}
+			token = expand_variable(token, &i, env_list);
 		if (token[i] && !quote_skiped)
 			i++;
 		quote_skiped = FALSE;

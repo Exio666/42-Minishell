@@ -40,11 +40,11 @@ t_input_level	*attribute_level(char *user_input)
 			skip_quote(input_level->input, &i);
 			quote_skiped = TRUE;
 		}
-		if (is_open_parenthesis(input_level->input[i]))
+		if (input_level->input[i] && is_open_parenthesis(input_level->input[i]))
 			increase_level(&level);
-		else if (is_close_parenthesis(input_level->input[i]))
+		else if (input_level->input[i] && is_close_parenthesis(input_level->input[i]))
 			decrease_level(&level);
-		if (quote_skiped == FALSE)
+		if (input_level->input[i] && quote_skiped == FALSE)
 			i++;
 		quote_skiped = FALSE;
 	}

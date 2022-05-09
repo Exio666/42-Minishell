@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:53:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/08 22:30:32 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/09 20:55:50 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,10 @@ void insert_split_in_token_list(t_lst_token *token, char **split)
 
 void	expand_command(t_lst_token *token, t_lst_env *env_list)
 {
+	char	**split;
+	int		size;
+	int		i;
+
 	while (token && token->type != TOK_PIPE)
 	{
 		if (is_heredoc_token(token->type))
@@ -76,34 +80,23 @@ void	expand_command(t_lst_token *token, t_lst_env *env_list)
 		{
 			if (token->str)
 				token->str = expand_token(token->str, env_list);
-
-			// ADD
-			//			printf("TEMOIN 0\n");
-			if (token->type == TOK_WORD)
+			if (token->type == TOK_WORD)										// START ADD
 			{
-				char **split = split_pipe_by_space(token->str);
-				int size = size_2d_array(split);
-//				printf("TEMOIN 1\n");
+				split = split_pipe_by_space(token->str);
+				size = size_2d_array(split);
 				if (size > 1)
-				{
 					insert_split_in_token_list(token, split);
-				}
-//				printf("TEMOIN 2\n");
-				int i = 0;
+				i = 0;
 				while (token && i < size - 1)
 				{
 					i++;
 					token = token->next;
 				}
-//				printf("TEMOIN 3\n");
-			}
-			//END ADD
-
+			}																	//END ADD
 		}
 		if (token)
 			token = token->next;
 	}
-//c	printf("TEMOIN 4\n");
 }
 
 char	*dup_without_extra_space_quote(char *str)
@@ -115,7 +108,6 @@ char	*dup_without_extra_space_quote(char *str)
 	int		begun_with_quote = 0;
 
 
-//	printf("STR= [%s]\n", str);
 	i = 0;
 	while (is_space(str[i]))
 		i++;
