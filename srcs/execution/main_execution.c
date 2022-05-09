@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/05 17:42:21 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/09 13:49:32 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	reset_terminal(void)
 	if (error == -1)
 	{
 		ft_putendl_fd("Error: Fatal bad open of file\n", 2);
+		rl_clear_history();
 		__ft_calloc(-1);
 		exit(1);
 	}

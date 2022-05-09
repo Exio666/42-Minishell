@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 13:44:31 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/04 20:00:51 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/09 13:41:09 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,20 @@ void	builtins_exit_prog(int ac, char **av)
 	if (ac == 1)
 	{
 		__ft_calloc(-1);
+		rl_clear_history();
 		exit(1);
 	}
 	else if (!good_arg_for_exit(av[1]))
 	{
 		__ft_calloc(-1);
+		rl_clear_history();
 		exit(2);
 	}
 	else
 	{
 		nb = ft_atoi(av[1]);
 		__ft_calloc(-1);
+		rl_clear_history();
 		exit(nb);
 	}
 }
@@ -53,6 +56,7 @@ int	ft_exit(int ac, char **av)
 	if (ac == 1)
 	{
 		__ft_calloc(-1);
+		rl_clear_history();
 		exit(0);
 	}
 	if (!(good_arg_for_exit(av[1]) && ac > 2))

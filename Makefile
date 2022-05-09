@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/05 16:08:08 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/05/09 14:39:59 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ INCS =	-I includes								\
 		-I includes/pipe_seq_to_token_list 		\
 		-I includes/signal_management			\
 		-I includes/wildcard					\
+		-I includes/gestion_erreur				\
 
 SRCS =	checker/and_or_checker.c								\
 		checker/primary_check.c									\
@@ -101,9 +102,10 @@ SRCS =	checker/and_or_checker.c								\
 		execution/exec_pipe_cmd.c								\
 		execution/count_pipe.c									\
 		execution/main_execution.c								\
-		signal_management/signal_management.c								\
+		signal_management/signal_management.c					\
 		utils/jump_caracters.c									\
 		utils/is_functions.c									\
+		gestion_erreur/open_failed.c							\
 
 #SRCS_TEST = builtins/export/main_export.c		
 SRCS_TEST = #execution/main_execution.c	

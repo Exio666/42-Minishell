@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:34:08 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 17:05:02 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/09 14:36:34 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include "main_execution.h"
 
 void	execute_command_tree(t_btree *root, t_lst_env **env_list);
-void	execute_command(t_lst_token *token, t_lst_env **env_list);
+int		execute_command(t_lst_token *token, t_lst_env **env_list);
 int		exec_one_cmd(char **argv, t_lst_env **env_list);
 
 #endif

@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_up_redirection.h                               :+:      :+:    :+:   */
+/*   gestion_erreur.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/30 21:48:23 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/09 14:33:54 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/09 14:24:11 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/09 14:25:05 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SET_UP_REDIRECTION_H
-# define SET_UP_REDIRECTION_H
+#ifndef GESTION_ERREUR_H
+# define GESTION_ERREUR_H
 
-int	redirect_out(t_lst_token *token, int child);
-int	redirect_out_append(t_lst_token *token, int child);
-int	set_up_redirect_out(t_lst_token *token, int child);
-int	set_up_redirect_in(t_lst_token *token, int child);
+# include "open_failed.h"
 
 #endif
