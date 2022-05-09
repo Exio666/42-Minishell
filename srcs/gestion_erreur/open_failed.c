@@ -6,11 +6,11 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:52:12 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 14:32:54 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/09 14:48:43 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "minishell.h"
 
 int	open_failed(char *str, int child)
 {

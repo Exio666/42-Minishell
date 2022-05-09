@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 21:47:51 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/09 14:33:34 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/09 14:48:23 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	set_up_redirect_out(t_lst_token *token, int child)
 int	set_up_redirect_in(t_lst_token *token, int child)
 {
 	int	fd_file;
-	
+
 	while (token && token->type != TOK_PIPE)
 	{
 		if (token && (token->type == TOK_REDIRECT_IN
