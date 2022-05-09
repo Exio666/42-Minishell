@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/09 22:00:34 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/09 22:03:33 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	get_var_length(char	*token)
 {
 	int length;
 
-//	printf("TOKEN = %s\n", token);
 	length = 0;
 	while (token[length] != '\0' && !is_space(token[length]) && !is_quote(token[length])&& !is_dollar(token[length]))
 		length++;
@@ -61,29 +60,18 @@ void	insert_var_content_to_token(char **token, char *var_content, int start_inde
 	int expanded_token_len;
 	int var_len;
 	char	*expanded_token;
-	//int i = 0;
-
-//	printf("0 token:[%s]\n", *token);
 	
 	token_len = ft_strlen(*token);
 	var_content_len = ft_strlen(var_content);
 	expanded_token = __ft_calloc(sizeof(char) * (token_len + var_content_len + 1));
-	
 	ft_strlcpy(expanded_token, *token, start_index + 1);
 //	printf("1 expanded_token: [%s]\n", expanded_token);
-	
 	ft_strlcat(expanded_token, var_content, (token_len + var_content_len + 1));
 //	printf("2 expanded_token: [%s]\n", expanded_token);
-	
-	
 	expanded_token_len = ft_strlen(expanded_token);
 	var_len = get_var_length(&(*token)[start_index + 1]);
 	token_len = ft_strlen(&(*token)[start_index + var_len]);
-	
 	ft_strlcat(expanded_token, &(*token)[start_index + var_len + 1], (expanded_token_len + token_len + 1));
-//	printf("3 expanded_token: [%s]\n", expanded_token);
-	
-//	free(*token);
 	*token = expanded_token;
 }
 
