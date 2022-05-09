@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:46:30 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 11:06:08 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/09 16:57:21 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	handler_sigint_prompt(int sig)
 {
-	const char	prompt[] = GRN "\nBsavinel_and_associates_shell$ " RESET;
-
 	(void)sig;
-	ft_putstr_fd((char *)prompt, 2);
+	ft_putstr_fd("\n", 1);
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
 }
 
 void	handler_sigint_endl(int sig)
