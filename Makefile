@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/09 16:30:18 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/05/09 17:58:36 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ INCS =	-I includes								\
 		-I includes/signal_management			\
 		-I includes/wildcard					\
 		-I includes/gestion_erreur				\
+		-I includes/heredoc						\
 
 SRCS =	checker/and_or_checker.c								\
 		checker/primary_check.c									\

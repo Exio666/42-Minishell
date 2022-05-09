@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 12:15:25 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 17:33:35 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:52:50 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,12 @@ void	feed_herdoc(int fd, char *end)
 	{
 		str = readline("> ");
 		if (ft_strncmp(str, end, ft_strlen(end)) == 0 || ft_strlen(str) == 0)
+		{
+			free(str);
 			return ;
+		}
 		ft_putstr_fd(str, fd);
+		free(str);
 	}
 }
 

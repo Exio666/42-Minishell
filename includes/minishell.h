@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 17:44:26 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:59:25 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@
 # include <dirent.h>
 
 /*
+ *	General
+ */
+
+# include "struct_enum.h"
+# include "define.h"
+# include "all_lib.h"
+
+/*
  *	heredoc.h
  */
 
@@ -44,14 +52,6 @@
  */
 
 # include "gestion_erreur.h"
-
-/*
- *	General
- */
-
-# include "struct_enum.h"
-# include "define.h"
-# include "all_lib.h"
 
 /*
  *	Builtins
