@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   split_post_expand.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 11:17:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 20:03:40 by rpottier         ###   ########.fr       */
+/*   Created: 2022/05/10 12:56:42 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/10 12:59:31 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef SPLIT_POST_EXPAND_H
+# define SPLIT_POST_EXPAND_H
 
-char	*ft_strdup(const char *src)
-{
-	char	*dest;
-	int		i;
+# include "minishell.h"
 
-	i = 0;
-	dest = NULL;
-	if (src)
-		dest = __ft_calloc(sizeof(char) * (ft_strlen(src) + 1));
-	if (!dest)
-		return (0);
-	while (src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
+char	**split_post_expand(t_lst_token *token);
+
+#endif

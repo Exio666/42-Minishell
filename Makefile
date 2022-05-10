@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
+#    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/09 17:58:36 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/05/10 15:23:05 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME = minishell
 NAME_TEST = minishell_test
 
 CC = cc 
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS =  -g3 -Wall -Wextra -Werror -fsanitize=address
 
 ARGUMENT_RUN = 
 ARGUMENT_RUN_TEST =
@@ -45,6 +45,7 @@ INCS =	-I includes								\
 		-I includes/pipe_seq_to_token_list 		\
 		-I includes/signal_management			\
 		-I includes/wildcard					\
+		-I includes/test						\
 		-I includes/gestion_erreur				\
 		-I includes/heredoc						\
 
@@ -93,7 +94,11 @@ SRCS =	checker/and_or_checker.c								\
 		pipe_seq_to_token_list/split_by_separator.c 			\
 		pipe_seq_to_token_list/split_pipe_by_space.c 			\
 		pipe_seq_to_token_list/get_token_list.c 				\
-		expand/expand.c 										\
+		expand/dollar_var_functions.c 							\
+		expand/expand_functions.c 								\
+		expand/remove_quotes.c 									\
+		expand/print_lst_quotes.c 								\
+		expand/split_post_expand.c 								\
 		execution/cmd_exec_utills.c								\
 		execution/execution.c									\
 		execution/find_token_cmd.c								\
@@ -109,7 +114,7 @@ SRCS =	checker/and_or_checker.c								\
 		gestion_erreur/open_failed.c							\
 
 #SRCS_TEST = builtins/export/main_export.c		
-SRCS_TEST = #execution/main_execution.c	
+SRCS_TEST = test/test.c	
 
 ################################################################################
 ########							Libraries							########
@@ -182,8 +187,8 @@ fclean : clean
 	$(RM) $(NAME_TEST)
 	$(RM) libft/libft.a
 
-re : fclean
-	$(MAKE) all
+re : fclean 
+	 make all
 
 run: header all
 	$(NAME) $(ARGUMENT_RUN)

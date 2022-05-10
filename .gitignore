@@ -5,3 +5,4 @@
 .nfs*
 *.a
 valgrind-out.txt
+minishell

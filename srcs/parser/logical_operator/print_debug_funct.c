@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_debug_funct.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:35:18 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/03 14:21:26 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/06 11:26:36 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	print2DUtil(t_btree *root, int space)
 		printf("NULL\n");
 	}
 	else if (root->pipe_seq)
-		printf("piepe_seq:%s\n", root->pipe_seq->str);
+		printf("pipe_seq:%s\n", root->pipe_seq->str);
 
     // Process left child
     print2DUtil(root->left, space);

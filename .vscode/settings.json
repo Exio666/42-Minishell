@@ -8,6 +8,7 @@
 		"env_tab_to_list.h": "c",
 		"minishell.h": "c",
 		"token_utils.h": "c",
-		"algorithm": "c"
+		"algorithm": "c",
+		"sstream": "c"
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jump_caracters.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:20:50 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 11:28:16 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:24:38 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	is_double_quote(char c)
 		return (FALSE);
 }
 
-void	skip_quote(char *commande, int *i)
+int	skip_quote(char *commande, int *i)
 {
 	if (commande[*i] == '\'')
 	{
@@ -61,4 +61,5 @@ void	skip_quote(char *commande, int *i)
 		if (*i != -1)
 			(*i)++;
 	}
+	return (*i);
 }

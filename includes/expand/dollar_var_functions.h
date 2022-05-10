@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   dollar_var_functions.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 11:17:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 20:03:40 by rpottier         ###   ########.fr       */
+/*   Created: 2022/05/10 08:12:34 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/10 08:13:07 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef DOLLAR_VAR_FUNCTIONS_H
+# define DOLLAR_VAR_FUNCTIONS_H
 
-char	*ft_strdup(const char *src)
-{
-	char	*dest;
-	int		i;
+# include "minishell.h"
 
-	i = 0;
-	dest = NULL;
-	if (src)
-		dest = __ft_calloc(sizeof(char) * (ft_strlen(src) + 1));
-	if (!dest)
-		return (0);
-	while (src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
+int		is_dollar(char c);
+int		get_var_length(char	*token);
+char	*get_variable_to_expand_name(char *token);
+char	*get_var_to_expand_content(char *var_name, t_lst_env *env_list);
+void	insert_var_content_to_token(char **token, char *var_content,
+			int start_index);
+
+#endif

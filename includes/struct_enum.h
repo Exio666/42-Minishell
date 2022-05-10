@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_enum.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/04 14:24:05 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/10 10:34:05 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,18 @@ typedef enum e_type_command
 /********************
 ***	  Structure   ***
 ********************/
+typedef struct s_quote_index
+{
+	int open;
+	int close;	
+} t_quote_index;
+
+typedef struct s_lst_quote
+{
+	struct s_lst_quote	*next;
+	t_quote_index				index;
+	
+}	t_lst_quote;
 
 typedef struct s_commande
 {
@@ -125,6 +137,7 @@ typedef struct s_token
 {
 	char			*str;
 	t_type_token	type;
+	int				*in_quotes;
 	struct s_token	*next;
 }	t_lst_token;
 

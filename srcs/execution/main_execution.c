@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 13:51:04 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:30:37 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int	main(int argc, char **argv, char **envp)
 	__ft_calloc(-1);
 	return (0);
 }
+
 
 /* Bloc de debugage */
 			/*split = split_by_separator(command_line, "|<>");

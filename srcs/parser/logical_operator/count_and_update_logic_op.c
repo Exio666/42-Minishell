@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:45:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/15 21:05:43 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/06 13:50:33 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,31 @@ int	count_logic_op(char *user_input)
 	int	actual_logical_op;
 	int	logical_op_count;
 	int	i;
+	int quote_skiped;
 
+	quote_skiped = FALSE;
 	if (user_input == NULL)
 		return (-1);
 	i = 0;
 	logical_op_count = 0;
-	while (user_input[i + 1])
+	while (user_input[i] && user_input[i + 1])
 	{
-		skip_quote(user_input, &i);
-		if (user_input[i + 1] && is_logical_op_char(user_input[i]) == TRUE)
+		if (is_quote(user_input[i]))
+		{
+			skip_quote(user_input, &i);
+			quote_skiped = TRUE;
+		}
+		if (user_input[i] && user_input[i + 1] && is_logical_op_char(user_input[i]) == TRUE)
 		{
 			actual_logical_op = get_logic_op_from_begin(user_input, i);
 			if (actual_logical_op != OPERATOR_NOT_FOUND)
 				logical_op_count++;
 			i++;
 		}
-		i++;
+		if (!quote_skiped)
+			i++;
+		quote_skiped = FALSE;
+		
 	}
 //	printf("logical op count = %d \n", logical_op_count);
 	return (logical_op_count);
