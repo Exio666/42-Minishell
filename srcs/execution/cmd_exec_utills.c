@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:53:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/09 20:55:50 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/10 08:58:37 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,40 +64,8 @@ void insert_split_in_token_list(t_lst_token *token, char **split)
 			//END ADD
 */
 
-void	expand_command(t_lst_token *token, t_lst_env *env_list)
-{
-	char	**split;
-	int		size;
-	int		i;
 
-	while (token && token->type != TOK_PIPE)
-	{
-		if (is_heredoc_token(token->type))
-			token = skip_two_token(token);
-		if (!token)
-			break ;
-		if (token->type == TOK_WORD)
-		{
-			if (token->str)
-				token->str = expand_token(token->str, env_list);
-			if (token->type == TOK_WORD)										// START ADD
-			{
-				split = split_pipe_by_space(token->str);
-				size = size_2d_array(split);
-				if (size > 1)
-					insert_split_in_token_list(token, split);
-				i = 0;
-				while (token && i < size - 1)
-				{
-					i++;
-					token = token->next;
-				}
-			}																	//END ADD
-		}
-		if (token)
-			token = token->next;
-	}
-}
+
 
 char	*dup_without_extra_space_quote(char *str)
 {

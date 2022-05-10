@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_pipe_by_space.c                              :+:      :+:    :+:   */
+/*   split_post_expand.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/10 09:12:14 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/10 09:13:00 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static char	*insert_word(int word_len, char *s)
 	return (split);
 }
 
-char	**split_pipe_by_space(char *s)
+char	**split_post_expand(char *s)
 {
 	int		i;
 	int		k;

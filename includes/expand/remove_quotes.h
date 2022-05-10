@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expand.h                                           :+:      :+:    :+:   */
+/*   remove_quotes.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 12:23:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 08:22:26 by rpottier         ###   ########.fr       */
+/*   Created: 2022/05/10 08:26:33 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/10 08:28:01 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXPAND_H
-# define EXPAND_H
+#ifndef REMOVE_QUOTES_H
+# define REMOVE_QUOTES_H
 
 # include "minishell.h"
 
-# include "remove_quotes.h"
-# include "dollar_var_functions.h"
-# include "expand_functions.h"
-# include "print_lst_quotes.h"
+t_lst_quote	*create_quote_index(int open_quote_index, int close_quote_index);
+t_lst_quote	*ft_lstquote_last(t_lst_quote *lst);
+void		ft_lstquote_add_back(t_lst_quote **alst, t_lst_quote *new);
+int			is_in_lst_quote(int index, t_lst_quote *lst_quote);
+char		*remove_quotes(char *token, t_lst_quote *lst_quote);
 
 #endif

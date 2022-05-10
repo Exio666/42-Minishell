@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expand.h                                           :+:      :+:    :+:   */
+/*   expand_functions.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 12:23:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 08:22:26 by rpottier         ###   ########.fr       */
+/*   Created: 2022/05/10 08:10:55 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/10 08:59:12 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXPAND_H
-# define EXPAND_H
+#ifndef EXPAND_FUNCTIONS_H
+# define EXPAND_FUNCTIONS_H
 
 # include "minishell.h"
 
-# include "remove_quotes.h"
-# include "dollar_var_functions.h"
-# include "expand_functions.h"
-# include "print_lst_quotes.h"
+void	expand_command(t_lst_token *token, t_lst_env *env_list);
+char	*expand_variable(char *token, int *index, t_lst_env *env_list);
+int		expand_in_quotes(char **token, int *i, t_lst_env *env_list);
+char	*expand_token(char *token, t_lst_env *env_list);
 
 #endif
