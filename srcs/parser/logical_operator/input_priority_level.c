@@ -22,6 +22,7 @@
 
 t_input_level	*attribute_level(char *user_input)
 {
+	int				quote_skiped;
 	int				level;
 	int				i;
 	t_input_level	*input_level;
@@ -30,16 +31,22 @@ t_input_level	*attribute_level(char *user_input)
 	input_level->input = ft_strdup(user_input);
 	i = 0;
 	level = 0;
+	quote_skiped = FALSE;
 	while (input_level->input[i])
 	{
 		input_level->level[i] = level;
-		if (is_simple_quote(input_level->input[i]) || is_double_quote(input_level->input[i]))
+		if (is_quote(input_level->input[i]))
+		{
 			skip_quote(input_level->input, &i);
-		if (is_open_parenthesis(input_level->input[i]))
+			quote_skiped = TRUE;
+		}
+		if (input_level->input[i] && is_open_parenthesis(input_level->input[i]))
 			increase_level(&level);
-		else if (is_close_parenthesis(input_level->input[i]))
+		else if (input_level->input[i] && is_close_parenthesis(input_level->input[i]))
 			decrease_level(&level);
-		i++;
+		if (input_level->input[i] && quote_skiped == FALSE)
+			i++;
+		quote_skiped = FALSE;
 	}
 	return (input_level);
 }

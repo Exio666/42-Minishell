@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   print_lst_quotes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 11:17:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 20:03:40 by rpottier         ###   ########.fr       */
+/*   Created: 2022/05/10 08:24:41 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/10 08:24:56 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-char	*ft_strdup(const char *src)
+void	print_lstquote(t_lst_quote *lst_quote)
 {
-	char	*dest;
-	int		i;
+	t_lst_quote	*tmp;
 
-	i = 0;
-	dest = NULL;
-	if (src)
-		dest = __ft_calloc(sizeof(char) * (ft_strlen(src) + 1));
-	if (!dest)
-		return (0);
-	while (src[i])
+	tmp = lst_quote;
+	while (tmp)
 	{
-		dest[i] = src[i];
-		i++;
+		printf("(%d) (%d)\n", tmp->index.open, tmp->index.close);
+		tmp = tmp->next;
 	}
-	dest[i] = '\0';
-	return (dest);
 }

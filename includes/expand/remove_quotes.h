@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   remove_quotes.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 11:17:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 20:03:40 by rpottier         ###   ########.fr       */
+/*   Created: 2022/05/10 08:26:33 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/10 08:28:01 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef REMOVE_QUOTES_H
+# define REMOVE_QUOTES_H
 
-char	*ft_strdup(const char *src)
-{
-	char	*dest;
-	int		i;
+# include "minishell.h"
 
-	i = 0;
-	dest = NULL;
-	if (src)
-		dest = __ft_calloc(sizeof(char) * (ft_strlen(src) + 1));
-	if (!dest)
-		return (0);
-	while (src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
+t_lst_quote	*create_quote_index(int open_quote_index, int close_quote_index);
+t_lst_quote	*ft_lstquote_last(t_lst_quote *lst);
+void		ft_lstquote_add_back(t_lst_quote **alst, t_lst_quote *new);
+int			is_in_lst_quote(int index, t_lst_quote *lst_quote);
+char		*remove_quotes(t_lst_token *token, t_lst_quote *lst_quote);
+
+#endif

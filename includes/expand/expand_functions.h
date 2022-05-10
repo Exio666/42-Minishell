@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   expand_functions.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 11:17:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 20:03:40 by rpottier         ###   ########.fr       */
+/*   Created: 2022/05/10 08:10:55 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/10 10:41:55 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef EXPAND_FUNCTIONS_H
+# define EXPAND_FUNCTIONS_H
 
-char	*ft_strdup(const char *src)
-{
-	char	*dest;
-	int		i;
+# include "minishell.h"
 
-	i = 0;
-	dest = NULL;
-	if (src)
-		dest = __ft_calloc(sizeof(char) * (ft_strlen(src) + 1));
-	if (!dest)
-		return (0);
-	while (src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
+void	expand_command(t_lst_token *token, t_lst_env *env_list);
+char	*expand_variable(char *token, int *index, t_lst_env *env_list);
+int		expand_in_quotes(char **token, int *i, t_lst_env *env_list);
+t_lst_token	*expand_token(t_lst_token *token, t_lst_env *env_list);
+
+#endif

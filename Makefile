@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
+#    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/05 16:08:08 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/05/10 14:15:51 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME = minishell
 NAME_TEST = minishell_test
 
 CC = cc 
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS =  -g3 -Wall -Wextra -Werror -fsanitize=address
 
 ARGUMENT_RUN = 
 ARGUMENT_RUN_TEST =
@@ -45,6 +45,7 @@ INCS =	-I includes								\
 		-I includes/pipe_seq_to_token_list 		\
 		-I includes/signal_management			\
 		-I includes/wildcard					\
+		-I includes/test						\
 
 SRCS =	checker/and_or_checker.c								\
 		checker/primary_check.c									\
@@ -91,7 +92,11 @@ SRCS =	checker/and_or_checker.c								\
 		pipe_seq_to_token_list/split_by_separator.c 			\
 		pipe_seq_to_token_list/split_pipe_by_space.c 			\
 		pipe_seq_to_token_list/get_token_list.c 				\
-		expand/expand.c 										\
+		expand/dollar_var_functions.c 							\
+		expand/expand_functions.c 								\
+		expand/remove_quotes.c 									\
+		expand/print_lst_quotes.c 								\
+		expand/split_post_expand.c 								\
 		execution/cmd_exec_utills.c								\
 		execution/execution.c									\
 		execution/find_token_cmd.c								\
@@ -100,13 +105,13 @@ SRCS =	checker/and_or_checker.c								\
 		execution/exec_buitins.c								\
 		execution/exec_pipe_cmd.c								\
 		execution/count_pipe.c									\
-		execution/main_execution.c								\
-		signal_management/signal_management.c								\
+		signal_management/signal_management.c					\
 		utils/jump_caracters.c									\
 		utils/is_functions.c									\
+		execution/main_execution.c								\
 
 #SRCS_TEST = builtins/export/main_export.c		
-SRCS_TEST = #execution/main_execution.c	
+SRCS_TEST = test/test.c	
 
 ################################################################################
 ########							Libraries							########
@@ -179,7 +184,8 @@ fclean : clean
 	$(RM) $(NAME_TEST)
 	$(RM) libft/libft.a
 
-re : header fclean all
+re : fclean 
+	 make all
 
 run: header all
 	$(NAME) $(ARGUMENT_RUN)

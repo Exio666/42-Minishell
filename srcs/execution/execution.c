@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/05 18:14:52 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:18:04 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,15 @@ int	exec_one_cmd(char **argv, t_lst_env **env_list)
 	}
 	return (retour);
 }
+void print_token_list(t_lst_token *token)
+{
+	while (token)
+	{
+		printf("%d | [%s]  ->  ", token->type, token->str);
+		token = token->next;
+	}
+	printf("NULL\n");
+}
 
 void	execute_command(t_lst_token *token, t_lst_env **env_list)
 {
@@ -50,8 +59,12 @@ void	execute_command(t_lst_token *token, t_lst_env **env_list)
 	int		count;
 
 	count = count_pipe(token);
+//		print_token_list(token);
+	expand_command(token, *env_list);
 	if (count == 1)
 	{
+//		tokenisation_post_expand(token);
+//		print_token_list(token);
 		set_up_redirect_in(token);
 		set_up_redirect_out(token);
 		argv = create_argv_cmd(token);

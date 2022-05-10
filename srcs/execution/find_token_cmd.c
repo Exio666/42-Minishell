@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_token_cmd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:51:03 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 19:43:00 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/06 11:26:15 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_lst_token	*find_first_token_cmd(t_lst_token *token)
 {
 	while (token && token->type != TOK_PIPE)
 	{
-		if (is_heredoc_token(token->type) || is_redirect_token(token->type))
+		if (token && (is_heredoc_token(token->type) || is_redirect_token(token->type)))
 			token = skip_two_token(token);
 		if (token && token->type == TOK_WORD)
 			return (token);

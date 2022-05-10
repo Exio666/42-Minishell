@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:59:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/28 15:58:13 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/06 13:44:00 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ int	get_end_index_pipe_sequence(char	*user_input, int start_index)
 	i = start_index;
 	while (user_input[i] && !is_log_op(user_input, i))
 	{
-		pipe_skip_quote(user_input, &i);
-		i++;
+		if (is_quote(user_input[i]))
+			pipe_skip_quote(user_input, &i);
+		else
+			i++;
 	}
 	return (i - 1);
 }

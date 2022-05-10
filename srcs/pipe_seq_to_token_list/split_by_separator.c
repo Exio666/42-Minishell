@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/30 13:01:22 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/05 13:54:11 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,13 @@ static int	count_word(char *str, char *sep)
 			nb_word++;
 		while (str[i] && !is_separator(str[i], sep))
 		{
-			pipe_skip_quote(str, &i);
-			if (str[i])
-				i++;
+			if (is_quote(str[i]))
+				pipe_skip_quote(str, &i);
+			else
+			{
+				if (str[i])
+					i++;
+			}
 		}
 	}
 	return (nb_word);
@@ -123,8 +127,12 @@ char	**split_by_separator(char *s, char *sep)
 			split[++k] = insert_token_separator(&s[i], sep);
 		while (s[i] && !is_separator(s[i], sep))
 		{
-			pipe_skip_quote(s, &i);
-			i++;
+			if (is_quote(s[i]))
+			{
+				pipe_skip_quote(s, &i);
+			}
+			else
+				i++;
 		}
 	}
 	return (split);
