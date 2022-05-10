@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/11 00:18:16 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/11 00:59:09 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	expand_command(t_lst_token *token, t_lst_env *env_list)
 		{
 			if (ft_strlen(token->str) > 0)
 				token = expand_token(token, env_list);
-			if (token->type == TOK_WORD)										// START ADD
+			if (token->type == TOK_WORD)
 			{
 				split = split_post_expand(token);
 				size = size_2d_array(split);
@@ -40,7 +40,7 @@ void	expand_command(t_lst_token *token, t_lst_env *env_list)
 					i++;
 					token = token->next;
 				}
-			}																	//END ADD
+			}
 		}
 		if (token)
 			token = token->next;
