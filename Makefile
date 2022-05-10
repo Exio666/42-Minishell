@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/11 00:55:40 by rpottier         ###   ########.fr        #
+#    Updated: 2022/05/11 01:40:19 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,6 +100,7 @@ SRCS =	checker/and_or_checker.c								\
 		expand/remove_quotes.c 									\
 		expand/lst_quotes_management.c 							\
 		expand/split_post_expand.c 								\
+		expand/split_post_expand_utils.c						\
 		execution/cmd_exec_utills.c								\
 		execution/execution.c									\
 		execution/find_token_cmd.c								\

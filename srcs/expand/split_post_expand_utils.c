@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expand.h                                           :+:      :+:    :+:   */
+/*   split_post_expand_utils.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 12:23:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/11 01:40:03 by rpottier         ###   ########.fr       */
+/*   Created: 2022/05/11 01:37:01 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/11 01:39:14 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXPAND_H
-# define EXPAND_H
+#include "minishell.h"
 
-# include "minishell.h"
+int	space_is_separator(t_lst_token *token, int index)
+{
+	if ((!is_space(token->str[index]) || (is_space(token->str[index])
+				&& token->in_quotes[index] == TRUE)))
+		return (TRUE);
+	return (FALSE);
+}
 
-# include "remove_quotes.h"
-# include "dollar_var_functions.h"
-# include "expand_functions.h"
-# include "lst_quotes_management.h"
-# include "split_post_expand.h"
-# include "split_post_expand_utils.h"
-
-#endif
+void	skip_space_out_of_quotes(t_lst_token *token, int *index)
+{
+	while (token->str[*index] && is_space(token->str[*index])
+		&& token->in_quotes[*index] == FALSE)
+		(*index)++;
+}

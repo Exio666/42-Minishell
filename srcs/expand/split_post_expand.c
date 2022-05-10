@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/11 01:30:08 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/11 01:38:35 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,6 @@ static char	*insert_word(int word_len, char *s)
 	return (split);
 }
 
-int	space_is_separator(t_lst_token *token, int index)
-{
-	if((!is_space(token->str[index]) || (is_space(token->str[index])
-		&& token->in_quotes[index] == TRUE)))
-		return (TRUE);
-	return (FALSE);
-}
-
 char	**split_post_expand(t_lst_token *token)
 {
 	int		i;
@@ -96,9 +88,7 @@ char	**split_post_expand(t_lst_token *token)
 	k = -1;
 	while (token->str[i] && ++k < nb_word)
 	{
-		while (token->str[i] && is_space(token->str[i])
-			&& token->in_quotes[i] == FALSE)
-			i++;
+		skip_space_out_of_quotes(token, &i);
 		split[k] = insert_word(word_len(&token->in_quotes[i],
 					&token->str[i]), &token->str[i]);
 		while (token->str[i] && space_is_separator(token, i))
