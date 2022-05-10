@@ -4,3 +4,4 @@
 .vscode
 .nfs*
 *.a
+valgrind-out.txt
