@@ -6,20 +6,11 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 15:18:34 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/11 00:18:16 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-/*
-** PROBLEM avec
-export a=bon
-echo' $a'
-*/
-
-
-//si je recuperer la position des quotes, je peux eviter de split qvec les espaces qui se trouvaient a l interieur de ces quotes
 
 void	expand_command(t_lst_token *token, t_lst_env *env_list)
 {
@@ -35,7 +26,7 @@ void	expand_command(t_lst_token *token, t_lst_env *env_list)
 			break ;
 		if (token->type == TOK_WORD)
 		{
-			if (token->str)
+			if (ft_strlen(token->str) > 0)
 				token = expand_token(token, env_list);
 			if (token->type == TOK_WORD)										// START ADD
 			{
@@ -67,12 +58,13 @@ char	*expand_variable(char *token, int *index, t_lst_env *env_list)
 	var_content_len = 0;
 	variable_name = get_variable_to_expand_name(&token[*index + 1]);
 	var_content = get_var_to_expand_content(variable_name, env_list);
-	var_content_len = ft_strlen(var_content);
 	if (!var_content)
 	{
-		printf("Variable doesn't exist\n");
-		return (NULL);
+		var_content = __ft_calloc(sizeof(char) * 1);
+		var_content_len = 0;
 	}
+	else
+		var_content_len = ft_strlen(var_content);
 	insert_var_content_to_token(&token, var_content, *index);
 	*index = *index + (var_content_len - 1);
 	return (token);
@@ -111,11 +103,9 @@ t_lst_token	*expand_token(t_lst_token *token, t_lst_env *env_list)
 
 	lst_quote = NULL;
 	i = 0;
-//	printf("str = [%s]\n", token->str);
-	while (token && token->str[i])
+	while (i != -1 && token && token->str[i])
 	{
 		quote.open = -1;
-//		printf("str = %s | i = %d\n", token->str, i);
 		if (token->str[i] && is_quote(token->str[i]))
 		{
 			quote.open = i;
@@ -125,8 +115,7 @@ t_lst_token	*expand_token(t_lst_token *token, t_lst_env *env_list)
 		}
 		if (token->str[i] && is_dollar(token->str[i]))
 			token->str = expand_variable(token->str, &i, env_list);
-//		printf("i = %d\n", i);
-		if (token->str[i]/* && !is_simple_quote(token->str[quote.open])*/)
+		if (i != -1 && token && token->str && token->str[i])
 		{
 			if (quote.open != -1)
 			{

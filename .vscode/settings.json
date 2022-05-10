@@ -9,6 +9,7 @@
 		"minishell.h": "c",
 		"token_utils.h": "c",
 		"algorithm": "c",
-		"sstream": "c"
+		"sstream": "c",
+		"set_up_redirection.h": "c"
 	}
 }
