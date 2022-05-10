@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 14:37:03 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/10 14:41:50 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,10 +114,11 @@ t_lst_token	*expand_token(t_lst_token *token, t_lst_env *env_list)
 //	printf("str = [%s]\n", token->str);
 	while (token && token->str[i])
 	{
+		quote.open = -1;
 		printf("str = %s | i = %d\n", token->str, i);
-		quote.open = i;
 		if (token->str[i] && is_quote(token->str[i]))
 		{
+			quote.open = i;
 			quote.close = expand_in_quotes(&token->str, &i, env_list);
 			elem = create_quote_index(quote.open, quote.close);
 			ft_lstquote_add_back(&lst_quote, elem);
@@ -125,8 +126,17 @@ t_lst_token	*expand_token(t_lst_token *token, t_lst_env *env_list)
 		if (token->str[i] && is_dollar(token->str[i]))
 			token->str = expand_variable(token->str, &i, env_list);
 		printf("i = %d\n", i);
-		if (token->str[i] && !is_simple_quote(token->str[quote.open]))
-			i++;
+		if (token->str[i]/* && !is_simple_quote(token->str[quote.open])*/)
+		{
+			if (quote.open != -1)
+			{
+				if (!is_simple_quote(token->str[quote.open]))
+					i++;
+			}
+			else
+				i++;
+		}
+			
 	}
 	token->str = remove_quotes(token, lst_quote);
 	return (token);
