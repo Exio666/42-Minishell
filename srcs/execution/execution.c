@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/09 18:07:46 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/10 11:27:08 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,12 @@ int	exec_one_cmd(char **argv, t_lst_env **env_list)
 			__ft_calloc(-1);
 			exit(127);
 		}
-		while (waitpid(-1, NULL, 0) > 0)
+		while (waitpid(-1, &retour, 0) > 0)
 			;
+		g_exit_status = WEXITSTATUS(retour);
 	}
+	else 
+		g_exit_status = retour;
 	return (retour);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 17:59:25 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/10 11:14:30 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,5 +135,11 @@
  */
 
 # include "signal_management.h"
+
+/*
+ *	Global variable
+ */
+
+extern int	g_exit_status;
 
 #endif
