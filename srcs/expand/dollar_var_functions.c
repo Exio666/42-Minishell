@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 08:23:21 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 08:24:04 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/10 10:57:56 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ char	*get_variable_to_expand_name(char *token)
 
 char	*get_var_to_expand_content(char *var_name, t_lst_env *env_list)
 {
+	/*if (ft_strncmp(var_name, "?", 2) == 0)
+		return (ft_itoa(g_exit_status))*/
 	while (env_list)
 	{
 		if (strcmp(var_name, env_list->name) == 0)

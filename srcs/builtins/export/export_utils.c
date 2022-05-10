@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 11:14:46 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/05 12:00:22 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/10 14:07:58 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_arg_export(char *arg)
 	i = 0;
 	while (arg[i])
 	{
-		if (!(ft_isalnum(arg[i]) || arg[i] == '_' || (arg[i] == '=' && i != 0)))
+		if (!(ft_isalnum(arg[i]) || arg[i] == '_' || arg[i] == ' ' || (arg[i] == '=' && i != 0)))
 		{
 			ft_putstr_fd("export: \'", 2);
 			ft_putstr_fd(arg, 2);

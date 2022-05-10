@@ -19,6 +19,6 @@ t_lst_quote	*create_quote_index(int open_quote_index, int close_quote_index);
 t_lst_quote	*ft_lstquote_last(t_lst_quote *lst);
 void		ft_lstquote_add_back(t_lst_quote **alst, t_lst_quote *new);
 int			is_in_lst_quote(int index, t_lst_quote *lst_quote);
-char		*remove_quotes(char *token, t_lst_quote *lst_quote);
+char		*remove_quotes(t_lst_token *token, t_lst_quote *lst_quote);
 
 #endif

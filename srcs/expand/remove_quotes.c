@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 08:07:51 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 08:25:48 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/10 13:29:24 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,25 +59,38 @@ int	is_in_lst_quote(int index, t_lst_quote *lst_quote)
 	return (0);
 }
 
-char	*remove_quotes(char *token, t_lst_quote *lst_quote)
+char	*remove_quotes(t_lst_token *token, t_lst_quote *lst_quote)
 {
 	char	*token_with_quotes_removed;
 	int		token_len;
 	int		index;
 	int		j;
-
+	int		space_to_split = FALSE;
 	index = 0;
 	j = 0;
-	token_len = ft_strlen(token);
+	token_len = ft_strlen(token->str);
 	token_with_quotes_removed = __ft_calloc(sizeof(char) * (token_len + 1));
-	while (token[index])
+	token->in_quotes = __ft_calloc(sizeof(int) * (token_len + 1));
+	while (token->str[index])
 	{
 		if (!is_in_lst_quote(index, lst_quote))
 		{
-			token_with_quotes_removed[j] = token[index];
+			token_with_quotes_removed[j] = token->str[index];
+			token->in_quotes[j] = space_to_split;
 			j++;
+		}
+		else
+		{
+			if (space_to_split == FALSE)
+				space_to_split = TRUE;
+			else if (space_to_split == TRUE)
+				space_to_split = FALSE;
 		}
 		index++;
 	}
+//	printf("%s\n", token_with_quotes_removed);
+//	for (int i = 0; i < ft_strlen(token_with_quotes_removed); i++)
+//		printf("%d", token->in_quotes[i]);
+//	printf("\n");
 	return (token_with_quotes_removed);
 }

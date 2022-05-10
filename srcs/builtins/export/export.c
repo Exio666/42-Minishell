@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:18:55 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/05 11:18:52 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/10 14:11:35 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_export(int ac, char **arg, t_lst_env **envp)
 	i = 1;
 	while (i < ac)
 	{
-		if (check_arg_export(arg[i]))
+		//if (check_arg_export(arg[i]))
 			put_varraible(arg[i], envp);
 		i++;
 	}

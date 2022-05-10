@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:01:16 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/06 13:24:16 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/10 13:58:10 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	launch_test_a_equal_cho_a(char **envp)
 	printf(RED "a=\"cho a\"\n" RESET);
 
 	test0(envp);
-	printf("TEST 0 PASSE\n");
 	test1(envp);
 	test2(envp);
 	test3(envp);
@@ -46,10 +45,10 @@ void test0(char **envp)
 	t_btree *root;
 	t_lst_env *env_list;
 
+	root = NULL;
 	printf(GRN "Test 0 : echo \"e\"\"$a\"\"e\"\n" RESET);
 	root = get_btree_of_logical_op(command_line);
-	printf("%p\n", root);
-	 add_all_pipe_sequence_in_tree(&root, command_line);
+	add_all_pipe_sequence_in_tree(&root, command_line);
 	printf("0 | [echo]  ->  0 | [echo a]  ->  NULL : EXPECTED\n");
 	env_list = convert_env_array_in_list(envp);
 	execute_command(root->token, &env_list);
