@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_execution.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 15:24:30 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:30:37 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ int	main(int argc, char **argv, char **envp)
 		reset_terminal();
 		command_line = readline(prompt);
 		add_history(command_line);
-//		if (primary_checker(command_line) == TRUE)
-//		{
+		if (primary_checker(command_line) == TRUE)
+		{
 			signal(SIGINT, &handler_sigint_endl);
 			signal(SIGQUIT, &handler_sigquit_exit);
 			root = get_btree_of_logical_op(command_line);
