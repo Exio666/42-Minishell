@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 13:55:07 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:16:36 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	main(int argc, char **argv, char **envp)
 			signal(SIGQUIT, &handler_sigquit_exit);
 			root = get_btree_of_logical_op(command_line);
 			add_all_pipe_sequence_in_tree(&root, command_line);
-			printf("root = %p\n", root);
+//			printf("root = %p\n", root);
 		//	print2D(root);
 			execute_command_tree(root, &env_list);
 //		}

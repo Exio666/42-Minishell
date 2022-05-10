@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 14:41:50 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:18:34 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ t_lst_token	*expand_token(t_lst_token *token, t_lst_env *env_list)
 	while (token && token->str[i])
 	{
 		quote.open = -1;
-		printf("str = %s | i = %d\n", token->str, i);
+//		printf("str = %s | i = %d\n", token->str, i);
 		if (token->str[i] && is_quote(token->str[i]))
 		{
 			quote.open = i;
@@ -125,7 +125,7 @@ t_lst_token	*expand_token(t_lst_token *token, t_lst_env *env_list)
 		}
 		if (token->str[i] && is_dollar(token->str[i]))
 			token->str = expand_variable(token->str, &i, env_list);
-		printf("i = %d\n", i);
+//		printf("i = %d\n", i);
 		if (token->str[i]/* && !is_simple_quote(token->str[quote.open])*/)
 		{
 			if (quote.open != -1)
