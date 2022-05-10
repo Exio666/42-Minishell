@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/11 01:00:42 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/11 01:24:07 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,24 @@
 void	expand_command(t_lst_token *token, t_lst_env *env_list)
 {
 	char	**split;
-	int		size;
+	int		size_2d_array;
 	int		i;
 
 	while (token && token->type != TOK_PIPE)
 	{
 		if (is_heredoc_token(token->type))
 			token = skip_two_token(token);
-		if (!token)
-			break ;
-		if (token->type == TOK_WORD)
+		if (token && token->type == TOK_WORD)
 		{
 			if (ft_strlen(token->str) > 0)
 				token = expand_token(token, env_list);
-
 			split = split_post_expand(token);
-			size = size_2d_array(split);
-			if (size > 1)
+			size_2d_array = ft_size_2d_array(split);
+			if (size_2d_array > 1)
 				insert_split_in_token_list(token, split);
-			i = 0;
-			while (token && i < (size - 1))
-			{
-				i++;
+			i = -1;
+			while (token && ++i < (size_2d_array - 1))
 				token = token->next;
-			}
 		}
 		if (token)
 			token = token->next;
@@ -77,7 +71,7 @@ int	expand_in_quotes(char **token, int *i, t_lst_env *env_list)
 		closing_quote_position = skip_quote(*token, i);
 		closing_quote_position--;
 	}
-	else// if (is_double_quote((*token)[*i]))
+	else
 	{
 		*i = *i + 1;
 		while ((*token)[*i] && !is_double_quote((*token)[*i]))
@@ -90,7 +84,6 @@ int	expand_in_quotes(char **token, int *i, t_lst_env *env_list)
 	}
 	return (closing_quote_position);
 }
-
 
 t_lst_token	*expand_token(t_lst_token *token, t_lst_env *env_list)
 {
@@ -114,17 +107,19 @@ t_lst_token	*expand_token(t_lst_token *token, t_lst_env *env_list)
 		if (token->str[i] && is_dollar(token->str[i]))
 			token->str = expand_variable(token->str, &i, env_list);
 		if (i != -1 && token && token->str && token->str[i])
-		{
-			if (quote.open != -1)
-			{
-				if (!is_simple_quote(token->str[quote.open]))
-					i++;
-			}
-			else
-				i++;
-		}
-			
+			move_foward(quote.open, token->str, &i);
 	}
 	token->str = remove_quotes(token, lst_quote);
 	return (token);
+}
+
+void	move_foward(int open_quote, char *token_str, int *index)
+{
+	if (open_quote != -1)
+	{
+		if (!is_simple_quote(token_str[open_quote]))
+			(*index)++;
+	}
+	else
+		(*index)++;
 }

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:54:06 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 08:59:50 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/11 01:08:57 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "minishell.h"
 
-int		size_2d_array(char **array);
+int		ft_size_2d_array(char **array);
 void	insert_split_in_token_list(t_lst_token *token, char **split);
 void	tokenisation_post_expand(t_lst_token *token);
 char	**create_argv_cmd(t_lst_token *token);
