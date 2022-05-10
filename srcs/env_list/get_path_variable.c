@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_path_variable.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 20:18:51 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 17:01:08 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/10 11:13:54 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*get_path_env_variable_from_lst(t_lst_env	*list_env_var)
 {
 	while (list_env_var)
 	{
-		if (strncmp(list_env_var->name, "PATH=", 5) == 0)
+		if (ft_strncmp(list_env_var->name, "PATH=", 5) == 0)
 			return (list_env_var->content);
 		list_env_var = list_env_var->next;
 	}
