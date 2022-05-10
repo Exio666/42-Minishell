@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gestion_erreur.h                                   :+:      :+:    :+:   */
+/*   cmd_not_found.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 14:24:11 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/10 17:01:43 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/10 16:58:21 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/10 17:00:46 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GESTION_ERREUR_H
-# define GESTION_ERREUR_H
+#include "minishell.h"
 
-# include "open_failed.h"
-# include "cmd_not_founf.h"
-
-#endif
+void	ft_print_not_found(char *cmd)
+{
+	ft_putstr_fd(cmd,2);
+	ft_putstr_fd(" : command not found\n", 2);
+}

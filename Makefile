@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
+#    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/10 15:23:05 by rpottier         ###   ########.fr        #
+#    Updated: 2022/05/10 17:16:54 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,8 +112,8 @@ SRCS =	checker/and_or_checker.c								\
 		utils/jump_caracters.c									\
 		utils/is_functions.c									\
 		gestion_erreur/open_failed.c							\
-
-#SRCS_TEST = builtins/export/main_export.c		
+		gestion_erreur/cmd_not_found.c							\
+		
 SRCS_TEST = test/test.c	
 
 ################################################################################

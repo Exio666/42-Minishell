@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gestion_erreur.h                                   :+:      :+:    :+:   */
+/*   cmd_not_founf.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 14:24:11 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/10 17:01:43 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/10 17:00:02 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/10 17:00:54 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GESTION_ERREUR_H
-# define GESTION_ERREUR_H
+#ifndef CMD_NOT_FOUNF_H
+# define CMD_NOT_FOUNF_H
 
-# include "open_failed.h"
-# include "cmd_not_founf.h"
+# include "minishell.h"
+
+void	ft_print_not_found(char *cmd);
 
 #endif
