@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 15:18:04 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:24:05 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,16 @@ int	exec_one_cmd(char **argv, t_lst_env **env_list)
 		{
 			signal(SIGINT, &handler_sigint_empty);
 			execute(argv, env_list);
+			rl_clear_history();
 			__ft_calloc(-1);
 			exit(127);
 		}
-		while (waitpid(-1, NULL, 0) > 0)
+		while (waitpid(-1, &retour, 0) > 0)
 			;
+		g_exit_status = WEXITSTATUS(retour);
 	}
+	else 
+		g_exit_status = retour;
 	return (retour);
 }
 void print_token_list(t_lst_token *token)
@@ -53,7 +57,7 @@ void print_token_list(t_lst_token *token)
 	printf("NULL\n");
 }
 
-void	execute_command(t_lst_token *token, t_lst_env **env_list)
+int	execute_command(t_lst_token *token, t_lst_env **env_list)
 {
 	char	**argv;
 	int		count;
@@ -65,13 +69,14 @@ void	execute_command(t_lst_token *token, t_lst_env **env_list)
 	{
 //		tokenisation_post_expand(token);
 //		print_token_list(token);
-		set_up_redirect_in(token);
-		set_up_redirect_out(token);
+		if (set_up_redirect(token, 0) == 1)
+			return (1);
 		argv = create_argv_cmd(token);
-		exec_one_cmd(argv, env_list);
+		return (exec_one_cmd(argv, env_list));
 	}
 	else
-		exec_pipe_cmd(token, env_list, count);
+		return (exec_pipe_cmd(token, env_list, count));
+	return (0);
 }
 
 void	execute_here_doc_tree(t_btree *root);

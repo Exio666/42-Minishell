@@ -6,13 +6,13 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 21:47:51 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/06 11:25:58 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:24:34 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	redirect_out(t_lst_token *token)
+int	redirect_out(t_lst_token *token, int child)
 {
 	int	fd_file;
 
@@ -20,12 +20,16 @@ void	redirect_out(t_lst_token *token)
 	if (token)
 	{
 		fd_file = open(token->str, O_WRONLY | O_CREAT, 00777);
-		dup2(fd_file, STDOUT_FILENO);
+		if (fd_file == -1)
+			return (open_failed(token->str, child));
+		if (dup2(fd_file, STDOUT_FILENO) == -1)
+			return (open_failed(token->str, child));
 		close(fd_file);
 	}
+	return (0);
 }
 
-void	redirect_out_append(t_lst_token *token)
+int	redirect_out_append(t_lst_token *token, int child)
 {
 	int	fd_file;
 
@@ -33,60 +37,48 @@ void	redirect_out_append(t_lst_token *token)
 	if (token)
 	{
 		fd_file = open(token->str, O_WRONLY | O_CREAT | O_APPEND, 00777);
-		dup2(fd_file, STDOUT_FILENO);
+		if (fd_file == -1)
+			return (open_failed(token->str, child));
+		if (dup2(fd_file, STDOUT_FILENO) == -1)
+			return (open_failed(token->str, child));
 		close(fd_file);
 	}
+	return (0);
 }
 
-void	set_up_redirect_out(t_lst_token *token)
+int	redirect_in(t_lst_token *token, int child)
+{
+	int	fd_file;
+
+	token = token->next;
+	if (token)
+	{
+		fd_file = open(token->str, O_RDONLY);
+		if (fd_file == -1)
+			return (open_failed(token->str, child));
+		if (dup2(fd_file, STDIN_FILENO) == -1)
+			return (open_failed(token->str, child));
+		close(fd_file);
+	}
+	token = token->next;
+	return (0);
+}
+
+int	set_up_redirect(t_lst_token *token, int child)
 {
 	while (token && token->type != TOK_PIPE)
 	{
 		if (token && token->type == TOK_REDIRECT_OUT)
-			redirect_out(token);
+			if (redirect_out(token, child))
+				return (1);
 		if (token && token->type == TOK_REDIRECT_OUT_APPEND)
-			redirect_out_append(token);
-		token = token->next;
-	}
-}
-
-void	set_up_redirect_in(t_lst_token *token)
-{
-	int	fd_file;
-
-	while (token && token->type != TOK_PIPE)
-	{
+			if (redirect_out_append(token, child))
+				return (1);
 		if (token && (token->type == TOK_REDIRECT_IN
 				|| token->type == TOK_HEREDOC))
-		{
-			token = token->next;
-			if (token)
-			{
-				fd_file = open(token->str, O_RDONLY);
-				dup2(fd_file, STDIN_FILENO);
-				close(fd_file);
-			}
-		}
+			if (redirect_in(token, child))
+				return (1);
 		token = token->next;
 	}
+	return (0);
 }
-
-/*void	set_up_redirect_out_append(t_lst_token *token)
-{
-	int	fd_file;
-
-	while (token && token->type != TOK_REDIRECT_OUT_APPEND)
-	{
-		token = token->next;
-	}
-	if (token && token->type == TOK_REDIRECT_OUT_APPEND)
-	{
-		token = token->next;
-		if (token)
-		{
-			fd_file = open(token->str, O_CREAT | O_APPEND);
-			dup2(fd_file, STDOUT_FILENO);
-			close(fd_file);
-		}
-	}
-}*/

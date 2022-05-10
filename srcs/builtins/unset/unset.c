@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 14:33:45 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/03 16:42:51 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/09 16:27:40 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,25 @@ int	delete_varraible(char *name, t_lst_env **envp)
 	return (0);
 }
 
+int	check_arg_unset(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+		if (!(ft_isalnum(arg[i]) || arg[i] == '_'))
+		{
+			ft_putstr_fd("unset: \'", 2);
+			ft_putstr_fd(arg, 2);
+			ft_putendl_fd("\' is not a valid identifier", 2);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
 int	ft_unset(int ac, char **arg, t_lst_env **envp)
 {
 	int	i;
@@ -47,7 +66,8 @@ int	ft_unset(int ac, char **arg, t_lst_env **envp)
 	i = 1;
 	while (i < ac)
 	{
-		delete_varraible(arg[i], envp);
+		if (check_arg_unset(arg[i]))
+			delete_varraible(arg[i], envp);
 		i++;
 	}
 	return (0);

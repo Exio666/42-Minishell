@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/10 14:15:51 by rpottier         ###   ########.fr        #
+#    Updated: 2022/05/10 15:23:05 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,8 @@ INCS =	-I includes								\
 		-I includes/signal_management			\
 		-I includes/wildcard					\
 		-I includes/test						\
+		-I includes/gestion_erreur				\
+		-I includes/heredoc						\
 
 SRCS =	checker/and_or_checker.c								\
 		checker/primary_check.c									\
@@ -105,10 +107,11 @@ SRCS =	checker/and_or_checker.c								\
 		execution/exec_buitins.c								\
 		execution/exec_pipe_cmd.c								\
 		execution/count_pipe.c									\
+		execution/main_execution.c								\
 		signal_management/signal_management.c					\
 		utils/jump_caracters.c									\
 		utils/is_functions.c									\
-		execution/main_execution.c								\
+		gestion_erreur/open_failed.c							\
 
 #SRCS_TEST = builtins/export/main_export.c		
 SRCS_TEST = test/test.c	

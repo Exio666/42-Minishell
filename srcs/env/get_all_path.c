@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 16:48:21 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/05 16:12:55 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/10 11:16:14 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*get_path_env_variable_from_array(char **envp)
 	i = 0;
 	while (envp[i] != NULL)
 	{
-		if (strncmp(envp[i], "PATH=", 5) == 0)
+		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
 			return (envp[i]);
 		i++;
 	}
@@ -47,7 +47,7 @@ char	**split_path_env_variable_and_add_slash(char *path_env_variable)
 	i = 0;
 	while (all_path[i] != NULL && all_path[i][0] != 0)
 	{
-		path_len = strlen(all_path[i]);
+		path_len = ft_strlen(all_path[i]);
 		current_path = __ft_calloc(sizeof(*current_path) * (path_len + 2));
 		if (!current_path)
 			return (NULL);

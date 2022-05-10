@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/06 11:58:14 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:23:20 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,18 @@
 # include "struct_enum.h"
 # include "define.h"
 # include "all_lib.h"
+
+/*
+ *	heredoc.h
+ */
+
+# include "heredoc.h"
+
+/*
+ *	Gestion Erreur
+ */
+
+# include "gestion_erreur.h"
 
 /*
  *	Builtins
@@ -124,4 +136,11 @@
 
 # include "signal_management.h"
 # include "test.h"
+
+/*
+ *	Global variable
+ */
+
+extern int	g_exit_status;
+
 #endif

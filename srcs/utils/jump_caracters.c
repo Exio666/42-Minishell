@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:20:50 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 21:21:20 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:24:38 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	jump_caracters(char *str, char *caracters, int index, int step)
 {
 	while (str[index] && index >= 0 && step != 0)
 	{
-		if (strchr(caracters, str[index]))
+		if (ft_strchr(caracters, str[index]))
 			return (index);
 		index += step;
 	}

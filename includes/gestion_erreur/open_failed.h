@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unset.h                                            :+:      :+:    :+:   */
+/*   open_failed.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 14:34:21 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 16:28:23 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/09 14:23:21 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/09 14:32:24 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNSET_H
-# define UNSET_H
+#ifndef OPEN_FAILED_H
+# define OPEN_FAILED_H
 
 # include "minishell.h"
 
-int			ft_unset(int ac, char **arg, t_lst_env **envp);
-int			delete_varraible(char *name, t_lst_env **envp);
-int			check_arg_unset(char *arg);
-t_lst_env	*find_element_with_name(char *name, t_lst_env **envp);
+int	open_failed(char *str, int child);
 
 #endif

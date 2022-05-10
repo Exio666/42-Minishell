@@ -6,11 +6,13 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 15:19:49 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:24:30 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	g_exit_status = 0;
 
 void	reset_terminal(void)
 {
@@ -31,6 +33,7 @@ void	reset_terminal(void)
 	if (error == -1)
 	{
 		ft_putendl_fd("Error: Fatal bad open of file\n", 2);
+		rl_clear_history();
 		__ft_calloc(-1);
 		exit(1);
 	}
@@ -43,7 +46,8 @@ void	exit_ctr_d(char *command_line)
 	printf(RESET);
 	free(command_line);
 	__ft_calloc(-1);
-	exit(130);
+	rl_clear_history();
+	exit(0);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -69,13 +73,14 @@ int	main(int argc, char **argv, char **envp)
 			signal(SIGQUIT, &handler_sigquit_exit);
 			root = get_btree_of_logical_op(command_line);
 			add_all_pipe_sequence_in_tree(&root, command_line);
-//			printf("root = %p\n", root);
-		//	print2D(root);
+			free(command_line);
 			execute_command_tree(root, &env_list);
-//		}
-//		else if (!command_line)
-//			exit_ctr_d(command_line);
-		free(command_line);
+		}
+		else if (!command_line)
+		{
+			free(command_line);
+			exit_ctr_d(command_line);
+		}
 	}
 	__ft_calloc(-1);
 	return (0);

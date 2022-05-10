@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 11:35:16 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/04 11:34:23 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/09 19:14:17 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	pipe_content_checker(char *commande, t_checker *check)
 
 int	redirection_checker(char *pipe_sequence, t_checker *check)
 {
+	pipe_content_checker(pipe_sequence, check);
 	while (check->index != -1 && pipe_sequence[check->index])
 	{
 		check->arg_of_redirect = FALSE;

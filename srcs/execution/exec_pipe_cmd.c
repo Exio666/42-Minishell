@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:27:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/05 18:14:41 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/10 13:38:42 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	exec_cmd(t_lst_token *token, t_lst_env **env_list)
 	int		retour;
 
 	argv = create_argv_cmd(token);
-	set_up_redirect_in(token);
-	set_up_redirect_out(token);
+	set_up_redirect(token, 1);
 	retour = exec_builtins(len_av(argv), argv, env_list);
 	if (retour == 127)
 		execute(argv, env_list);
+	rl_clear_history();
 	__ft_calloc(-1);
 	exit(retour);
 }
@@ -55,8 +55,11 @@ int	exec_pipe_cmd(t_lst_token *token, t_lst_env **env_list, int nb_cmd)
 	int		new_pipe[2];
 	int		i;
 	int		pid;
+	int		status;
 
 	i = 0;
+	pipe_stock[0] = -1;
+	pipe_stock[1] = -1;
 	while (i < nb_cmd)
 	{
 		pipe(new_pipe);
@@ -82,6 +85,9 @@ int	exec_pipe_cmd(t_lst_token *token, t_lst_env **env_list, int nb_cmd)
 		i++;
 	}
 	multi_close(pipe_stock[0], pipe_stock[1], -1, -1);
+	while (waitpid(pid, &status, 0) > 0)
+		;
+	g_exit_status = WEXITSTATUS(status);
 	while (waitpid(-1, NULL, 0) > 0)
 		;
 	return (0);
