@@ -14,9 +14,9 @@
 
 int	get_logic_op_from_end(char *user_input, int i)
 {
-	if (is_and_symbol(user_input[i]) && is_and_symbol(user_input[i - 1]))
+	if (i != 0 && is_and_symbol(user_input[i]) && is_and_symbol(user_input[i - 1]))
 		return (AND_OPERATOR);
-	else if (is_or_symbol(user_input[i]) && is_or_symbol(user_input[i - 1]))
+	else if (i != 0 && is_or_symbol(user_input[i]) && is_or_symbol(user_input[i - 1]))
 		return (OR_OPERATOR);
 	else
 		return (OPERATOR_NOT_FOUND);

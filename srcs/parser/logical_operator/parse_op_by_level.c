@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:41:57 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/15 21:02:30 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/11 13:27:12 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ t_btree	*parse_op_by_level(t_logic_op **logical_op, t_input_level *input_level)
 		}
 		increase_level(&level.current);
 	}
-//	print2D(btree);
 	return (btree);
 }
 

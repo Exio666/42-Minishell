@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:56:56 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/05 13:54:49 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/11 13:46:43 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,12 @@ t_pipe_sequence	**split_all_pipe_sequence(char *user_input)
 		start_index = get_start_index_pipe_sequence(user_input, i);
 		splited[i]->str = get_pipe_sequence(user_input, start_index);
 
-		pipe_sequence_checker(splited[i]->str);
+		if (pipe_sequence_checker(splited[i]->str) == 0)
+			return (NULL);
 		splited[i]->index = (unsigned int)start_index;
 		i++;
 	}
 	splited[i] = NULL;
-
-//	print_pipe_seq_array(splited);
-
 	return (splited);
 }
 
