@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 13:15:58 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 14:20:32 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/11 14:48:18 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char	*get_variable_content(char	*variable_env)
 	int		len;
 	int		start_content_index;
 
+	if (!variable_env)
+		return (NULL);
 	start_content_index = get_start_content_index(variable_env);
 	len = get_var_content_len(variable_env);
 	variable_content = __ft_calloc(sizeof(char) * (len + 1));
