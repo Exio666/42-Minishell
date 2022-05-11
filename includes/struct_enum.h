@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_enum.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/10 10:34:05 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/11 17:00:13 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef enum e_type_command
 /********************
 ***	  Structure   ***
 ********************/
+
 typedef struct s_quote_index
 {
 	int open;

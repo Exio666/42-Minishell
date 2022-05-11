@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/11 14:07:48 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/11 17:17:14 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	main(int argc, char **argv, char **envp)
 			signal(SIGQUIT, &handler_sigquit_exit);
 			root = get_btree_of_logical_op(command_line);
 			add_all_pipe_sequence_in_tree(&root, command_line);
+			create_all_heredoc(&root, command_line);
 			free(command_line);
 			execute_command_tree(root, &env_list);
 		}
@@ -85,7 +86,6 @@ int	main(int argc, char **argv, char **envp)
 	__ft_calloc(-1);
 	return (0);
 }
-
 
 /* Bloc de debugage */
 			/*split = split_by_separator(command_line, "|<>");

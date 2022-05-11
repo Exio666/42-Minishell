@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 12:15:25 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 17:52:50 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/11 17:40:29 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,18 @@ int	change_name_heredoc(char *str)
 
 void	feed_herdoc(int fd, char *end)
 {
-	char	str;
+	char	*str;
 
 	while (1)
 	{
 		str = readline("> ");
-		if (ft_strncmp(str, end, ft_strlen(end)) == 0 || ft_strlen(str) == 0)
+		if (!str || ft_strncmp(str, end, ft_strlen(end)) == 0 || ft_strlen(str) == 0)
 		{
 			free(str);
 			return ;
 		}
 		ft_putstr_fd(str, fd);
+		ft_putstr_fd("\n", fd);
 		free(str);
 	}
 }
@@ -54,12 +55,10 @@ void	feed_herdoc(int fd, char *end)
 char	*heredoc_create(char *end)
 {
 	char	*str;
-	int		counter;
 	int		fd;
 
-	fd = -1;
-	str = __ft_calloc(sizeof(char) * 17);
-	str = "/tmp/herdoc_000";
+	fd = -1;;
+	str = "/tmp/.herdoc_000";
 	while (1)
 	{
 		open(str, O_CREAT | O_RDWR | O_EXCL, 0777);
@@ -67,10 +66,13 @@ char	*heredoc_create(char *end)
 		{
 			feed_herdoc(fd, end);
 			close(fd);
-			return (str);
+			return (ft_strdup(str));
 		}
 		if (!change_name_heredoc(str))
-			return (NULL);
+		{
+			str = "/dev/null";
+			return (ft_strdup(str));
+		}
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/11 11:07:56 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/05/11 17:21:41 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,6 +114,9 @@ SRCS =	checker/and_or_checker.c								\
 		utils/is_functions.c									\
 		gestion_erreur/open_failed.c							\
 		gestion_erreur/cmd_not_found.c							\
+		heredoc/heredoc.c										\
+		heredoc/destuct_heredoc.c								\
+		heredoc/create_all_heredoc.c							\
 		
 SRCS_TEST = test/test.c	
 

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/11 14:18:41 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/11 15:50:19 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ missing argument after \'>\'"
 # define CD_ERROR_HOME_MOT_SET "cd: HOME not set\n"
 # define CD_TOO_MANY_ARGS "cd: too many arguments\n"
 # define S_ERROR_MIS_CMD_PIPE "syntax error near unexpected token \'|\'"
+# define S_ERROR_CMD_PARENTHESE "syntax error need comande betwen \'(\' \')\'"
 
 #endif
