@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 15:30:37 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/11 14:07:48 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	main(int argc, char **argv, char **envp)
 		reset_terminal();
 		command_line = readline(prompt);
 		add_history(command_line);
-		if (primary_checker(command_line) == TRUE)
+		if (primary_checker(command_line) == TRUE && check_all_pipe_sequence(command_line) == TRUE)
 		{
 			signal(SIGINT, &handler_sigint_endl);
 			signal(SIGQUIT, &handler_sigquit_exit);

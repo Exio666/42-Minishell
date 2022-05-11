@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/04 19:40:43 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/11 14:18:41 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@
 
 # define ERROR_EXECVE -1
 
-# define RED   "\x1B[31m"
-# define RED_BOLD   "\x1B[31;1m"
-# define GRN   "\x1B[32m"
-# define YEL   "\x1B[33m"
-# define BLU   "\x1B[34m"
-# define RESET "\x1B[0m"
+# define RED		"\x1B[31m"
+# define RED_BOLD	"\x1B[31;1m"
+# define GRN		"\x1B[32m"
+# define YEL		"\x1B[33m"
+# define BLU		"\x1B[34m"
+# define RESET		"\x1B[0m"
 
 # define UI unsigned int
 
@@ -74,6 +74,6 @@ missing argument after \'>\'"
 # define CD_ERROR_NO_DIR "cd: no such file or directory: "
 # define CD_ERROR_HOME_MOT_SET "cd: HOME not set\n"
 # define CD_TOO_MANY_ARGS "cd: too many arguments\n"
-# define S_ERROR_MIS_CMD_PIPE "Syntax error : missing commande after \'|\'"
+# define S_ERROR_MIS_CMD_PIPE "syntax error near unexpected token \'|\'"
 
 #endif
