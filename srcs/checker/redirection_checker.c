@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 11:35:16 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 19:14:17 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/11 13:33:02 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,29 @@ void	pipe_content_checker(char *commande, t_checker *check)
 	}
 }
 
+void	first_len_pipe_content(char *commande, t_checker *check)
+{
+	int	i;
+	int	len;
+	
+	i = 0;
+	len = 0;
+	while (commande[i] && commande[i] != '|')
+	{
+		if (!ft_iswhitespace(commande[i]))
+			len++;
+		i++;
+	}
+	if (len == 0)
+	{
+		check->str = S_ERROR_MIS_CMD_PIPE;
+		check->error = TRUE;
+	}
+}
+
 int	redirection_checker(char *pipe_sequence, t_checker *check)
 {
-	pipe_content_checker(pipe_sequence, check);
+	first_len_pipe_content(pipe_sequence, check);
 	while (check->index != -1 && pipe_sequence[check->index])
 	{
 		check->arg_of_redirect = FALSE;
@@ -93,7 +113,7 @@ int	redirection_checker(char *pipe_sequence, t_checker *check)
 			redirect_out_checker(pipe_sequence, check);
 		else if (pipe_sequence[check->index] == '<')
 			redirect_in_checker(pipe_sequence, check);
-		else if (pipe_sequence[check->index] == '|')
+		else if (pipe_sequence[check->index] == '|' && check->error == FALSE)
 			pipe_content_checker(pipe_sequence, check);
 		if (check->error == TRUE)
 			return (0);

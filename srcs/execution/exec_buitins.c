@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 10:42:02 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 18:58:24 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/11 11:30:24 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	exec_builtins(int ac, char **av, t_lst_env **envp)
 		return (ft_aff_env(envp));
 	else if (ft_strncmp(av[0], "exit", 5) == 0)
 		return (ft_exit(ac, av));
-	else if (ft_strncmp(av[0], "export", 6) == 0)
+	else if (ft_strncmp(av[0], "export", 7) == 0)
 		return (ft_export(ac, av, envp));
 	else if (ft_strncmp(av[0], "pwd", 4) == 0)
 		return (ft_pwd());
