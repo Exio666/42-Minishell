@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:53:17 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/05 10:51:59 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/11 11:10:27 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	ft_cd_absolu_path(char *path_move, t_lst_env **envp)
 {
 	char	*pwd;
 
-	pwd = __ft_calloc(sizeof(char) * 2048);
 	if (chdir(path_move) == -1)
 	{
 		ft_putstr_fd(CD_ERROR_NO_DIR, 2);
@@ -25,7 +24,9 @@ int	ft_cd_absolu_path(char *path_move, t_lst_env **envp)
 	}
 	else
 	{
+		pwd = get_variable_content(ft_get_env(envp, "PWD"));
 		put_varraible(ft_strjoin("OLDPWD=", pwd), envp);
+		pwd = __ft_calloc(sizeof(char) * 2048);
 		getcwd(pwd, 2048);
 		if (!pwd)
 			return (1);
@@ -56,8 +57,10 @@ int	ft_cd_relative_path(char *path_move, t_lst_env **envp)
 		return (no_dir(path_move));
 	else
 	{
+		pwd = get_variable_content(ft_get_env(envp, "PWD"));
 		put_varraible(ft_strjoin("OLDPWD=", pwd), envp);
 		getcwd(pwd, 2048);
+		pwd = __ft_calloc(sizeof(char) * 2048);
 		if (!pwd)
 			return (1);
 		put_varraible(ft_strjoin("PWD=", pwd), envp);
