@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/11 01:24:07 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/11 19:14:21 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,39 @@ int	expand_in_quotes(char **token, int *i, t_lst_env *env_list)
 	return (closing_quote_position);
 }
 
+int	is_wildcard(char c)
+{
+	if (c == '*')
+		return (TRUE);
+	else
+		return (FALSE);
+}
+
+char	*expand_wildcard(char **token, int *i, t_lst_env *env_list)
+{
+	char	*wildcard_content;
+	int		wildcard_content_len;
+
+	wildcard_content = NULL;
+	wildcard_content_len = 0;
+	wildcard_content = get_wildcard_content();
+	if (!wildcard_content)
+	{
+		wildcard_content = __ft_calloc(sizeof(char) * 1);
+		wildcard_content_len = 0;
+	}
+	else
+		wildcard_content_len = ft_strlen(wildcard_content);
+	insert_var_content_to_token(&token, wildcard_content, *index);
+	*index = *index + (wildcard_content_len - 1);
+	return (token);
+}
+
+t_lst_token	*expand_all_variables(t_lst_token *token, t_lst_env *env_list)
+{
+	
+}
+
 t_lst_token	*expand_token(t_lst_token *token, t_lst_env *env_list)
 {
 	int				i;
@@ -109,6 +142,8 @@ t_lst_token	*expand_token(t_lst_token *token, t_lst_env *env_list)
 		if (i != -1 && token && token->str && token->str[i])
 			move_foward(quote.open, token->str, &i);
 	}
+		if (token->str[i] && is_wildcard(token->str[i]))
+			token->str = expand_wildcard(token->str, &i, env_list);
 	token->str = remove_quotes(token, lst_quote);
 	return (token);
 }
