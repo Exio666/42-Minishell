@@ -6,13 +6,13 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:53:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 08:58:37 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/11 01:10:28 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int size_2d_array(char **array)
+int ft_size_2d_array(char **array)
 {
 	int size;
 
@@ -46,7 +46,7 @@ void insert_split_in_token_list(t_lst_token *token, char **split)
 			if (token->type == TOK_WORD)
 			{
 				char **split = split_pipe_by_space(token->str);
-				int size = size_2d_array(split);
+				int size = ft_size_2d_array(split);
 //				printf("TEMOIN 1\n");
 				if (size > 1)
 				{

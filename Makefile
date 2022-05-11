@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/10 17:16:54 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/05/11 10:48:08 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ NAME = minishell
 NAME_TEST = minishell_test
 
 CC = cc 
-CFLAGS =  -g3 -Wall -Wextra -Werror -fsanitize=address
+CFLAGS =  -g3 -Wall -Wextra -Werror 
+#-fsanitize=address
 
 ARGUMENT_RUN = 
 ARGUMENT_RUN_TEST =
@@ -97,8 +98,9 @@ SRCS =	checker/and_or_checker.c								\
 		expand/dollar_var_functions.c 							\
 		expand/expand_functions.c 								\
 		expand/remove_quotes.c 									\
-		expand/print_lst_quotes.c 								\
+		expand/lst_quotes_management.c 							\
 		expand/split_post_expand.c 								\
+		expand/split_post_expand_utils.c						\
 		execution/cmd_exec_utills.c								\
 		execution/execution.c									\
 		execution/find_token_cmd.c								\

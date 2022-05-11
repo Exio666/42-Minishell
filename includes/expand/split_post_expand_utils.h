@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_lst_quotes.h                                 :+:      :+:    :+:   */
+/*   split_post_expand_utils.h                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 08:09:59 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 08:10:25 by rpottier         ###   ########.fr       */
+/*   Created: 2022/05/11 01:37:29 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/11 01:38:25 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_LST_QUOTES_H
-# define PRINT_LST_QUOTES_H
+#ifndef SPLIT_POST_EXPAND_UTILS_H
+# define SPLIT_POST_EXPAND_UTILS_H
 
 # include "minishell.h"
 
-void	print_lstquote(t_lst_quote *lst_quote);
+int	space_is_separator(t_lst_token *token, int index);
+void	skip_space_out_of_quotes(t_lst_token *token, int *index);
 
 #endif

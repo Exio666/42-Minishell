@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_lst_quotes.c                                 :+:      :+:    :+:   */
+/*   split_post_expand_utils.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 08:24:41 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 08:24:56 by rpottier         ###   ########.fr       */
+/*   Created: 2022/05/11 01:37:01 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/11 01:39:14 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_lstquote(t_lst_quote *lst_quote)
+int	space_is_separator(t_lst_token *token, int index)
 {
-	t_lst_quote	*tmp;
+	if ((!is_space(token->str[index]) || (is_space(token->str[index])
+				&& token->in_quotes[index] == TRUE)))
+		return (TRUE);
+	return (FALSE);
+}
 
-	tmp = lst_quote;
-	while (tmp)
-	{
-		printf("(%d) (%d)\n", tmp->index.open, tmp->index.close);
-		tmp = tmp->next;
-	}
+void	skip_space_out_of_quotes(t_lst_token *token, int *index)
+{
+	while (token->str[*index] && is_space(token->str[*index])
+		&& token->in_quotes[*index] == FALSE)
+		(*index)++;
 }
