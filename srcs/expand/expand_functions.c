@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/11 19:14:21 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/11 19:57:18 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	is_wildcard(char c)
 	else
 		return (FALSE);
 }
-
+/*
 char	*expand_wildcard(char **token, int *i, t_lst_env *env_list)
 {
 	char	*wildcard_content;
@@ -112,20 +112,16 @@ char	*expand_wildcard(char **token, int *i, t_lst_env *env_list)
 	*index = *index + (wildcard_content_len - 1);
 	return (token);
 }
-
-t_lst_token	*expand_all_variables(t_lst_token *token, t_lst_env *env_list)
-{
-	
-}
-
-t_lst_token	*expand_token(t_lst_token *token, t_lst_env *env_list)
+*/
+/* il n'y  a pas d'expand de wildcard entre quote, mais il falloir mettre a jour la position des quotes à remove, car l'expansion 
+de la wildcard pourrait les déplacés. (position quote = position quote + wildcard expanded len?)
+*/
+t_lst_token	*expand_all_wildcards(t_lst_token *token, t_lst_env *env_list)
 {
 	int				i;
 	t_quote_index	quote;
-	t_lst_quote		*lst_quote;
 	t_lst_quote		*elem;
 
-	lst_quote = NULL;
 	i = 0;
 	while (i != -1 && token && token->str[i])
 	{
@@ -135,20 +131,58 @@ t_lst_token	*expand_token(t_lst_token *token, t_lst_env *env_list)
 			quote.open = i;
 			quote.close = expand_in_quotes(&token->str, &i, env_list);
 			elem = create_quote_index(quote.open, quote.close);
-			ft_lstquote_add_back(&lst_quote, elem);
+			ft_lstquote_add_back(&token->lst_quote, elem);
+		}
+		if (token->str[i] && is_wildcard(token->str[i]))
+			token->str = expand_wildcard(token->str, &i, env_list);
+		if (i != -1 && token && token->str && token->str[i])
+			move_foward_expanding_var(quote.open, token->str, &i);
+	}
+	return (token);
+}
+
+t_lst_token	*expand_all_variables(t_lst_token *token, t_lst_env *env_list)
+{
+	int				i;
+	t_quote_index	quote;
+	t_lst_quote		*elem;
+
+	i = 0;
+	while (i != -1 && token && token->str[i])
+	{
+		quote.open = -1;
+		if (token->str[i] && is_quote(token->str[i]))
+		{
+			quote.open = i;
+			quote.close = expand_in_quotes(&token->str, &i, env_list);
+			elem = create_quote_index(quote.open, quote.close);
+			ft_lstquote_add_back(&token->lst_quote, elem);
 		}
 		if (token->str[i] && is_dollar(token->str[i]))
 			token->str = expand_variable(token->str, &i, env_list);
 		if (i != -1 && token && token->str && token->str[i])
-			move_foward(quote.open, token->str, &i);
+			move_foward_expanding_var(quote.open, token->str, &i);
 	}
-		if (token->str[i] && is_wildcard(token->str[i]))
-			token->str = expand_wildcard(token->str, &i, env_list);
-	token->str = remove_quotes(token, lst_quote);
 	return (token);
 }
 
-void	move_foward(int open_quote, char *token_str, int *index)
+t_lst_token	*expand_token(t_lst_token *token, t_lst_env *env_list)
+{
+	token = expand_all_variables(token, env_list);
+	token = expand_all_wildcards(token, env_list);
+//		if (token->str[i] && is_wildcard(token->str[i]))
+//			token->str = expand_wildcard(token->str, &i, env_list);
+	token->str = remove_quotes(token, token->lst_quote);
+	return (token);
+}
+
+
+void	move_foward_expanding_wildcard(int open_quote, char *token_str, int *index)
+{
+	
+}
+
+void	move_foward_expanding_var(int open_quote, char *token_str, int *index)
 {
 	if (open_quote != -1)
 	{

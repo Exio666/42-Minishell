@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/10 10:34:05 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/11 19:17:09 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ typedef struct s_token
 	char			*str;
 	t_type_token	type;
 	int				*in_quotes;
+	t_lst_quote		*lst_quote;
 	struct s_token	*next;
 }	t_lst_token;
 
