@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   lst_quotes_management.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 08:09:59 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/11 00:54:04 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/12 13:09:08 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_LST_QUOTES_H
-# define PRINT_LST_QUOTES_H
+#ifndef LST_QUOTES_MANAGEMENT_H
+# define LST_QUOTES_MANAGEMENT_H
 
 # include "minishell.h"
 

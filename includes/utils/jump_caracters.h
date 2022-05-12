@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jump_caracters.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:16:50 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 21:20:49 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/12 13:06:15 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ int		jump_caracters(char *str, char *caracters, int index, int step);
 int		is_quote(char c);
 int		is_simple_quote(char c);
 int		is_double_quote(char c);
-int	skip_quote(char *commande, int *i);
+int		skip_quote(char *commande, int *i);
 
 #endif

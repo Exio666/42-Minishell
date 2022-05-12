@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/11 17:00:13 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/12 13:08:23 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ typedef enum e_bool
 typedef enum e_type_token
 {
 	TOK_WORD,
-	TOK_REDIRECT_IN,			// <
-	TOK_REDIRECT_OUT,			// >
-	TOK_REDIRECT_OUT_APPEND,	// >>
-	TOK_HEREDOC,				// <<
-	TOK_PIPE,					// |
-	TOK_SINGLE_QUOTE,			// '
-	TOK_DOUBLE_QUOTE,			// "
-	TOK_DOLLAR,					// $
+	TOK_REDIRECT_IN,
+	TOK_REDIRECT_OUT,
+	TOK_REDIRECT_OUT_APPEND,
+	TOK_HEREDOC,
+	TOK_PIPE,
+	TOK_SINGLE_QUOTE,
+	TOK_DOUBLE_QUOTE,
+	TOK_DOLLAR,
 	TOK_AND,
 	TOK_OR,
 	TOK_OPEN_PARENTHESIS,
@@ -70,15 +70,14 @@ typedef enum e_type_command
 
 typedef struct s_quote_index
 {
-	int open;
-	int close;	
-} t_quote_index;
+	int	open;
+	int	close;	
+}	t_quote_index;
 
 typedef struct s_lst_quote
 {
 	struct s_lst_quote	*next;
-	t_quote_index				index;
-	
+	t_quote_index		index;
 }	t_lst_quote;
 
 typedef struct s_commande
