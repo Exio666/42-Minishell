@@ -6,24 +6,30 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/12 12:57:48 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/12 15:30:16 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-typedef struct s_split
+t_lst_token *skip_new_token(t_lst_token *token, t_split *split)
 {
-	char	**split;
-	int		size_2d_array;
-}	t_split;
+	int	i;
+
+	i = 0;
+	while (token && i < (split->size_2d_array - 1))
+	{
+		token = token->next;	
+		i++;
+	}
+	return (token);
+}
 
 void	expand_command(t_lst_token *token, t_lst_env *env_list)
 {
-	char	**split;
-	int		size_2d_array;
-	int		i;
+	t_split	*split;
 
+	split = NULL;
 	while (token && token->type != TOK_PIPE)
 	{
 		if (is_heredoc_token(token->type))
@@ -32,12 +38,8 @@ void	expand_command(t_lst_token *token, t_lst_env *env_list)
 		{
 			token = expand_token(token, env_list);
 			split = split_post_expand(token);
-			size_2d_array = ft_size_2d_array(split);
-			if (size_2d_array > 1)
-				insert_split_in_token_list(token, split);
-			i = -1;
-			while (token && ++i < (size_2d_array - 1))
-				token = token->next;
+			insert_split_in_token_list(token, split);
+			token = skip_new_token(token, split);
 		}
 		if (token)
 			token = token->next;
@@ -121,7 +123,7 @@ char	*expand_wildcard(char **token, int *i, t_lst_env *env_list)
 /* il n'y  a pas d'expand de wildcard entre quote, mais il falloir mettre a jour la position des quotes à remove, car l'expansion 
 de la wildcard pourrait les déplacés. (position quote = position quote + wildcard expanded len?)
 */
-
+/*
 t_lst_token	*expand_all_wildcards(t_lst_token *token, t_lst_env *env_list)
 {
 	int				i;
@@ -135,7 +137,7 @@ t_lst_token	*expand_all_wildcards(t_lst_token *token, t_lst_env *env_list)
 	}
 	return (token);
 }
-
+*/
 t_lst_token	*expand_all_variables(t_lst_token *token, t_lst_env *env_list)
 {
 	int				i;

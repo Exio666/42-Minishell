@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:53:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/11 01:10:28 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/12 13:10:09 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,50 +22,26 @@ int ft_size_2d_array(char **array)
 	return (size);
 }
 
-void insert_split_in_token_list(t_lst_token *token, char **split)
+void insert_split_in_token_list(t_lst_token *token, t_split *split)
 {
 	t_lst_token	*new;
 	t_lst_token	*tmp;
 	int			i;
 
-	token->str = split[0];
+	if (split->size_2d_array <= 1)
+		return ;
+	token->str = split->split[0];
 	i = 1;
-	while (split[i])
+	while (split->split[i])
 	{
 		tmp = token->next;
-		new = create_token(split[i]);
+		new = create_token(split->split[i]);
 		token->next = new;
 		new->next = tmp;
 		token = token->next;
 		i++;
 	}	
 }
-
-/*
-//			printf("TEMOIN 0\n");
-			if (token->type == TOK_WORD)
-			{
-				char **split = split_pipe_by_space(token->str);
-				int size = ft_size_2d_array(split);
-//				printf("TEMOIN 1\n");
-				if (size > 1)
-				{
-					insert_split_in_token_list(token, split);
-				}
-//				printf("TEMOIN 2\n");
-				int i = 0;
-				while (token && i < size - 1)
-				{
-					i++;
-					token = token->next;
-				}
-//				printf("TEMOIN 3\n");
-			}
-			//END ADD
-*/
-
-
-
 
 char	*dup_without_extra_space_quote(char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 12:56:42 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 12:59:31 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/12 13:02:53 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "minishell.h"
 
-char	**split_post_expand(t_lst_token *token);
+t_split *split_post_expand(t_lst_token *token);
 
 #endif

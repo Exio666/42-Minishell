@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/11 01:38:35 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/12 15:08:59 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,24 +73,24 @@ static char	*insert_word(int word_len, char *s)
 	return (split);
 }
 
-char	**split_post_expand(t_lst_token *token)
+t_split *split_post_expand(t_lst_token *token)
 {
 	int		i;
 	int		k;
-	char	**split;
+	t_split *split;
 	int		nb_word;
 
 	if (!token->str)
 		return (NULL);
 	nb_word = count_word(token);
-	split = __ft_calloc(sizeof(char *) * (nb_word + 1));
+	split = __ft_calloc(sizeof(t_split));
+	split->split = __ft_calloc(sizeof(char *) * (nb_word + 1));
 	i = 0;
 	k = -1;
 	while (token->str[i] && ++k < nb_word)
 	{
 		skip_space_out_of_quotes(token, &i);
-		split[k] = insert_word(word_len(&token->in_quotes[i],
-					&token->str[i]), &token->str[i]);
+		split->split[k] = insert_word(word_len(&token->in_quotes[i], &token->str[i]), &token->str[i]);
 		while (token->str[i] && space_is_separator(token, i))
 		{
 			if (is_quote(token->str[i]))
@@ -99,5 +99,6 @@ char	**split_post_expand(t_lst_token *token)
 				i++;
 		}
 	}
+	split->size_2d_array = ft_size_2d_array(split->split);
 	return (split);
 }

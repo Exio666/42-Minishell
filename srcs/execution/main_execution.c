@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_execution.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 15:30:37 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/12 15:00:45 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,15 @@ int	main(int argc, char **argv, char **envp)
 	char		*command_line;
 	t_btree		*root;
 	t_lst_env	*env_list;
-	const char	prompt[] = GRN "Bsavinel_and_associates_shell$ " RESET;
+	const char	prompt[] = GRN "AirPottier_shell$ " RESET;
 
 	(void)(argc);
 	(void)(argv);
 	env_list = convert_env_array_in_list(envp);
 	while (42)
 	{
+		if (g_exit_status == 1000)
+			g_exit_status = 131;
 		signal(SIGQUIT, &handler_sigquit_empty);
 		signal(SIGINT, &handler_sigint_prompt);
 		reset_terminal();

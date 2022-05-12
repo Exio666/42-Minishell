@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 15:24:05 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/12 13:47:41 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	execute_command_tree(t_btree *root, t_lst_env **env_list)
 	if (!root)
 		return ;
 	execute_command_tree(root->left, env_list);
-	if (root->token)
+	if (root->token && g_exit_status != 1000)
 		execute_command(root->token, env_list);
 	execute_command_tree(root->right, env_list);
 }

@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/11 01:40:19 by rpottier         ###   ########.fr        #
+#    Updated: 2022/05/12 15:29:08 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,14 +109,14 @@ SRCS =	checker/and_or_checker.c								\
 		execution/exec_buitins.c								\
 		execution/exec_pipe_cmd.c								\
 		execution/count_pipe.c									\
-		execution/main_execution.c								\
 		signal_management/signal_management.c					\
 		utils/jump_caracters.c									\
 		utils/is_functions.c									\
 		gestion_erreur/open_failed.c							\
+#		execution/main_execution.c								\
 
 #SRCS_TEST = builtins/export/main_export.c		
-SRCS_TEST = test/test.c	
+SRCS_TEST = wildcard/wildcard.c
 
 ################################################################################
 ########							Libraries							########
@@ -165,7 +165,7 @@ header:
 		echo "| '_ \` _ \| | '_ \| / __| '_ \ / _ \ | | "
 		echo "| | | | | | | | | | \__ \ | | |  __/ | | "
 		echo "|_| |_| |_|_|_| |_|_|___/_| |_|\___|_|_| "
-		echo "                 by bsavinel and associates"
+		echo "                 by AirPottier and Co"
 		echo "${NO_COLOR}"
 
 $(NAME) : header $(OBJS) $(LIBS)
