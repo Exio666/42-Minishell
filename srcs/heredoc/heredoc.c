@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 12:15:25 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/11 17:40:29 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/12 13:02:01 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,51 @@
 
 int	change_name_heredoc(char *str)
 {
-	if (str[12] != 122)
+	if (str[14] < 122)
 	{
-		str[12] = str[12] + 1;
-	}
-	else if (str[13] != 122)
-	{
-		str[12] = '0';
-		str[13] = str[13] + 1;
-	}
-	else if (str[14] != 122)
-	{
-		str[12] = '0';
-		str[13] = '0';
 		str[14] = str[14] + 1;
+	}
+	else if (str[15] < 122)
+	{
+		str[14] = '0';
+		str[15] = str[15] + 1;
+	}
+	else if (str[16] < 122)
+	{
+		str[14] = '0';
+		str[15] = '0';
+		str[16] = str[16] + 1;
 	}
 	else
 		return (0);
 	return (1);
 }
 
+void	ctrl_d_herdoc(char *end, int line)
+{
+	ft_putstr_fd("Warning: here-document at line ", 2);
+	ft_putstr_fd(ft_itoa(line) , 2);
+	ft_putstr_fd(" delimited by end-of-file (wanted \'" , 2);
+	ft_putstr_fd(end , 2);
+	ft_putstr_fd("\')" , 2);
+}
+
+
 void	feed_herdoc(int fd, char *end)
 {
 	char	*str;
+	int		line;
 
+	line = 0;
 	while (1)
 	{
 		str = readline("> ");
-		if (!str || ft_strncmp(str, end, ft_strlen(end)) == 0 || ft_strlen(str) == 0)
+		if (str == NULL)
+		{
+			ctrl_d_herdoc(end, line);
+			return ;
+		}
+		if (ft_strncmp(str, end, ft_strlen(end)) == 0 || ft_strlen(str) == 0)
 		{
 			free(str);
 			return ;
@@ -49,6 +66,7 @@ void	feed_herdoc(int fd, char *end)
 		ft_putstr_fd(str, fd);
 		ft_putstr_fd("\n", fd);
 		free(str);
+		line++;
 	}
 }
 
@@ -57,21 +75,22 @@ char	*heredoc_create(char *end)
 	char	*str;
 	int		fd;
 
-	fd = -1;;
-	str = "/tmp/.herdoc_000";
+	fd = -1;
+	str = ft_strdup("/tmp/.heredoc_000");
 	while (1)
 	{
-		open(str, O_CREAT | O_RDWR | O_EXCL, 0777);
-		if (fd != -1)
+		fd = open(str, O_CREAT | O_RDWR | O_EXCL, 0777);
+		if (fd >= 0)
 		{
 			feed_herdoc(fd, end);
 			close(fd);
-			return (ft_strdup(str));
+			return (str);
 		}
 		if (!change_name_heredoc(str))
 		{
+			ft_putstr_fd("Heredoc creation failed\n", 2);
 			str = "/dev/null";
-			return (ft_strdup(str));
+			return (str);
 		}
 	}
 	return (NULL);
