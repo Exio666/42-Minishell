@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/11 17:21:41 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/05/12 13:56:26 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ NAME = minishell
 NAME_TEST = minishell_test
 
 CC = cc 
-CFLAGS =  -g3 -Wall -Wextra -Werror -fsanitize=address
+CFLAGS =  -g3 -Wall -Wextra -Werror
+
+# -fsanitize=address
 
 ARGUMENT_RUN = 
 ARGUMENT_RUN_TEST =

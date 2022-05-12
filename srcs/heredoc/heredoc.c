@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 12:15:25 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/12 13:02:01 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/12 15:53:29 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ctrl_d_herdoc(char *end, int line)
 	ft_putstr_fd(ft_itoa(line) , 2);
 	ft_putstr_fd(" delimited by end-of-file (wanted \'" , 2);
 	ft_putstr_fd(end , 2);
-	ft_putstr_fd("\')" , 2);
+	ft_putstr_fd("\')\n" , 2);
 }
 
 

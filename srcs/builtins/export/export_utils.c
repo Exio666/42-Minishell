@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 11:14:46 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/10 17:26:10 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/12 15:14:25 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,17 @@ int	check_arg_export(char *arg)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
+	if (arg[0] == '=' || !(ft_isalpha(arg[0])) || arg[i] == '_')
+	{
+		ft_putstr_fd("export: \'", 2);
+		ft_putstr_fd(arg, 2);
+		ft_putendl_fd("\' is not a valid identifier", 2);
+		return (0);
+	}
 	while (arg[i] != '=' || i == 0)
 	{
-		if (!(ft_isalnum(arg[i]) || arg[i] == '_' || (arg[i] == '=' && i != 0)))
+		if (!(ft_isalnum(arg[i]) || arg[i] == '_' ))
 		{
 			ft_putstr_fd("export: \'", 2);
 			ft_putstr_fd(arg, 2);
