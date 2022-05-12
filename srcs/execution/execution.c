@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/12 13:24:17 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/12 15:58:08 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	execute_command_tree(t_btree *root, t_lst_env **env_list)
 	if (!root)
 		return ;
 	execute_command_tree(root->left, env_list);
-	if (root->token)
+	if (root->token && g_exit_status != 386)
 		execute_command(root->token, env_list);
 	if (root->logic_op
 		&& ((g_exit_status == 0 && root->logic_op->type == 1)
@@ -36,7 +36,7 @@ int	exec_one_cmd(char **argv, t_lst_env **env_list)
 		pid = fork();
 		if (pid == 0)
 		{
-			signal(SIGINT, &handler_sigint_empty);
+			signal(SIGINT, &handler_sigint_empty_no_prompt);
 			execute(argv, env_list);
 			rl_clear_history();
 			__ft_calloc(-1);
