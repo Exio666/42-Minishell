@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 15:24:05 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/12 13:24:17 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ void	execute_command_tree(t_btree *root, t_lst_env **env_list)
 	execute_command_tree(root->left, env_list);
 	if (root->token)
 		execute_command(root->token, env_list);
-	execute_command_tree(root->right, env_list);
+	if (root->logic_op
+		&& ((g_exit_status == 0 && root->logic_op->type == 1)
+		|| (g_exit_status != 0 && root->logic_op->type == 2)))
+		execute_command_tree(root->right, env_list);
 }
 
 int	exec_one_cmd(char **argv, t_lst_env **env_list)
