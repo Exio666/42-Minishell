@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:36:17 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/12 20:13:33 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/13 09:51:57 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,38 @@ char	*ft_strjoin(char const *s1, char const *s2);
 int	is_wildcard(char c);
 void save(char *new_token, struct dirent *entity, int i, int i_bis, int j);
 
+char	*match_pattern(char *pattern, char *str)
+{
+	
+}
+
+int	main(int argc, char *argv[])
+{
+	int i, j, i_bis;
+	(void)(argc);
+
+	char pattern[] = "*dc*";
+	char *new_token = NULL;
+	DIR *dir = opendir(".");
+
+	
+	if (dir == NULL)
+		return (1);	
+	entity = readdir(dir);
+	while (entity != NULL)
+	{
+		if (match_pattern(pattern, entity->d_name))
+		{
+			ft_strjoin(new_token, entity->d_name);
+		}
+		entity = readdir(dir);
+	}
+	closedir(dir);
+	return (0);
+}
+
+
+/*
 int	main(int argc, char *argv[])
 {
 	int i, j, i_bis;
@@ -97,7 +129,7 @@ int	main(int argc, char *argv[])
 	closedir(dir);
 	return (0);
 }
-
+*/
 void save(char *new_token, struct dirent *entity, int i, int i_bis, int j)
 {
 	new_token = ft_strjoin(new_token, entity->d_name);
@@ -141,3 +173,6 @@ int	is_wildcard(char c)
 	else
 		return (0);
 }
+
+/*_____________________________________*/
+

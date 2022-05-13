@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/12 15:30:16 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/13 09:56:11 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int	expand_in_quotes(char **token, int *i, t_lst_env *env_list)
 
 int	is_wildcard(char c)
 {
+	
 	if (c == '*')
 		return (TRUE);
 	else
