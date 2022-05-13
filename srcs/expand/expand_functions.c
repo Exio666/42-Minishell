@@ -6,24 +6,11 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/13 09:56:11 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:44:10 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-t_lst_token *skip_new_token(t_lst_token *token, t_split *split)
-{
-	int	i;
-
-	i = 0;
-	while (token && i < (split->size_2d_array - 1))
-	{
-		token = token->next;	
-		i++;
-	}
-	return (token);
-}
 
 void	expand_command(t_lst_token *token, t_lst_env *env_list)
 {
@@ -92,53 +79,6 @@ int	expand_in_quotes(char **token, int *i, t_lst_env *env_list)
 	return (closing_quote_position);
 }
 
-int	is_wildcard(char c)
-{
-	
-	if (c == '*')
-		return (TRUE);
-	else
-		return (FALSE);
-}
-/*
-char	*expand_wildcard(char **token, int *i, t_lst_env *env_list)
-{
-	char	*wildcard_content;
-	int		wildcard_content_len;
-
-	wildcard_content = NULL;
-	wildcard_content_len = 0;
-	wildcard_content = get_wildcard_content();
-	if (!wildcard_content)
-	{
-		wildcard_content = __ft_calloc(sizeof(char) * 1);
-		wildcard_content_len = 0;
-	}
-	else
-		wildcard_content_len = ft_strlen(wildcard_content);
-	insert_var_content_to_token(&token, wildcard_content, *index);
-	*index = *index + (wildcard_content_len - 1);
-	return (token);
-}
-*/
-/* il n'y  a pas d'expand de wildcard entre quote, mais il falloir mettre a jour la position des quotes à remove, car l'expansion 
-de la wildcard pourrait les déplacés. (position quote = position quote + wildcard expanded len?)
-*/
-/*
-t_lst_token	*expand_all_wildcards(t_lst_token *token, t_lst_env *env_list)
-{
-	int				i;
-
-	i = 0;
-	while (token && token->str[i])
-	{
-		if (is_wildcard(token->str[i]) && !token->in_quotes[i])
-			expand_ex
-		i++;
-	}
-	return (token);
-}
-*/
 t_lst_token	*expand_all_variables(t_lst_token *token, t_lst_env *env_list)
 {
 	int				i;
@@ -164,16 +104,6 @@ t_lst_token	*expand_all_variables(t_lst_token *token, t_lst_env *env_list)
 	return (token);
 }
 
-void print_token_str_with_active_char(t_lst_token *token)
-{
-	for (int i= 0; token->str[i]; i++)
-		printf("%c", token->str[i]);
-	printf("\n");
-	for (int i= 0; token->str[i]; i++)
-		printf("%d", token->in_quotes[i]);
-	printf("\n");
-}
-
 t_lst_token	*expand_token(t_lst_token *token, t_lst_env *env_list)
 {
 
@@ -185,19 +115,4 @@ t_lst_token	*expand_token(t_lst_token *token, t_lst_env *env_list)
 //	token = expand_all_wildcards(token, env_list);
 	return (token);
 }
-/*
-void	move_foward_expanding_wildcard(int open_quote, char *token_str, int *index)
-{
-	
-}
-*/
-void	move_foward_expanding_var(int open_quote, char *token_str, int *index)
-{
-	if (open_quote != -1)
-	{
-		if (!is_simple_quote(token_str[open_quote]))
-			(*index)++;
-	}
-	else
-		(*index)++;
-}
+

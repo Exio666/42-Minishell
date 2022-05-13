@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/12 15:29:08 by rpottier         ###   ########.fr        #
+#    Updated: 2022/05/13 15:46:52 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,6 +97,7 @@ SRCS =	checker/and_or_checker.c								\
 		pipe_seq_to_token_list/get_token_list.c 				\
 		expand/dollar_var_functions.c 							\
 		expand/expand_functions.c 								\
+		expand/expand_utils.c									\
 		expand/remove_quotes.c 									\
 		expand/lst_quotes_management.c 							\
 		expand/split_post_expand.c 								\
@@ -113,7 +114,7 @@ SRCS =	checker/and_or_checker.c								\
 		utils/jump_caracters.c									\
 		utils/is_functions.c									\
 		gestion_erreur/open_failed.c							\
-#		execution/main_execution.c								\
+		execution/main_execution.c								\
 
 #SRCS_TEST = builtins/export/main_export.c		
 SRCS_TEST = wildcard/wildcard.c

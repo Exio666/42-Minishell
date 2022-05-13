@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_functions.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 19:50:05 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 16:22:02 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:19:54 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 # define IS_FUNCTIONS_H
 
 int	is_space(char c);
-
+int	is_wildcard(char c);
 #endif
