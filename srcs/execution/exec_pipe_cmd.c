@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:27:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/13 11:03:08 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:03:11 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,7 @@ int	exec_pipe_cmd(t_lst_token *token, t_lst_env **env_list, int nb_cmd)
 		i++;
 	}
 	multi_close(pipe_stock[0], pipe_stock[1], -1, -1);
-	while (waitpid(pid, &status, 0) > 0)
-		;
+	waitpid(pid, &status, 0);
 	g_exit_status = WEXITSTATUS(status);
 	while (waitpid(-1, NULL, 0) > 0)
 		;
