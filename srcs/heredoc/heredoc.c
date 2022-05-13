@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 12:15:25 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/12 15:53:29 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:07:28 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,11 @@ int	change_name_heredoc(char *str)
 void	ctrl_d_herdoc(char *end, int line)
 {
 	ft_putstr_fd("Warning: here-document at line ", 2);
-	ft_putstr_fd(ft_itoa(line) , 2);
-	ft_putstr_fd(" delimited by end-of-file (wanted \'" , 2);
-	ft_putstr_fd(end , 2);
-	ft_putstr_fd("\')\n" , 2);
+	ft_putstr_fd(ft_itoa(line), 2);
+	ft_putstr_fd(" delimited by end-of-file (wanted \'", 2);
+	ft_putstr_fd(end, 2);
+	ft_putstr_fd("\')\n", 2);
 }
-
 
 void	feed_herdoc(int fd, char *end)
 {
@@ -74,15 +73,28 @@ char	*heredoc_create(char *end)
 {
 	char	*str;
 	int		fd;
+	int		pid;
+	int		status;
 
 	fd = -1;
 	str = ft_strdup("/tmp/.heredoc_000");
-	while (1)
+	while (1 && g_exit_status != 386)
 	{
 		fd = open(str, O_CREAT | O_RDWR | O_EXCL, 0777);
 		if (fd >= 0)
 		{
-			feed_herdoc(fd, end);
+			pid = fork();
+			if (pid == 0)
+			{
+				signal(SIGINT, &handler_sigint_heredoc);
+				feed_herdoc(fd, end);
+				close(fd);
+				__ft_calloc(-1);
+				exit(0);
+			}
+			waitpid(pid, &status, 0);
+			if (WEXITSTATUS(status) == 130)
+				g_exit_status = 386;
 			close(fd);
 			return (str);
 		}

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 17:41:59 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/09 17:57:03 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/13 16:18:32 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "minishell.h"
 
-void	destuct_heredoc(t_lst_token *token);
+void	destuct_heredoc(t_btree	**tab, int nb_heredoc);
 
 #endif
