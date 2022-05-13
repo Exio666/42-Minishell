@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/12 13:56:26 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/05/13 10:54:09 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ NAME = minishell
 NAME_TEST = minishell_test
 
 CC = cc 
-CFLAGS =  -g3 -Wall -Wextra -Werror
+CFLAGS =   -Wall -Wextra -Werror
 
-# -fsanitize=address
+# -g3 -fsanitize=address
 
 ARGUMENT_RUN = 
 ARGUMENT_RUN_TEST =
@@ -111,7 +111,8 @@ SRCS =	checker/and_or_checker.c								\
 		execution/exec_pipe_cmd.c								\
 		execution/count_pipe.c									\
 		execution/main_execution.c								\
-		signal_management/signal_management.c					\
+		signal_management/signal_sigquit.c						\
+		signal_management/signal_sigint.c						\
 		utils/jump_caracters.c									\
 		utils/is_functions.c									\
 		gestion_erreur/open_failed.c							\

@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signal_management.h                                :+:      :+:    :+:   */
+/*   signal_sigint.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 12:49:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/13 10:52:59 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/13 10:35:52 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/13 11:06:24 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SIGNAL_MANAGEMENT_H
-# define SIGNAL_MANAGEMENT_H
+#include "minishell.h"
 
-# include "minishell.h"
+void	handler_sigint_prompt(int sig)
+{
+	(void)sig;
+	g_exit_status = 130;
+	ft_putstr_fd("\n", 1);
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
+}
 
-# include "signal_sigquit.h"
-# include "signal_sigint.h"
-
-#endif
+void	handler_sigint_empty(int sig)
+{
+	(void)sig;
+	g_exit_status = 386;
+}

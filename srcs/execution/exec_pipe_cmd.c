@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:27:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/10 13:38:42 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/13 11:03:08 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int	exec_pipe_cmd(t_lst_token *token, t_lst_env **env_list, int nb_cmd)
 		pid = fork();
 		if (pid == 0)
 		{
-			signal(SIGINT, &handler_sigint_empty);
 			if (i != nb_cmd - 1)
 				dup2(new_pipe[1], STDOUT_FILENO);
 			if (i != 0)

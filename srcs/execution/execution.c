@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/12 15:58:08 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/13 11:02:54 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	exec_one_cmd(char **argv, t_lst_env **env_list)
 		pid = fork();
 		if (pid == 0)
 		{
-			signal(SIGINT, &handler_sigint_empty_no_prompt);
+			signal(SIGQUIT, &handler_sigquit_empty);
 			execute(argv, env_list);
 			rl_clear_history();
 			__ft_calloc(-1);
@@ -50,6 +50,7 @@ int	exec_one_cmd(char **argv, t_lst_env **env_list)
 		g_exit_status = retour;
 	return (retour);
 }
+
 void print_token_list(t_lst_token *token)
 {
 	while (token)
@@ -66,12 +67,11 @@ int	execute_command(t_lst_token *token, t_lst_env **env_list)
 	int		count;
 
 	count = count_pipe(token);
-//		print_token_list(token);
 	expand_command(token, *env_list);
+	signal(SIGQUIT, &handler_sigquit_exit);
+	signal(SIGINT, &handler_sigint_empty);
 	if (count == 1)
 	{
-//		tokenisation_post_expand(token);
-//		print_token_list(token);
 		if (set_up_redirect(token, 0) == 1)
 			return (1);
 		argv = create_argv_cmd(token);
@@ -81,5 +81,3 @@ int	execute_command(t_lst_token *token, t_lst_env **env_list)
 		return (exec_pipe_cmd(token, env_list, count));
 	return (0);
 }
-
-void	execute_here_doc_tree(t_btree *root);

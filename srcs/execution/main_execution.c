@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/11 17:17:14 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/13 11:01:44 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	exit_ctr_d(char *command_line)
 	free(command_line);
 	__ft_calloc(-1);
 	rl_clear_history();
-	exit(0);
+	exit(g_exit_status);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -62,6 +62,8 @@ int	main(int argc, char **argv, char **envp)
 	env_list = convert_env_array_in_list(envp);
 	while (42)
 	{
+		if (g_exit_status == 386)
+			g_exit_status = 130;
 		signal(SIGQUIT, &handler_sigquit_empty);
 		signal(SIGINT, &handler_sigint_prompt);
 		reset_terminal();
@@ -69,8 +71,6 @@ int	main(int argc, char **argv, char **envp)
 		add_history(command_line);
 		if (primary_checker(command_line) == TRUE && check_all_pipe_sequence(command_line) == TRUE)
 		{
-			signal(SIGINT, &handler_sigint_endl);
-			signal(SIGQUIT, &handler_sigquit_exit);
 			root = get_btree_of_logical_op(command_line);
 			add_all_pipe_sequence_in_tree(&root, command_line);
 			create_all_heredoc(&root, command_line);
