@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/13 11:02:54 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/13 11:13:10 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	execute_command_tree(t_btree *root, t_lst_env **env_list)
 		execute_command(root->token, env_list);
 	if (root->logic_op
 		&& ((g_exit_status == 0 && root->logic_op->type == 1)
-		|| (g_exit_status != 0 && root->logic_op->type == 2)))
+			|| (g_exit_status != 0 && root->logic_op->type == 2)))
 		execute_command_tree(root->right, env_list);
 }
 
@@ -46,12 +46,12 @@ int	exec_one_cmd(char **argv, t_lst_env **env_list)
 			;
 		g_exit_status = WEXITSTATUS(retour);
 	}
-	else 
+	else
 		g_exit_status = retour;
 	return (retour);
 }
 
-void print_token_list(t_lst_token *token)
+void	print_token_list(t_lst_token *token)
 {
 	while (token)
 	{

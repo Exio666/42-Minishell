@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exec_utills.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:53:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/11 01:10:28 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/13 11:14:55 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int ft_size_2d_array(char **array)
+int	ft_size_2d_array(char **array)
 {
-	int size;
+	int	size;
 
 	size = 0;
 	while (array[size])
@@ -22,7 +22,7 @@ int ft_size_2d_array(char **array)
 	return (size);
 }
 
-void insert_split_in_token_list(t_lst_token *token, char **split)
+void	insert_split_in_token_list(t_lst_token *token, char **split)
 {
 	t_lst_token	*new;
 	t_lst_token	*tmp;
@@ -64,9 +64,6 @@ void insert_split_in_token_list(t_lst_token *token, char **split)
 			//END ADD
 */
 
-
-
-
 char	*dup_without_extra_space_quote(char *str)
 {
 	char	*dup;
@@ -74,7 +71,6 @@ char	*dup_without_extra_space_quote(char *str)
 	int		i;
 	int		j;
 	int		begun_with_quote = 0;
-
 
 	i = 0;
 	while (is_space(str[i]))
