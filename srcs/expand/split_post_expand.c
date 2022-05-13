@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/12 15:08:59 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:27:34 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	count_word(t_lst_token *token)
 	return (nb_word);
 }
 
-static int	word_len(int *in_quotes, char *str)
+static int	ft_word_len(int *in_quotes, char *str)
 {
 	int	length;
 
@@ -55,11 +55,13 @@ static int	word_len(int *in_quotes, char *str)
 	return (length);
 }
 
-static char	*insert_word(int word_len, char *s)
+static char	*insert_word(int *in_quotes, char *s)
 {
+	int	word_len;
 	int		i;
 	char	*split;
 
+	word_len = ft_word_len(in_quotes, s);
 	i = 0;
 	split = __ft_calloc(sizeof(char) * (word_len + 1));
 	if (!split)
@@ -71,6 +73,23 @@ static char	*insert_word(int word_len, char *s)
 	}
 	split[i] = '\0';
 	return (split);
+}
+
+static int	*inser_in_quotes_info(int *in_quotes, char *s)
+{
+	int	word_len;
+	int		i;
+	int		*in_quotes_info;
+
+	word_len = ft_word_len(in_quotes, s);
+	i = 0;
+	in_quotes_info = __ft_calloc(sizeof(int) * (word_len));
+	while (s[i] && i < word_len)
+	{
+		in_quotes_info[i] = in_quotes[i];
+		i++;
+	}
+	return (in_quotes_info);
 }
 
 t_split *split_post_expand(t_lst_token *token)
@@ -85,12 +104,22 @@ t_split *split_post_expand(t_lst_token *token)
 	nb_word = count_word(token);
 	split = __ft_calloc(sizeof(t_split));
 	split->split = __ft_calloc(sizeof(char *) * (nb_word + 1));
+	split->in_quotes = __ft_calloc(sizeof(int *) * (nb_word));
 	i = 0;
 	k = -1;
 	while (token->str[i] && ++k < nb_word)
 	{
 		skip_space_out_of_quotes(token, &i);
-		split->split[k] = insert_word(word_len(&token->in_quotes[i], &token->str[i]), &token->str[i]);
+		split->split[k] = insert_word(&token->in_quotes[i], &token->str[i]);
+		split->in_quotes[k] = inser_in_quotes_info(&token->in_quotes[i], &token->str[i]);
+/*
+	for (int j = 0; split->split[k][j]; j++)
+		printf("%c ", split->split[k][j]);
+	printf("\n");
+	for (int j = 0; split->split[k][j]; j++)
+		printf("%d ", split->in_quotes[k][j]);
+	printf("\n");
+*/
 		while (token->str[i] && space_is_separator(token, i))
 		{
 			if (is_quote(token->str[i]))

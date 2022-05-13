@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/13 15:52:41 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:33:31 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct s_commande
 typedef struct s_split
 {
 	char	**split;
+	int		**in_quotes;
 	int		size_2d_array;
 }	t_split;
 

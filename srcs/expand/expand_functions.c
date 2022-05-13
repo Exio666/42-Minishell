@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/13 15:44:10 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:18:45 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,18 @@ void	expand_command(t_lst_token *token, t_lst_env *env_list)
 			token = expand_token(token, env_list);
 			split = split_post_expand(token);
 			insert_split_in_token_list(token, split);
-			token = skip_new_token(token, split);
+			token = move_to_last_new_token(token, split);
 		}
 		if (token)
-			token = token->next;
+		{
+/*			for (int j = 0; token->str[j]; j++)
+				printf("%c ", token->str[j]);
+			printf("\n");
+			for (int j = 0; token->str[j]; j++)
+				printf("%d ", token->in_quotes[j]);
+			printf("\n");
+*/			token = token->next;
+		}
 	}
 }
 
@@ -89,14 +97,14 @@ t_lst_token	*expand_all_variables(t_lst_token *token, t_lst_env *env_list)
 	while (i != -1 && token && token->str[i])
 	{
 		quote.open = -1;
-		if (token->str[i] && is_quote(token->str[i]))
+		if (i != -1 && token->str[i] && is_quote(token->str[i]))
 		{
 			quote.open = i;
 			quote.close = expand_in_quotes(&token->str, &i, env_list);
 			elem = create_quote_index(quote.open, quote.close);
 			ft_lstquote_add_back(&token->lst_quote, elem);
 		}
-		if (token->str[i] && is_dollar(token->str[i]))
+		if (i != -1 && token->str[i] && is_dollar(token->str[i]))
 			token->str = expand_variable(token->str, &i, env_list);
 		if (i != -1 && token && token->str && token->str[i])
 			move_foward_expanding_var(quote.open, token->str, &i);

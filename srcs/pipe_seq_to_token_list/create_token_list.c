@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:00:15 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/11 19:17:45 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:58:25 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,20 @@ t_lst_token	*create_token(char	*space_split)
 	return (token);
 }
 
+t_lst_token	*create_token_for_split(char	*space_split, int *in_quotes)
+{
+	t_lst_token	*token;
 
+//	printf("HERE: |%s|\n", space_split);
+	token = __ft_calloc(sizeof(t_lst_token));
+	token->str = dup_without_extra_space(space_split);
+	token->in_quotes = in_quotes;
+	token->type = find_token_type(space_split);
+	token->in_quotes = NULL;
+	token->lst_quote = NULL;
+	token->next = NULL;
+	return (token);
+}
 
 t_lst_token	*create_token_expand(char	*space_split)
 {

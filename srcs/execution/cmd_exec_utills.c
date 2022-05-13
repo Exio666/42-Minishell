@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:53:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/12 13:10:09 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:53:37 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void insert_split_in_token_list(t_lst_token *token, t_split *split)
 	while (split->split[i])
 	{
 		tmp = token->next;
-		new = create_token(split->split[i]);
+		new = create_token_for_split(split->split[i], split->in_quotes[i]);
 		token->next = new;
 		new->next = tmp;
 		token = token->next;
