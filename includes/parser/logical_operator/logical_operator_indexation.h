@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   logical_operator_indexation.h                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 13:12:43 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 14:32:44 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/14 19:37:17 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 t_logic_op	*get_current_log_op(int actual_op_index, t_logic_op **logical_op);
 t_logic_op	**malloc_logical_op_reference(char *user_input);
 t_logic_op	**create_logical_op_array(char *user_input);
-
+void	get_logical_op_and_skip(char *input, t_logic_op **logical_op,
+	int *j, int *i);
 #endif

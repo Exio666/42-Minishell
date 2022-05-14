@@ -6,15 +6,15 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:53:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 18:50:26 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 19:12:16 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int ft_size_2d_array(char **array)
+int	ft_size_2d_array(char **array)
 {
-	int size;
+	int	size;
 
 	size = 0;
 	while (array[size])
@@ -22,7 +22,7 @@ int ft_size_2d_array(char **array)
 	return (size);
 }
 
-void insert_split_in_token_list(t_lst_token *token, t_split *split)
+void	insert_split_in_token_list(t_lst_token *token, t_split *split)
 {
 	t_lst_token	*new;
 	t_lst_token	*tmp;
@@ -43,23 +43,31 @@ void insert_split_in_token_list(t_lst_token *token, t_split *split)
 	}	
 }
 
+int	skip_quote_exc(char *str, int *index)
+{
+	int		begun_with_quote;
+
+	begun_with_quote = 0;
+	while (is_quote(str[*index]))
+	{
+		begun_with_quote = 1;
+		(*index)++;
+	}
+	return (begun_with_quote);
+}
+
 char	*dup_without_extra_space_quote(char *str)
 {
 	char	*dup;
 	int		end;
 	int		i;
 	int		j;
-	int		begun_with_quote = 0;
-
+	int		begun_with_quote;
 
 	i = 0;
 	while (is_space(str[i]))
 		i++;
-	while (is_quote(str[i]))
-	{
-		begun_with_quote = 1;
-		i++;
-	}
+	begun_with_quote = skip_quote_exc(str, &i);
 	end = ft_strlen(str) - 1;
 	while (is_space(str[end]))
 		end--;
@@ -74,7 +82,7 @@ char	*dup_without_extra_space_quote(char *str)
 	}
 	return (dup);
 }
-
+/*
 void	tokenisation_post_expand(t_lst_token *token)
 {
 	while (token && token->type != TOK_PIPE)
@@ -83,30 +91,4 @@ void	tokenisation_post_expand(t_lst_token *token)
 		token = token->next;
 	}
 }
-
-char	**create_argv_cmd(t_lst_token *token)
-{
-	char		**argv_cmd;
-	int			nb_word_tok;
-	int			i;
-	t_lst_token	*copie;
-
-	copie = token;
-	nb_word_tok = count_tok_word(token);
-	argv_cmd = __ft_calloc(sizeof(char *) * (nb_word_tok + 1));
-	i = 0;
-	while (i < nb_word_tok)
-	{
-		if (is_str_token(copie->type))
-		{
-			argv_cmd[i] = copie->str;
-			i++;
-		}
-		else if (is_redirect_token(copie->type))
-			copie = copie->next;
-		if (copie)
-			copie = copie->next;
-	}
-	argv_cmd[i] = NULL;
-	return (argv_cmd);
-}
+*/

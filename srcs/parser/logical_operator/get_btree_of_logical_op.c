@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:56:03 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 13:35:38 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 19:31:34 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_btree	*get_btree_of_logical_op(char *user_input)
 	t_btree			*logical_op_in_btree;
 
 	input_level = attribute_level_parenthesis(user_input);
-//	printab_input_level(input_level);
 	logical_op = create_logical_op_array(user_input);
 	logical_op_in_btree = parse_op_by_level(logical_op, input_level);
 	if (!logical_op_in_btree)

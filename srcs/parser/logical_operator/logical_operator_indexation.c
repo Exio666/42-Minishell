@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:18:50 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/06 13:52:15 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 19:38:19 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 t_logic_op	**create_logical_op_array(char *input)
 {
 	t_logic_op		**logical_op;
-	int				actual_log_op;
 	int				i;
 	int				j;
-	int quote_skiped;
+	int				quote_skiped;
 
 	quote_skiped = FALSE;
-
 	logical_op = malloc_logical_op_reference(input);
 	if (logical_op == NULL)
 		return (NULL);
@@ -30,27 +28,15 @@ t_logic_op	**create_logical_op_array(char *input)
 	while (input[i] && input[i + 1])
 	{
 		if (is_quote(input[i]))
-		{
-			skip_quote(input, &i);
-			quote_skiped = TRUE;
-		}
+			quote_skiped = skip_quote(input, &i);
 		if (input[i] && input[i + 1] && is_logical_op_char(input[i]) == TRUE)
-		{
-			actual_log_op = get_logic_op_from_begin(input, i);
-			if (actual_log_op != OPERATOR_NOT_FOUND)
-			{
-				update_logical_op(logical_op[j], i, actual_log_op);
-				j++;
-			}
-			i++;
-		}
+			get_logical_op_and_skip(input, logical_op, &j, &i);
 		if (!quote_skiped)
 			i++;
 		quote_skiped = FALSE;
 	}
 	return (logical_op);
 }
-
 
 t_logic_op	**malloc_logical_op_reference(char *input)
 {
@@ -87,4 +73,18 @@ t_logic_op	*get_current_log_op(int actual_op_index, t_logic_op **logical_op)
 		i++;
 	}
 	return (NULL);
+}
+
+void	get_logical_op_and_skip(char *input, t_logic_op **logical_op,
+	int *j, int *i)
+{
+	int	actual_log_op;
+
+	actual_log_op = get_logic_op_from_begin(input, *i);
+	if (actual_log_op != OPERATOR_NOT_FOUND)
+	{
+		update_logical_op(logical_op[*j], *i, actual_log_op);
+		(*j)++;
+	}
+	(*i)++;
 }

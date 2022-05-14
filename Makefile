@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/14 14:15:49 by rpottier         ###   ########.fr        #
+#    Updated: 2022/05/14 19:10:46 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -110,6 +110,7 @@ SRCS =	checker/and_or_checker.c								\
 		execution/set_up_redirection.c							\
 		execution/exec_buitins.c								\
 		execution/exec_pipe_cmd.c								\
+		execution/create_argv_cmd.c								\
 		execution/count_pipe.c									\
 		signal_management/signal_management.c					\
 		utils/jump_caracters.c									\

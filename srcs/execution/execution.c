@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 12:21:55 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 19:13:03 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,12 @@ int	exec_one_cmd(char **argv, t_lst_env **env_list)
 			;
 		g_exit_status = WEXITSTATUS(retour);
 	}
-	else 
+	else
 		g_exit_status = retour;
 	return (retour);
 }
-void print_token_list(t_lst_token *token)
+
+void	print_token_list(t_lst_token *token)
 {
 	while (token)
 	{
@@ -63,12 +64,10 @@ int	execute_command(t_lst_token *token, t_lst_env **env_list)
 	int		count;
 
 	count = count_pipe(token);
-//		print_token_list(token);
 	expand_command(token, *env_list);
 	expand_wildcard_command(token);
 	if (count == 1)
 	{
-//		tokenisation_post_expand(token);
 //		print_token_list(token);
 		if (set_up_redirect(token, 0) == 1)
 			return (1);

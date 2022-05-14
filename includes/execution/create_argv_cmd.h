@@ -1,50 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_functions.c                                     :+:      :+:    :+:   */
+/*   create_argv_cmd.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 19:49:28 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 19:47:26 by rpottier         ###   ########.fr       */
+/*   Created: 2022/05/14 19:08:58 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/14 19:09:43 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef CREATE_ARGV_CMD_H
+# define CREATE_ARGV_CMD_H
 
-int	is_space(char c)
-{
-	if (c == ' ')
-		return (1);
-	return (0);
-}
+# include "minishell.h"
 
-int	is_wildcard(char c)
-{
-	if (c == '*')
-		return (true);
-	else
-		return (false);
-}
+char	**create_argv_cmd(t_lst_token *token);
 
-int	is_separator(char c, char *separator)
-{
-	int	i;
-
-	i = 0;
-	while (separator[i])
-	{
-		if (c == separator[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int is_dot(char c)
-{
-	if (c == '.')
-		return (TRUE)
-	else
-		return (FALSE);
-}
+#endif
