@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_functions.c                                     :+:      :+:    :+:   */
+/*   create_token.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 19:49:28 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 14:17:00 by rpottier         ###   ########.fr       */
+/*   Created: 2022/05/14 14:13:17 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/14 14:15:10 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef CREATE_TOKEN_H
+# define CREATE_TOKEN_H
 
-int	is_space(char c)
-{
-	if (c == ' ')
-		return (1);
-	return (0);
-}
+# include "minishell.h"
 
-int	is_wildcard(char c)
-{
-	if (c == '*')
-		return (true);
-	else
-		return (false);
-}
+t_lst_token	*create_token(char	*space_split);
+t_lst_token	*create_token_for_split(char	*space_split, int *in_quotes);
+t_lst_token	*create_token_expand(char	*space_split);
 
-int	is_separator(char c, char *separator)
-{
-	int	i;
+int			find_token_type(char *str);
+char		*dup_without_extra_space(char *str);
 
-	i = 0;
-	while (separator[i])
-	{
-		if (c == separator[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
+#endif

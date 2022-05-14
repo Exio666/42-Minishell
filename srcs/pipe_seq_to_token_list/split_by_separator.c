@@ -6,27 +6,13 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/05 13:54:11 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:08:17 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*----- version | < > << >> -----*/
-
-int	is_separator(char c, char *separator)
-{
-	int	i;
-
-	i = 0;
-	while (separator[i])
-	{
-		if (c == separator[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 static int	count_word(char *str, char *sep)
 {
@@ -37,8 +23,6 @@ static int	count_word(char *str, char *sep)
 	i = 0;
 	while (is_space(*str))
 		str++;
-//	if (*str == '<' || *str == '>')
-//		nb_word++;
 	while (str[i])
 	{
 		if (is_separator(str[i], sep))
@@ -52,10 +36,8 @@ static int	count_word(char *str, char *sep)
 			if (is_quote(str[i]))
 				pipe_skip_quote(str, &i);
 			else
-			{
 				if (str[i])
 					i++;
-			}
 		}
 	}
 	return (nb_word);
@@ -104,13 +86,20 @@ static char	*insert_word(int word_len, char *s)
 	return (split);
 }
 
+void	move_foward_split_by_separator(char *s, int *i)
+{
+	if (is_quote(s[*i]))
+		pipe_skip_quote(s, i);
+	else
+		(*i)++;
+}
+
 char	**split_by_separator(char *s, char *sep)
 {
 	int		i;
 	int		k;
 	char	**split;
 	int		nb_word;
-
 
 	nb_word = (count_word(s, sep));
 	split = __ft_calloc(sizeof(char *) * (nb_word + 1));
@@ -126,14 +115,7 @@ char	**split_by_separator(char *s, char *sep)
 		if ((k + 1) < nb_word)
 			split[++k] = insert_token_separator(&s[i], sep);
 		while (s[i] && !is_separator(s[i], sep))
-		{
-			if (is_quote(s[i]))
-			{
-				pipe_skip_quote(s, &i);
-			}
-			else
-				i++;
-		}
+			move_foward_split_by_separator(s, &i);
 	}
 	return (split);
 }

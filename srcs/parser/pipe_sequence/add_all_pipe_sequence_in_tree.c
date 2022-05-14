@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:56:56 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/11 13:46:43 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 13:58:46 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,8 @@ void	add_all_pipe_sequence_in_tree(t_btree **root, char *user_input)
 	t_pipe_sequence	**splited_pipe_seq;
 
 	remove_parenthesis(user_input);
-//	printf("user_input: %s\n", user_input);
 	splited_pipe_seq = split_all_pipe_sequence(user_input);
-//	for (int i = 0; splited_pipe_seq[i]; i++)
-//		printf("HERE:%s\n", splited_pipe_seq[i]->str);
-
 	insert_all_pipe_seq_in_btree(root, splited_pipe_seq);
-//	printf("***********************\n");
-//	print2D(*root);
-//	printf("***********************\n");
 }
 
 t_pipe_sequence	**split_all_pipe_sequence(char *user_input)
@@ -43,7 +36,6 @@ t_pipe_sequence	**split_all_pipe_sequence(char *user_input)
 		splited[i] = __ft_calloc(sizeof(t_pipe_sequence));
 		start_index = get_start_index_pipe_sequence(user_input, i);
 		splited[i]->str = get_pipe_sequence(user_input, start_index);
-
 		if (pipe_sequence_checker(splited[i]->str) == 0)
 			return (NULL);
 		splited[i]->index = (unsigned int)start_index;
@@ -56,7 +48,7 @@ t_pipe_sequence	**split_all_pipe_sequence(char *user_input)
 void	remove_parenthesis(char *str)
 {
 	int	i;
-	int				quote_skiped;
+	int	quote_skiped;
 
 	quote_skiped = FALSE;
 	i = 0;
@@ -80,12 +72,12 @@ int	count_pipe_sequence(char *user_input)
 	int	nb_of_pipe_sequence;
 
 	nb_of_pipe_sequence = count_logic_op(user_input) + 1;
-//	printf("b_of_pipe_sequence %d\n", nb_of_pipe_sequence);
 	return (nb_of_pipe_sequence);
 }
-
+/*
 void print_pipe_seq_array(t_pipe_sequence **pip_seq)
 {
 	for (int i = 0; pip_seq[i]; i++)
 		printf("%s\n", pip_seq[i]->str);
 }
+*/

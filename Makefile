@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/14 10:49:55 by rpottier         ###   ########.fr        #
+#    Updated: 2022/05/14 14:15:49 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,7 @@ SRCS =	checker/and_or_checker.c								\
 		env_list/get_functions.c								\
 		env_list/convert_env_array_in_list.c					\
 		env_list/get_path_variable.c							\
+		pipe_seq_to_token_list/create_token.c					\
 		pipe_seq_to_token_list/create_token_list.c				\
 		pipe_seq_to_token_list/insert_token_separator_utils.c	\
 		pipe_seq_to_token_list/insert_token_separator.c 		\

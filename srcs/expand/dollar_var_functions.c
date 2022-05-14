@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/13 15:19:02 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:01:38 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	get_var_length(char	*token)
 
 	length = 0;
 	while (token[length] != '\0' && !is_space(token[length])
-		&& !is_quote(token[length]) && !is_dollar(token[length]) && !is_wildcard(token[length]))
+		&& !is_quote(token[length]) && !is_dollar(token[length])
+		&& !is_wildcard(token[length]))
 		length++;
 	return (length);
 }

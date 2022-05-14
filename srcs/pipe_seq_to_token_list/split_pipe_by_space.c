@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/10 09:12:14 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:10:54 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ static char	*insert_word(int word_len, char *s)
 		split[i] = s[i];
 		i++;
 	}
-//	printf("||%s||\n", split);
 	split[i] = '\0';
 	return (split);
 }

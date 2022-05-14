@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:07:02 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/22 14:14:00 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:15:35 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "minishell.h"
 
 # include "create_token_list.h"
+# include "create_token.h"
 # include "insert_token_separator_utils.h"
 # include "insert_token_separator.h"
 # include "is_token_1.h"

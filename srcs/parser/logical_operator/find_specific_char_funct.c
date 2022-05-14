@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_specific_char_funct.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:46:16 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/06 15:49:46 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/14 13:50:44 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
