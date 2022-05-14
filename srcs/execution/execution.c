@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/12 13:47:41 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 10:44:30 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	execute_command(t_lst_token *token, t_lst_env **env_list)
 	count = count_pipe(token);
 //		print_token_list(token);
 	expand_command(token, *env_list);
+	expand_wildcard_command(token);
 	if (count == 1)
 	{
 //		tokenisation_post_expand(token);

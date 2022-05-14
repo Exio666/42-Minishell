@@ -10,6 +10,7 @@
 		"token_utils.h": "c",
 		"algorithm": "c",
 		"sstream": "c",
-		"set_up_redirection.h": "c"
+		"set_up_redirection.h": "c",
+		"string.h": "c"
 	}
 }

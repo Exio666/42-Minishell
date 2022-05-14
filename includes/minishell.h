@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/10 15:23:20 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 10:49:25 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,11 +124,17 @@
 # include "is_functions.h"
 
 /*
- *	Wilcard
+ *	expand
  */
 
 # include "expand.h"
 # include "execution.h"
+
+/*
+ *	Wilcard
+ */
+
+# include "wildcard.h"
 
 /*
  *	Signal

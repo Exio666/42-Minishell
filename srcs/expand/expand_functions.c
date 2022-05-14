@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/13 18:18:45 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 09:31:50 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,7 @@ void	expand_command(t_lst_token *token, t_lst_env *env_list)
 			token = move_to_last_new_token(token, split);
 		}
 		if (token)
-		{
-/*			for (int j = 0; token->str[j]; j++)
-				printf("%c ", token->str[j]);
-			printf("\n");
-			for (int j = 0; token->str[j]; j++)
-				printf("%d ", token->in_quotes[j]);
-			printf("\n");
-*/			token = token->next;
-		}
+			token = token->next;
 	}
 }
 
