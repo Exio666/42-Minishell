@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 08:10:55 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/11 19:26:43 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 21:29:55 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "minishell.h"
 
-void		move_foward_expanding_var(int open_quote, char *token_str, int *index);
+void		move_foward_expanding_var(int open_quote,
+				char *token_str, int *index);
 void		expand_command(t_lst_token *token, t_lst_env *env_list);
 char		*expand_variable(char *token, int *index, t_lst_env *env_list);
 int			expand_in_quotes(char **token, int *i, t_lst_env *env_list);

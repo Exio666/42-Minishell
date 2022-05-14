@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/13 14:14:24 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 21:32:05 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # ifndef DEBUG
 #  define DEBUG 1
 # endif
-
-# define malloc(...) NULL
 
 /* execution.c */
 

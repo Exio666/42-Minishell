@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:07:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/05 15:45:04 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 21:25:41 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	test6(char **envp);
 void	test7(char **envp);
 void	test8(char **envp);
 void	test_8_bis(char **envp);
-
-
 
 void	launch_test_a_equal_bonjour_with_space(char **envp);
 

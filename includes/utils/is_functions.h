@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 19:50:05 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 19:47:39 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 21:27:09 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 int	is_space(char c);
 int	is_wildcard(char c);
 int	is_separator(char c, char *separator);
-int is_dot(char c);
+int	is_dot(char c);
 
 #endif
