@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 10:47:56 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 10:53:20 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 12:20:02 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ int			characters_are_matching(char c1, char c2);
 int			str_is_matching_pattern(char *pattern, char * str);
 char		*expand_wildcard(char **token, int *i, t_lst_env *env_list);
 int			is_an_asterix_out_of_quotes(t_lst_token *token);
+
+void	insert_new_token_list(t_lst_token *new_token_list, t_lst_token *current_token);
+int	ft_size_token_list(t_lst_token *token);
 /*
 void test0(void);
 void test1(void);

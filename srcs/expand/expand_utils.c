@@ -6,18 +6,18 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:21:36 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/13 18:16:47 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 11:30:09 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "minishell.h"
 
-t_lst_token *move_to_last_new_token(t_lst_token *token, t_split *split)
+t_lst_token *move_to_last_new_token(t_lst_token *token, int nb_token)
 {
 	int	i;
 
 	i = 0;
-	while (token && i < (split->size_2d_array - 1))
+	while (token && i < (nb_token - 1))
 	{
 		/*for (int j = 0; token->str[j]; j++)
 			printf("%c ", token->str[j]);

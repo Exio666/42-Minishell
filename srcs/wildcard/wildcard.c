@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:15:56 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 11:21:50 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 13:16:41 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,39 @@
 #include <stdlib.h>
 #include <minishell.h>
 
-int	insert_new_token_list(t_lst_token *new_token_list, t_lst_token *current_token)
+
+void	expand_wildcard_command(t_lst_token *token)
+{
+	t_lst_token *new_token_list;
+	int size_new_token_list;
+
+	new_token_list = NULL;
+	size_new_token_list = 0;
+	while (token && token->type != TOK_PIPE)
+	{
+		if (is_heredoc_token(token->type))
+			token = skip_two_token(token);
+		if (is_an_asterix_out_of_quotes(token))
+		{
+/*			printf("-----------------------------------\n");
+			printf("token->str = [%s]\n", token->str);
+			printf("token->type = [%d]\n", token->type);	*/
+			new_token_list = expand_wildcard_token(token);
+			if (new_token_list)
+			{
+				size_new_token_list = ft_size_token_list(new_token_list);
+				insert_new_token_list(new_token_list, token);
+				token = move_to_last_new_token(token, size_new_token_list);
+				new_token_list = NULL;
+			}
+		/*	print_token_list(new_token_list);
+			printf("-----------------------------------\n");	*/
+		}
+		if (token)
+			token = token->next;
+	}
+}
+void	insert_new_token_list(t_lst_token *new_token_list, t_lst_token *current_token)
 {
 	t_lst_token	*tmp;
 
@@ -29,33 +61,20 @@ int	insert_new_token_list(t_lst_token *new_token_list, t_lst_token *current_toke
 		current_token = current_token->next;
 	current_token->next = tmp;
 }
-
-void	expand_wildcard_command(t_lst_token *token)
+int	ft_size_token_list(t_lst_token *token)
 {
-	t_lst_token *new_token_list;
-	int nb_of_new_token;
+	int count;
 
-	nb_of_new_token = 0;
-	while (token && token->type != TOK_PIPE)
+	count = 0;
+	if (!token)
+		return (count);
+	while (token)
 	{
-		if (is_heredoc_token(token->type))
-			token = skip_two_token(token);
-		if (is_an_asterix_out_of_quotes(token))
-		{
-		/*	printf("-----------------------------------\n");
-			printf("token->str = [%s]\n", token->str);
-			printf("token->type = [%d]\n", token->type);	*/
-			new_token_list = expand_wildcard_token(token);
-			nb_of_new_token = insert_new_token_list(new_token_list, token);
-			move_to_last_new_token()
-		/*	print_token_list(new_token_list);
-			printf("-----------------------------------\n");	*/
-		}
-		if (token)
-			token = token->next;
+		count++;
+		token = token->next;
 	}
+	return (count);
 }
-
 t_lst_token *expand_wildcard_token(t_lst_token *token)
 {
 
@@ -72,13 +91,10 @@ t_lst_token *expand_wildcard_token(t_lst_token *token)
 	entity = readdir(dir);
 	while (entity != NULL)
 	{
-		printf("TEMOIN 0\n");
 		if (str_is_matching_pattern(token->str, entity->d_name))
 		{
-			printf("entity->d_name is_matching: [%s]", entity->d_name);
 			new_token = create_token(entity->d_name);
 		}
-		printf("TEMOIN 1\n");
 		if (new_token)
 		{
 			ft_lstadd_back_token(&token_list, new_token);
