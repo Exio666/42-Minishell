@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wildcard.h                                         :+:      :+:    :+:   */
+/*   wildcard_utils.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/14 10:47:56 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 21:24:09 by rpottier         ###   ########.fr       */
+/*   Created: 2022/05/14 21:13:15 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/14 21:15:38 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WILDCARD_H
-# define WILDCARD_H
+#ifndef WILDCARD_UTILS_H
+# define WILDCARD_UTILS_H
 
 # include "minishell.h"
-# include "wildcard_utils.h"
 
-void		expand_wildcard_command(t_lst_token *token);
-t_lst_token	*expand_wildcard_token(t_lst_token *token);
-void		insert_new_token_list(t_lst_token *new_token_list, t_lst_token *current_token);
-int			ft_size_token_list(t_lst_token *token);
-int 		both_start_with_dot(char *pattern, char *str);
+int	is_an_asterix_out_of_quotes(t_lst_token *token);
+int	end_of_both_str_reached(char *pattern, char * str);
+int	characters_are_matching(char c1, char c2);
+int	str_is_matching_pattern(char *pattern, char * str);
 
 /*
 void test0(void);
@@ -37,5 +35,7 @@ void test10(void);
 void test11(void);
 void test12(void);
 */
+
+
 
 #endif

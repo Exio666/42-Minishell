@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/14 19:10:46 by rpottier         ###   ########.fr        #
+#    Updated: 2022/05/14 21:16:07 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,6 +118,7 @@ SRCS =	checker/and_or_checker.c								\
 		gestion_erreur/open_failed.c							\
 		execution/main_execution.c								\
 		wildcard/wildcard.c										\
+		wildcard/wildcard_utils.c								\
 
 #SRCS_TEST = builtins/export/main_export.c		
 SRCS_TEST = wildcard/wildcard.c
