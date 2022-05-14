@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_and_update_logic_op.h                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:34:51 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 14:26:49 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/14 13:48:11 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 /*----- count_and_update_logic_op.c------*/
 
+int		skip_quote_and_confirm(char *user_input, int *i);
 void	update_logical_op(t_logic_op *logical_op, int position,
 			int actual_log_op);
-int		gic_op(char *user_input);
 int		count_logic_op(char *user_input);
 #endif

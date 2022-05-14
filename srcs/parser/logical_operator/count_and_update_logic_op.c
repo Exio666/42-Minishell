@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:45:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/06 13:50:33 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 13:49:03 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,40 @@ void	update_logical_op(t_logic_op *logical_op, int position, int cur_log_op)
 	}
 }
 
+
+
+
+
+
+
+
+int skip_quote_and_confirm(char *user_input, int *i)
+{
+	skip_quote(user_input, i);
+	return (TRUE);
+}
+
+
+
+
+
+
 int	count_logic_op(char *user_input)
 {	
 	int	actual_logical_op;
 	int	logical_op_count;
 	int	i;
-	int quote_skiped;
+	int	quote_skiped;
 
-	quote_skiped = FALSE;
 	if (user_input == NULL)
 		return (-1);
 	i = 0;
 	logical_op_count = 0;
 	while (user_input[i] && user_input[i + 1])
 	{
+		quote_skiped = FALSE;
 		if (is_quote(user_input[i]))
-		{
-			skip_quote(user_input, &i);
-			quote_skiped = TRUE;
-		}
+			quote_skiped = skip_quote_and_confirm(user_input, &i);
 		if (user_input[i] && user_input[i + 1] && is_logical_op_char(user_input[i]) == TRUE)
 		{
 			actual_logical_op = get_logic_op_from_begin(user_input, i);
@@ -56,9 +71,6 @@ int	count_logic_op(char *user_input)
 		}
 		if (!quote_skiped)
 			i++;
-		quote_skiped = FALSE;
-		
 	}
-//	printf("logical op count = %d \n", logical_op_count);
 	return (logical_op_count);
 }
