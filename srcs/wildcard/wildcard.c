@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:15:56 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 13:16:41 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 13:21:17 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,17 @@ t_lst_token *expand_wildcard_token(t_lst_token *token)
 	entity = readdir(dir);
 	while (entity != NULL)
 	{
-		if (str_is_matching_pattern(token->str, entity->d_name))
+		if (entity->d_name[0] != '.' || (entity->d_name[0] == '.' && token->str[0] == '.'))
 		{
-			new_token = create_token(entity->d_name);
-		}
-		if (new_token)
-		{
-			ft_lstadd_back_token(&token_list, new_token);
-			new_token = NULL;
+			if (str_is_matching_pattern(token->str, entity->d_name))
+			{
+				new_token = create_token(entity->d_name);
+			}
+			if (new_token)
+			{
+				ft_lstadd_back_token(&token_list, new_token);
+				new_token = NULL;
+			}
 		}
 		entity = readdir(dir);
 	}

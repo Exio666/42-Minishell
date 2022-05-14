@@ -20,7 +20,7 @@
 ** 000000000001111112222222111111000001111111 
 */
 
-t_input_level	*attribute_level(char *user_input)
+t_input_level	*attribute_level_parenthesis(char *user_input)
 {
 	int				quote_skiped;
 	int				level;

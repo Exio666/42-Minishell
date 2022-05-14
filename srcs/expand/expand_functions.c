@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 11:30:18 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/14 13:32:18 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,6 @@ t_lst_token	*expand_token(t_lst_token *token, t_lst_env *env_list)
 		return (token);
 	token = expand_all_variables(token, env_list);
 	token->str = remove_quotes(token, token->lst_quote);
-//	print_token_str_with_active_char(token);
-//	token = expand_all_wildcards(token, env_list);
 	return (token);
 }
 
