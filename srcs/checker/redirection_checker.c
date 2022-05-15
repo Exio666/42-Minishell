@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 11:35:16 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/11 13:33:02 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/15 12:44:48 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	first_len_pipe_content(char *commande, t_checker *check)
 {
 	int	i;
 	int	len;
-	
+
 	i = 0;
 	len = 0;
 	while (commande[i] && commande[i] != '|')

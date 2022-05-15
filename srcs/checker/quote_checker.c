@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:04:44 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/11 16:14:04 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/15 12:45:13 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	quote_parenthise_checker_next_char(char *commande, t_checker *check)
 
 int	check_len_in_parenthise(char *comande, t_checker *check)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	check->par_lvl++;
 	len = -1;
