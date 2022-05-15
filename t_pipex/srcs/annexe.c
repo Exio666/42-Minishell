@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 11:22:34 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/30 17:01:25 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 13:51:47 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char **split_path_env_variable_and_add_slash(char *path_env_variable)
 
 	while (all_path[i] != NULL && all_path[i][0] != 0)
 	{
-		path_len = strlen(all_path[i]);
+		path_len = ft_strlen(all_path[i]);
 		current_path = __ft_calloc(sizeof(*current_path) * (path_len + 2));
 		if (!current_path)
 			return (NULL);

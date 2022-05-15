@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exec_utills.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:53:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 12:32:27 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/15 13:10:25 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ char    *dup_without_extra_space_quote(char *str)
     int        begun_with_quote;
 
     i = 0;
-    while (is_space(str[i]))
+    while (is_white_space(str[i]))
         i++;
     begun_with_quote = skip_quote_exc(str, &i);
     end = ft_strlen(str) - 1;
-    while (is_space(str[end]))
+    while (is_white_space(str[end]))
         end--;
     while (begun_with_quote && is_quote(str[end]))
         end--;

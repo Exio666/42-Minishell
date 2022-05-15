@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 14:12:24 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 14:16:12 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 13:10:25 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ char	*dup_without_extra_space(char *str)
 	int		j;
 
 	i = 0;
-	while (is_space(str[i]))
+	while (is_white_space(str[i]))
 		i++;
 	end = ft_strlen(str) - 1;
-	while (is_space(str[end]))
+	while (is_white_space(str[end]))
 		end--;
 	dup = __ft_calloc(sizeof(char) * ((end - i) + 2));
 	j = 0;

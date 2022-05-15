@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_pipe_cmd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:27:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/13 15:03:11 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/15 13:17:51 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	exec_cmd(t_lst_token *token, t_lst_env **env_list)
 		execute(argv, env_list);
 	rl_clear_history();
 	__ft_calloc(-1);
+	__ft_calloc_env(-1);
 	exit(retour);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dollar_var_functions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 12:33:24 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/15 13:51:05 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	get_var_length(char	*token)
 	int	length;
 
 	length = 0;
-	while (token[length] != '\0' && !is_space(token[length])
+	while (token[length] != '\0' && !is_white_space(token[length])
 		&& !is_quote(token[length]) && !is_dollar(token[length])
 		&& !is_wildcard(token[length]))
 		length++;
@@ -44,13 +44,25 @@ char	*get_variable_to_expand_name(char *token)
 	return (var_name);
 }
 
+static int	ft_strcmp(char *s1, char *s2)
+{
+	unsigned int	i;
+
+	i = 0;
+	if (!s1 || !s2)
+		return (0);
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+
 char	*get_var_to_expand_content(char *var_name, t_lst_env *env_list)
 {
 	if (ft_strncmp(var_name, "?", 2) == 0)
 		return (ft_itoa(g_exit_status));
 	while (env_list)
 	{
-		if (strcmp(var_name, env_list->name) == 0)
+		if (ft_strcmp(var_name, env_list->name) == 0)
 			return (env_list->content);
 		env_list = env_list->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:59:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 11:53:19 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 13:10:25 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	get_start_index_pipe_sequence(char *user_input, int pipe_sequence_to_find)
 		{
 			start_index += 2;
 			current_pipe_seq++;
-			while (user_input[start_index] && is_space(user_input[start_index]))
+			while (user_input[start_index] && is_white_space(user_input[start_index]))
 				start_index++;
 		}
 		else

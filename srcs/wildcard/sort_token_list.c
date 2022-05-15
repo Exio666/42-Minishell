@@ -1,50 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_functions.c                                     :+:      :+:    :+:   */
+/*   sort_token_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 19:49:28 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 13:10:25 by rpottier         ###   ########.fr       */
+/*   Created: 2022/05/15 13:56:38 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/15 13:57:07 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	is_white_space(char c)
+void sort_token_list(t_lst_token *token_list)
 {
-	if (c == ' ')
-		return (1);
-	return (0);
-}
-
-int	is_wildcard(char c)
-{
-	if (c == '*')
-		return (true);
-	else
-		return (false);
-}
-
-int	is_separator(char c, char *separator)
-{
-	int	i;
-
-	i = 0;
-	while (separator[i])
-	{
-		if (c == separator[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	is_dot(char c)
-{
-	if (c == '.')
-		return (TRUE);
-	else
-		return (FALSE);
+	
 }

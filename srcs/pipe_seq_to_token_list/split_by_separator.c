@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/14 14:08:17 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 13:10:25 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	count_word(char *str, char *sep)
 
 	nb_word = 0;
 	i = 0;
-	while (is_space(*str))
+	while (is_white_space(*str))
 		str++;
 	while (str[i])
 	{
@@ -48,7 +48,7 @@ static int	word_len(char *str, char *sep)
 	int	length;
 
 	length = 0;
-	while (is_space(*str))
+	while (is_white_space(*str))
 		str++;
 	while (str[length] && !is_separator(str[length], sep))
 	{
@@ -69,7 +69,7 @@ static char	*insert_word(int word_len, char *s)
 	split = __ft_calloc(sizeof(char) * (word_len + 1));
 	if (!split)
 		return (NULL);
-	while (is_space(*s))
+	while (is_white_space(*s))
 		s++;
 	while (s[i] && i < word_len)
 	{
@@ -78,7 +78,7 @@ static char	*insert_word(int word_len, char *s)
 	}
 	split[i] = '\0';
 	i--;
-	while (is_space(split[i]))
+	while (is_white_space(split[i]))
 	{
 		split[i] = '\0';
 		i--;

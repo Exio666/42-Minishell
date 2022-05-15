@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/13 18:27:34 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 13:10:25 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ static int	count_word(t_lst_token *token)
 	i = 0;
 	while (token->str[i])
 	{
-		while (token->str[i] && is_space(token->str[i])
+		while (token->str[i] && is_white_space(token->str[i])
 			&& token->in_quotes[i] == FALSE)
 			i++;
-		if (token->str[i] && (!is_space(token->str[i])
-				|| (is_space(token->str[i]) && token->in_quotes[i] == TRUE)))
+		if (token->str[i] && (!is_white_space(token->str[i])
+				|| (is_white_space(token->str[i]) && token->in_quotes[i] == TRUE)))
 			nb_word++;
-		while (token->str[i] && (!is_space(token->str[i])
-				|| (is_space(token->str[i]) && token->in_quotes[i] == TRUE)))
+		while (token->str[i] && (!is_white_space(token->str[i])
+				|| (is_white_space(token->str[i]) && token->in_quotes[i] == TRUE)))
 		{
 			if (is_quote(token->str[i]))
 				pipe_skip_quote(token->str, &i);
@@ -44,8 +44,8 @@ static int	ft_word_len(int *in_quotes, char *str)
 	int	length;
 
 	length = 0;
-	while (str[length] && (!is_space(str[length])
-			|| (is_space(str[length]) && in_quotes[length] == TRUE)))
+	while (str[length] && (!is_white_space(str[length])
+			|| (is_white_space(str[length]) && in_quotes[length] == TRUE)))
 	{
 		if (is_quote(str[length]))
 			pipe_skip_quote(str, &length);

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 12:01:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/14 14:10:54 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 13:10:25 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ static int	count_word(char *str)
 	i = 0;
 	while (str[i])
 	{
-		while (str[i] && is_space(str[i]))
+		while (str[i] && is_white_space(str[i]))
 			i++;
-		if (str[i] && !is_space(str[i]))
+		if (str[i] && !is_white_space(str[i]))
 			nb_word++;
-		while (str[i] && !is_space(str[i]))
+		while (str[i] && !is_white_space(str[i]))
 		{
 			if (is_quote(str[i]))
 				pipe_skip_quote(str, &i);
@@ -41,7 +41,7 @@ static int	word_len(char *str)
 	int	length;
 
 	length = 0;
-	while (str[length] && !is_space(str[length]))
+	while (str[length] && !is_white_space(str[length]))
 	{
 		if (is_quote(str[length]))
 			pipe_skip_quote(str, &length);
@@ -84,10 +84,10 @@ char	**split_pipe_by_space(char *s)
 	k = -1;
 	while (s[i] && ++k < nb_word)
 	{
-		while (s[i] && is_space(s[i]))
+		while (s[i] && is_white_space(s[i]))
 			i++;
 		split[k] = insert_word(word_len(&s[i]), &s[i]);
-		while (s[i] && !is_space(s[i]))
+		while (s[i] && !is_white_space(s[i]))
 		{
 			if (is_quote(s[i]))
 				pipe_skip_quote(s, &i);
