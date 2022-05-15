@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 10:47:56 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 21:26:42 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 17:23:36 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "minishell.h"
 # include "wildcard_utils.h"
+# include "sort_token_list.h"
 
 void		expand_wildcard_command(t_lst_token *token);
 t_lst_token	*expand_wildcard_token(t_lst_token *token);

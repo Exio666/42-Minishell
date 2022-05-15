@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 14:09:57 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:43:26 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,13 @@ void	expand_command(t_lst_token *token, t_lst_env *env_list)
 	t_split	*split;
 
 	split = NULL;
-	while (token && token->type != TOK_PIPE)
+	while (token)
 	{
 		if (is_heredoc_token(token->type))
 			token = skip_two_token(token);
 		if (token && token->type == TOK_WORD)
 		{
 			token = expand_token(token, env_list);
-			
-	printf("[%s]\n", token->str);
 			split = split_post_expand(token);
 			insert_split_in_token_list(token, split);
 			token = move_to_last_new_token(token, split->size_2d_array);
@@ -45,13 +43,9 @@ char	*expand_variable(char *token, int *index, t_lst_env *env_list)
 	variable_name = NULL;
 	var_content_len = 0;
 	variable_name = get_variable_to_expand_name(&token[*index + 1]);
-	var_content = get_var_to_expand_content(variable_name, env_list);	
-	printf("[%s]\n", token);
-
-	printf("[%s]\n", var_content);
+	var_content = get_var_to_expand_content(variable_name, env_list);
 	if (!var_content)
 	{
-		printf("ALLERTE\n");
 		var_content = __ft_calloc(sizeof(char) * 1);
 		var_content_len = 0;
 	}

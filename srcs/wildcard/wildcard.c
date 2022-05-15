@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wildcard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:15:56 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 12:26:44 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/15 18:23:49 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,9 @@ t_lst_token	*expand_wildcard_token(t_lst_token *token)
 		}
 		entity = readdir(dir);
 	}
+	free(dir);
+	print_token_list(token_list);
+	sort_token_list(&token_list);
+	print_token_list(token_list);
 	return (token_list);
 }

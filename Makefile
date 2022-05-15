@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/15 12:45:18 by rpottier         ###   ########.fr        #
+#    Updated: 2022/05/15 17:22:01 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -126,6 +126,7 @@ SRCS =	checker/and_or_checker.c								\
 		heredoc/create_all_heredoc.c							\
 		wildcard/wildcard.c										\
 		wildcard/wildcard_utils.c								\
+		wildcard/sort_token_list.c								\
 		
 SRCS_TEST = test/test.c	
 
