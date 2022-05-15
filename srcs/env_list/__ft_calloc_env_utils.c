@@ -6,11 +6,41 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 21:21:08 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 21:23:09 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 21:32:06 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	len_number(long int n)
+{
+	int	len;
+
+	len = 0;
+	if (n >= 0 && n < 10)
+		return (1);
+	if (n < 0 && n > -10)
+		return (2);
+	if (n < 0)
+	{
+		len++;
+		n = -n;
+	}
+	while (n > 0)
+	{
+		n = n / 10;
+		len ++;
+	}
+	return (len);
+}
+
+static char	*ft_itoa_zero(char *nb)
+{
+	nb [0] = '0';
+	nb [1] = '\0';
+	return (nb);
+}
+
 
 char	*ft_itoa_env(int n)
 {

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 10:59:20 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 21:23:15 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 21:32:00 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,33 +56,4 @@ void	*__ft_calloc_env(ssize_t size)
 	else
 		ft_lstadd_back(&list_malloc, new);
 	return (content);
-}
-
-static int	len_number(long int n)
-{
-	int	len;
-
-	len = 0;
-	if (n >= 0 && n < 10)
-		return (1);
-	if (n < 0 && n > -10)
-		return (2);
-	if (n < 0)
-	{
-		len++;
-		n = -n;
-	}
-	while (n > 0)
-	{
-		n = n / 10;
-		len ++;
-	}
-	return (len);
-}
-
-static char	*ft_itoa_zero(char *nb)
-{
-	nb [0] = '0';
-	nb [1] = '\0';
-	return (nb);
 }
