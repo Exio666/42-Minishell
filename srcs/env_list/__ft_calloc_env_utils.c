@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 21:21:08 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 21:32:06 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 21:34:38 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static char	*ft_itoa_zero(char *nb)
 	nb [1] = '\0';
 	return (nb);
 }
-
 
 char	*ft_itoa_env(int n)
 {
