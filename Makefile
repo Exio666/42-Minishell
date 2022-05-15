@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/14 21:16:07 by rpottier         ###   ########.fr        #
+#    Updated: 2022/05/15 11:09:10 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,6 +82,7 @@ SRCS =	checker/and_or_checker.c								\
 		env/ft_get_env.c 										\
 		env/get_all_path.c 										\
 		env/list_to_tab.c										\
+		env_list/__ft_calloc_env.c 								\
 		env_list/env_list_management.c							\
 		env_list/get_functions.c								\
 		env_list/convert_env_array_in_list.c					\

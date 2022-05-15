@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:59:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 13:59:18 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 11:53:19 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,25 +52,28 @@ int	get_end_index_pipe_sequence(char	*user_input, int start_index)
 
 void	pipe_skip_quote(char *str, int *index)
 {
-	if (is_simple_quote(str[(*index)]) || is_double_quote(str[(*index)]))
+	if (str && *index < (int)ft_strlen(str))
 	{
-		if (is_simple_quote(str[(*index)]))
+		if (str[(*index)] && (is_simple_quote(str[(*index)]) || is_double_quote(str[(*index)])))
 		{
-			(*index)++;
-			while (*index && !is_simple_quote(str[(*index)]))
+			if (is_simple_quote(str[(*index)]))
+			{
 				(*index)++;
-			if (((*index) + 1) != '\0')
+				while (str[(*index)] && *index && !is_simple_quote(str[(*index)]))
+					(*index)++;
+				if (str[(*index)] && str[(*index) + 1] != '\0')
+					(*index)++;
+			}
+			else if (is_double_quote(str[(*index)]))
+			{
 				(*index)++;
+				while (str[(*index)] && *index && !is_double_quote(str[(*index)]))
+					(*index)++;
+				if (str[(*index)] && str[(*index) + 1] != '\0')
+					(*index)++;
+			}
 		}
-		else if (is_double_quote(str[(*index)]))
-		{
-			(*index)++;
-			while (*index && !is_double_quote(str[(*index)]))
-				(*index)++;
-			if (((*index) + 1) != '\0')
-				(*index)++;
-		}
-	}	
+	}
 }
 
 int	is_log_op(char *user_input, int i)

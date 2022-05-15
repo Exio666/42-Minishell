@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 13:15:58 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 14:20:32 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/15 11:03:43 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_variable_name(char	*variable_env)
 	char	*variable_name;
 
 	variable_name_len = get_var_name_len(variable_env);
-	variable_name = __ft_calloc(sizeof(char) * (variable_name_len + 1));
+	variable_name = __ft_calloc_env(sizeof(char) * (variable_name_len + 1));
 	ft_strlcpy(variable_name, variable_env, variable_name_len + 1);
 	return (variable_name);
 }
@@ -31,7 +31,7 @@ char	*get_variable_content(char	*variable_env)
 
 	start_content_index = get_start_content_index(variable_env);
 	len = get_var_content_len(variable_env);
-	variable_content = __ft_calloc(sizeof(char) * (len + 1));
+	variable_content = __ft_calloc_env(sizeof(char) * (len + 1));
 	ft_strlcpy(variable_content, &variable_env[start_content_index], len + 1);
 	return (variable_content);
 }

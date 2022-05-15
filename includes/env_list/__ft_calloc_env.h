@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_list.h                                         :+:      :+:    :+:   */
+/*   __ft_calloc_env.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 10:03:35 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 11:08:39 by rpottier         ###   ########.fr       */
+/*   Created: 2022/05/15 11:06:37 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/15 12:42:26 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENV_LIST_H
-# define ENV_LIST_H
+#ifndef __FT_CALLOC_ENV_H
+# define __FT_CALLOC_ENV_H
 
-# include "__ft_calloc_env.h"
-# include "env_list_management.h"
-# include "get_functions.h"
-# include "convert_env_array_in_list.h"
-# include "get_path_variable.h"
+# include "minishell.h"
+
+void	*__ft_calloc_env(ssize_t size);
+char	*ft_itoa_env(int n);
+char	*ft_strdup_env(const char *src);
 
 #endif

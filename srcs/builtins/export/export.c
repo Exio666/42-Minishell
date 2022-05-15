@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:18:55 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/10 14:11:35 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 11:31:15 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	add_varr_env(char *name, char *varraible, t_lst_env **envp)
 	t_lst_env	*new;
 
 	end = *envp;
-	new = __ft_calloc(sizeof(t_lst_env) * 1);
+	new = __ft_calloc_env(sizeof(t_lst_env) * 1);
 	while (end->next)
 		end = end->next;
 	new->name = name;
-	new->content = ft_strdup(varraible);
+	new->content = ft_strdup_env(varraible);
 	new->next = NULL;
 	new->prev = end;
 	end->next = new;
@@ -40,7 +40,7 @@ int	put_varraible(char *arg, t_lst_env **envp)
 	len = ft_strlen_stop_car(arg, '=');
 	if (len == 0)
 		return (1);
-	name = __ft_calloc(sizeof(char) * (len + 1));
+	name = __ft_calloc_env(sizeof(char) * (len + 1));
 	i = 0;
 	while (i < len)
 	{

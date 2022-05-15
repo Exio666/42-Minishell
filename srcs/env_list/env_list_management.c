@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_list_management.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 16:56:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/05 17:38:36 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/15 11:26:44 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ t_lst_env	*create_list_env_elem(char *variable_env)
 	t_lst_env	*list_elem;
 	int			tmp;
 
-	list_elem = __ft_calloc(sizeof(t_lst_env));
+	list_elem = __ft_calloc_env(sizeof(t_lst_env));
 	list_elem->name = get_variable_name(variable_env);
 	if (ft_strncmp(list_elem->name, "SHLVL", 6) == 0)
 	{
 		tmp = ft_atoi(get_variable_content(variable_env));
-		list_elem->content = ft_itoa(tmp + 1);
+		list_elem->content = ft_itoa_env(tmp + 1);
 	}
 	else
 		list_elem->content = get_variable_content(variable_env);
