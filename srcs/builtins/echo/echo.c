@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:40:00 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/03 18:00:06 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/12 13:19:33 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ int	echo(int ac, char **argv)
 	}
 	if (flag_n == 0)
 		write(1, "\n", 1);
-	return (1);
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_enum.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:19:13 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/14 21:32:25 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 12:29:43 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ typedef struct s_lst_quote
 {
 	struct s_lst_quote	*next;
 	t_quote_index		index;
-
 }	t_lst_quote;
 
 typedef struct s_commande

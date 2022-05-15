@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_all_pipe_sequence_in_tree.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:56:56 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 13:58:46 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 12:35:48 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,28 @@ void	add_all_pipe_sequence_in_tree(t_btree **root, char *user_input)
 	insert_all_pipe_seq_in_btree(root, splited_pipe_seq);
 }
 
-t_pipe_sequence	**split_all_pipe_sequence(char *user_input)
+t_pipe_sequence    **split_all_pipe_sequence(char *user_input)
 {
-	t_pipe_sequence	**splited;
-	int				nb_pipe_sequence;
-	int				i;
-	int				start_index;
+    t_pipe_sequence    **splited;
+    int                nb_pipe_sequence;
+    int                i;
+    int                start_index;
 
-	i = 0;
-	nb_pipe_sequence = count_pipe_sequence(user_input);
-	splited = __ft_calloc(sizeof(t_pipe_sequence *) * (nb_pipe_sequence + 1));
-	while (i < nb_pipe_sequence)
-	{
-		splited[i] = __ft_calloc(sizeof(t_pipe_sequence));
-		start_index = get_start_index_pipe_sequence(user_input, i);
-		splited[i]->str = get_pipe_sequence(user_input, start_index);
-		if (pipe_sequence_checker(splited[i]->str) == 0)
-			return (NULL);
-		splited[i]->index = (unsigned int)start_index;
-		i++;
-	}
-	splited[i] = NULL;
-	return (splited);
+    i = 0;
+    nb_pipe_sequence = count_pipe_sequence(user_input);
+    splited = __ft_calloc(sizeof(t_pipe_sequence *) * (nb_pipe_sequence + 1));
+    while (i < nb_pipe_sequence)
+    {
+        splited[i] = __ft_calloc(sizeof(t_pipe_sequence));
+        start_index = get_start_index_pipe_sequence(user_input, i);
+        splited[i]->str = get_pipe_sequence(user_input, start_index);
+        if (pipe_sequence_checker(splited[i]->str) == 0)
+            return (NULL);
+        splited[i]->index = (unsigned int)start_index;
+        i++;
+    }
+    splited[i] = NULL;
+    return (splited);
 }
 
 void	remove_parenthesis(char *str)

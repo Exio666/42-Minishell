@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_execution.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 11:40:44 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 12:37:12 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	exit_ctr_d(char *command_line)
 	free(command_line);
 	__ft_calloc(-1);
 	rl_clear_history();
-	exit(0);
+	exit(g_exit_status);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -55,27 +55,25 @@ int	main(int argc, char **argv, char **envp)
 	char		*command_line;
 	t_btree		*root;
 	t_lst_env	*env_list;
-	const char	prompt[] = GRN "AirPottier_shell$ " RESET;
+	const char	prompt[] = GRN "Bsavinel_and_associates_shell$ " RESET;
 
 	(void)(argc);
 	(void)(argv);
 	env_list = convert_env_array_in_list(envp);
 	while (42)
 	{
-		if (g_exit_status == 1000)
-			g_exit_status = 131;
+		if (g_exit_status == 386)
+			g_exit_status = 130;
 		signal(SIGQUIT, &handler_sigquit_empty);
 		signal(SIGINT, &handler_sigint_prompt);
 		reset_terminal();
 		command_line = readline(prompt);
 		add_history(command_line);
-		if (primary_checker(command_line) == TRUE)
+		if (primary_checker(command_line) == TRUE && check_all_pipe_sequence(command_line) == TRUE)
 		{
-			signal(SIGINT, &handler_sigint_endl);
-			signal(SIGQUIT, &handler_sigquit_exit);
 			root = get_btree_of_logical_op(command_line);
 			add_all_pipe_sequence_in_tree(&root, command_line);
-//			print2D(root);
+			create_all_heredoc(&root, command_line);
 			free(command_line);
 			execute_command_tree(root, &env_list);
 		}
@@ -88,7 +86,6 @@ int	main(int argc, char **argv, char **envp)
 	__ft_calloc(-1);
 	return (0);
 }
-
 
 /* Bloc de debugage */
 			/*split = split_by_separator(command_line, "|<>");

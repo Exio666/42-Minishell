@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:49:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/05 16:26:52 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/13 10:52:59 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 
 # include "minishell.h"
 
-void	handler_sigint_empty(int sig);
-void	handler_sigint_prompt(int sig);
-void	handler_sigint_endl(int sig);
-void	handler_sigquit_exit(int sig);
-void	handler_sigquit_empty(int sig);
+# include "signal_sigquit.h"
+# include "signal_sigint.h"
 
 #endif
