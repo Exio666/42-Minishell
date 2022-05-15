@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 19:13:03 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 12:38:28 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ void	execute_command_tree(t_btree *root, t_lst_env **env_list)
 	if (!root)
 		return ;
 	execute_command_tree(root->left, env_list);
-	if (root->token && g_exit_status != 1000)
+	if (root->token && g_exit_status != 386)
 		execute_command(root->token, env_list);
-	execute_command_tree(root->right, env_list);
+	if (root->logic_op
+		&& ((g_exit_status == 0 && root->logic_op->type == 1)
+			|| (g_exit_status != 0 && root->logic_op->type == 2)))
+		execute_command_tree(root->right, env_list);
 }
 
 int	exec_one_cmd(char **argv, t_lst_env **env_list)
@@ -33,7 +36,7 @@ int	exec_one_cmd(char **argv, t_lst_env **env_list)
 		pid = fork();
 		if (pid == 0)
 		{
-			signal(SIGINT, &handler_sigint_empty);
+			signal(SIGQUIT, &handler_sigquit_empty);
 			execute(argv, env_list);
 			rl_clear_history();
 			__ft_calloc(-1);
@@ -66,9 +69,10 @@ int	execute_command(t_lst_token *token, t_lst_env **env_list)
 	count = count_pipe(token);
 	expand_command(token, *env_list);
 	expand_wildcard_command(token);
+	signal(SIGQUIT, &handler_sigquit_exit);
+	signal(SIGINT, &handler_sigint_empty);
 	if (count == 1)
 	{
-//		print_token_list(token);
 		if (set_up_redirect(token, 0) == 1)
 			return (1);
 		argv = create_argv_cmd(token);
@@ -78,5 +82,3 @@ int	execute_command(t_lst_token *token, t_lst_env **env_list)
 		return (exec_pipe_cmd(token, env_list, count));
 	return (0);
 }
-
-void	execute_here_doc_tree(t_btree *root);

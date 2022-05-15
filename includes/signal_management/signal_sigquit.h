@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc.h                                          :+:      :+:    :+:   */
+/*   signal_sigquit.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 14:25:18 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/13 17:54:21 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/13 10:50:58 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/13 10:51:43 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEREDOC_H
-# define HEREDOC_H
+#ifndef SIGNAL_SIGQUIT_H
+# define SIGNAL_SIGQUIT_H
 
-# include "minishell.h"
-# include "destruct_heredoc.h"
-# include "create_all_heredoc.h"
+#include "minishell.h"
 
-int		change_name_heredoc(char *str);
-void	feed_herdoc(int fd, char *end);
-char	*heredoc_create(char *end);
+void	handler_sigquit_exit(int sig);
+void	handler_sigquit_empty(int sig);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 16:48:21 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 11:16:14 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/10 16:57:46 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,6 @@ int	execute(char **exe_argv, t_lst_env **env_list)
 		}
 		i++;
 	}
+	ft_print_not_found(exe_argv[0]);
 	return (ERROR_EXECVE);
 }

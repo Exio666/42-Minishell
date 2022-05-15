@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/15 11:09:10 by rpottier         ###   ########.fr        #
+#    Updated: 2022/05/15 12:45:18 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,9 @@ NAME = minishell
 NAME_TEST = minishell_test
 
 CC = cc 
-CFLAGS =  -g3 -Wall -Wextra -Werror 
-#-fsanitize=address
+CFLAGS =   -Wall -Wextra -Werror
+
+# -g3 -fsanitize=address
 
 ARGUMENT_RUN = 
 ARGUMENT_RUN_TEST =
@@ -113,16 +114,20 @@ SRCS =	checker/and_or_checker.c								\
 		execution/exec_pipe_cmd.c								\
 		execution/create_argv_cmd.c								\
 		execution/count_pipe.c									\
-		signal_management/signal_management.c					\
+		execution/main_execution.c								\
+		signal_management/signal_sigquit.c						\
+		signal_management/signal_sigint.c						\
 		utils/jump_caracters.c									\
 		utils/is_functions.c									\
 		gestion_erreur/open_failed.c							\
-		execution/main_execution.c								\
+		gestion_erreur/cmd_not_found.c							\
+		heredoc/heredoc.c										\
+		heredoc/destuct_heredoc.c								\
+		heredoc/create_all_heredoc.c							\
 		wildcard/wildcard.c										\
 		wildcard/wildcard_utils.c								\
-
-#SRCS_TEST = builtins/export/main_export.c		
-SRCS_TEST = wildcard/wildcard.c
+		
+SRCS_TEST = test/test.c	
 
 ################################################################################
 ########							Libraries							########
@@ -171,7 +176,7 @@ header:
 		echo "| '_ \` _ \| | '_ \| / __| '_ \ / _ \ | | "
 		echo "| | | | | | | | | | \__ \ | | |  __/ | | "
 		echo "|_| |_| |_|_|_| |_|_|___/_| |_|\___|_|_| "
-		echo "                 by AirPottier and Co"
+		echo "                 by Bsavinel_and_associates"
 		echo "${NO_COLOR}"
 
 $(NAME) : header $(OBJS) $(LIBS)

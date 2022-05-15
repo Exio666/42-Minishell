@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc.h                                          :+:      :+:    :+:   */
+/*   cmd_not_founf.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 14:25:18 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/13 17:54:21 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/10 17:00:02 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/10 17:00:54 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEREDOC_H
-# define HEREDOC_H
+#ifndef CMD_NOT_FOUNF_H
+# define CMD_NOT_FOUNF_H
 
 # include "minishell.h"
-# include "destruct_heredoc.h"
-# include "create_all_heredoc.h"
 
-int		change_name_heredoc(char *str);
-void	feed_herdoc(int fd, char *end);
-char	*heredoc_create(char *end);
+void	ft_print_not_found(char *cmd);
 
 #endif
