@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 12:32:49 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/15 12:38:28 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,11 @@ int	execute_command(t_lst_token *token, t_lst_env **env_list)
 
 	count = count_pipe(token);
 	expand_command(token, *env_list);
-<<<<<<< HEAD
 	expand_wildcard_command(token);
-	if (count == 1)
-	{
-//		print_token_list(token);
-=======
 	signal(SIGQUIT, &handler_sigquit_exit);
 	signal(SIGINT, &handler_sigint_empty);
 	if (count == 1)
 	{
->>>>>>> bsavinel
 		if (set_up_redirect(token, 0) == 1)
 			return (1);
 		argv = create_argv_cmd(token);
