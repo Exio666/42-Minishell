@@ -6,12 +6,12 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:35:18 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/06 11:26:36 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 20:22:16 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
+/*
 void	print2DUtil(t_btree *root, int space)
 {
     // Base case
@@ -57,6 +57,7 @@ void	print2D(t_btree *root)
    // Pass initial space count as 0
    print2DUtil(root, 0);
 }
+*/
 /*
 void	level_by_level_printing(t_btree *root)
 {
@@ -106,6 +107,7 @@ void	level_by_level_printing(t_btree *root)
 }
 
 */
+/*
 void	printab_input_level(t_input_level	*input_level)
 {
 	int len = ft_strlen(input_level->input);
@@ -120,3 +122,4 @@ void	printab_input_level(t_input_level	*input_level)
 	}
 	printf("\n");
 }
+*/

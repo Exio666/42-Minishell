@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 16:25:57 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/21 14:23:29 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 20:20:58 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_list	*ft_lstnew(void *content)
 	new->next = NULL;
 	return (new);
 }
-
 
 t_list	*ft_lstnew_calloc(void *content)
 {

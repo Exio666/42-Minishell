@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_pipe_sequence.c                               :+:      :+:    :+:   */
+/*   __ft_calloc_env_utils.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 14:32:07 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 20:26:56 by rpottier         ###   ########.fr       */
+/*   Created: 2022/05/15 21:22:20 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/15 21:23:01 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-/*
-int	main(int argc, char	**argv)
-{
-	t_btree	*root;
-	
-	//if (argc < 2)
-	//{
-//		printf("NEED ARG\n");
-//		return (0);
-//	}
-	(void)(argv);
-	(void)(argc);
-	char str[]= "echo a && echo (&& ||)\"";
-//	char	*str = argv[1];
-	root = get_btree_of_logical_op(str);
-	add_all_pipe_sequence_in_tree(&root, str);
-//	print2D(root);
-	__ft_calloc(-1);
-	return (0);
-}
-*/
+#ifndef __FT_CALLOC_ENV_UTILS_H
+# define __FT_CALLOC_ENV_UTILS_H
+
+# include "minishell.h"
+
+char	*ft_itoa_env(int n);
+char	*ft_strdup_env(const char *src);
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:15:56 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 18:23:49 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 18:31:45 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	expand_wildcard_command(t_lst_token *token)
 		if (is_an_asterix_out_of_quotes(token))
 		{
 			new_token_list = expand_wildcard_token(token);
+			sort_token_list(&new_token_list);
 			if (new_token_list)
 			{
 				size_new_token_list = ft_size_token_list(new_token_list);
@@ -68,7 +69,7 @@ int	ft_size_token_list(t_lst_token *token)
 	return (count);
 }
 
-int both_start_with_dot(char *pattern, char *str)
+int	both_start_with_dot(char *pattern, char *str)
 {
 	if (is_dot(str[0]) && is_dot(pattern[0]))
 		return (TRUE);
@@ -102,8 +103,5 @@ t_lst_token	*expand_wildcard_token(t_lst_token *token)
 		entity = readdir(dir);
 	}
 	free(dir);
-	print_token_list(token_list);
-	sort_token_list(&token_list);
-	print_token_list(token_list);
 	return (token_list);
 }

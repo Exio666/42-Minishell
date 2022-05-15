@@ -6,11 +6,18 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 19:49:28 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 13:10:25 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 21:25:55 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	is_dollar(char c)
+{
+	if (c == '$')
+		return (TRUE);
+	return (FALSE);
+}
 
 int	is_white_space(char c)
 {

@@ -6,18 +6,11 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 13:51:05 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 21:25:50 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int	is_dollar(char c)
-{
-	if (c == '$')
-		return (TRUE);
-	return (FALSE);
-}
 
 int	get_var_length(char	*token)
 {

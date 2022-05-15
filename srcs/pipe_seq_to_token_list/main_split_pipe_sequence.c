@@ -6,14 +6,14 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:08:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/22 10:57:31 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 21:23:42 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // "echo a && echo b '|| (echo c || echo d)' && echo e"
 
 #include "minishell.h"
-
+/*
 int main(int argc, char **argv)
 {
 	char **split;
@@ -38,3 +38,4 @@ int main(int argc, char **argv)
 	__ft_calloc(-1);
 	return (0);
 }
+*/

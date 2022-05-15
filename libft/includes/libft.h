@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:38:07 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/12 15:35:52 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/15 20:20:45 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,16 @@ void			ft_lstadd_back(t_list **alst, t_list *elem);
 void			ft_lstdelone(t_list *lst, void (*del)(void*));
 void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
-t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
+					void (*del)(void *));
 
 /*
  *	Fonction Dlist
  */
 
 t_dlist			*ft_dlistlast(t_dlist *lst);
-t_dlist			*ft_dlistmap(t_dlist *lst, void *(*f)(void *), void (*del)(void*));
+t_dlist			*ft_dlistmap(t_dlist *lst, void *(*f)(void *),
+					void (*del)(void*));
 t_dlist			*ft_dlistnew(void *content);
 int				ft_dlistsize(t_dlist *lst);
 void			ft_dlistadd_back(t_dlist **alst, t_dlist *new);

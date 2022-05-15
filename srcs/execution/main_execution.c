@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 12:47:32 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 21:24:19 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	exit_ctr_d(char *command_line)
 	printf("exit\n");
 	printf(RESET);
 	free(command_line);
-
 	__ft_calloc_env(-1);
 	__ft_calloc(-1);
 	rl_clear_history();

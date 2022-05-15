@@ -6,12 +6,12 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 12:59:32 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/29 15:38:44 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 21:13:08 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
+/*
 void	print_split_tab(char **split)
 {
 	for (int i = 0; split[i]; i++)
@@ -29,3 +29,4 @@ void	print_split_lst(t_list	*lst)
 		lst = lst->next;
 	}
 }
+*/

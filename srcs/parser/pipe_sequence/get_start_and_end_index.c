@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:59:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 13:10:25 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 20:26:41 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	get_start_index_pipe_sequence(char *user_input, int pipe_sequence_to_find)
 		{
 			start_index += 2;
 			current_pipe_seq++;
-			while (user_input[start_index] && is_white_space(user_input[start_index]))
+			while (user_input[start_index]
+				&& is_white_space(user_input[start_index]))
 				start_index++;
 		}
 		else
@@ -54,12 +55,14 @@ void	pipe_skip_quote(char *str, int *index)
 {
 	if (str && *index < (int)ft_strlen(str))
 	{
-		if (str[(*index)] && (is_simple_quote(str[(*index)]) || is_double_quote(str[(*index)])))
+		if (str[(*index)] && (is_simple_quote(str[(*index)])
+				|| is_double_quote(str[(*index)])))
 		{
 			if (is_simple_quote(str[(*index)]))
 			{
 				(*index)++;
-				while (str[(*index)] && *index && !is_simple_quote(str[(*index)]))
+				while (str[(*index)] && *index
+					&& !is_simple_quote(str[(*index)]))
 					(*index)++;
 				if (str[(*index)] && str[(*index) + 1] != '\0')
 					(*index)++;
@@ -67,7 +70,8 @@ void	pipe_skip_quote(char *str, int *index)
 			else if (is_double_quote(str[(*index)]))
 			{
 				(*index)++;
-				while (str[(*index)] && *index && !is_double_quote(str[(*index)]))
+				while (str[(*index)] && *index
+					&& !is_double_quote(str[(*index)]))
 					(*index)++;
 				if (str[(*index)] && str[(*index) + 1] != '\0')
 					(*index)++;

@@ -6,14 +6,14 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:01:16 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/05 15:44:37 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 20:28:08 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 // export a="cho a"
-
+/*
 void	launch_test_a_equal_cho_a(char **envp)
 {
 	printf(RED "a=\"cho a\"\n" RESET);
@@ -202,7 +202,7 @@ void test_8_bis(char **envp)
 	printf("\n");
 }
 
-
+*/
 
 
 
@@ -212,7 +212,7 @@ void test_8_bis(char **envp)
 /*
 export a="    bonjour    "
 */
-
+/*
 void	launch_test_a_equal_bonjour_with_space(char **envp)
 {
 	printf(RED "a=\"    bonjour    \"\n" RESET);
@@ -307,3 +307,4 @@ void test13(char **envp)
 
 	printf("\n");
 }
+*/

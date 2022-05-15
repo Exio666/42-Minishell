@@ -6,12 +6,12 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 02:31:31 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/28 12:39:22 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 20:30:27 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
+/*
 int main(int argc, char **argv, char **envp)
 {
 	t_lst_env	*env_list;
@@ -33,3 +33,5 @@ int main(int argc, char **argv, char **envp)
 	}
 	return (0);
 }
+
+*/
