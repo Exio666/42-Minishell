@@ -6,12 +6,12 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 11:17:04 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 12:47:47 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/15 12:52:49 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdio.h"
+
 static void	__ft_lstclear(t_list **lst)
 {
 	t_list	*tmp;
@@ -29,15 +29,11 @@ static void	__ft_lstclear(t_list **lst)
 static void	__free_exit(t_list **lst, int do_exit)
 {
 	__ft_lstclear(lst);
-<<<<<<< HEAD
-	*lst = NULL;
-=======
 	if (do_exit == 1)
 	{
 		ft_putstr_fd("malloc failed\n", 2);
 		exit(1);
 	}
->>>>>>> bdafd4307ba570a8fc08738532e43b35c0526c24
 }
 
 void	*__ft_calloc(ssize_t size)
@@ -48,12 +44,7 @@ void	*__ft_calloc(ssize_t size)
 
 	if (size < 0)
 	{
-<<<<<<< HEAD
-		printf("freing\n");
-		__free_exit(&list_malloc);
-=======
 		__free_exit(&list_malloc, 0);
->>>>>>> bdafd4307ba570a8fc08738532e43b35c0526c24
 		return (NULL);
 	}
 	content = ft_calloc(1, size);
