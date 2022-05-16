@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signal_sigquit.c                                   :+:      :+:    :+:   */
+/*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 12:46:30 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/16 13:45:59 by rpottier         ###   ########.fr       */
+/*   Created: 2022/05/16 14:41:27 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/16 15:31:37 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	handler_sigquit_exit(int sig)
+void	free_all(void)
 {
-	(void)sig;
-}
-
-void	handler_sigquit_empty(int sig)
-{
-	(void)sig;
+	__ft_calloc(-1);
+	__ft_calloc_env(-1);
+	rl_clear_history();
+	//save_fd(3);	
 }

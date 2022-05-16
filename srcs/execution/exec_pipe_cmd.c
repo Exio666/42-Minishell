@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:27:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/15 13:17:51 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/16 15:48:56 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ void	multi_close(int fd_1, int fd_2, int fd_3, int fd_4)
 		close(fd_4);
 }
 
+void init_pipe_fd(int pipe[2])
+{
+	pipe[0] = -1;
+	pipe[1] = -1;
+}
+
 int	exec_pipe_cmd(t_lst_token *token, t_lst_env **env_list, int nb_cmd)
 {
 	int		pipe_stock[2];
@@ -59,11 +65,17 @@ int	exec_pipe_cmd(t_lst_token *token, t_lst_env **env_list, int nb_cmd)
 	int		status;
 
 	i = 0;
-	pipe_stock[0] = -1;
-	pipe_stock[1] = -1;
+	init_pipe_fd(pipe_stock);
+	init_pipe_fd(new_pipe);
 	while (i < nb_cmd)
 	{
-		pipe(new_pipe);
+		if (pipe(new_pipe) == -1)
+		{
+			while (waitpid(-1, NULL, 0) > 0)
+				;
+			multi_close(pipe_stock[0], pipe_stock[1], new_pipe[0], new_pipe[1]);
+			free_all();
+		}
 		pid = fork();
 		if (pid == 0)
 		{

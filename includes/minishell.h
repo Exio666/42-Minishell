@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/14 10:49:25 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/16 15:30:59 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@
  *	Utils
  */
 
+# include "free_all.h"
 # include "jump_caracters.h"
 # include "is_functions.h"
 

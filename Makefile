@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/16 08:45:22 by rpottier         ###   ########.fr        #
+#    Updated: 2022/05/16 15:30:11 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,6 +118,7 @@ SRCS =	checker/and_or_checker.c								\
 		execution/main_execution.c								\
 		signal_management/signal_sigquit.c						\
 		signal_management/signal_sigint.c						\
+		utils/free_all.c									\
 		utils/jump_caracters.c									\
 		utils/is_functions.c									\
 		gestion_erreur/open_failed.c							\

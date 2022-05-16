@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/16 11:44:02 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/16 15:06:09 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ void	reset_terminal(void)
 	if (error == -1)
 	{
 		ft_putendl_fd("Error: Fatal bad open of file\n", 2);
-		__ft_calloc(-1);
-		__ft_calloc_env(-1);
-		rl_clear_history();
-		//save_fd(3);
+		free_all();
 		exit(1);
 	}
 }
@@ -55,10 +52,23 @@ void	exit_ctr_d(char *command_line)
 	exit(g_exit_status);
 }
 
+
+void process_command(char *command_line, t_lst_env *env_list)
+{
+	t_btree		*root;
+	
+	root = get_btree_of_logical_op(command_line);
+	add_all_pipe_sequence_in_tree(&root, command_line);
+	create_all_heredoc(&root, command_line);
+	free(command_line);
+	execute_command_tree(root, &env_list);
+	__ft_calloc(-1);
+}
+
+
 int	main(int argc, char **argv, char **envp)
 {
 	char		*command_line;
-	t_btree		*root;
 	t_lst_env	*env_list;
 	const char	prompt[] = GRN "AirPottier & co$ " RESET;
 
@@ -70,20 +80,13 @@ int	main(int argc, char **argv, char **envp)
 	{
 		if (g_exit_status == 386)
 			g_exit_status = 130;
-		signal(SIGQUIT, &handler_sigquit_empty);
+		signal(SIGQUIT, SIG_IGN);
 		signal(SIGINT, &handler_sigint_prompt);
 		reset_terminal();
 		command_line = readline(prompt);
 		add_history(command_line);
 		if (primary_checker(command_line) == TRUE && check_all_pipe_sequence(command_line) == TRUE)
-		{
-			root = get_btree_of_logical_op(command_line);
-			add_all_pipe_sequence_in_tree(&root, command_line);
-			create_all_heredoc(&root, command_line);
-			free(command_line);
-			execute_command_tree(root, &env_list);
-			__ft_calloc(-1);
-		}
+			process_command(command_line, env_list);
 		else if (!command_line)
 			exit_ctr_d(command_line);
 		else
