@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 14:41:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/16 15:31:37 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:45:10 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ void	free_all(void)
 	__ft_calloc(-1);
 	__ft_calloc_env(-1);
 	rl_clear_history();
-	//save_fd(3);	
+//	save_fd(3);
 }

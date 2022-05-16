@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/16 16:35:40 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/16 18:03:47 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,12 @@ void	reset_terminal(void)
 
 void	exit_ctr_d(char *command_line)
 {
-	printf(RED_BOLD);
-	printf("exit\n");
-	printf(RESET);
+	if (isatty(STDIN_FILENO))
+	{
+		printf(RED_BOLD);
+		printf("exit\n");
+		printf(RESET);
+	}
 	free(command_line);
 	__ft_calloc_env(-1);
 	__ft_calloc(-1);
@@ -52,11 +55,10 @@ void	exit_ctr_d(char *command_line)
 	exit(g_exit_status);
 }
 
-
-void process_command(char *command_line, t_lst_env *env_list)
+void	process_command(char *command_line, t_lst_env *env_list)
 {
 	t_btree		*root;
-	
+
 	root = get_btree_of_logical_op(command_line);
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	create_all_heredoc(&root, command_line);
@@ -65,8 +67,7 @@ void process_command(char *command_line, t_lst_env *env_list)
 	__ft_calloc(-1);
 }
 
-
-char *get_command_line(const char *prompt)
+char	*get_command_line(const char *prompt)
 {
 	char	*command_line;
 
@@ -74,10 +75,18 @@ char *get_command_line(const char *prompt)
 		command_line = readline(prompt);
 	else
 	{
-		printf("%s", prompt);
 		command_line = get_next_line(0);
+		command_line[ft_strlen(command_line) - 1] = '\0';
 	}
 	return (command_line);
+}
+
+int	check_command_is_ok(char *command_line)
+{
+	if (primary_checker(command_line) == TRUE
+		&& check_all_pipe_sequence(command_line) == TRUE)
+		return (TRUE);
+	return (FALSE);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -97,14 +106,14 @@ int	main(int argc, char **argv, char **envp)
 		signal(SIGINT, &handler_sigint_prompt);
 		command_line = get_command_line(prompt);
 		add_history(command_line);
-		if (primary_checker(command_line) == TRUE && check_all_pipe_sequence(command_line) == TRUE)
+		if (check_command_is_ok(command_line))
 			process_command(command_line, env_list);
 		else if (!command_line)
 			exit_ctr_d(command_line);
 		else
 			free(command_line);
+		__ft_calloc(-1);
 	}
-	__ft_calloc(-1);
 	return (0);
 }
 

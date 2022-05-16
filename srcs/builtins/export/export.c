@@ -6,13 +6,13 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:18:55 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/15 12:47:43 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:41:38 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	add_varr_env(char *name, char *varraible, t_lst_env **envp)
+int	add_varr_env(char *name, char *variable, t_lst_env **envp)
 {
 	t_lst_env	*end;
 	t_lst_env	*new;
@@ -22,14 +22,14 @@ int	add_varr_env(char *name, char *varraible, t_lst_env **envp)
 	while (end->next)
 		end = end->next;
 	new->name = name;
-	new->content = ft_strdup_env(varraible);
+	new->content = ft_strdup_env(variable);
 	new->next = NULL;
 	new->prev = end;
 	end->next = new;
 	return (0);
 }
 
-int	put_varraible(char *arg, t_lst_env **envp)
+int	put_variable(char *arg, t_lst_env **envp)
 {
 	char	*name;
 	int		i;
@@ -48,7 +48,7 @@ int	put_varraible(char *arg, t_lst_env **envp)
 		i++;
 	}
 	name[i] = '\0';
-	delete_varraible(name, envp);
+	delete_variable(name, envp);
 	add_varr_env(name, &arg[len + 1], envp);
 	return (0);
 }
@@ -63,7 +63,7 @@ int	ft_export(int ac, char **arg, t_lst_env **envp)
 	while (i < ac)
 	{
 		if (check_arg_export(arg[i]))
-			put_varraible(arg[i], envp);
+			put_variable(arg[i], envp);
 		else
 			retour = 1;
 		i++;

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 15:00:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/16 15:00:45 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:55:35 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "minishell.h"
 
-void free_all(void);
+void	free_all(void);
 
 #endif
