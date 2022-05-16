@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_pipe_cmd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:27:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/15 13:17:51 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/16 13:53:19 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	exec_pipe_cmd(t_lst_token *token, t_lst_env **env_list, int nb_cmd)
 	}
 	multi_close(pipe_stock[0], pipe_stock[1], -1, -1);
 	waitpid(pid, &status, 0);
-	g_exit_status = WEXITSTATUS(status);
+	exit_code_management(status);
 	while (waitpid(-1, NULL, 0) > 0)
 		;
 	return (0);

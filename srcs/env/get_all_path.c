@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 16:48:21 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 16:57:46 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/16 09:13:48 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char	*get_path_env_variable_from_array(char **envp)
 	int	i;
 
 	i = 0;
+	if (envp == NULL)
+		return (NULL);
 	while (envp[i] != NULL)
 	{
 		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
@@ -43,6 +45,8 @@ char	**split_path_env_variable_and_add_slash(char *path_env_variable)
 	int		i;
 	int		path_len;
 
+	if (!path_env_variable)
+		return (NULL);
 	all_path = ft_split(ft_strchr(path_env_variable, '=') + 1, ':');
 	i = 0;
 	while (all_path[i] != NULL && all_path[i][0] != 0)
@@ -84,7 +88,7 @@ int	execute(char **exe_argv, t_lst_env **env_list)
 			get_path_env_variable_from_array(envp));
 	i = 0;
 	exe_read = execve(exe_argv[0], exe_argv, envp);
-	while (all_path[i] && exe_read == -1)
+	while (*env_list != NULL && all_path[i] && exe_read == -1)
 	{
 		if (access(all_path[i], X_OK) == 0)
 		{

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 13:19:55 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/05 12:04:42 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/16 09:10:55 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ char	**env_list_to_tab(t_lst_env **list_env)
 
 	index = 0;
 	list = *list_env;
-	tab = __ft_calloc(sizeof(char *) * (env_lst_size(list) + 1));
-	if (!tab)
+	if (!list)
 		return (NULL);
+	tab = __ft_calloc(sizeof(char *) * (env_lst_size(list) + 1));
 	while (list)
 	{
 		tmp = ft_strjoin(list->name, "=");

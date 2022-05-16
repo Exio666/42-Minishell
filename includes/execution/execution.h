@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:34:08 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 19:11:40 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:41:46 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@
 # include "count_pipe.h"
 # include "main_execution.h"
 # include "create_argv_cmd.h"
+# include "save_fd.h"
 
 void	execute_command_tree(t_btree *root, t_lst_env **env_list);
 int		execute_command(t_lst_token *token, t_lst_env **env_list);
 int		exec_one_cmd(char **argv, t_lst_env **env_list);
 void	print_token_list(t_lst_token *token);
+void	exit_code_management(int status);
 
 #endif

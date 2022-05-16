@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 12:38:28 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:44:32 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,32 @@ void	execute_command_tree(t_btree *root, t_lst_env **env_list)
 	if (!root)
 		return ;
 	execute_command_tree(root->left, env_list);
+	save_fd(1);
 	if (root->token && g_exit_status != 386)
 		execute_command(root->token, env_list);
+	save_fd(2);
+	save_fd(3);
 	if (root->logic_op
 		&& ((g_exit_status == 0 && root->logic_op->type == 1)
 			|| (g_exit_status != 0 && root->logic_op->type == 2)))
 		execute_command_tree(root->right, env_list);
+}
+
+void	exit_code_management(int status)
+{
+	if (WIFEXITED(status))
+	{
+		g_exit_status = WEXITSTATUS(status);
+		return ;
+	}
+	if (WIFSIGNALED(status))
+	{
+		g_exit_status = 128 + WTERMSIG(status);
+		ft_putstr_fd("Core dumped by the signal number ", 2);
+		ft_putnbr_fd(WTERMSIG(status), 2);
+		ft_putstr_fd("\n", 2);
+	}
+	return ;
 }
 
 int	exec_one_cmd(char **argv, t_lst_env **env_list)
@@ -44,7 +64,7 @@ int	exec_one_cmd(char **argv, t_lst_env **env_list)
 		}
 		while (waitpid(-1, &retour, 0) > 0)
 			;
-		g_exit_status = WEXITSTATUS(retour);
+		exit_code_management(retour);
 	}
 	else
 		g_exit_status = retour;
@@ -71,6 +91,7 @@ int	execute_command(t_lst_token *token, t_lst_env **env_list)
 	expand_wildcard_command(token);
 	signal(SIGQUIT, &handler_sigquit_exit);
 	signal(SIGINT, &handler_sigint_empty);
+	
 	if (count == 1)
 	{
 		if (set_up_redirect(token, 0) == 1)

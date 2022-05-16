@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_pipe_cmd.h                                    :+:      :+:    :+:   */
+/*   seg.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/03 14:13:04 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/16 16:10:33 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/16 10:37:47 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/16 10:38:25 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXEC_PIPE_CMD_H
-# define EXEC_PIPE_CMD_H
+int main()
+{
+	char *str;
 
-# include "minishell.h"
-
-int		len_av(char **argv);
-void	exec_cmd(t_lst_token *token, t_lst_env **env_list);
-int		exec_pipe_cmd(t_lst_token *token, t_lst_env **env_list, int nb_cmd);
-void	multi_close(int fd_1, int fd_2, int fd_3, int fd_4);
-
-#endif
+	str[1] = '\0';
+	return (0);
+}

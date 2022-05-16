@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_execution.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/16 08:50:41 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:14:30 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(int argc, char **argv, char **envp)
 	char		*command_line;
 	t_btree		*root;
 	t_lst_env	*env_list;
-	const char	prompt[] = GRN "AirPottier & co$ " RESET;
+	const char	prompt[] = GRN "Bsavinel_and_associates_shell$ " RESET;
 
 	(void)(argc);
 	(void)(argv);

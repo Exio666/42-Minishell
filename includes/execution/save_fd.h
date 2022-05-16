@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_pipe_cmd.h                                    :+:      :+:    :+:   */
+/*   save_fd.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/03 14:13:04 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/16 16:10:33 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/05/16 14:40:19 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/05/16 14:41:18 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXEC_PIPE_CMD_H
-# define EXEC_PIPE_CMD_H
+#ifndef SAVE_FD_H
+# define SAVE_FD_H
 
 # include "minishell.h"
 
-int		len_av(char **argv);
-void	exec_cmd(t_lst_token *token, t_lst_env **env_list);
-int		exec_pipe_cmd(t_lst_token *token, t_lst_env **env_list, int nb_cmd);
-void	multi_close(int fd_1, int fd_2, int fd_3, int fd_4);
+void	exit_save_fd(int cin, int cout);
+void	multi_dup2(int cin, int cout);
+void	save_fd(int mod);
 
 #endif
