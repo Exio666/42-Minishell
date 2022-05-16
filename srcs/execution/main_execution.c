@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/16 15:06:09 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:26:43 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,20 @@ void process_command(char *command_line, t_lst_env *env_list)
 }
 
 
+char *get_command_line(const char *prompt)
+{
+	char	*command_line;
+
+	if (isatty(STDIN_FILENO))
+		command_line = readline(prompt);
+	else
+	{
+		printf("%s", prompt);
+		command_line = get_next_line(0);
+	}
+	return (command_line);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	char		*command_line;
@@ -74,7 +88,6 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)(argc);
 	(void)(argv);
-	env_list = NULL;
 	env_list = convert_env_array_in_list(envp);
 	while (42)
 	{
@@ -82,8 +95,7 @@ int	main(int argc, char **argv, char **envp)
 			g_exit_status = 130;
 		signal(SIGQUIT, SIG_IGN);
 		signal(SIGINT, &handler_sigint_prompt);
-		reset_terminal();
-		command_line = readline(prompt);
+		command_line = get_command_line(prompt);
 		add_history(command_line);
 		if (primary_checker(command_line) == TRUE && check_all_pipe_sequence(command_line) == TRUE)
 			process_command(command_line, env_list);
@@ -91,7 +103,6 @@ int	main(int argc, char **argv, char **envp)
 			exit_ctr_d(command_line);
 		else
 			free(command_line);
-			
 	}
 	__ft_calloc(-1);
 	return (0);
