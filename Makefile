@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/15 21:33:18 by rpottier         ###   ########.fr        #
+#    Updated: 2022/05/16 08:45:22 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ NAME = minishell
 NAME_TEST = minishell_test
 
 CC = cc 
-CFLAGS =   -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
-# -g3 -fsanitize=address
+#  -fsanitize=address
 
 ARGUMENT_RUN = 
 ARGUMENT_RUN_TEST =
