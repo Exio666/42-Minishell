@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:53:17 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/11 11:32:09 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:41:17 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int	ft_cd_absolu_path(char *path_move, t_lst_env **envp)
 	else
 	{
 		pwd = get_variable_content(ft_get_env(envp, "PWD"));
-		put_varraible(ft_strjoin("OLDPWD=", pwd), envp);
+		put_variable(ft_strjoin("OLDPWD=", pwd), envp);
 		pwd = __ft_calloc(sizeof(char) * 2048);
 		getcwd(pwd, 2048);
 		if (!pwd)
 			return (1);
-		put_varraible(ft_strjoin("PWD=", pwd), envp);
+		put_variable(ft_strjoin("PWD=", pwd), envp);
 		return (0);
 	}
 }
@@ -58,12 +58,12 @@ int	ft_cd_relative_path(char *path_move, t_lst_env **envp)
 	else
 	{
 		pwd = get_variable_content(ft_get_env(envp, "PWD"));
-		put_varraible(ft_strjoin("OLDPWD=", pwd), envp);
+		put_variable(ft_strjoin("OLDPWD=", pwd), envp);
 		pwd = __ft_calloc(sizeof(char) * 2048);
 		getcwd(pwd, 2048);
 		if (!pwd)
 			return (1);
-		put_varraible(ft_strjoin("PWD=", pwd), envp);
+		put_variable(ft_strjoin("PWD=", pwd), envp);
 		return (0);
 	}
 }

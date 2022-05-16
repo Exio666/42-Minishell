@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 12:15:25 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/13 18:07:28 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:51:36 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ctrl_d_herdoc(char *end, int line)
 	ft_putstr_fd("\')\n", 2);
 }
 
-void	feed_herdoc(int fd, char *end)
+void	feed_heredoc(int fd, char *end)
 {
 	char	*str;
 	int		line;
@@ -69,12 +69,34 @@ void	feed_herdoc(int fd, char *end)
 	}
 }
 
+void	exec_heredoc(int fd, char *end)
+{
+	signal(SIGINT, &handler_sigint_heredoc);
+	feed_heredoc(fd, end);
+	close(fd);
+	free_all();
+	exit(0);
+}
+
+char	*fork_heredoc(int fd, char *end, char *str)
+{
+	int	pid;
+	int	status;
+
+	pid = fork();
+	if (pid == 0)
+		exec_heredoc(fd, end);
+	waitpid(pid, &status, 0);
+	if (WEXITSTATUS(status) == 130)
+		g_exit_status = 386;
+	close(fd);
+	return (str);
+}
+
 char	*heredoc_create(char *end)
 {
 	char	*str;
 	int		fd;
-	int		pid;
-	int		status;
 
 	fd = -1;
 	str = ft_strdup("/tmp/.heredoc_000");
@@ -82,26 +104,11 @@ char	*heredoc_create(char *end)
 	{
 		fd = open(str, O_CREAT | O_RDWR | O_EXCL, 0777);
 		if (fd >= 0)
-		{
-			pid = fork();
-			if (pid == 0)
-			{
-				signal(SIGINT, &handler_sigint_heredoc);
-				feed_herdoc(fd, end);
-				close(fd);
-				__ft_calloc(-1);
-				exit(0);
-			}
-			waitpid(pid, &status, 0);
-			if (WEXITSTATUS(status) == 130)
-				g_exit_status = 386;
-			close(fd);
-			return (str);
-		}
+			return (fork_heredoc(fd, end, str));
 		if (!change_name_heredoc(str))
 		{
 			ft_putstr_fd("Heredoc creation failed\n", 2);
-			str = "/dev/null";
+			str = ft_strdup("/dev/null");
 			return (str);
 		}
 	}

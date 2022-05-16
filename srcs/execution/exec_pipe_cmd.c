@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:27:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/16 15:48:56 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:52:23 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,52 @@ void	multi_close(int fd_1, int fd_2, int fd_3, int fd_4)
 		close(fd_4);
 }
 
-void init_pipe_fd(int pipe[2])
+int	init_pipe_fd(int pipe_stock[2], int new_pipe[2])
 {
-	pipe[0] = -1;
-	pipe[1] = -1;
+	pipe_stock[0] = -1;
+	pipe_stock[1] = -1;
+	new_pipe[0] = -1;
+	new_pipe[1] = -1;
+	return (0);
+}
+
+void	failed_pipe(int pipe_stock[2], int new_pipe[2])
+{
+	while (waitpid(-1, NULL, 0) > 0)
+		;
+	multi_close(pipe_stock[0], pipe_stock[1], new_pipe[0], new_pipe[1]);
+	free_all();
+	ft_putstr_fd("Fatal: pipe() failed\n", 2);
+	exit(1);
+}
+
+void	dup_std_fileno(int pipe_stock[2], int new_pipe[2], int nb_cmd, int i)
+{
+	if (i != nb_cmd - 1)
+		dup2(new_pipe[1], STDOUT_FILENO);
+	if (i != 0)
+		dup2(pipe_stock[0], STDIN_FILENO);
+	multi_close(pipe_stock[0], pipe_stock[1], new_pipe[0], new_pipe[1]);
+}
+
+t_lst_token	*move_to_next_pipe(t_lst_token *token)
+{
+	while (token && token->type != TOK_PIPE)
+		token = token->next;
+	if (token && token->type == TOK_PIPE)
+		token = token->next;
+	return (token);
+}
+
+void	end_pipe_execution(int pid, int pipe_stock[2])
+{
+	int		status;
+
+	multi_close(pipe_stock[0], pipe_stock[1], -1, -1);
+	waitpid(pid, &status, 0);
+	g_exit_status = WEXITSTATUS(status);
+	while (waitpid(-1, NULL, 0) > 0)
+		;
 }
 
 int	exec_pipe_cmd(t_lst_token *token, t_lst_env **env_list, int nb_cmd)
@@ -62,44 +104,25 @@ int	exec_pipe_cmd(t_lst_token *token, t_lst_env **env_list, int nb_cmd)
 	int		new_pipe[2];
 	int		i;
 	int		pid;
-	int		status;
 
-	i = 0;
-	init_pipe_fd(pipe_stock);
-	init_pipe_fd(new_pipe);
+	i = init_pipe_fd(pipe_stock, new_pipe);
 	while (i < nb_cmd)
 	{
 		if (pipe(new_pipe) == -1)
-		{
-			while (waitpid(-1, NULL, 0) > 0)
-				;
-			multi_close(pipe_stock[0], pipe_stock[1], new_pipe[0], new_pipe[1]);
-			free_all();
-		}
+			failed_pipe(pipe_stock, new_pipe);
 		pid = fork();
 		if (pid == 0)
 		{
-			if (i != nb_cmd - 1)
-				dup2(new_pipe[1], STDOUT_FILENO);
-			if (i != 0)
-				dup2(pipe_stock[0], STDIN_FILENO);
-			multi_close(pipe_stock[0], pipe_stock[1], new_pipe[0], new_pipe[1]);
+			dup_std_fileno(pipe_stock, new_pipe, nb_cmd, i);
 			exec_cmd(token, env_list);
 		}
-		while (token && token->type != TOK_PIPE)
-			token = token->next;
-		if (token && token->type == TOK_PIPE)
-			token = token->next;
+		token = move_to_next_pipe(token);
 		if (i != 0)
 			multi_close(pipe_stock[0], pipe_stock[1], -1, -1);
 		pipe_stock[0] = new_pipe[0];
 		pipe_stock[1] = new_pipe[1];
 		i++;
 	}
-	multi_close(pipe_stock[0], pipe_stock[1], -1, -1);
-	waitpid(pid, &status, 0);
-	g_exit_status = WEXITSTATUS(status);
-	while (waitpid(-1, NULL, 0) > 0)
-		;
+	end_pipe_execution(pid, pipe_stock);
 	return (0);
 }

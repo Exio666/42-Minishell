@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 14:25:18 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/13 17:54:21 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:40:24 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "create_all_heredoc.h"
 
 int		change_name_heredoc(char *str);
-void	feed_herdoc(int fd, char *end);
+void	feed_heredoc(int fd, char *end);
 char	*heredoc_create(char *end);
 
 #endif

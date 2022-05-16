@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 14:33:45 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/13 10:33:48 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:41:38 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_lst_env	*find_element_with_name(char *name, t_lst_env **envp)
 	return (tmp);
 }
 
-int	delete_varraible(char *name, t_lst_env **envp)
+int	delete_variable(char *name, t_lst_env **envp)
 {
 	t_lst_env	*elem;
 	t_lst_env	*prev;
@@ -76,7 +76,7 @@ int	ft_unset(int ac, char **arg, t_lst_env **envp)
 	while (i < ac)
 	{
 		if (check_arg_unset(arg[i]))
-			delete_varraible(arg[i], envp);
+			delete_variable(arg[i], envp);
 		else
 			retour = 1;
 		i++;
