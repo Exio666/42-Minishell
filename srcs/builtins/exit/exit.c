@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 13:44:31 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/12 15:53:03 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/16 11:44:02 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ void	builtins_exit_prog(int ac, char **av)
 	if (!good_arg_for_exit(av[1]))
 	{
 		__ft_calloc(-1);
+		__ft_calloc_env(-1);
 		rl_clear_history();
+		//save_fd(3);
 		ft_putstr_fd("exit: qerq: numeric argument required\n", 2);
 		exit(2);
 	}
@@ -41,7 +43,9 @@ void	builtins_exit_prog(int ac, char **av)
 	{
 		nb = ft_atoi_long_long(av[1]);
 		__ft_calloc(-1);
+		__ft_calloc_env(-1);
 		rl_clear_history();
+		//save_fd(3);
 		exit(nb % 256);
 	}
 }
@@ -52,7 +56,9 @@ int	ft_exit(int ac, char **av)
 	if (ac == 1)
 	{
 		__ft_calloc(-1);
+		__ft_calloc_env(-1);
 		rl_clear_history();
+		//save_fd(3);
 		exit(g_exit_status % 256);
 	}
 	builtins_exit_prog(ac, av);

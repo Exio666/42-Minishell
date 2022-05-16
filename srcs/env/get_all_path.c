@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_all_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 16:48:21 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/10 16:57:46 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/16 11:17:05 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int	execute(char **exe_argv, t_lst_env **env_list)
 	char	**all_path;
 	char	**envp;
 
+	if (!exe_argv[0])
+		return (NO_ARG);
 	exe_read = -1;
 	envp = env_list_to_tab(env_list);
 	all_path = split_path_env_variable_and_add_slash(

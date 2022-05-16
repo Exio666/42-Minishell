@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_sequence_checker.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 12:09:11 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/13 11:16:39 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/16 10:48:06 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	len_no_whitespace(char *commande)
 	len = 0;
 	while (commande[i])
 	{
-		i++;
 		if (!ft_iswhitespace(commande[i]))
 			len++;
+		i++;
 	}	
 	return (len);
 }
@@ -50,6 +50,8 @@ int	check_all_pipe_sequence(char *command_line)
 	t_pipe_sequence	**splited;
 	int				i;
 
+	if (len_no_whitespace(command_line) == 0)
+		return (FALSE);
 	splited = split_all_pipe_sequence(command_line);
 	i = 0;
 	while (splited[i])

@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/16 08:50:41 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/16 11:44:02 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ void	reset_terminal(void)
 	if (error == -1)
 	{
 		ft_putendl_fd("Error: Fatal bad open of file\n", 2);
-		rl_clear_history();
 		__ft_calloc(-1);
+		__ft_calloc_env(-1);
+		rl_clear_history();
+		//save_fd(3);
 		exit(1);
 	}
 }
@@ -62,6 +64,7 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)(argc);
 	(void)(argv);
+	env_list = NULL;
 	env_list = convert_env_array_in_list(envp);
 	while (42)
 	{
