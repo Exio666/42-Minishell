@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 14:33:45 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/16 17:41:38 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:50:33 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	delete_variable(char *name, t_lst_env **envp)
 		prev->next = next;
 	if (next)
 		next->prev = prev;
+	if (!next && !prev)
+		*envp = NULL;
 	return (0);
 }
 

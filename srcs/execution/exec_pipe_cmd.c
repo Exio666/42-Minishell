@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:27:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/16 18:03:39 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:01:48 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,10 @@ int	init_pipe_fd(int pipe_stock[2], int new_pipe[2])
 
 void	failed_pipe(int pipe_stock[2], int new_pipe[2])
 {
+	(void)new_pipe;
 	while (waitpid(-1, NULL, 0) > 0)
 		;
-	multi_close(pipe_stock[0], pipe_stock[1], new_pipe[0], new_pipe[1]);
+	multi_close(pipe_stock[0], pipe_stock[1], -1, -1);
 	free_all();
 	ft_putstr_fd("Fatal: pipe() failed\n", 2);
 	exit(1);

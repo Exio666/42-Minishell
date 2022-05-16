@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:53:17 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/16 17:41:17 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:34:18 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,7 @@ int	ft_cd_relative_path(char *path_move, t_lst_env **envp)
 
 int	ft_cd_movedir(char *path_move, t_lst_env **envp)
 {
-	if (path_move[0] == '/')
-		return (ft_cd_absolu_path(path_move, envp));
-	else
-		return (ft_cd_relative_path(path_move, envp));
+	return(ft_cd_absolu_path(path_move, envp));
 }
 
 int	ft_cd(int ac, char **argv, t_lst_env **envp)

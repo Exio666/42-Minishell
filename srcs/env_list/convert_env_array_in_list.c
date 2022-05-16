@@ -12,9 +12,10 @@
 
 #include "minishell.h"
 
-t_lst_env	*convert_env_array_in_list(char **envp_array)
+t_lst_env	**convert_env_array_in_list(char **envp_array)
 {
 	t_lst_env	*head_list;
+	t_lst_env	**retour;
 	t_lst_env	*list_elem;
 	int			i;
 
@@ -26,5 +27,7 @@ t_lst_env	*convert_env_array_in_list(char **envp_array)
 		ft_dlist_env_add_back(&head_list, list_elem);
 		i++;
 	}
-	return (head_list);
+	retour = __ft_calloc_env(sizeof(t_lst_env *));
+	*retour = head_list;
+	return (retour);
 }

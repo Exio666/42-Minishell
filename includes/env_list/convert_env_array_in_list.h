@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_env_array_in_list.h                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 10:49:42 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/28 12:44:49 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:47:01 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "minishell.h"
 
-t_lst_env	*convert_env_array_in_list(char **envp_array);
+t_lst_env	**convert_env_array_in_list(char **envp_array);
 
 #endif

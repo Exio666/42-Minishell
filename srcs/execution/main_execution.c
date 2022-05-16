@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/16 18:03:47 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:47:18 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	exit_ctr_d(char *command_line)
 	exit(g_exit_status);
 }
 
-void	process_command(char *command_line, t_lst_env *env_list)
+void	process_command(char *command_line, t_lst_env **env_list)
 {
 	t_btree		*root;
 
@@ -63,7 +63,7 @@ void	process_command(char *command_line, t_lst_env *env_list)
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	create_all_heredoc(&root, command_line);
 	free(command_line);
-	execute_command_tree(root, &env_list);
+	execute_command_tree(root, env_list);
 	__ft_calloc(-1);
 }
 
@@ -92,7 +92,7 @@ int	check_command_is_ok(char *command_line)
 int	main(int argc, char **argv, char **envp)
 {
 	char		*command_line;
-	t_lst_env	*env_list;
+	t_lst_env	**env_list;
 	const char	prompt[] = GRN "Bsavinel_and_associates_shell$ " RESET;
 
 	(void)(argc);
@@ -116,19 +116,3 @@ int	main(int argc, char **argv, char **envp)
 	}
 	return (0);
 }
-
-/* Bloc de debugage */
-			/*split = split_by_separator(command_line, "|<>");
-		
-			printf("------------------------------\n");
-			print_split_tab(split);
-			printf("------------------------------\n");
-			lst_token = create_token_list(split);
-			print_split_lst(lst_token);
-	
-			printf("------------------------------\n");
-		
-			execute_here_doc_tree(root);
-			print2D(root);
-		
-			printf("------------------------------\n");*/

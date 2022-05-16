@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:18:55 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/16 17:41:38 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:40:09 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,19 @@ int	add_varr_env(char *name, char *variable, t_lst_env **envp)
 	t_lst_env	*end;
 	t_lst_env	*new;
 
-	end = *envp;
+
 	new = __ft_calloc_env(sizeof(t_lst_env) * 1);
-	while (end->next)
-		end = end->next;
 	new->name = name;
 	new->content = ft_strdup_env(variable);
 	new->next = NULL;
+	if (*envp == NULL)
+	{
+		*envp = new;
+		return (0);
+	}
+	end = *envp;
+	while (end && end->next)
+		end = end->next;	
 	new->prev = end;
 	end->next = new;
 	return (0);
