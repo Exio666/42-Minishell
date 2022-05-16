@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 13:44:31 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/12 15:53:03 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/16 15:31:04 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,14 @@ void	builtins_exit_prog(int ac, char **av)
 
 	if (!good_arg_for_exit(av[1]))
 	{
-		__ft_calloc(-1);
-		rl_clear_history();
+		free_all();
 		ft_putstr_fd("exit: qerq: numeric argument required\n", 2);
 		exit(2);
 	}
 	else if (good_arg_for_exit(av[1]) && ac == 2)
 	{
 		nb = ft_atoi_long_long(av[1]);
-		__ft_calloc(-1);
-		rl_clear_history();
+		free_all();
 		exit(nb % 256);
 	}
 }
@@ -51,8 +49,7 @@ int	ft_exit(int ac, char **av)
 	ft_putstr_fd("exit\n", 2);
 	if (ac == 1)
 	{
-		__ft_calloc(-1);
-		rl_clear_history();
+		free_all();
 		exit(g_exit_status % 256);
 	}
 	builtins_exit_prog(ac, av);

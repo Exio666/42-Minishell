@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/16 16:14:30 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:35:40 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ void	reset_terminal(void)
 	if (error == -1)
 	{
 		ft_putendl_fd("Error: Fatal bad open of file\n", 2);
-		rl_clear_history();
-		__ft_calloc(-1);
+		free_all();
 		exit(1);
 	}
 }
@@ -53,10 +52,37 @@ void	exit_ctr_d(char *command_line)
 	exit(g_exit_status);
 }
 
+
+void process_command(char *command_line, t_lst_env *env_list)
+{
+	t_btree		*root;
+	
+	root = get_btree_of_logical_op(command_line);
+	add_all_pipe_sequence_in_tree(&root, command_line);
+	create_all_heredoc(&root, command_line);
+	free(command_line);
+	execute_command_tree(root, &env_list);
+	__ft_calloc(-1);
+}
+
+
+char *get_command_line(const char *prompt)
+{
+	char	*command_line;
+
+	if (isatty(STDIN_FILENO))
+		command_line = readline(prompt);
+	else
+	{
+		printf("%s", prompt);
+		command_line = get_next_line(0);
+	}
+	return (command_line);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	char		*command_line;
-	t_btree		*root;
 	t_lst_env	*env_list;
 	const char	prompt[] = GRN "Bsavinel_and_associates_shell$ " RESET;
 
@@ -67,25 +93,16 @@ int	main(int argc, char **argv, char **envp)
 	{
 		if (g_exit_status == 386)
 			g_exit_status = 130;
-		signal(SIGQUIT, &handler_sigquit_empty);
+		signal(SIGQUIT, SIG_IGN);
 		signal(SIGINT, &handler_sigint_prompt);
-		reset_terminal();
-		command_line = readline(prompt);
+		command_line = get_command_line(prompt);
 		add_history(command_line);
 		if (primary_checker(command_line) == TRUE && check_all_pipe_sequence(command_line) == TRUE)
-		{
-			root = get_btree_of_logical_op(command_line);
-			add_all_pipe_sequence_in_tree(&root, command_line);
-			create_all_heredoc(&root, command_line);
-			free(command_line);
-			execute_command_tree(root, &env_list);
-			__ft_calloc(-1);
-		}
+			process_command(command_line, env_list);
 		else if (!command_line)
 			exit_ctr_d(command_line);
 		else
 			free(command_line);
-			
 	}
 	__ft_calloc(-1);
 	return (0);

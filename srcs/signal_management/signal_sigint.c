@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_sigint.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 10:35:52 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/15 12:44:24 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/16 11:44:02 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,9 @@ void	handler_sigint_empty(int sig)
 void	handler_sigint_heredoc(int sig)
 {
 	(void)sig;
+	__ft_calloc(-1);
+	__ft_calloc_env(-1);
+	rl_clear_history();
+	//save_fd(3);
 	exit(1);
 }
