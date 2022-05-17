@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 20:30:44 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/17 19:10:28 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,22 @@ char	*expand_variable(char *token, int *index, t_lst_env *env_list)
 	variable_name = NULL;
 	var_content_len = 0;
 	variable_name = get_variable_to_expand_name(&token[*index + 1]);
-	var_content = get_var_to_expand_content(variable_name, env_list);
-	if (!var_content)
+	if (!variable_name)
 	{
-		var_content = __ft_calloc(sizeof(char) * 1);
-		var_content_len = 0;
+		var_content = ft_strdup("$");
+		var_content_len = 1;
 	}
 	else
-		var_content_len = ft_strlen(var_content);
+	{
+		var_content = get_var_to_expand_content(variable_name, env_list);
+		if (!var_content)
+		{
+			var_content = __ft_calloc(sizeof(char) * 1);
+			var_content_len = 0;
+		}
+		else
+			var_content_len = ft_strlen(var_content);
+	}
 	insert_var_content_to_token(&token, var_content, *index);
 	*index = *index + (var_content_len - 1);
 	return (token);
