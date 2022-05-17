@@ -48,9 +48,10 @@ int	redirect_out_append(t_lst_token *token, int child)
 
 int	redirect_in(t_lst_token *token, int child)		
 {		
-	int	fd_file;		
-
-	token = token->next;		
+	int	fd_file;	
+	
+	if (token)
+		token = token->next;		
 	if (token)		
 	{		
 		fd_file = open(token->str, O_RDONLY);		
@@ -62,8 +63,9 @@ int	redirect_in(t_lst_token *token, int child)
 			return (open_failed(token->str, child));		
 		}		
 		close(fd_file);		
-	}		
-	token = token->next;		
+	}
+	if (token)	
+		token = token->next;		
 	return (0);		
 }		
 
