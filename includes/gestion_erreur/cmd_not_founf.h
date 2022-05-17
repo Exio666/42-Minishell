@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:00:02 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/10 17:00:54 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/17 20:33:46 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "minishell.h"
 
-void	ft_print_not_found(char *cmd);
+int		ft_print_not_found(char *cmd, char **all_path, int i);
+void	double_print_fd(char *str1, char *str2, int fd);
 
 #endif
