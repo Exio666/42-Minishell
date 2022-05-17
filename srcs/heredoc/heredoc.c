@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 12:15:25 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/17 08:31:23 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:11:46 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	feed_heredoc(int fd, char *end)
 			ctrl_d_heredoc(end, line);
 			return ;
 		}
-		if (ft_strncmp(str, end, ft_strlen(end)) == 0 || ft_strlen(str) == 0)
+		if (ft_strncmp(str, end, ft_strlen(end) + 2) == 0 || !str)
 		{
 			free(str);
 			return ;

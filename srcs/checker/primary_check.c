@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   primary_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 10:02:21 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/17 08:34:28 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:06:50 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ int	primary_checker(char *commande)
 		and_or_pipe_checker(commande, &check);
 	}
 	if (check.error == TRUE)
+	{
 		printf("%s\n", check.str);
+		g_exit_status = 2;
+	}
 	return (!check.error);
 }

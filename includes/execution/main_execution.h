@@ -17,7 +17,7 @@
 
 void	reset_terminal(void);
 void	exit_ctr_d(char *command_line);
-void	process_command(char *command_line, t_lst_env *env_list);
+void	process_command(char *command_line, t_lst_env **env_list);
 char	*get_command_line(const char *prompt);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:18:55 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/16 19:40:09 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:16:33 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	add_varr_env(char *name, char *variable, t_lst_env **envp)
 {
 	t_lst_env	*end;
 	t_lst_env	*new;
-
 
 	new = __ft_calloc_env(sizeof(t_lst_env) * 1);
 	new->name = name;
@@ -29,7 +28,7 @@ int	add_varr_env(char *name, char *variable, t_lst_env **envp)
 	}
 	end = *envp;
 	while (end && end->next)
-		end = end->next;	
+		end = end->next;
 	new->prev = end;
 	end->next = new;
 	return (0);

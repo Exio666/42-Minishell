@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/17 08:37:42 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/17 09:54:53 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	exit_code_management(int status)
 		ft_putnbr_fd(WTERMSIG(status), 2);
 		ft_putstr_fd("\n", 2);
 	}
+	else
+		g_exit_status = 0;
 	return ;
 }
 

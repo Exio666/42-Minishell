@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/17 09:49:27 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:13:24 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	g_exit_status = 0;
 int	main(int argc, char **argv, char **envp)
 {
 	char		*command_line;
-	t_lst_env	*env_list;
+	t_lst_env	**env_list;
 	const char	prompt[] = GRN "Bsavinel_and_associates_shell$ " RESET;
 
 	(void)(argc);

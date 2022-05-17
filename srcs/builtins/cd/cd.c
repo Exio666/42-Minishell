@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:53:17 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/16 19:34:18 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:17:27 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_cd_absolu_path(char *path_move, t_lst_env **envp)
 	}
 }
 
-int	no_dir(char *path_move)
+/*int	no_dir(char *path_move)
 {
 	ft_putstr_fd(CD_ERROR_NO_DIR, 2);
 	ft_putendl_fd(path_move, 2);
@@ -71,7 +71,7 @@ int	ft_cd_relative_path(char *path_move, t_lst_env **envp)
 int	ft_cd_movedir(char *path_move, t_lst_env **envp)
 {
 	return(ft_cd_absolu_path(path_move, envp));
-}
+}*/
 
 int	ft_cd(int ac, char **argv, t_lst_env **envp)
 {
@@ -93,5 +93,5 @@ int	ft_cd(int ac, char **argv, t_lst_env **envp)
 	}
 	else
 		path_move = argv[1];
-	return (ft_cd_movedir(path_move, envp));
+	return (ft_cd_absolu_path(path_move, envp));
 }
