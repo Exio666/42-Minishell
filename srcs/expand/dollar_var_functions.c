@@ -51,7 +51,7 @@ static int	ft_strcmp(char *s1, char *s2)
 
 char	*get_var_to_expand_content(char *var_name, t_lst_env *env_list)		
 {		
-	if (ft_strncmp(var_name, "?", 2) == 0)		
+	if (ft_strcmp(var_name, "?") == 0)		
 		return (ft_itoa(g_exit_status));		
 	while (env_list)		
 	{		
