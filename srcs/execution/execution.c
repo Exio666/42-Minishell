@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/17 08:37:42 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/17 09:57:04 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	exit_code_management(int status)
 		g_exit_status = WEXITSTATUS(status);
 		return ;
 	}
-	if (WIFSIGNALED(status))
+	if (__WCOREDUMP(status))
 	{
 		g_exit_status = 128 + WTERMSIG(status);
 		ft_putstr_fd("Core dumped by the signal number ", 2);
