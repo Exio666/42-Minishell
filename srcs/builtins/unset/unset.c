@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 14:33:45 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/16 19:50:33 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:07:33 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_lst_env	*find_element_with_name(char *name, t_lst_env **envp)
 	t_lst_env	*tmp;
 
 	tmp = *envp;
-	while (tmp && ft_strncmp(tmp->name, name, ft_strlen(tmp->name)) != 0)
+	while (tmp && ft_strncmp(tmp->name, name, ft_strlen(tmp->name) + 1) != 0)
 		tmp = tmp->next;
 	return (tmp);
 }
@@ -33,6 +33,8 @@ int	delete_variable(char *name, t_lst_env **envp)
 		return (1);
 	prev = elem->prev;
 	next = elem->next;
+	if (!prev && next)
+		*envp = (*envp)->next;
 	if (prev)
 		prev->next = next;
 	if (next)

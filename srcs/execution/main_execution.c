@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/17 11:20:02 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:27:53 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ char	*get_command_line(const char *prompt)
 	char	*command_line;
 
 	if (isatty(STDIN_FILENO))
+	{
+		rl_replace_line("", 0);
 		command_line = readline(prompt);
+	}
 	else
 	{
 		command_line = get_next_line(0);
