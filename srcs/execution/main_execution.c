@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/17 10:40:22 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/17 11:20:02 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	char		*command_line;
 	t_lst_env	**env_list;
-	const char	prompt[] = GRN "Airpottier_shell$ " RESET;
+	const char	prompt[] = GRN "Minishell$ " RESET;
 
 	(void)(argc);
 	(void)(argv);

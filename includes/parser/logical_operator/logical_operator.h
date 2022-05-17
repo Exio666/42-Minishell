@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   logical_operator.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 13:12:20 by rpottier          #+#    #+#             */
-/*   Updated: 2022/04/14 16:24:38 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:57:38 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,6 @@
 # include "lstdelone_parser.h"
 # include "logical_operator_indexation.h"
 # include "parse_op_by_level.h"
-# include "print_debug_funct.h"
 # include "get_btree_of_logical_op.h"
-
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
 
 #endif

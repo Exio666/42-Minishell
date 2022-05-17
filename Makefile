@@ -6,7 +6,7 @@
 #    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/17 10:26:07 by rpottier         ###   ########.fr        #
+#    Updated: 2022/05/17 11:18:46 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,15 +15,9 @@
 ################################################################################
 
 NAME = minishell
-NAME_TEST = minishell_test
 
 CC = cc 
-CFLAGS = -Wall -Wextra -Werror -g3
-# -fsanitize=address
-
-
-ARGUMENT_RUN = 
-ARGUMENT_RUN_TEST =
+CFLAGS = -Wall -Wextra -Werror
 
 ################################################################################
 ########							Sources 							########
@@ -76,7 +70,6 @@ SRCS =	checker/and_or_checker.c								\
 		parser/logical_operator/logical_operator_indexation.c	\
 		parser/logical_operator/parse_op_by_level.c				\
 		parser/logical_operator/get_logical_op.c				\
-		parser/logical_operator/print_debug_funct.c				\
 		parser/pipe_sequence/get_pipe_sequence.c				\
 		parser/pipe_sequence/add_all_pipe_sequence_in_tree.c 	\
 		parser/pipe_sequence/get_start_and_end_index.c			\
@@ -95,7 +88,6 @@ SRCS =	checker/and_or_checker.c								\
 		pipe_seq_to_token_list/insert_token_separator.c 		\
 		pipe_seq_to_token_list/is_token_1.c 					\
 		pipe_seq_to_token_list/is_token_2.c 					\
-		pipe_seq_to_token_list/print_tab_or_lst_split.c 		\
 		pipe_seq_to_token_list/split_by_separator.c 			\
 		pipe_seq_to_token_list/split_pipe_by_space.c 			\
 		pipe_seq_to_token_list/get_token_list.c 				\
@@ -117,6 +109,7 @@ SRCS =	checker/and_or_checker.c								\
 		execution/create_argv_cmd.c								\
 		execution/count_pipe.c									\
 		execution/main_execution.c								\
+		execution/save_fd.c										\
 		signal_management/signal_sigquit.c						\
 		signal_management/signal_sigint.c						\
 		utils/free_all.c										\
@@ -130,9 +123,6 @@ SRCS =	checker/and_or_checker.c								\
 		wildcard/wildcard.c										\
 		wildcard/wildcard_utils.c								\
 		wildcard/sort_token_list.c								\
-		execution/save_fd.c										\
-		
-SRCS_TEST = test/test.c	
 
 ################################################################################
 ########							Libraries							########
@@ -147,9 +137,7 @@ LIBS = libft/libft.a -lreadline
 OBJS_PATH =	objs/
 
 OBJS =	$(addprefix $(OBJS_PATH), $(SRCS:.c=.o))
-OBJS_TEST = $(addprefix $(OBJS_PATH), $(SRCS_TEST:.c=.o))
 DEPS =	$(addprefix $(OBJS_PATH), $(SRCS:.c=.d))
-DEPS_TEST =	$(addprefix $(OBJS_PATH), $(SRCS_TEST:.c=.d))
 
 ################################################################################
 ########							Others								########
@@ -171,8 +159,8 @@ NO_COLOR	=	\033[m
 ################################################################################
 
 all: header $(NAME)
-test: header $(NAME_TEST)
-bonus: header all
+
+bonus: all
 
 header:
 		echo "${BLUE}"
@@ -181,10 +169,10 @@ header:
 		echo "| '_ \` _ \| | '_ \| / __| '_ \ / _ \ | | "
 		echo "| | | | | | | | | | \__ \ | | |  __/ | | "
 		echo "|_| |_| |_|_|_| |_|_|___/_| |_|\___|_|_| "
-		echo "                 by Air_pottier & co"
+		echo "                 by Bsavinel & AirPottier"
 		echo "${NO_COLOR}"
 
-$(NAME) : header $(OBJS) $(LIBS)
+$(NAME) : $(OBJS) $(LIBS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME) $(INCS)
 	echo "$(BLUE)$(NAME): $(GREEN)Success $(NO_COLOR)"
 
@@ -192,37 +180,16 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -MMD -c $< -o $@ $(INCS)
 
-$(NAME_TEST): header $(LIBS) $(OBJS_TEST) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS_TEST) $(OBJS) $(LIBS) -o $(NAME_TEST) $(INCS)
-	echo "$(BLUE)$(NAME_TEST): $(GREEN)Success $(NO_COLOR)"
-
 clean :
 	$(RM) $(OBJS_PATH)
 	$(MAKE) -C libft clean
 
 fclean : clean
 	$(RM) $(NAME) 
-	$(RM) $(NAME_TEST)
 	$(RM) libft/libft.a
 
 re : fclean 
 	 make all
-
-run: header all
-	$(NAME) $(ARGUMENT_RUN)
-
-val_run: header all
-	valgrind $(NAME) $(ARGUMENT_RUN)
-
-run_test: header test
-	$(NAME_TEST) $(ARGUMENT_RUN_TEST)
-
-val_run_test: header test
-	valgrind $(NAME_TEST) $(ARGUMENT_RUN_TEST)
-
-push:
-		make fclean
-		git add . && git commit -m "Makefile push" && git push && echo "$(BLUE)Push: $(GREEN)Success $(NO_COLOR)" || echo "$(BLUE)Push: $(RED)Fail $(NO_COLOR)"
 
 ################################################################################
 #######							Rules for libs							########
@@ -232,8 +199,7 @@ libft/libft.a :
 	$(MAKE) -C libft all && echo "$(BLUE)Compiation of libft: $(GREEN)Success $(NO_COLOR)" || echo "$(BLUE)Compiation of libft: $(RED)Fail $(NO_COLOR)"
 
 -include $(DEPS)
--include $(DEPS_TEST)
 
-.PHONY: all clean fclean re bonus val_run_test run_test val_run run push test
+.PHONY: all clean fclean re bonus
 
 .SILENT:

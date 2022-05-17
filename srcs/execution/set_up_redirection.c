@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_up_redirection.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 21:47:51 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/12 11:50:51 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/17 11:04:43 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ int	redirect_in_heredoc(t_lst_token *token, int child)
 			return (open_failed(token->str, child));
 		if (dup2(fd_file, STDIN_FILENO) == -1)
 		{
-			unlink(token->str);
+			if (ft_strncmp(token->str, "/dev/null", 10))
+				unlink(token->str);
 			close(fd_file);
 			return (open_failed(token->str, child));
 		}
