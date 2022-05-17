@@ -3,18 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   save_fd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 10:52:44 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/16 16:10:47 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/17 08:50:12 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// 1 -> copie fd
-// 2 -> replace fd
-// 3 -> close fd
+/*
+** 1 -> copie fd
+** 2 -> replace fd
+** 3 -> close fd
+*/
+
+void	init_var_to_minus_one(int *first, int *cin, int *cout)
+{
+	*cin = -1;
+	*cout = -1;
+	*first = -1;
+}
 
 void	exit_save_fd(int cin, int cout)
 {
@@ -34,7 +43,6 @@ void	multi_dup2(int cin, int cout)
 {
 	int		error;
 
-	
 	error = dup2(cin, 0);
 	if (error != -1)
 		error = dup2(cout, 1);
@@ -49,11 +57,7 @@ void	save_fd(int mod)
 	static int	cout;
 
 	if (first == 0)
-	{
-		cin = -1;
-		cout = -1;
-		first = 1;
-	}
+		init_var_to_minus_one(&first, &cin, &cout);
 	if (mod == 1)
 	{
 		multi_close(cin, cout, -1, -1);

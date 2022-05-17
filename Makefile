@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
+#    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/16 16:34:47 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/05/17 08:28:22 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,6 +112,7 @@ SRCS =	checker/and_or_checker.c								\
 		execution/set_up_redirection.c							\
 		execution/exec_buitins.c								\
 		execution/exec_pipe_cmd.c								\
+		execution/exec_pipe_cmd_utils.c								\
 		execution/create_argv_cmd.c								\
 		execution/count_pipe.c									\
 		execution/main_execution.c								\

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:34:08 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/16 14:41:46 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/17 08:28:43 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "count_pipe.h"
 # include "exec_builtins.h"
 # include "exec_pipe_cmd.h"
+# include "exec_pipe_cmd_utils.h"
 # include "count_pipe.h"
 # include "main_execution.h"
 # include "create_argv_cmd.h"
