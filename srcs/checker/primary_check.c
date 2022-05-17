@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   primary_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 10:02:21 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/05 13:56:50 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/17 08:34:28 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	check_command_is_ok(char *command_line)
+{
+	if (primary_checker(command_line) == TRUE
+		&& check_all_pipe_sequence(command_line) == TRUE)
+		return (TRUE);
+	return (FALSE);
+}
 
 int	give_next_character(char *str, int start, char c)
 {

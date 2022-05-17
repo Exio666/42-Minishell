@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 12:15:25 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/16 17:51:36 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/17 08:31:23 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,6 @@ int	change_name_heredoc(char *str)
 	return (1);
 }
 
-void	ctrl_d_herdoc(char *end, int line)
-{
-	ft_putstr_fd("Warning: here-document at line ", 2);
-	ft_putstr_fd(ft_itoa(line), 2);
-	ft_putstr_fd(" delimited by end-of-file (wanted \'", 2);
-	ft_putstr_fd(end, 2);
-	ft_putstr_fd("\')\n", 2);
-}
-
 void	feed_heredoc(int fd, char *end)
 {
 	char	*str;
@@ -54,7 +45,7 @@ void	feed_heredoc(int fd, char *end)
 		str = readline("> ");
 		if (str == NULL)
 		{
-			ctrl_d_herdoc(end, line);
+			ctrl_d_heredoc(end, line);
 			return ;
 		}
 		if (ft_strncmp(str, end, ft_strlen(end)) == 0 || ft_strlen(str) == 0)

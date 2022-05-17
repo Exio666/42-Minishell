@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/16 14:44:32 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/17 08:37:42 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	exec_one_cmd(char **argv, t_lst_env **env_list)
 	int	retour;
 	int	pid;
 
-	retour = exec_builtins(len_av(argv), argv, env_list);
+	retour = exec_builtins(ft_size_2d_array(argv), argv, env_list);
 	if (retour == 127)
 	{
 		pid = fork();
@@ -91,7 +91,6 @@ int	execute_command(t_lst_token *token, t_lst_env **env_list)
 	expand_wildcard_command(token);
 	signal(SIGQUIT, &handler_sigquit_exit);
 	signal(SIGINT, &handler_sigint_empty);
-	
 	if (count == 1)
 	{
 		if (set_up_redirect(token, 0) == 1)
