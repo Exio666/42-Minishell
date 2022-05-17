@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
+#    By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/05/17 09:27:56 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/05/17 10:26:07 by rpottier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ NAME = minishell
 NAME_TEST = minishell_test
 
 CC = cc 
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3
+# -fsanitize=address
+
 
 ARGUMENT_RUN = 
 ARGUMENT_RUN_TEST =
@@ -179,7 +181,7 @@ header:
 		echo "| '_ \` _ \| | '_ \| / __| '_ \ / _ \ | | "
 		echo "| | | | | | | | | | \__ \ | | |  __/ | | "
 		echo "|_| |_| |_|_|_| |_|_|___/_| |_|\___|_|_| "
-		echo "                 by Bsavinel_and_associates"
+		echo "                 by Air_pottier & co"
 		echo "${NO_COLOR}"
 
 $(NAME) : header $(OBJS) $(LIBS)

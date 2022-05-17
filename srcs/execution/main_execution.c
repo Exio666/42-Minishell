@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_execution.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/17 10:13:24 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:25:41 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	g_exit_status = 0;
 int	main(int argc, char **argv, char **envp)
 {
 	char		*command_line;
-	t_lst_env	**env_list;
-	const char	prompt[] = GRN "Bsavinel_and_associates_shell$ " RESET;
+	t_lst_env	*env_list;
+	const char	prompt[] = GRN "Airpottier_shell$ " RESET;
 
 	(void)(argc);
 	(void)(argv);
@@ -40,30 +40,6 @@ int	main(int argc, char **argv, char **envp)
 		__ft_calloc(-1);
 	}
 	return (0);
-}
-
-void	reset_terminal(void)
-{
-	int		fd_terminal;
-	int		error;
-
-	error = 0;
-	fd_terminal = open("/dev/tty", O_RDWR);
-	if (fd_terminal == -1)
-		error = -1;
-	if (error != -1)
-		error = dup2(fd_terminal, STDIN_FILENO);
-	if (error != -1)
-		error = dup2(fd_terminal, STDOUT_FILENO);
-	if (error != -1)
-		error = dup2(fd_terminal, STDERR_FILENO);
-	close(fd_terminal);
-	if (error == -1)
-	{
-		ft_putendl_fd("Error: Fatal bad open of file\n", 2);
-		free_all();
-		exit(1);
-	}
 }
 
 void	exit_ctr_d(char *command_line)
