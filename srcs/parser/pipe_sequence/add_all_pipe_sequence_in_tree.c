@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_all_pipe_sequence_in_tree.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:56:56 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 20:25:25 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/17 09:15:45 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ t_pipe_sequence	**split_all_pipe_sequence(char *user_input)
 		splited[i] = __ft_calloc(sizeof(t_pipe_sequence));
 		start_index = get_start_index_pipe_sequence(user_input, i);
 		splited[i]->str = get_pipe_sequence(user_input, start_index);
-		if (pipe_sequence_checker(splited[i]->str) == 0)
-			return (NULL);
 		splited[i]->index = (unsigned int)start_index;
 		i++;
 	}
