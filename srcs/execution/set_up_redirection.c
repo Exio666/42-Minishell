@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 21:47:51 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/17 11:04:43 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:16:36 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	redirect_out(t_lst_token *token, int child)
 	token = token->next;
 	if (token)
 	{
-		fd_file = open(token->str, O_WRONLY | O_CREAT, 00777);
+		fd_file = open(token->str, O_WRONLY | O_CREAT | O_TRUNC, 00777);
 		if (fd_file == -1)
 			return (open_failed(token->str, child));
 		if (dup2(fd_file, STDOUT_FILENO) == -1)

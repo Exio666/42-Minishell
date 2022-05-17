@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_all_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 16:48:21 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/16 18:03:02 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:16:24 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	execute(char **exe_argv, t_lst_env **env_list)
 			get_path_env_variable_from_array(envp));
 	i = 0;
 	exe_read = execve(exe_argv[0], exe_argv, envp);
-	while (*env_list != NULL && all_path[i] && exe_read == -1)
+	while (all_path && *env_list != NULL && all_path[i] && exe_read == -1)
 	{
 		if (access(all_path[i], X_OK) == 0)
 		{
