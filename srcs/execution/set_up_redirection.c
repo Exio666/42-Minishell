@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 21:47:51 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/18 08:38:54 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/18 08:40:12 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	redirect_out(t_lst_token *token, int child)
 {
 	int	fd_file;
-
 
 	if (token)
 		token = token->next;
@@ -93,7 +92,6 @@ int	redirect_in_heredoc(t_lst_token *token, int child)
 		unlink(token->str);
 		close(fd_file);
 	}
-
 	if (token)
 		token = token->next;
 	return (0);
