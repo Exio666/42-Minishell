@@ -1,67 +1,67 @@
-/* ************************************************************************** */		
-/*                                                                            */		
-/*                                                        :::      ::::::::   */		
-/*   set_up_redirection.c                               :+:      :+:    :+:   */		
-/*                                                    +:+ +:+         +:+     */		
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */		
-/*                                                +#+#+#+#+#+   +#+           */		
-/*   Created: 2022/04/30 21:47:51 by rpottier          #+#    #+#             */		
-/*   Updated: 2022/05/17 16:16:36 by rpottier         ###   ########.fr       */		
-/*                                                                            */		
-/* ************************************************************************** */		
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_up_redirection.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/18 08:22:19 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/18 08:23:26 by rpottier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "minishell.h"		
+#include "minishell.h"
 
-int	redirect_out(t_lst_token *token, int child)		
-{		
-	int	fd_file;		
+int	redirect_out(t_lst_token *token, int child)
+{
+	int	fd_file;
 
-	token = token->next;		
-	if (token)		
-	{		
-		fd_file = open(token->str, O_WRONLY | O_CREAT | O_TRUNC, 00777);		
-		if (fd_file == -1)		
-			return (open_failed(token->str, child));		
-		if (dup2(fd_file, STDOUT_FILENO) == -1)		
-			return (open_failed(token->str, child));		
-		close(fd_file);		
-	}		
-	return (0);		
-}		
-
-int	redirect_out_append(t_lst_token *token, int child)		
-{		
-	int	fd_file;		
-
-	token = token->next;		
-	if (token)		
-	{		
-		fd_file = open(token->str, O_WRONLY | O_CREAT | O_APPEND, 00777);		
-		if (fd_file == -1)		
-			return (open_failed(token->str, child));		
-		if (dup2(fd_file, STDOUT_FILENO) == -1)		
-			return (open_failed(token->str, child));		
-		close(fd_file);		
-	}		
-	return (0);		
-}		
-
-int	redirect_in(t_lst_token *token, int child)		
-{		
-	int	fd_file;	
-	
+	token = token->next;
 	if (token)
-		token = token->next;		
-	if (token)		
-	{		
-		fd_file = open(token->str, O_RDONLY);		
-		if (fd_file == -1)		
-			return (open_failed(token->str, child));		
-		if (dup2(fd_file, STDIN_FILENO) == -1)		
-		{		
-			close(fd_file);		
-			return (open_failed(token->str, child));		
-		}		
+	{
+		fd_file = open(token->str, O_WRONLY | O_CREAT | O_TRUNC, 00777);
+		if (fd_file == -1)
+			return (open_failed(token->str, child));
+		if (dup2(fd_file, STDOUT_FILENO) == -1)
+			return (open_failed(token->str, child));
+		close(fd_file);
+	}
+	return (0);
+}
+
+int	redirect_out_append(t_lst_token *token, int child)
+{
+	int	fd_file;
+
+	token = token->next;
+	if (token)
+	{
+		fd_file = open(token->str, O_WRONLY | O_CREAT | O_APPEND, 00777);
+		if (fd_file == -1)
+			return (open_failed(token->str, child));
+		if (dup2(fd_file, STDOUT_FILENO) == -1)
+			return (open_failed(token->str, child));
+		close(fd_file);
+	}
+	return (0);
+}
+
+int	redirect_in(t_lst_token *token, int child)
+{
+	int	fd_file;
+
+	if (token)
+		token = token->next;
+	if (token)
+	{
+		fd_file = open(token->str, O_RDONLY);
+		if (fd_file == -1)
+			return (open_failed(token->str, child))	
+		if (dup2(fd_file, STDIN_FILENO) == -1)
+		{
+			close(fd_file);
+			return (open_failed(token->str, child));
+		}
 		close(fd_file);		
 	}
 	if (token)	
