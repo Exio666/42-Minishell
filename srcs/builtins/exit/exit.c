@@ -3,25 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 13:44:31 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/16 15:31:04 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/17 19:18:41 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	good_arg_for_exit(char *arg)
+int	skip_zeros(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (arg[0] == '-')
+	if (str[i] == '-')
 		i++;
+	while (str[i] == '0')
+		i++;
+	return (i);
+}
+
+int	good_arg_for_exit(char *arg)
+{
+	int	i;
+	int	len;
+	int	negative;
+
+	i = 0;
+	negative = 0;
+	if (arg[0] == '-')
+	{
+		i++;
+		negative = 1;
+	}
 	while (ft_isdigit(arg[i]))
 		i++;
-	if (arg[i])
+	if (arg[i] || (negative == 1 && i == 1))
+		return (0);
+	i = skip_zeros(arg);
+	len = ft_strlen(&arg[i]);
+	if (len > 19
+		|| (len == 19 && negative == 0
+			&& ft_strncmp("9223372036854775807", &arg[i], 20) < 0)
+		|| (len == 19 && negative == 1
+			&& ft_strncmp("9223372036854775808", &arg[i], 20) < 0))
 		return (0);
 	return (1);
 }
@@ -32,8 +58,10 @@ void	builtins_exit_prog(int ac, char **av)
 
 	if (!good_arg_for_exit(av[1]))
 	{
+		ft_putstr_fd("exit: ", 2);
+		ft_putstr_fd(av[1], 2);
+		ft_putstr_fd(": numeric argument required\n", 2);
 		free_all();
-		ft_putstr_fd("exit: qerq: numeric argument required\n", 2);
 		exit(2);
 	}
 	else if (good_arg_for_exit(av[1]) && ac == 2)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_all_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 16:48:21 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/17 16:16:24 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/17 20:20:52 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,5 @@ int	execute(char **exe_argv, t_lst_env **env_list)
 		}
 		i++;
 	}
-	ft_print_not_found(exe_argv[0]);
-	return (ERROR_EXECVE);
+	return (ft_print_not_found(exe_argv[0], all_path, 0));
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/17 19:02:54 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/17 19:07:07 by rpottier         ###   ########.fr       */
+/*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
+/*   Updated: 2022/05/18 08:25:24 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*get_variable_to_expand_name(char *token)
 }
 
 static int	ft_strcmp(char *s1, char *s2)
-{		
+{
 	unsigned int	i;
 
 	i = 0;
@@ -48,6 +48,7 @@ static int	ft_strcmp(char *s1, char *s2)
 		i++;
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
+
 char	*get_var_to_expand_content(char *var_name, t_lst_env *env_list)
 {
 	if (ft_strcmp(var_name, "?") == 0)
@@ -59,7 +60,7 @@ char	*get_var_to_expand_content(char *var_name, t_lst_env *env_list)
 		env_list = env_list->next;
 	}
 	return (NULL);
-}
+}		
 
 void	insert_var_content_to_token(char **token, char *var_content,
 			int start_index)
