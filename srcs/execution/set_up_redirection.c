@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 21:47:51 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/18 08:26:08 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/18 08:38:54 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	redirect_out(t_lst_token *token, int child)
 {
 	int	fd_file;
 
-	token = token->next;
+
+	if (token)
+		token = token->next;
 	if (token)
 	{
 		fd_file = open(token->str, O_WRONLY | O_CREAT | O_TRUNC, 00777);
@@ -33,7 +35,8 @@ int	redirect_out_append(t_lst_token *token, int child)
 {
 	int	fd_file;
 
-	token = token->next;
+	if (token)
+		token = token->next;
 	if (token)
 	{
 		fd_file = open(token->str, O_WRONLY | O_CREAT | O_APPEND, 00777);
@@ -73,7 +76,8 @@ int	redirect_in_heredoc(t_lst_token *token, int child)
 {
 	int	fd_file;
 
-	token = token->next;
+	if (token)
+		token = token->next;
 	if (token)
 	{
 		fd_file = open(token->str, O_RDONLY);
@@ -89,7 +93,9 @@ int	redirect_in_heredoc(t_lst_token *token, int child)
 		unlink(token->str);
 		close(fd_file);
 	}
-	token = token->next;
+
+	if (token)
+		token = token->next;
 	return (0);
 }
 
@@ -109,7 +115,8 @@ int	set_up_redirect(t_lst_token *token, int child)
 		if (token && token->type == TOK_HEREDOC)
 			if (redirect_in_heredoc(token, child))
 				return (1);
-		token = token->next;
+		if (token)
+			token = token->next;
 	}
 	return (0);
 }
