@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/20 22:36:55 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/20 23:45:15 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,8 @@ t_lst_token	*expand_token(t_lst_token *token, t_lst_env *env_list)
 {
 	if (ft_strlen(token->str) == 0)
 		return (token);
-
-
-	
 	token = expand_all_variables(token, env_list);
-
 	token->str = remove_quotes(token, token->lst_quote);
-
 	return (token);
 }
 
@@ -54,14 +49,16 @@ t_lst_token	*expand_all_variables(t_lst_token *token, t_lst_env *env_list)
 	int				i;
 	t_quote_index	quote;
 	t_lst_quote		*elem;
-int tmp;
-	
+int tmp = -2;
+	int max = 5;
 	i = 0;
-	while (i != -1 && token && token->str[i])
+	while (i != -1 && token && token->str[i]/* && max*/)
 	{
 		quote.open = -1;
 		quote.close = - 1;
 		
+	//	printf("%s\n", token->str);
+		max--;
 		if (i != -1 && token->str[i] && is_quote(token->str[i]))
 		{
 			quote.open = i;
@@ -73,18 +70,27 @@ int tmp;
 		{
 		tmp = i;
 			token->str = expand_variable(token->str, &i, env_list);
-				
+			if (i != -1 && token->str[i] && is_dollar(token->str[i]))
+				tmp = -2;
 		}
 
 		if (i != -1 && token && token->str && token->str[i] && !is_quote(token->str[i]) && tmp != i)
 		{
-			
+	//		printf("bonjour\n");
 			move_foward_expanding_var(quote.open, token->str, &i);
 
 		}
 		else if (i != -1 && token && token->str && token->str[i] && quote.open != -1 && quote.close >= i )
+		{
+			
+	//		printf("bonjour ici\n");
+			i++;
+		}
+		else if (i != -1 && token && token->str && token->str[i] && is_wildcard(token->str[i]))
 			i++;
 	}
+//	if (max == 0)
+//		exit(1);
 	return (token);
 }
 
