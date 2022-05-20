@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/20 23:45:15 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/21 01:17:32 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ t_lst_token	*expand_all_variables(t_lst_token *token, t_lst_env *env_list)
 	t_quote_index	quote;
 	t_lst_quote		*elem;
 int tmp = -2;
-	int max = 5;
+	int max = 15;
 	i = 0;
-	while (i != -1 && token && token->str[i]/* && max*/)
+	while (i != -1 && token && token->str[i] && max)
 	{
 		quote.open = -1;
 		quote.close = - 1;
-		
-	//	printf("%s\n", token->str);
+		printf("i = %d\n", i);
+		printf("%s\n", token->str);
 		max--;
 		if (i != -1 && token->str[i] && is_quote(token->str[i]))
 		{
@@ -70,10 +70,15 @@ int tmp = -2;
 		{
 		tmp = i;
 			token->str = expand_variable(token->str, &i, env_list);
-			if (i != -1 && token->str[i] && is_dollar(token->str[i]))
+			if (i != -1 && token->str[i] && is_dollar(token->str[i]) && !token->str[i + 1])
 				tmp = -2;
-		}
+			else if (i != -1 && token->str[i] && is_dollar(token->str[i]) && token->str[i + 1])
+				tmp = i;
 
+		printf("%s\n", token->str);
+printf("i -> %d\n", i);
+printf("tmp -> %d\n", tmp);
+		}
 		if (i != -1 && token && token->str && token->str[i] && !is_quote(token->str[i]) && tmp != i)
 		{
 	//		printf("bonjour\n");
@@ -89,8 +94,8 @@ int tmp = -2;
 		else if (i != -1 && token && token->str && token->str[i] && is_wildcard(token->str[i]))
 			i++;
 	}
-//	if (max == 0)
-//		exit(1);
+	if (max == 0)
+		exit(1);
 	return (token);
 }
 
@@ -125,8 +130,10 @@ char	*expand_variable(char *token, int *index, t_lst_env *env_list)
 
 	insert_var_content_to_token(&token, var_content, *index);
 
-	if(var_content[0])
+	if(var_content[0] && !(var_content_len <= 1))
 		*index = *index + (var_content_len - 1);
+	else
+		*index = *index + (var_content_len);
 
 	return (token);
 }
