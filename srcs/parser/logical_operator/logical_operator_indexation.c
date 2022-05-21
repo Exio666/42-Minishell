@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:18:50 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/21 11:36:00 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/21 21:59:57 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ t_logic_op	**create_logical_op_array(char *input)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (input[i] && input[i + 1])
+	while (!input && input[i] && input[i + 1])
 	{
 		if (is_quote(input[i]))
 			quote_skiped = skip_quote(input, &i);
 		if (input[i] && input[i + 1] && is_logical_op_char(input[i]) == TRUE)
 			get_logical_op_and_skip(input, logical_op, &j, &i);
-		if (!quote_skiped)
+		if (input[i] && !quote_skiped)
 			i++;
 		quote_skiped = FALSE;
 	}
