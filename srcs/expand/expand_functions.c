@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/21 09:44:29 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/21 09:54:36 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int tmp = -2;
 	i = 0;
 	while (i != -1 && token && token->str[i] /*&& max*/)
 	{
-
 	tmp = -2;
 		quote.open = -1;
 		quote.close = - 1;
@@ -82,24 +81,18 @@ int tmp = -2;
 
 	
 		}
- 		printf("\n\n%s\n", token->str);
-		printf("i -> %d\n", i);
-		printf("tmp -> %d\n", tmp);
-		printf("quote.open = %d \n quote.close =%d\n\n", quote.open, quote.close);
+ 		// printf("\n\n%s\n", token->str);
+		// printf("i -> %d\n", i);
+		// printf("tmp -> %d\n", tmp);
+		// printf("quote.open = %d \n quote.close =%d\n\n", quote.open, quote.close);
 		if (i != -1 && token && token->str && token->str[i] && !is_quote(token->str[i]) && tmp != i)
 		{
-	//		printf("bonjour\n");
 			move_foward_expanding_var(quote.open, token->str, &i);
+		}
+		else if (i != -1 && token && token->str && token->str[i]
+			&& ((quote.open != -1 && quote.close >= i) || is_wildcard(token->str[i])))
+			i++;
 
-		}
-		else if (i != -1 && token && token->str && token->str[i] && quote.open != -1 && quote.close >= i )
-		{
-			
-	//		printf("bonjour ici\n");
-			i++;
-		}
-		else if (i != -1 && token && token->str && token->str[i] && is_wildcard(token->str[i]))
-			i++;
 	}
 	//  if (max == 0)
 	//  	exit(1);

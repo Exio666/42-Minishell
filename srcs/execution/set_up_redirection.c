@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 21:47:51 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/18 08:40:12 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/21 10:01:44 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	redirect_in(t_lst_token *token, int child)
 
 	if (token)
 		token = token->next;
-	if (token)
+	if (token && token->str)
 	{
 		fd_file = open(token->str, O_RDONLY);
 		if (fd_file == -1)
