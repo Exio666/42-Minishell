@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/21 09:32:37 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/21 10:22:02 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv, char **envp)
 		signal(SIGINT, &handler_sigint_prompt);
 		command_line = get_command_line(prompt);
 		add_history(command_line);
-		if (check_command_is_ok(command_line))
+		if (command_line && check_command_is_ok(command_line))
 			process_command(command_line, env_list);
 		else if (!command_line)
 			exit_ctr_d(command_line);
