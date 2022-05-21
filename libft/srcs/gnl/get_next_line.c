@@ -3,116 +3,135 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/16 11:12:40 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/04/11 15:34:08 by bsavinel         ###   ########.fr       */
+/*   Created: 2021/12/01 14:24:08 by rpottier          #+#    #+#             */
+/*   Updated: 2021/12/06 12:16:21 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_up_line(char *line, char *buffer)
-{
-	char	*new_line;
-	int		i;
-	int		j;
+/* 
+** Apres avoir copie la ligne dans LINE(dans la fonction extract),
+** cette fonction redecale tout vers la gauche
+*/
 
-	new_line = malloc(sizeof(char) * (ft_strlen(line) + sizeline(buffer) + 2));
-	if (!new_line)
-		return (NULL);
+void	ft_restruct_storage(char *fd_storage)
+{
+	int	i;
+	int	j;
+
 	i = 0;
-	while (line[i])
-	{
-		new_line[i] = line[i];
-		i++;
-	}
-	free(line);
 	j = 0;
-	while (buffer[j] && buffer[j] != '\n')
-	{
-		new_line[i] = buffer[j];
-		j++;
+	while (fd_storage[i] && fd_storage[i] != '\n')
 		i++;
+	i++;
+	while (fd_storage[i])
+	{
+		fd_storage[j] = fd_storage[i];
+		i++;
+		j++;
 	}
-	if (buffer[j] == '\n')
-		new_line[i++] = '\n';
-	new_line[i] = '\0';
-	return (new_line);
+	fd_storage[j] = fd_storage[i];
+	j++;
+	while (fd_storage[j])
+	{
+		fd_storage[j] = '\0';
+		j++;
+	}
 }
 
-char	*get_line(char *buffer, int fd)
+/*
+** Cette extrait la ligne du buffer, remplit line avec le contenu de fd_storage
+** si besoin et le cas echant remplit ft_storage avec le contenu de buffer non
+** utilise
+*/
+
+int	extract_str(char *fd_storage, char *line, char *buffer)
 {
-	int		ret;
+	int	i;
+	int	j;
+	int	start;
+
+	i = -1;
+	if (fd_storage[0] != '\0')
+	{
+		ft_strcat(line, fd_storage);
+		ft_restruct_storage(fd_storage);
+	}
+	start = ft_len(line);
+	if (start != 0)
+		if (line[start - 1] == '\n')
+			return (1);
+	while (buffer[++i] && buffer[i] != '\n')
+		line[start + i] = buffer[i];
+	if (buffer[i] == '\n')
+	{
+		line[start + i] = buffer[i];
+		j = 0;
+		while (buffer[++i])
+			fd_storage[j++] = buffer[i];
+		return (1);
+	}
+	return (0);
+}
+
+/* Check la presence d'un \n dans la reserve
+** pour savoir si l'on doit faire appel a read
+*/
+
+int	need_to_read(char *fd_storage)
+{
+	int	i;
+
+	if (!fd_storage)
+		return (1);
+	i = 0;
+	while (fd_storage[i])
+	{
+		if (fd_storage[i] == '\n')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+char	*read_line(char *fd_storage, int fd)
+{
+	char	buffer[BUFFER_SIZE + 1];
 	char	*line;
+	int		read_ret;
+	int		line_size;
+	int		end_of_line;
 
-	ret = 1;
-	line = malloc(sizeof(char) * 1);
-	if (!line)
-		return (NULL);
-	line[0] = '\0';
-	while (ret != 0 && no_newline(buffer))
+	end_of_line = 0;
+	read_ret = 1;
+	line = NULL;
+	while (read_ret > 0 && !end_of_line)
 	{
-		if (buffer[0] != '\0')
-		{
-			line = ft_up_line(line, buffer);
-			if (!line)
-				return (bug_malloc(line));
-		}
-		ft_bzero(buffer, BUFFER_SIZE);
-		ret = read(fd, buffer, BUFFER_SIZE);
-		buffer[ret] = '\0';
+		ft_bzero(buffer, BUFFER_SIZE + 1);
+		if (need_to_read(fd_storage))
+			read_ret = read(fd, buffer, BUFFER_SIZE);
+		line_size = ft_len(fd_storage) + ft_len(buffer) + (ft_len(line) + 1);
+		if (line_size == 1)
+			return (NULL);
+		line = ft_realloc(line, sizeof(*line) * line_size);
+		if (!line)
+			return (NULL);
+		end_of_line = extract_str(fd_storage, line, buffer);
 	}
-	line = ft_up_line(line, buffer);
-	if (!line)
-		return (bug_malloc(line));
 	return (line);
-}
-
-void	replace(char *buffer)
-{
-	char	tmp[BUFFER_SIZE + 1];
-	int		i;
-	int		j;
-
-	i = 1;
-	while (buffer[i - 1] != '\n' && buffer[i])
-		i++;
-	j = 0;
-	while (i <= BUFFER_SIZE)
-	{
-		tmp[j] = buffer[i];
-		j++;
-		i++;
-	}
-	i = 0;
-	while (i < j)
-	{
-		buffer[i] = tmp[i];
-		i++;
-	}
-	while (i <= BUFFER_SIZE)
-	{
-		buffer[i] = '\0';
-		i++;
-	}
 }
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[2048][BUFFER_SIZE + 1];
+	static char	fd_storage[2048][BUFFER_SIZE + 1];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) <= -1)
+	if (fd >= 0 && BUFFER_SIZE > 0)
+		line = read_line(fd_storage[fd], fd);
+	else
 		return (NULL);
-	line = get_line(buffer[fd], fd);
-	if (!line)
-		return (NULL);
-	replace(buffer[fd]);
-	if (line[0] == '\0')
-	{
-		free(line);
-		return (NULL);
-	}
 	return (line);
 }

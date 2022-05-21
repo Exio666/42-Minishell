@@ -3,46 +3,95 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/16 15:12:44 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/16 15:26:16 by bsavinel         ###   ########.fr       */
+/*   Created: 2021/12/01 14:24:19 by rpottier          #+#    #+#             */
+/*   Updated: 2021/12/06 10:22:53 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	sizeline(char *str)
+int	ft_len(const char *str)
 {
-	int	i;
+	int	length;
 
-	i = 0;
-	while (str[i])
+	length = 0;
+	if (str)
 	{
-		if (str[i] == '\n')
-			return (i);
-		i++;
+		while (str[length])
+		{
+			length++;
+		}
 	}
-	return (i);
+	return (length);
 }
 
-int	no_newline(char *str)
+char	*ft_realloc(char *str, int size)
 {
-	int	i;
+	char	*new_str;
 
-	i = 0;
-	while (str[i])
+	new_str = malloc(sizeof(*new_str) * size + 1);
+	ft_bzero(new_str, size);
+	if (str)
 	{
-		if (str[i] == '\n')
-			return (0);
-		i++;
+		ft_strlcpy(new_str, str, size);
+		free(str);
 	}
-	return (1);
+	return (new_str);
 }
 
-char	*bug_malloc(char *line)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	free(line);
-	line = NULL;
-	return (NULL);
+	size_t	i;
+	size_t	src_length;
+
+	i = 0;
+	src_length = 0;
+	while (src[src_length])
+		src_length++;
+	while (src[i] && (i < size - 1))
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (src_length);
+}
+
+/* Retourne le point d'arret de src*/
+int	ft_strcat(char *dest, char *src)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (dest[i])
+		i++;
+	while (src[j] && src[j] != '\n')
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	if (src[j] && src[j] == '\n')
+		dest[i] = src[j];
+	i++;
+	dest[i] = '\0';
+	return (j);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	size_t			i;
+	unsigned char	*p;
+
+	p = s;
+	i = 0;
+	while (i < n)
+	{
+		p[i] = '\0';
+		i++;
+	}
 }
