@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:18:50 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 19:38:19 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/21 11:36:00 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_logic_op	**create_logical_op_array(char *input)
 	int				j;
 	int				quote_skiped;
 
+	if (!input)
+		return (NULL);
 	quote_skiped = FALSE;
 	logical_op = malloc_logical_op_reference(input);
 	if (logical_op == NULL)
@@ -66,7 +68,7 @@ t_logic_op	*get_current_log_op(int actual_op_index, t_logic_op **logical_op)
 	int	i;
 
 	i = 0;
-	while (logical_op[i])
+	while (logical_op && logical_op[i])
 	{
 		if ((unsigned int)actual_op_index == logical_op[i]->index)
 			return (logical_op[i]);

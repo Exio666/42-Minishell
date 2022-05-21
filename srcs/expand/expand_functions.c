@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/21 09:54:36 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/21 11:33:08 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int tmp = -2;
 	tmp = -2;
 		quote.open = -1;
 		quote.close = - 1;
-		// printf("i = %d\n", i);
+//		 printf("i = %d\n", i);
 		// printf("%s\n", token->str);
 		//max--;
 		if (i != -1 && token->str[i] && is_quote(token->str[i]))
@@ -77,14 +77,14 @@ int tmp = -2;
 			if (i != -1 && token->str[i] && is_dollar(token->str[i]) && !token->str[i + 1])
 				tmp = -2;
 			else if (i != -1 && token->str[i] && is_dollar(token->str[i]) && token->str[i + 1])
-				tmp = i;
-
-	
-		}
+				i++;
  		// printf("\n\n%s\n", token->str);
 		// printf("i -> %d\n", i);
 		// printf("tmp -> %d\n", tmp);
 		// printf("quote.open = %d \n quote.close =%d\n\n", quote.open, quote.close);
+	
+		}
+
 		if (i != -1 && token && token->str && token->str[i] && !is_quote(token->str[i]) && tmp != i)
 		{
 			move_foward_expanding_var(quote.open, token->str, &i);
