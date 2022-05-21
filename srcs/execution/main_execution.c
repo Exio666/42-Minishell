@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_execution.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/17 17:46:55 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/21 09:32:37 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	char		*command_line;
 	t_lst_env	**env_list;
-	const char	prompt[] = GRN "Bsavinel_and_associates_shell$ " RESET;
+	const char	prompt[] = "Bsavinel_and_associates_shell$ ";
 
 	(void)(argc);
 	(void)(argv);
