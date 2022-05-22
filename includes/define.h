@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:45:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/16 11:17:17 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/22 10:53:28 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@
 # define ERROR_EXECVE -1
 # define NO_ARG 0
 
-# define RED		"\x1B[31m"
-# define RED_BOLD	"\x1B[31;1m"
-# define GRN		"\x1B[32m"
-# define YEL		"\x1B[33m"
-# define BLU		"\x1B[34m"
-# define RESET		"\x1B[0m"
+# define RED		"\1\x1B[31m\2"
+# define RED_BOLD	"\x1B[31m"
+# define GRN		"\1\x1B[32m\2"
+# define YEL		"\1\x1B[33m\2"
+# define BLU		"\1\x1B[34m\2"
+# define RESET		"\1\x1B[0m\2"
 
 # define UI unsigned int
 

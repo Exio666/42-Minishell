@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/21 10:22:02 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/22 10:52:57 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	char		*command_line;
 	t_lst_env	**env_list;
-	const char	prompt[] = "Bsavinel_and_associates_shell$ ";
+	const char	prompt[] = GRN "AirPottier_shell$ " RESET;
 
 	(void)(argc);
 	(void)(argv);

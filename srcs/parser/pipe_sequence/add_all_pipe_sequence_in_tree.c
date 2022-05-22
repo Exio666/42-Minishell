@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_all_pipe_sequence_in_tree.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 11:56:56 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/21 22:24:33 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/17 09:15:45 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	add_all_pipe_sequence_in_tree(t_btree **root, char *user_input)
 
 	remove_parenthesis(user_input);
 	splited_pipe_seq = split_all_pipe_sequence(user_input);
-	if (!splited_pipe_seq)
-		exit(1);
 	insert_all_pipe_seq_in_btree(root, splited_pipe_seq);
 }
 
