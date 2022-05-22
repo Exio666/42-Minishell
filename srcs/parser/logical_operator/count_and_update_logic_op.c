@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:45:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 13:57:26 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/22 16:36:46 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,19 @@ int	count_logic_op(char *user_input)
 		return (-1);
 	i = 0;
 	logical_op_count = 0;
-	while (user_input[i] && user_input[i + 1])
+	while (i >= 0 && user_input[i] && user_input[i + 1])
 	{
 		quote_skiped = FALSE;
 		if (is_quote(user_input[i]))
 			quote_skiped = skip_quote_and_confirm(user_input, &i);
-		if (user_input[i] && user_input[i + 1]
+		if (i >= 0 && user_input[i] && user_input[i + 1]
 			&& is_logical_op_char(user_input[i]))
 		{
 			if (get_logic_op_from_begin(user_input, i) != OPERATOR_NOT_FOUND)
 				logical_op_count++;
 			i++;
 		}
-		if (!quote_skiped)
+		if (i >= 0 && !quote_skiped)
 			i++;
 	}
 	return (logical_op_count);
