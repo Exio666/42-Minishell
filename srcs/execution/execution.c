@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:56:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/22 16:39:52 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/22 16:46:39 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	execute_command(t_lst_token *token, t_lst_env **env_list)
 	count = count_pipe(token);
 	expand_command(token, *env_list);
 
-	print_token_list(token);
+//	print_token_list(token);
 	
 	expand_wildcard_command(token);
 	signal(SIGQUIT, &handler_sigquit_exit);
