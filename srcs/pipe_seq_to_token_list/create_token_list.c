@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:00:15 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/15 18:13:12 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/22 15:48:40 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_lst_token	*create_token_list(char **split)
 		}
 		i++;
 	}
+//	print_token_list(lst);
 	return (lst);
 }
 

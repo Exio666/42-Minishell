@@ -1,0 +1,16 @@
+export a=bonjour bonjour=a
+echo -n $a $bonjour $c					&& echo '|bonjour a'
+echo -n "$a""$bonjour""$c"				&& echo '|bonjoura'
+echo -n "$a""$bonjour"					&& echo '|bonjoura'
+echo -n "$c"							&& echo '|'
+echo -n "$a"							&& echo '|bonjour'
+echo -n "'$a'"							&& echo "|'bonjour'"
+echo -n $bonjour						&& echo "|a"
+echo -n "$bonjour"						&& echo "|a"
+echo -n "'$bonjour'"					&& echo "|'a'"
+echo -n $c""							&& echo '|'
+echo -n ""$c							&& echo '|'
+echo -n $								&& echo '|$'
+echo -n "$"								&& echo '|$'
+echo -n ""'''""''"'						&& echo "|"'"""'
+echo -n "$bonjour$a$bonjour$a''"		&& echo '|abonjourabonjour'"''"

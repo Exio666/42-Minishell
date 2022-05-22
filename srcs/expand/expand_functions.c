@@ -6,11 +6,13 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:39:00 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/22 11:10:20 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/22 15:57:11 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+
 
 void	expand_command(t_lst_token *token, t_lst_env *env_list)
 {
@@ -122,7 +124,7 @@ char	*expand_variable(char *token, int *index, t_lst_env *env_list)
 		if (!var_content)
 		{
 			var_content = __ft_calloc(sizeof(char) * 1);
-	//		var_content_len = 1;
+//			var_content_len = 1;
 		}
 		else
 			var_content_len = ft_strlen(var_content);
@@ -130,11 +132,11 @@ char	*expand_variable(char *token, int *index, t_lst_env *env_list)
 
 	insert_var_content_to_token(&token, var_content, *index);
 
-	if(var_content[0] && !(var_content_len < 1))
+	if((*index + (var_content_len - 1)) >= 0)
 		*index = *index + (var_content_len - 1);
-	else
-		*index = *index + (var_content_len);
-
+//	else
+//		*index = *index + (var_content_len);
+//	printf("index = [%d]\n", *index);
 	return (token);
 }
 
