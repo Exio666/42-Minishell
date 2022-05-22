@@ -1,0 +1,2 @@
+export a=bonjour bonjour=a
+echo -n $a $bonjour $c	
