@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 13:33:27 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/23 09:18:51 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/23 09:40:03 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	btree_insert_log_op(t_btree **root, t_logic_op *logic_op,
 void	btree_insert_pipe_seq(t_btree **root, t_pipe_sequence *pipe_seq,
 	int (*cmpf)(UI, UI))
 {
-	pipe_seq = NULL;
 	if (!pipe_seq || !pipe_seq->str || !cmpf)
 	{
 		ft_putstr_fd("pipe_sequence is NULL\n", 2);
