@@ -1,3 +1,0 @@
-export a=bonjour bonjour=a
-ls *
-ls *.c*
