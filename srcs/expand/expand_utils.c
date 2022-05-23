@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:21:36 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/20 21:23:56 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/23 08:47:01 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,37 @@ void	move_foward_expanding_var(int open_quote, char *token_str, int *index)
 	}
 	else
 		(*index)++;
+}
+
+int	in(t_lst_token *token, int index)
+{
+	int	len;
+
+	if (!token)
+		return (FALSE);
+	if (!token->str)
+		return (FALSE);
+	len = ft_strlen(token->str);
+	if (index >= 0 && index < len)
+		return (TRUE);
+	return (FALSE);
+}
+
+void	init_expand_all_variable(int *tmp, t_quote_index *quote)
+{
+	*tmp = -2;
+	quote->open = -1;
+	quote->close = -1;
+}
+
+void	expand_dollar(t_lst_token *token, t_lst_env *env_list, int *i, int *tmp)
+{
+	*tmp = *i;
+	token->str = expand_variable(token->str, i, env_list);
+	if (in(token, *i) && is_dollar(token->str[(*i)]) && !token->str[(*i) + 1])
+		*tmp = -2;
+	else if (in(token, *i) && is_dollar(token->str[*i]) && token->str[(*i) + 1])
+		(*i)++;
 }
 
 /*

@@ -6,11 +6,21 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 18:58:32 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/22 16:32:59 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/23 08:53:37 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	insert_str_in_array(t_lst_token	*copie, char **argv, int *i, int *j)
+{
+	if (copie->str[0] != '\0')
+	{
+		argv[(*i)] = copie->str;
+		(*i)++;
+	}
+	(*j)++;
+}
 
 char	**create_argv_cmd(t_lst_token *token)
 {
@@ -28,14 +38,7 @@ char	**create_argv_cmd(t_lst_token *token)
 	while (j < nb_word_tok)
 	{
 		if (is_str_token(copie->type))
-		{
-			if (copie->str[0] != '\0')
-			{
-				argv_cmd[i] = copie->str;
-				i++;
-			}
-			j++;
-		}
+			insert_str_in_array(copie, argv_cmd, &i, &j);
 		else if (is_redirect_token(copie->type))
 			copie = copie->next;
 		if (copie)

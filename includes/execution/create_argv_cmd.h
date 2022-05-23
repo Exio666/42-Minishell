@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 19:08:58 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/14 19:09:43 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/23 08:53:23 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "minishell.h"
 
+void	insert_str_in_array(t_lst_token	*copie, char **argv, int *i, int *j);
 char	**create_argv_cmd(t_lst_token *token);
 
 #endif
