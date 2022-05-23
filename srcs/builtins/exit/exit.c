@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 13:44:31 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/05/17 19:18:41 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/23 11:45:35 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ void	builtins_exit_prog(int ac, char **av)
 
 int	ft_exit(int ac, char **av)
 {
-	ft_putstr_fd("exit\n", 2);
+	if (isatty(STDOUT_FILENO))
+		ft_putstr_fd("exit\n", 2);
 	if (ac == 1)
 	{
 		free_all();
