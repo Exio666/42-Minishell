@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_start_and_end_index.h                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 15:08:20 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/04 14:26:42 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/05/23 11:27:16 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "minishell.h"
 
+void	init_get_start_index(int *start_index, int *current_pipe_seq, int *len);
 int		get_start_index_pipe_sequence(char *user_input,
 			int pipe_sequence_to_find);
 int		get_end_index_pipe_sequence(char	*user_input, int start_index);
