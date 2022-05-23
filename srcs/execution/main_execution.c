@@ -6,7 +6,7 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 20:35:13 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/23 09:42:50 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/23 10:33:06 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,13 @@ int	main(int argc, char **argv, char **envp)
 		if (command_line && check_command_is_ok(command_line))
 			process_command(command_line, env_list);
 		else if (!command_line)
-			exit_ctr_d(/*command_line*/);
-//		else
-//			free(command_line);
+			exit_ctr_d();
 		__ft_calloc(-1);
 	}
 	return (0);
 }
 
-void	exit_ctr_d(/*char *command_line*/)
+void	exit_ctr_d(void)
 {
 	if (isatty(STDIN_FILENO))
 	{
@@ -50,7 +48,6 @@ void	exit_ctr_d(/*char *command_line*/)
 		printf("exit\n");
 		printf(RESET);
 	}
-//	free(command_line);
 	__ft_calloc_env(-1);
 	__ft_calloc(-1);
 	rl_clear_history();
@@ -64,7 +61,6 @@ void	process_command(char *command_line, t_lst_env **env_list)
 	root = get_btree_of_logical_op(command_line);
 	add_all_pipe_sequence_in_tree(&root, command_line);
 	create_all_heredoc(&root, command_line);
-//	free(command_line);
 	execute_command_tree(root, env_list);
 	__ft_calloc(-1);
 }

@@ -6,15 +6,11 @@
 /*   By: rpottier <rpottier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:59:29 by rpottier          #+#    #+#             */
-/*   Updated: 2022/05/23 10:16:04 by rpottier         ###   ########.fr       */
+/*   Updated: 2022/05/23 11:04:26 by rpottier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-
-
-
 
 int	get_start_index_pipe_sequence(char *user_input, int pipe_sequence_to_find)
 {
@@ -31,8 +27,9 @@ int	get_start_index_pipe_sequence(char *user_input, int pipe_sequence_to_find)
 		return (start_index);
 	while (start_index < len && current_pipe_seq < pipe_sequence_to_find)
 	{
-		pipe_skip_quote(user_input, &start_index);
-		if (is_log_op(user_input, start_index))
+		if (is_quote(user_input[start_index]))
+			pipe_skip_quote(user_input, &start_index);
+		else if (is_log_op(user_input, start_index))
 		{
 			start_index += 2;
 			current_pipe_seq++;
